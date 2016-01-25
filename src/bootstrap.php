@@ -29,13 +29,8 @@ $routeDefinitionCallback = function (\FastRoute\RouteCollector $r) {
         $r->addRoute($route[0], $route[1], $route[2]);
     }
 };
-
 $routerDispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
-
-// Fetch method and URI from somewhere
-$httpMethod = $_SERVER['REQUEST_METHOD'];
-$uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-$routeInfo = $routerDispatcher->dispatch($httpMethod, $uri);
+$routeInfo = $routerDispatcher->dispatch($request->getMethod(), $request->getPathInfo());
 
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:
@@ -54,4 +49,4 @@ switch ($routeInfo[0]) {
         break;
 }
 
-echo $response->getContent();
+$response->send();
