@@ -5,20 +5,21 @@ namespace Gulchuk\Controllers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class PageController
+class PageController extends BaseController
 {
     private $request;
     private $response;
 
     public function __construct(Request $request, Response $response)
     {
+        parent::__construct();
         $this->request = $request;
         $this->response = $response;
     }
 
     public function index()
     {
-        $this->response->setContent('this is index page');
+        $this->response->setContent($this->blade->render('frontend.pages.index'));
     }
 
     public function showPage($slug)
