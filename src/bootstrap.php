@@ -14,6 +14,9 @@ $config = include(__DIR__ . '/config.php');
 /* Dependency Injection container */
 $container = include(__DIR__ . '/dependencies.php');
 
+/* Boot Eloquent */
+include(__DIR__ . '/db.php');
+
 $request = $container->get('Request');
 $response = $container->get('Response');
 

@@ -15,7 +15,9 @@
         "filp/whoops": "^2.0",
         "symfony/http-foundation": "^3.0",
         "league/container": "^2.0",
-        "duncan3dc/blade": "^3.0"
+        "duncan3dc/blade": "^3.0",
+        "robmorgan/phinx": "^0.5.1",
+        "illuminate/database": "^5.2"
     },
     "autoload": {
         "psr-4": {
@@ -23,6 +25,9 @@
         },
         "files": [
             "src/helper.php"
+        ],
+        "classmap": [
+            "src/Models"
         ]
     }
 }
