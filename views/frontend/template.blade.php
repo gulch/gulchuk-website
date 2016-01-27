@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/container.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/grid.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/header.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/menu.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/list.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/image.css">
@@ -25,9 +24,9 @@
 <body>
     @include('frontend.header')
 
-    <div class="ui main container">
+    <main class="ui container">
         @yield('content')
-    </div>
+    </main>
 
     @include('frontend.footer')
 </body>

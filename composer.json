@@ -27,7 +27,7 @@
             "src/helper.php"
         ],
         "classmap": [
-            "src/Models"
+            "src/Models/"
         ]
     }
 }
