@@ -1,5 +1,6 @@
 body {
     background-color: white;
+    font-size: 18px;
 }
 
 main {
@@ -7,22 +8,19 @@ main {
     margin-bottom: 4em;
 }
 
+.main-grid {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+}
+
 .ui.footer.segment {
     margin: 5em 0em 0em;
 }
 
 .ui.footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 
 h1 {
     font-size: 48px;
-}
-
-@media only screen and (max-height: 480px) {
-    .ui.footer {
-        position: relative;
-    }
 }

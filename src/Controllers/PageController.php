@@ -22,6 +22,11 @@ class PageController extends BaseController
         $this->response->setContent($this->blade->render('frontend.pages.index'));
     }
 
+    public function showCvPage()
+    {
+        $this->response->setContent($this->blade->render('frontend.pages.cv'));
+    }
+
     public function showPage($slug)
     {
         $this->response->setContent("this is '{$slug}' page!");
