@@ -24,3 +24,16 @@ main {
 .middle.aligned.grid .column {
     max-width: 420px;
 }
+
+#main-menu-logo {
+    width: 32px;
+    height: 32px;
+}
+
+.main-menu {
+    margin-top: 0 !important;
+}
+
+.main-menu-logo-item {
+    padding: 8px !important;
+}

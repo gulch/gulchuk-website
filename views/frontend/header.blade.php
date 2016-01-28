@@ -1,7 +1,10 @@
-<div class="ui menu">
+<div class="ui menu main-menu">
     <div class="ui container">
-        <a href="/" class="borderless item">
-            <img src="/assets/img/logo-gulchuk.png" alt="Gulchuk Website Logo">
+        <a href="/" class="borderless item main-menu-logo-item">
+            {{--<img src="/assets/img/logo-gulchuk.png" alt="Gulchuk Website Logo">--}}
+            <svg id="main-menu-logo">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+            </svg>
         </a>
 
         <div class="right menu">
