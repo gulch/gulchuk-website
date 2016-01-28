@@ -13,14 +13,14 @@ main {
     margin-right: 8px !important;
 }
 
-.ui.footer.segment {
-    margin: 5em 0em 0em;
-}
-
 .ui.footer {
     width: 100%;
 }
 
-h1 {
-    font-size: 48px;
+.middle.aligned.grid {
+    height: 100%;
+}
+
+.middle.aligned.grid .column {
+    max-width: 420px;
 }

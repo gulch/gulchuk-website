@@ -4,7 +4,7 @@
     <div class="ui centered grid">
         <div class="two column centered doubling row">
             <div class="column">
-                <h1>Hello!</h1>
+                <h1 class="ui huge header">Hello!</h1>
                 <p>
                     My name is Volodymyr Gulchuk. I'm web developer. As a hobby I investigate web performance optimization.
                     I write to my <a href="https://gulch.in.ua">ukrainian language blog</a> and

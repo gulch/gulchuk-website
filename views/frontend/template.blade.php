@@ -8,18 +8,7 @@
     <!-- Site Properities -->
     <title>Gulchuk :: Personal Website</title>
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/semantic-ui/components/site.css">
-
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/container.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/grid.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/menu.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/list.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui/components/image.css">
-
-    <link rel="stylesheet" type="text/css" href="/assets/css/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/general.css">
+    @include('assets.css')
 </head>
 <body>
     @include('frontend.header')

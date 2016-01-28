@@ -8,4 +8,8 @@ $container->add(\Gulchuk\Controllers\PageController::class)
     ->withArgument('Request')
     ->withArgument('Response');
 
+$container->add(\Gulchuk\Controllers\AuthController::class)
+    ->withArgument('Request')
+    ->withArgument('Response');
+
 return $container;
