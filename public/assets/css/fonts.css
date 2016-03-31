@@ -9,6 +9,6 @@
     font-style: normal;
 }
 
-html {
-    font-family: 'Proba Pro';
+body {
+    font-family: 'Proba Pro' !important;
 }
