@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit convertWarningsToExceptions="true"
+         colors="true">
+    <testsuites>
+        <testsuite name="Gulchuk Website">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

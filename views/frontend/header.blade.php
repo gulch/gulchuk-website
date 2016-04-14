@@ -19,7 +19,7 @@
                 <a class="header-item {{ ($_SERVER['REQUEST_URI'] == '/cv') ? 'is-active' : '' }}" href="/cv">
                     CV
                 </a>
-                <a class="header-item {{ ($_SERVER['REQUEST_URI'] == '/blog') ? 'is-active' : '' }}" href="/blog/">
+                <a class="header-item {{ ($_SERVER['REQUEST_URI'] == '/blog') ? 'is-active' : '' }}" href="/blog">
                     Blog
                 </a>
 

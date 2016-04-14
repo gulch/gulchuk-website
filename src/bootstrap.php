@@ -46,11 +46,9 @@ switch ($routeInfo[0]) {
         break;
 
     case FastRoute\Dispatcher::NOT_FOUND:
-        // ... 404 Not Found
-        break;
-
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-        // ... 405 Method Not Allowed
+        $response->setStatusCode(404);
+        $response->setContent('Not Found!');
         break;
 }
 
