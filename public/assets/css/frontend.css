@@ -42,3 +42,19 @@ footer {
 .welcome-text {
     font-size: 20px;
 }
+
+/* Align Index Page Welcome Box  */
+.center-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.vcenter-section {
+    align-self: center;
+}
+
+@media screen and (max-width: 512px) {
+    .vcenter-section {
+        align-self: auto;
+    }
+}

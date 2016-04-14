@@ -1,1 +1,3 @@
-# gulchuk-website
+# gulchuk.com website
+
+https://gulchuk.com

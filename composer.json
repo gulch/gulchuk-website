@@ -24,13 +24,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Gulchuk\\": "src/"
+            "Gulchuk\\": "app/"
         },
         "files": [
-            "src/helper.php"
+            "app/Helpers/general.php"
         ],
         "classmap": [
-            "src/Models/"
+            "app/Models/"
         ]
     }
 }
