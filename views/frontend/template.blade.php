@@ -33,5 +33,7 @@
             @yield('content')
         </main>
         @include('frontend.footer')
+
+        <script defer src="/assets/js/frontend.js"></script>
     </body>
 </html>

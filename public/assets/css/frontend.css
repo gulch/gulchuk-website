@@ -11,7 +11,11 @@ html {
 .footer-content {
     text-align: center;
     padding: 8px;
-    font-size: 12px;
+    font-size: 10px;
+}
+
+.footer-content a {
+    color: #333;
 }
 
 body {
@@ -25,4 +29,16 @@ main {
     flex: 1;
     padding-top: 16px;
     padding-bottom: 16px;
+}
+
+.main-container {
+    margin: 1em .5em;
+}
+
+footer {
+    margin-top: 1em;
+}
+
+.welcome-text {
+    font-size: 20px;
 }

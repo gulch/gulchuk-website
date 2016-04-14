@@ -1,34 +1,35 @@
-<header class="header">
-    <div class="container">
+<div class="hero-header">
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <a class="header-item" href="/">
+                    <svg id="main-menu-logo">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+                    </svg>
+                </a>
+            </div>
 
-        <!-- Left side -->
-        <div class="header-left">
-            <a class="header-item" href="/">
-                <svg id="main-menu-logo">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
-                </svg>
-            </a>
+            <span id="header-toggle" class="header-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+
+            <div id="header-menu" class="header-right header-menu">
+                <a class="header-item {{ ($_SERVER['REQUEST_URI'] == '/cv') ? 'is-active' : '' }}" href="/cv">
+                    CV
+                </a>
+                <a class="header-item {{ ($_SERVER['REQUEST_URI'] == '/blog') ? 'is-active' : '' }}" href="/blog/">
+                    Blog
+                </a>
+
+                <div class="header-item">
+                  <button class="button is-info is-outlined">
+                      Search
+                  </button>
+                </div>
+
+            </div>
         </div>
-
-        <!-- Hamburger menu (on mobile) -->
-        <span class="header-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-
-        <!-- Right side -->
-        <div class="header-right header-menu">
-            <span class="header-item">
-                <a href="/blog" class="{{ ($_SERVER['REQUEST_URI'] == '/blog') ? 'active' : '' }} item">Blog</a>
-            </span>
-            <span class="header-item">
-                <a href="/cv" class="{{ ($_SERVER['REQUEST_URI'] == '/cv') ? 'active' : '' }} item">CV</a>
-            </span>
-            <span class="header-item">
-                <a href="/" class="item button">Search</a>
-            </span>
-        </div>
-
-    </div>
-</header>
+    </header>
+</div>
