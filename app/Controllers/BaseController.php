@@ -16,6 +16,6 @@ class BaseController
     {
         $this->request = $request;
         $this->response = $response;
-        $this->blade = new BladeInstance(__DIR__ . '/../Views', __DIR__ . '/../../cache/views');
+        $this->blade = new BladeInstance(__DIR__ . '/../../resources/views', __DIR__ . '/../../cache/views');
     }
 }
