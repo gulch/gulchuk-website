@@ -18,7 +18,7 @@ include(__DIR__ . '/db.php');
 $request = $container->get('Request');
 $response = $container->get('Response');
 
-if($config['debug']) {
+if ($config['debug']) {
     /* Register the error handler */
     $whoops = new \Whoops\Run;
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
