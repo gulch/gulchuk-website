@@ -12,7 +12,6 @@
     "require": {
         "nikic/fast-route": "^0.7.0",
         "vlucas/phpdotenv": "^2.2",
-        "filp/whoops": "^2.0",
         "symfony/http-foundation": "^3.0",
         "league/container": "^2.0",
         "duncan3dc/blade": "^3.0",
@@ -21,6 +20,7 @@
 
     },
     "require-dev": {
+        "filp/whoops": "^2.0",
         "phpunit/phpunit": "^5.3",
         "squizlabs/php_codesniffer": "2.*",
         "sebastian/phpcpd": "*",
