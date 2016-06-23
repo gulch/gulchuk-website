@@ -16,7 +16,8 @@
         "league/container": "^2.0",
         "duncan3dc/blade": "^3.0",
         "robmorgan/phinx": "^0.5.1",
-        "illuminate/database": "^5.2"
+        "illuminate/database": "^5.2",
+        "fzaninotto/faker": "^1.6"
 
     },
     "require-dev": {
