@@ -1,11 +1,8 @@
 <html>
     <head>
-        <!-- Standard Meta -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-        <!-- Site Properities -->
         <title>Gulchuk :: Personal Website</title>
 
         @include('assets.favicon')
@@ -13,12 +10,6 @@
     </head>
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-            <symbol id="close" viewBox="0 0 32 32">
-                <line stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="1" y1="1" x2="31" y2="31"
-                      fill="none"></line>
-                <line stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="1" y1="31" x2="31" y2="1"
-                      fill="none"></line>
-            </symbol>
             <symbol id="logo" viewBox="0 0 250 250">
                 <circle fill="#484748" cx="125" cy="125" r="123.5"/>
                 <g>
@@ -32,6 +23,6 @@
         @yield('content')
         @include('frontend.footer')
 
-        <script defer src="/assets/js/frontend.js"></script>
+        @include('assets.js')
     </body>
 </html>
