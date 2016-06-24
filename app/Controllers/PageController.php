@@ -6,16 +6,16 @@ class PageController extends BaseController
 {
     public function index()
     {
-        $this->response->setContent($this->blade->render('frontend.pages.index'));
+        $this->response->getBody()->write($this->blade->render('frontend.pages.index'));
     }
 
     public function showCvPage()
     {
-        $this->response->setContent($this->blade->render('frontend.pages.cv'));
+        $this->response->getBody()->write($this->blade->render('frontend.pages.cv'));
     }
 
-    public function showPage($slug)
+    /*public function showPage($slug)
     {
-        $this->response->setContent("this is '{$slug}' page!");
-    }
+        $this->response->getBody()->write("this is '{$slug}' page!");
+    }*/
 }
