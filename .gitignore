@@ -4,3 +4,5 @@ vendor
 /phinx.yml
 /cache
 composer.lock
+tests/_output/*
+/codeception.xml
