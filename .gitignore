@@ -1,8 +1,9 @@
-.idea
+phinx.yml
 .env
-vendor
-/phinx.yml
-/cache
+codeception.xml
 composer.lock
-tests/_output/*
-/codeception.xml
+/.idea
+/vendor
+/cache
+/tests/_output/*
+/public/uploads/
