@@ -1,7 +1,6 @@
 @extends('frontend.template')
 
 @section('content')
-
     <main class="ui container flex-one">
         <div class="ui center aligned grid vcenter-align">
             <div class="left aligned twelve wide computer column column sixteen wide tablet">
@@ -21,5 +20,4 @@
             </div>
         </div>
     </main>
-
 @endsection
