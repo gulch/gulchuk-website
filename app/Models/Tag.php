@@ -4,9 +4,9 @@ namespace Gulchuk\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Article extends Eloquent
+class Tag extends Eloquent
 {
-    protected $table = 'Article';
+    protected $table = 'Tag';
 
     /* -------------- Scopes -------------- */
 
@@ -17,13 +17,8 @@ class Article extends Eloquent
 
     /* ------------- Relations ------------ */
 
-    public function image()
+    public function articles()
     {
-        return $this->belongsTo('Gulchuk\Models\Image','id__Image');
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany('Gulchuk\Models\Tag', 'Article_Tag', 'id__Article', 'id__Tag');
+        return $this->belongsToMany('Gulchuk\Models\Article', 'Article_Tag', 'id__Tag', 'id__Article');
     }
 }

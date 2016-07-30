@@ -2,11 +2,22 @@
 
 namespace Gulchuk\Controllers;
 
+use Gulchuk\Models\Article;
+
 class BlogController extends BaseController
 {
     public function index()
     {
-        $this->response->getBody()->write($this->blade->render('frontend.blog.index'));
+        $data = [
+            'articles' => Article::all()
+        ];
+
+        $a = Article::first()->tags()->get();
+        var_dump($a);
+            exit();
+
+        return $this->blade->render('frontend.blog.index', $data);
+        //$this->response->getBody()->write($this->blade->render('frontend.blog.index', $data));
     }
 
     public function show()

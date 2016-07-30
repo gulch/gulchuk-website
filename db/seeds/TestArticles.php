@@ -8,9 +8,10 @@ class TestArticles extends AbstractSeed
     {
         $faker = Faker\Factory::create();
         $data = [];
+
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
-                'slug' => str_slug($faker->text(50)),
+                'slug' => str_slug($faker->text(25)),
                 'title' => $faker->text(50),
                 'content' => $faker->text(random_int(256, 1024)),
                 'seo_title' => $faker->text(50),
