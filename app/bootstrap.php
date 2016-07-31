@@ -31,4 +31,4 @@ include(__DIR__ . '/routes.php');
 
 $response = $route->dispatch($request, $response);
 
-echo $response->getBody();
+$container->get('emitter')->emit($response);

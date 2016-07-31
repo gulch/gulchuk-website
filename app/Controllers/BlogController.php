@@ -16,8 +16,7 @@ class BlogController extends BaseController
         var_dump($a);
             exit();
 
-        return $this->blade->render('frontend.blog.index', $data);
-        //$this->response->getBody()->write($this->blade->render('frontend.blog.index', $data));
+        return $this->response($this->view('frontend.blog.index', $data));
     }
 
     public function show()
@@ -33,6 +32,6 @@ class BlogController extends BaseController
 
         return $this->show404();
 
-        $this->response->getBody()->write($this->blade->render('frontend.blog.show', compact('slug')));
+        return $this->response($this->view('frontend.blog.show', compact('slug')));
     }
 }

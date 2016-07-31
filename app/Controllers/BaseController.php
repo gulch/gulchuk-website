@@ -21,7 +21,24 @@ class BaseController
     
     protected function show404()
     {
-        $this->response->getStatusCode(404);
-        $this->response->getBody()->write($this->blade->render('errors.404'));
+        return $this->response($this->view('errors.404'), 404);
+    }
+
+    protected function response(string $data, int $statusCode = 200) : ResponseInterface
+    {
+        $this->response->getBody()->write($data);
+
+        return $this->response->withStatus($statusCode);
+    }
+
+    /**
+     * Render Blade Template View
+     * @param string $name
+     * @param array $params
+     * @return string
+     */
+    protected function view(string $name, array $params = []) : string
+    {
+        return $this->blade->render($name, $params);
     }
 }
