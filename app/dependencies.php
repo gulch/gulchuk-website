@@ -2,9 +2,6 @@
 
 $container = new League\Container\Container;
 
-/*$container->add('Request', \Symfony\Component\HttpFoundation\Request::createFromGlobals(), true);
-$container->add('Response', \Symfony\Component\HttpFoundation\Response::create(), true);*/
-
 $container->add('Psr\Http\Message\ResponseInterface', \Zend\Diactoros\Response::class, true);
 $container->add('Psr\Http\Message\ServerRequestInterface', function() {
    return \Zend\Diactoros\ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);

@@ -1,7 +1,14 @@
 <?php
 
-$route->get('/', 'Gulchuk\Controllers\PageController::index');
-$route->get('/cv', 'Gulchuk\Controllers\PageController::showCV');
+$route->group('/', function ($route) {
+    $route->get('/', 'Gulchuk\Controllers\PageController::index');
+    $route->get('/cv', 'Gulchuk\Controllers\PageController::showCV');
+})->middleware(new Gulchuk\Middlewares\MinifyOutput);
 
-$route->get('/blog', 'Gulchuk\Controllers\BlogController::index');
-$route->get('/blog/{slug}', 'Gulchuk\Controllers\BlogController::show');
+$route->group('/blog', function ($route) {
+    $route->get('/', 'Gulchuk\Controllers\BlogController::index');
+    $route->get('{slug}', 'Gulchuk\Controllers\BlogController::show');
+    $route->get('/tag/{slug}', 'Gulchuk\Controllers\BlogController::tag');
+})->middleware(new Gulchuk\Middlewares\MinifyOutput);
+
+

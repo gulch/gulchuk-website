@@ -19,7 +19,7 @@ class BaseController
         $this->blade = new BladeInstance(__DIR__ . '/../../resources/views', __DIR__ . '/../../cache/views');
     }
     
-    protected function show404()
+    protected function abort()
     {
         return $this->response($this->view('errors.404'), 404);
     }

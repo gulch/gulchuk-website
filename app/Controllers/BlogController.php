@@ -27,11 +27,14 @@ class BlogController extends BaseController
             $slug = isset($args['slug']) ? $args['slug'] : null;
         }
         if (!$slug) {
-            
+            $this->abort();
         }
 
-        return $this->show404();
-
         return $this->response($this->view('frontend.blog.show', compact('slug')));
+    }
+
+    public function tag()
+    {
+
     }
 }
