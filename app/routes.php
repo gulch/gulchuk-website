@@ -1,9 +1,6 @@
 <?php
 
-return [
-    ['GET', '/login', 'Gulchuk\Controllers\AuthController::showLoginPage'],
-    ['GET', '/cv', 'Gulchuk\Controllers\PageController::showCvPage'],
-    ['GET', '/blog/{slug}', 'Gulchuk\Controllers\BlogController::show'],
-    ['GET', '/blog', 'Gulchuk\Controllers\BlogController::index'],
-    ['GET', '/', 'Gulchuk\Controllers\PageController::index']
-];
+$route->get('/cv', 'Gulchuk\Controllers\PageController::showCvPage');
+$route->get('/blog/{slug}', 'Gulchuk\Controllers\BlogController::show');
+$route->get('/blog', 'Gulchuk\Controllers\BlogController::index');
+$route->get('/', 'Gulchuk\Controllers\PageController::index');

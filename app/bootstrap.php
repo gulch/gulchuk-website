@@ -19,17 +19,16 @@ if ($config['debug']) {
 /* Dependency Injection container */
 $container = include(__DIR__ . '/dependencies.php');
 
-/* Boot Eloquent */
+/* Boot Eloquent ORM */
 include(__DIR__ . '/db.php');
 
 $request = $container->get('Psr\Http\Message\ServerRequestInterface');
 $response = $container->get('Psr\Http\Message\ResponseInterface');
 
+/* Router & Routes */
 $route = new League\Route\RouteCollection($container);
-$routes = include(__DIR__ . '/routes.php');
-foreach ($routes as $r) {
-    $route->map($r[0], $r[1], $r[2]);
-}
+include(__DIR__ . '/routes.php');
+
 $response = $route->dispatch($request, $response);
 
 echo $response->getBody();
