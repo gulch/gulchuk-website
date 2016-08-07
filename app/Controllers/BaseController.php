@@ -31,6 +31,15 @@ class BaseController
         return $this->response->withStatus($statusCode);
     }
 
+    protected function argument(array $args, string $name)
+    {
+        if (empty($args)) {
+            return null;
+        }
+
+        return isset($args[$name]) ? $args[$name] : null;
+    }
+
     /**
      * Render Blade Template View
      * @param string $name

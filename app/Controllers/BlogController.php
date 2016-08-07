@@ -12,22 +12,19 @@ class BlogController extends BaseController
             'articles' => Article::all()
         ];
 
-        $a = Article::first()->tags()->get();
+        /*$a = Article::first()->tags()->get();
         var_dump($a);
-            exit();
+            exit();*/
 
         return $this->response($this->view('frontend.blog.index', $data));
     }
 
     public function show()
     {
-        $slug = null;
-        $args = func_get_arg(2);
-        if ($args) {
-            $slug = isset($args['slug']) ? $args['slug'] : null;
-        }
+        $slug = $this->argument(func_get_arg(2), 'slug');
+
         if (!$slug) {
-            $this->abort();
+            return $this->abort();
         }
 
         return $this->response($this->view('frontend.blog.show', compact('slug')));
