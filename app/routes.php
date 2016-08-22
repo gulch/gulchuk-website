@@ -1,14 +1,21 @@
 <?php
 
-$route->group('/', function ($route) {
-    $route->get('/', 'Gulchuk\Controllers\PageController::index');
-    $route->get('/cv', 'Gulchuk\Controllers\PageController::showCV');
-})->middleware(new Gulchuk\Middlewares\MinifyOutput(new Zend\Diactoros\Stream('php://memory', 'wb+')));
+use Zend\Diactoros\Stream;
+use Gulchuk\Middlewares\MinifyOutput;
 
-$route->group('/blog', function ($route) {
-    $route->get('/', 'Gulchuk\Controllers\BlogController::index');
-    $route->get('{slug}', 'Gulchuk\Controllers\BlogController::show');
-    $route->get('/tag/{slug}', 'Gulchuk\Controllers\BlogController::tag');
-})->middleware(new Gulchuk\Middlewares\MinifyOutput(new Zend\Diactoros\Stream('php://memory', 'wb+')));
+$route
+    ->group('/', function ($route) {
+        $route->get('/', 'Gulchuk\Controllers\PageController::index');
+        $route->get('/cv', 'Gulchuk\Controllers\PageController::showCV');
+    })
+    ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
+
+$route
+    ->group('/blog', function ($route) {
+        $route->get('/', 'Gulchuk\Controllers\BlogController::index');
+        $route->get('{slug:slug}', 'Gulchuk\Controllers\BlogController::show');
+        $route->get('/tag/{slug:slug}', 'Gulchuk\Controllers\BlogController::tag');
+    })
+    ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 
 

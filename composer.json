@@ -18,7 +18,8 @@
         "illuminate/database": "^5.2",
         "cartalyst/sentinel": "^2.0",
         "gulch/gminify": "dev-master",
-        "coduo/php-humanizer": "^2.0"
+        "coduo/php-humanizer": "^2.0",
+        "respect/validation": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

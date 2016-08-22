@@ -2,9 +2,9 @@
     font-family: 'Proba Pro';
     src: url('/assets/font/proba-pro/regular.eot');
     src: url('/assets/font/proba-pro/regular.eot?#iefix') format('embedded-opentype'),
-    url('/assets/font/proba-pro/regular.woff2') format('woff2'),
-    url('/assets/font/proba-pro/regular.woff') format('woff'),
-    url('/assets/font/proba-pro/regular.ttf') format('truetype');
+         url('/assets/font/proba-pro/regular.woff2') format('woff2'),
+         url('/assets/font/proba-pro/regular.woff') format('woff'),
+         url('/assets/font/proba-pro/regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

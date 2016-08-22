@@ -1,5 +1,5 @@
 <header>
-    <nav class="ui secondary large menu">
+    <nav class="ui menu">
         <div class="ui container">
             <a href="/" class="item">
                 <svg id="main-menu-logo">
