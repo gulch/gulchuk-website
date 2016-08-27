@@ -13,4 +13,9 @@ class AuthController extends BaseController
     {
         echo 'xyz'; exit();
     }
+
+    public function recover()
+    {
+        return $this->response($this->view('auth.recover'));
+    }
 }

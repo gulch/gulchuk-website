@@ -1,5 +1,5 @@
 @extends('auth.template', [
-    'title' => 'Password reset :: Gulchuk'
+    'title' => 'Password recovery :: Gulchuk'
 ])
 
 @section('content')
@@ -16,7 +16,7 @@
 
                     @include('backend._partials.errors_message')
 
-                    <form class="ui form" action="/password/email" method="POST">
+                    <form class="ui form" action="/auth/recover" method="POST">
                         <div class="field">
                             <div class="ui left icon input">
                                 <input type="text" name="email" placeholder="Email">

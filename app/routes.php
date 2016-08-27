@@ -21,7 +21,11 @@ $route
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 
 // Auth routes
-$route->get('/login', AuthController::class . '::login');
-$route->post('/login', AuthController::class . '::postLogin');
+$route
+    ->group('/auth', function ($route) {
+        $route->get('/login', AuthController::class . '::login');
+        $route->post('/login', AuthController::class . '::postLogin');
+        $route->get('/recover', AuthController::class . '::recover');
+    });
 
 
