@@ -16,7 +16,7 @@
 
                     @include('backend._partials.errors_message')
 
-                    <form class="ui form" action="/login" method="POST">
+                    <form class="ui form" action="/auth/login" method="POST">
                         <div class="field">
                             <div class="ui left icon input">
                                 <input type="text" name="email" placeholder="Email">
