@@ -22,4 +22,11 @@ $container
         'Psr\Http\Message\ResponseInterface'
     ]);
 
+$container
+    ->add(\Gulchuk\Controllers\AuthController::class)
+    ->withArguments([
+        'Psr\Http\Message\ServerRequestInterface',
+        'Psr\Http\Message\ResponseInterface'
+    ]);
+
 return $container;

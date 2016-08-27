@@ -1,5 +1,5 @@
 @extends('auth.template', [
-    'title' => 'Login :: Gulchuk'
+    'title' => 'Password reset :: Gulchuk'
 ])
 
 @section('content')
@@ -10,13 +10,13 @@
 
                     <h2 class="ui teal header">
                         <div class="content">
-                            Login
+                            Password recovery
                         </div>
                     </h2>
 
                     @include('backend._partials.errors_message')
 
-                    <form class="ui form" action="/login" method="POST">
+                    <form class="ui form" action="/password/email" method="POST">
                         <div class="field">
                             <div class="ui left icon input">
                                 <input type="text" name="email" placeholder="Email">
@@ -24,22 +24,9 @@
                             </div>
                         </div>
 
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <input type="password" name="password" placeholder="Password">
-                                <i class="lock icon"></i>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="ui checkbox">
-                                <input name="remember" type="checkbox" tabindex="0" value="1" class="hidden">
-                                <label>Remember</label>
-                            </div>
-                        </div>
-
                         <button class="ui basic large button" type="submit">
-                            Login <i class="sign in icon"></i>
+                            <i class="undo icon"></i>
+                            Recover
                         </button>
                     </form>
                 </div>
