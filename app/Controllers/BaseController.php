@@ -11,15 +11,19 @@ class BaseController
     protected $blade;
     protected $request;
     protected $response;
+    protected $postInput;
+    protected $getInput;
 
     public function __construct(ServerRequestInterface $request, ResponseInterface $response)
     {
         $this->request = $request;
         $this->response = $response;
         $this->blade = new BladeInstance(__DIR__ . '/../../resources/views', __DIR__ . '/../../cache/views');
+        $this->getInput = $request->getQueryParams();
+        $this->postInput = $request->getParsedBody();
     }
     
-    protected function abort()
+    protected function abort() : ResponseInterface
     {
         return $this->response($this->view('errors.404'), 404);
     }

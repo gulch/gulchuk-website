@@ -1,7 +1,8 @@
 <?php
 
-namespace Gulchuk\Controllers;
+namespace Gulchuk\Controllers\Frontend;
 
+use Gulchuk\Controllers\BaseController;
 use Gulchuk\Models\Article;
 
 class BlogController extends BaseController

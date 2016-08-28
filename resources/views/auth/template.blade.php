@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="/assets/vendor/semantic/2.2.4/semantic.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/backend.css">
 </head>
 <body>
     {{-- Меню --}}
     <div class="ui borderless main menu">
         <div class="ui text container">
             <a href="/" class="header item">
-                <img class="logo" style="width: 32px; height: 32px" src="/assets/img/logo-gulchuk.png">
+                <img class="logo" src="/assets/img/logo-gulchuk.png">
             </a>
             <div class="right menu">
                 <a href="/password/reset" class="ui item">Recover password?</a>

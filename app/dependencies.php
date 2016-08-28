@@ -9,14 +9,14 @@ $container->add('Psr\Http\Message\ServerRequestInterface', function() {
 $container->share('emitter', Zend\Diactoros\Response\SapiEmitter::class);
 
 $container
-    ->add(\Gulchuk\Controllers\PageController::class)
+    ->add(\Gulchuk\Controllers\Frontend\PageController::class)
     ->withArguments([
         'Psr\Http\Message\ServerRequestInterface',
         'Psr\Http\Message\ResponseInterface'
     ]);
 
 $container
-    ->add(\Gulchuk\Controllers\BlogController::class)
+    ->add(\Gulchuk\Controllers\Frontend\BlogController::class)
     ->withArguments([
         'Psr\Http\Message\ServerRequestInterface',
         'Psr\Http\Message\ResponseInterface'
@@ -24,6 +24,13 @@ $container
 
 $container
     ->add(\Gulchuk\Controllers\AuthController::class)
+    ->withArguments([
+        'Psr\Http\Message\ServerRequestInterface',
+        'Psr\Http\Message\ResponseInterface'
+    ]);
+
+$container
+    ->add(\Gulchuk\Controllers\Backend\DashboardController::class)
     ->withArguments([
         'Psr\Http\Message\ServerRequestInterface',
         'Psr\Http\Message\ResponseInterface'
