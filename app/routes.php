@@ -2,6 +2,7 @@
 
 use Zend\Diactoros\Stream;
 use Gulchuk\Middlewares\MinifyOutput;
+use Gulchuk\Middlewares\StartSession;
 use Gulchuk\Controllers\AuthController;
 use Gulchuk\Controllers\Frontend\{PageController, BlogController};
 use Gulchuk\Controllers\Backend\{DashboardController, TagsController};
@@ -29,10 +30,12 @@ $route
         $route->post('/login', AuthController::class . '::postLogin');
         $route->get('/logout', AuthController::class . '::logout');
         $route->get('/recover', AuthController::class . '::recover');
-    });
+    })
+    ->middleware(new StartSession());
 
 // Backend routes
 $route
     ->group('/admin', function ($route) {
         $route->get('/', DashboardController::class . '::index');
-    });
+    })
+    ->middleware(new StartSession());

@@ -39,7 +39,7 @@
             "app/Helpers/general.php"
         ],
         "classmap": [
-            "app/Models/"
+            "app/Helpers/"
         ]
     }
 }

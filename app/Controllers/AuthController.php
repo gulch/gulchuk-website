@@ -2,6 +2,9 @@
 
 namespace Gulchuk\Controllers;
 
+use Gulchuk\Models\User;
+use Auth;
+
 class AuthController extends BaseController
 {
     public function login()
@@ -15,10 +18,19 @@ class AuthController extends BaseController
         $password = $this->argument($this->postInput, 'password');
         $remember = $this->argument($this->postInput, 'remember');
 
-        var_dump($email, $password, $remember);
+        $user = User::where('email', $email)->first();
+        if ($user != null) {
+            if (password_verify($password, $user->password)) {
+                // Good! Authenticate user.
+                Auth::authenticate($user, $remember);
 
+                return $this->response->withHeader('Location', '/admin');
+            }
+        }
 
-        return $this->response->withHeader('Location', '/admin');
+        return $this->response($this->view('auth.login', [
+            'message' => 'Email or password is wrong!'
+        ]));
     }
 
     public function recover()
@@ -28,6 +40,8 @@ class AuthController extends BaseController
 
     public function logout()
     {
+        Auth::logout();
 
+        return $this->response->withHeader('Location', '/');
     }
 }
