@@ -40,6 +40,14 @@
         ],
         "classmap": [
             "app/Helpers/"
+        ],
+        "exclude-from-classmap": [
+            "/tests/"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gulchuk\\Tests\\": "tests/"
+        }
     }
 }
