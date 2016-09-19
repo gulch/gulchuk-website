@@ -2,23 +2,20 @@
 
 namespace Gulchuk\Controllers;
 
-use duncan3dc\Laravel\BladeInstance;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class BaseController
 {
-    protected $blade;
     protected $request;
     protected $response;
     protected $postInput;
     protected $getInput;
 
-    public function __construct(ServerRequestInterface $request, ResponseInterface $response)
+    public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
         $this->response = $response;
-        $this->blade = new BladeInstance(__DIR__ . '/../../resources/views', __DIR__ . '/../../cache/views');
         $this->getInput = $request->getQueryParams();
         $this->postInput = $request->getParsedBody();
     }
@@ -28,7 +25,7 @@ class BaseController
         return $this->response($this->view('errors.404'), 404);
     }
 
-    protected function response(string $data, int $statusCode = 200) : ResponseInterface
+    protected function response(string $data, int $statusCode = 200) : Response
     {
         $this->response->getBody()->write($data);
 
@@ -45,13 +42,13 @@ class BaseController
     }
 
     /**
-     * Render Blade Template View
+     * Render view by template engine
      * @param string $name
      * @param array $params
      * @return string
      */
     protected function view(string $name, array $params = []) : string
     {
-        return $this->blade->render($name, $params);
+        return container('templater')->render($name, $params);
     }
 }

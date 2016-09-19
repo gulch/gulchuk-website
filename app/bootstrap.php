@@ -19,11 +19,13 @@ if ($config['debug']) {
 /* Dependency Injection container */
 $container = include(__DIR__ . '/dependencies.php');
 
+Container::getInstance()->setContainer($container);
+
 /* Boot Eloquent ORM */
 include(__DIR__ . '/db.php');
 
-$request = $container->get('Psr\Http\Message\ServerRequestInterface');
-$response = $container->get('Psr\Http\Message\ResponseInterface');
+$request = $container->get('request');
+$response = $container->get('response');
 
 /* Router & Routes */
 $route = new League\Route\RouteCollection($container);

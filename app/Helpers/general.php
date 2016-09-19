@@ -72,3 +72,10 @@ function mailto_link($email, $title = null)
 
     return $this->toHtmlString('<a href="' . $email . '">' . htmlentities($title, ENT_QUOTES, 'UTF-8', false) . '</a>');
 }
+
+function container($name)
+{
+    $container = Container::getInstance()->getContainer();
+
+    return $container->get($name);
+}

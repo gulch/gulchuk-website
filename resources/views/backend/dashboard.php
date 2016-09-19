@@ -1,6 +1,5 @@
-@extends('backend.template')
+<?php $this->layout('backend/template') ?>
 
-@section('content')
 <div class="container">
     <div class="row">
         <div class="ui huge header">
@@ -8,4 +7,3 @@
         </div>
     </div>
 </div>
-@endsection

@@ -7,15 +7,12 @@
                 </svg>
             </a>
             <div class="right menu">
-                <a href="/cv" class="item {{ ($_SERVER['REQUEST_URI'] == '/cv') ? 'active' : '' }}">
+                <a href="/cv" class="item <?= ($_SERVER['REQUEST_URI'] == '/cv') ? 'active' : '' ?>">
                     CV
                 </a>
-                <a href="/blog" class="item {{ ($_SERVER['REQUEST_URI'] == '/blog') ? 'active' : '' }}">
+                <a href="/blog" class="item <?= ($_SERVER['REQUEST_URI'] == '/blog') ? 'active' : '' ?>">
                     Blog
                 </a>
-                {{--<a href="#" class="item">
-                    Search
-                </a>--}}
             </div>
         </div>
     </nav>

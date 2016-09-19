@@ -2,38 +2,37 @@
 
 $container = new League\Container\Container;
 
-$container->add('Psr\Http\Message\ResponseInterface', \Zend\Diactoros\Response::class, true);
-$container->add('Psr\Http\Message\ServerRequestInterface', function() {
+/* Response */
+$container->share('response', \Zend\Diactoros\Response::class);
+
+/* Request */
+$container->share('request', function() {
    return \Zend\Diactoros\ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
-}, true);
+});
+
+/* Emitter */
 $container->share('emitter', Zend\Diactoros\Response\SapiEmitter::class);
 
+/* Template Engine */
+$container->share('templater', function() {
+    return new \League\Plates\Engine(__DIR__ . '/../resources/views');
+});
+
+/* Controllers */
 $container
     ->add(\Gulchuk\Controllers\Frontend\PageController::class)
-    ->withArguments([
-        'Psr\Http\Message\ServerRequestInterface',
-        'Psr\Http\Message\ResponseInterface'
-    ]);
+    ->withArguments(['request', 'response']);
 
 $container
     ->add(\Gulchuk\Controllers\Frontend\BlogController::class)
-    ->withArguments([
-        'Psr\Http\Message\ServerRequestInterface',
-        'Psr\Http\Message\ResponseInterface'
-    ]);
+    ->withArguments(['request', 'response']);
 
 $container
     ->add(\Gulchuk\Controllers\AuthController::class)
-    ->withArguments([
-        'Psr\Http\Message\ServerRequestInterface',
-        'Psr\Http\Message\ResponseInterface'
-    ]);
+    ->withArguments(['request', 'response']);
 
 $container
     ->add(\Gulchuk\Controllers\Backend\DashboardController::class)
-    ->withArguments([
-        'Psr\Http\Message\ServerRequestInterface',
-        'Psr\Http\Message\ResponseInterface'
-    ]);
+    ->withArguments(['request', 'response']);
 
 return $container;

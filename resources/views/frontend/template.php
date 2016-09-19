@@ -4,12 +4,14 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Gulchuk :: Personal Website</title>
+        <title>
+            <?= $title ?? 'Gulchuk :: Personal Website' ?>
+        </title>
         <meta name="description" content="">
         <meta name="keywords" content="">
 
-        @include('assets.favicon')
-        @include('assets.css')
+        <?php $this->insert('assets/favicon') ?>
+        <?php $this->insert('assets/css') ?>
     </head>
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -22,10 +24,9 @@
                 </g>
             </symbol>
         </svg>
-        @include('frontend.header')
-        @yield('content')
-        @include('frontend.footer')
-
-        @include('assets.js')
+        <?php $this->insert('frontend/header') ?>
+        <?= $this->section('content') ?>
+        <?php $this->insert('frontend/footer') ?>
+        <?php $this->insert('assets/js') ?>
     </body>
 </html>

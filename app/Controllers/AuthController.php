@@ -9,7 +9,7 @@ class AuthController extends BaseController
 {
     public function login()
     {
-        return $this->response($this->view('auth.login'));
+        return $this->response($this->view('auth/login'));
     }
 
     public function postLogin()
@@ -28,14 +28,14 @@ class AuthController extends BaseController
             }
         }
 
-        return $this->response($this->view('auth.login', [
+        return $this->response($this->view('auth/login', [
             'message' => 'Email or password is wrong!'
         ]));
     }
 
     public function recover()
     {
-        return $this->response($this->view('auth.recover'));
+        return $this->response($this->view('auth/recover'));
     }
 
     public function logout()
