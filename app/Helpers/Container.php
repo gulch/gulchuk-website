@@ -23,6 +23,10 @@ class Container
 
     public function getContainer()
     {
+        if (null === $this->container) {
+            throw new Exception('Set your container first');
+        }
+
         return $this->container;
     }
 }

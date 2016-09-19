@@ -79,3 +79,8 @@ function container($name)
 
     return $container->get($name);
 }
+
+function config($name)
+{
+    return Config::getInstance()->get($name);
+}

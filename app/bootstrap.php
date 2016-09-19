@@ -8,6 +8,7 @@ $dotenv->load();
 
 /* Load Configuration */
 $config = include(__DIR__ . '/config.php');
+Config::getInstance()->setConfig($config);
 
 if ($config['debug']) {
     /* Register the error handler */
