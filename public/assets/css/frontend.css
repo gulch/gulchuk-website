@@ -25,6 +25,10 @@ a {
     text-shadow: 0 20px 60px rgba(17,17,17,0.05),0 5px 10px rgba(17,17,17,0.1),0 1px 1px rgba(17,17,17,0.2);
 }
 
+.errors-grid {
+    width: 100%;
+}
+
 /* ------- FOOTER -------- */
 .footer-content {
     text-align: center;

@@ -1,8 +1,9 @@
-<?php $this->layout('errors/template', ['title' => 'Page not found']) ?>
+<?php $this->layout('errors/template', ['title' => 'Page not found :: Gulchuk Personal Website']) ?>
 
-<p class="has-text-centered error-status">
+<p class="error-status">
     404
 </p>
-<h1 class="has-text-centered title">
+
+<h1>
     Page not found
 </h1>

@@ -31,6 +31,10 @@ $response = $container->get('response');
 $route = new League\Route\RouteCollection($container);
 include(__DIR__ . '/routes.php');
 
-$response = $route->dispatch($request, $response);
+try {
+    $response = $route->dispatch($request, $response);
+} catch (\League\Route\Http\Exception\NotFoundException $e) {
+    $response->getBody()->write($container->get('templater')->render('errors/404'));
+}
 
 $container->get('emitter')->emit($response);
