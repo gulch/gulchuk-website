@@ -7,6 +7,8 @@
         <meta name="robots" content="noindex">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <?php $this->insert('assets/favicon') ?>
+
         <link rel="stylesheet" type="text/css" href="/assets/vendor/semantic/2.2.4/semantic.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/backend.css">
     </head>

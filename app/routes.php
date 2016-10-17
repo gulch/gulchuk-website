@@ -35,7 +35,7 @@ $route
 
 // Backend routes
 $route
-    ->group('/admin', function ($route) {
+    ->group('/' . config('backend_segment'), function ($route) {
         $route->get('/', DashboardController::class . '::index');
     })
     ->middleware(new StartSession());

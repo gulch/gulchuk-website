@@ -15,15 +15,19 @@
     </head>
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-            <symbol id="logo" viewBox="0 0 250 250">
-                <circle fill="#484748" cx="125" cy="125" r="123.5"/>
-                <g>
-                    <path fill="#FFFFFF" d="M127.8,113.9h41.9v60.4c0,30.5-15.2,47.9-44.6,47.9s-44.6-17.4-44.6-47.9v-99c0-30.5,15.2-47.9,44.6-47.9
-                    s44.6,17.4,44.6,47.9v18.5h-28.3V73.4c0-13.6-6-18.8-15.5-18.8c-9.5,0-15.5,5.2-15.5,18.8v102.8c0,13.6,6,18.5,15.5,18.5
-                    c9.5,0,15.5-4.9,15.5-18.5v-35.1h-13.6V113.9z"/>
-                </g>
+            <symbol id="logo" viewBox="0 0 100 100">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="49"
+                    style="fill:#2D2D2D;stroke:#808285"
+                />
+                <path d="M17.7 50c0-17.5 13.6-31.8 32.3-31.8 11.1 0 17.8 3 24.2 8.4l-8.5 10.3c-4.8-4-9-6.2-16.1-6.2 -9.9 0-17.7 8.7-17.7 19.4 0 11.3 7.7 19.5 18.7 19.5 4.9 0 9.3-1.2 12.8-3.7V57H49.6V45.3h26.7v26.7c-6.3 5.4-15 9.8-26.3 9.8C30.9 81.8 17.7 68.4 17.7 50z"
+                      style="fill:none;stroke-width:4;stroke:#808285"
+                />
             </symbol>
         </svg>
+
         <?php $this->insert('frontend/header') ?>
         <?= $this->section('content') ?>
         <?php $this->insert('frontend/footer') ?>
