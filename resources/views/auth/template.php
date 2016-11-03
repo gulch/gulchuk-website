@@ -17,7 +17,7 @@
         <div class="ui borderless main menu">
             <div class="ui text container">
                 <a href="/" class="header item">
-                    <img class="logo" src="/assets/img/logo-gulchuk.png">
+                    <img class="logo" src="/assets/favicon/favicon-32x32.png">
                 </a>
                 <div class="right menu">
                     <a href="/auth/recover" class="ui item">Recover password?</a>

@@ -6,7 +6,7 @@ class Image extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('Image');
+        $table = $this->table('Image', ['engine' => 'Aria']);
         $table
             ->addColumn('alt', 'string')
             ->addColumn('path', 'string', ['null' => false])

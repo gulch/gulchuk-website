@@ -20,7 +20,15 @@ class Auth
     {
         $_SESSION['user'] = $user;
         if ($remember) {
-            setcookie('remember', crypt($user->email, 'some-salt'), time()+3600, '/', $_SERVER['HTTP_HOST'], true, true);
+            setcookie(
+                'remember',
+                crypt($user->email, 'some-salt'),
+                time()+3600,
+                '/',
+                $_SERVER['HTTP_HOST'],
+                true,
+                true
+            );
         }
     }
 

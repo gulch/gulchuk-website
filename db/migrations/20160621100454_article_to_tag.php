@@ -6,7 +6,7 @@ class ArticleToTag extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('Article_Tag');
+        $table = $this->table('Article_Tag', ['engine' => 'Aria']);
         $table->addColumn('article_id', 'integer',['signed' => false])
             ->addColumn('tag_id', 'integer', ['signed' => false])
             ->save();

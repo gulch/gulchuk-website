@@ -6,7 +6,7 @@ class Article extends AbstractMigration
 {
     public function up()
     {
-        $article = $this->table('Article');
+        $article = $this->table('Article', ['engine' => 'Aria']);
         $article->addColumn('slug', 'string', ['limit' => 70])
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')
