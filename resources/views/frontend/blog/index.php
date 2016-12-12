@@ -15,9 +15,9 @@
 
                     <div class="ui large header">
 
-                        <a class="link-color"
-                           href="/blog/<?= $article->slug ?>"
-                        ><?= $article->title ?></a>
+                        <a href="/blog/<?= $article->slug ?>">
+                            <?= $this->e($article->title) ?>
+                        </a>
 
                         <div class="sub header">
                             <?= $article->created_at->format('j M Y') ?>

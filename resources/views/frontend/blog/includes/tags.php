@@ -1,12 +1,10 @@
 <?php if (sizeof($tags)): ?>
-    <div class="ui header">
+    <div class="ui header unimportant-text">
         Tags
     </div>
-    <div>
-        <?php foreach ($tags as $tag): ?>
-            <a class="blog-tag-link link-color"
-               href="/blog/tag/<?= $this->e($tag->slug) ?>"
-            ><?= $this->e($tag->title) ?></a>
-        <?php endforeach; ?>
-    </div>
+    <?php foreach ($tags as $tag): ?>
+        <a class="blog-tag-link"
+           href="/blog/tag/<?= $this->e($tag->slug) ?>"
+        ><?= $this->e($tag->title) ?></a>
+    <?php endforeach; ?>
 <?php endif; ?>

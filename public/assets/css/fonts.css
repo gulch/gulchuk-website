@@ -11,4 +11,5 @@
 
 body, html {
     font-family: 'Proba Pro' !important;
+    text-rendering: optimizeLegibility;
 }

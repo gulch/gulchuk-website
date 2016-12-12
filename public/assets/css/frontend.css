@@ -16,7 +16,7 @@ body {
 }
 
 a {
-    color: #298ce4;
+    color: #388ad2;
 }
 
 .error-status {
@@ -74,12 +74,21 @@ footer {
     font-weight: bold;
 }
 
+.blog-tag-link {
+    color: #777;
+}
+
 .blog-tag-link:before {
     content: '#';
     font-size: smaller;
     opacity: .5;
 }
 
-.link-color {
-    color: #444;
+.unimportant-text {
+    color: #777 !important;
+}
+
+.content-text {
+    font-size: 20px;
+    color: #000 !important;
 }
