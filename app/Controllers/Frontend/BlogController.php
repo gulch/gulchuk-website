@@ -35,9 +35,9 @@ class BlogController extends BaseController
         return $this->response($this->view('frontend/blog/show', compact('article')));
     }
 
-    public function tag()
+    public function tag($slug)
     {
-
+        //
     }
 
     private function getAllTags()

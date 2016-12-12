@@ -73,3 +73,13 @@ footer {
     font-size: 4em !important;
     font-weight: bold;
 }
+
+.blog-tag-link:before {
+    content: '#';
+    font-size: smaller;
+    opacity: .5;
+}
+
+.link-color {
+    color: #444;
+}
