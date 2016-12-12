@@ -24,7 +24,7 @@ class AuthController extends BaseController
                 // Good! Authenticate user.
                 Auth::authenticate($user, $remember);
 
-                return $this->response->withHeader('Location', '/admin');
+                return $this->response->withHeader('Location', '/' . config('backend_segment'));
             }
         }
 

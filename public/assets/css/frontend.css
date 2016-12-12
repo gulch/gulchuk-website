@@ -92,3 +92,7 @@ footer {
     font-size: 20px;
     color: #000 !important;
 }
+
+.display-none {
+    display: none !important;
+}

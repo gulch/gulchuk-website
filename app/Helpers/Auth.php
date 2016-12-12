@@ -22,12 +22,12 @@ class Auth
         if ($remember) {
             setcookie(
                 'remember',
-                crypt($user->email, 'some-salt'),
-                time()+3600,
+                crypt($user->email, config('app_key')),
+                time() + 3600,
                 '/',
-                $_SERVER['HTTP_HOST'],
-                true,
-                true
+                config('app_domain'),
+                true, // secure
+                true // httpOnly
             );
         }
     }
@@ -35,6 +35,7 @@ class Auth
     public static function logout()
     {
         unset($_SESSION['user']);
+        setcookie('remember', '', time() - 3600, '/', config('app_domain'), true, true);
         session_destroy();
     }
 }

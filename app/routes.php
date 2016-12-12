@@ -1,8 +1,11 @@
 <?php
 
 use Zend\Diactoros\Stream;
-use Gulchuk\Middlewares\MinifyOutput;
-use Gulchuk\Middlewares\StartSession;
+use Gulchuk\Middlewares\{
+    MinifyOutput,
+    StartSession,
+    AuthenticateOnly
+};
 use Gulchuk\Controllers\AuthController;
 use Gulchuk\Controllers\Frontend\{PageController, BlogController};
 use Gulchuk\Controllers\Backend\{DashboardController, TagsController};
@@ -38,4 +41,5 @@ $route
     ->group('/' . config('backend_segment'), function ($route) {
         $route->get('/', DashboardController::class . '::index');
     })
-    ->middleware(new StartSession());
+    ->middleware(new StartSession())
+    ->middleware(new AuthenticateOnly());

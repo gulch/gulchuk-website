@@ -7,7 +7,7 @@
         <meta name="robots" content="noindex">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="/assets/vendor/semantic/2.2.4/semantic.css">
+        <link rel="stylesheet" type="text/css" href="/assets/vendor/semantic/2.2.6/semantic.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/backend.css">
 
         <script src="/assets/vendor/jquery/3.1.0/jquery.min.js"></script>
@@ -15,13 +15,13 @@
     <body>
         <div class="ui main stackable large menu">
             <a href="/" class="header item">
-                <img class="logo" src="/assets/img/logo-gulchuk.png">
+                <img class="logo" src="/assets/favicon/favicon-32x32.png">
             </a>
-            <a href="/admin" class="item">
+            <a href="/<?= config('backend_segment') ?>" class="item">
                 <i class="dashboard icon"></i>
-                Admin Dashboard
+                Dashboard
             </a>
-            <a href="/admin/tags" class="item">
+            <a href="/<?= config('backend_segment') ?>/tags" class="item">
                 <i class="tags icon"></i>
                 Tags
             </a>
@@ -36,7 +36,8 @@
             <?= $this->section('content') ?>
         </div>
 
-        <script defer src="/assets/vendor/semantic/2.2.4/semantic.js"></script>
+        <!-- ----- SCRIPTS ----- -->
+        <script defer src="/assets/vendor/semantic/2.2.6/semantic.js"></script>
         <script defer src="/assets/js/backend.js"></script>
 
     </body>
