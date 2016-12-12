@@ -21,8 +21,8 @@ $route
 $route
     ->group('/blog', function ($route) {
         $route->get('/', BlogController::class . '::index');
-        $route->get('{slug:slug}', BlogController::class . '::show');
         $route->get('/tag/{slug:slug}', BlogController::class . '::tag');
+        $route->get('{slug:slug}', BlogController::class . '::show');
     })
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 

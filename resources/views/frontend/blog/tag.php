@@ -3,14 +3,18 @@
 <main>
     <div class="ui container blog-container">
 
-        <h1 class="ui huge header blog-header-title">
-            Blog
-        </h1>
-
-        <div class="ui hidden divider"></div>
-
         <div class="ui stackable grid">
             <div class="twelve wide column">
+
+                <h1 class="ui huge header blog-header-title blog-tag-link">
+                    <?= $this->e($tag->title) ?>
+                </h1>
+                <p>
+                    <?= $tag->content ?>
+                </p>
+
+                <div class="ui hidden divider"></div>
+
                 <?php $this->insert('frontend/blog/includes/articles-list', ['articles' => $articles]) ?>
             </div>
 

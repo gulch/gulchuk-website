@@ -22,7 +22,7 @@ class BaseController
     
     protected function abort() : ResponseInterface
     {
-        return $this->response($this->view('errors.404'), 404);
+        return $this->response($this->view('errors/404'), 404);
     }
 
     protected function response(string $data, int $statusCode = 200) : Response

@@ -40,9 +40,23 @@ class BlogController extends BaseController
         return $this->response($this->view('frontend/blog/show', $data));
     }
 
-    public function tag($slug)
+    public function tag()
     {
-        //
+        $slug = $this->argument(func_get_arg(2), 'slug');
+
+        $tag = Tag::where('slug', $slug)->first();
+
+        if (!$tag) {
+            return $this->abort();
+        }
+
+        $data = [
+            'tag' => $tag,
+            'articles' => $tag->articles,
+            'tags' => $this->getAllTags()
+        ];
+
+        return $this->response($this->view('frontend/blog/tag', $data));
     }
 
     private function getAllTags()
