@@ -4,13 +4,15 @@ namespace Gulchuk\Controllers\Frontend;
 
 use Gulchuk\Controllers\BaseController;
 use Gulchuk\Models\Article;
+use Gulchuk\Models\Tag;
 
 class BlogController extends BaseController
 {
     public function index()
     {
         $data = [
-            'articles' => Article::all()
+            'articles' => Article::all(),
+            'tags' => $this->getAllTags()
         ];
 
         return $this->response($this->view('frontend/blog/index', $data));
@@ -24,11 +26,22 @@ class BlogController extends BaseController
             return $this->abort();
         }
 
-        return $this->response($this->view('frontend/blog/show', compact('slug')));
+        $article = Article::where('slug', $slug)->first();
+
+        if (!$article) {
+            return $this->abort();
+        }
+
+        return $this->response($this->view('frontend/blog/show', compact('article')));
     }
 
     public function tag()
     {
 
+    }
+
+    private function getAllTags()
+    {
+        return Tag::select('slug','title')->all();
     }
 }
