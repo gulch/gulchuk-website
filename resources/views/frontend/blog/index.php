@@ -26,12 +26,7 @@
             </div>
 
             <div class="four wide column">
-                <div class="ui header">
-                    Tags
-                </div>
-                <div class="ui basic segment">
-
-                </div>
+                <?php $this->insert('frontend/blog/includes/tags') ?>
             </div>
 
         </div>

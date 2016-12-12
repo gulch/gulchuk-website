@@ -42,6 +42,6 @@ class BlogController extends BaseController
 
     private function getAllTags()
     {
-        return Tag::select('slug','title')->all();
+        return Tag::select('slug','title')->orderBy('title', 'asc')->get();
     }
 }
