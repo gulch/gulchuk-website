@@ -41,6 +41,8 @@
             "app/Helpers/"
         ],
         "exclude-from-classmap": [
+            "/Tests/", 
+            "/test/",
             "/tests/"
         ]
     },

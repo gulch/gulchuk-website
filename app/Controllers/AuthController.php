@@ -9,6 +9,14 @@ class AuthController extends BaseController
 {
     public function login()
     {
+        if (!Auth::guest()) {
+            return $this->previous();
+        }
+
+        if (Auth::checkRememberTokenAndLogin(User::class)) {
+            return $this->previous();
+        }
+
         return $this->response($this->view('auth/login'));
     }
 
@@ -19,7 +27,7 @@ class AuthController extends BaseController
         $remember = $this->argument($this->postInput, 'remember');
 
         $user = User::where('email', $email)->first();
-        if ($user != null) {
+        if (sizeof($user)) {
             if (password_verify($password, $user->password)) {
                 // Good! Authenticate user.
                 Auth::authenticate($user, $remember);

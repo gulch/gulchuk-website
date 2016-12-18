@@ -11,7 +11,9 @@
                     </div>
                 </h2>
 
-                <?php $this->insert('backend/_partials/errors-message') ?>
+                <?php if (isset($message)) : ?>
+                    <?php $this->insert('backend/_partials/errors-message', ['message' => $message]) ?>
+                <?php endif; ?>
 
                 <form class="ui form" action="/auth/login" method="POST">
                     <div class="field">

@@ -41,6 +41,13 @@ class BaseController
         return isset($args[$name]) ? $args[$name] : null;
     }
 
+    protected function previous($url = '/')
+    {
+        $redirect_url = $_SERVER['HTTP_REFERER'] ?? $url;
+
+        return $this->response->withHeader('Location', $redirect_url);
+    }
+
     /**
      * Render view by template engine
      * @param string $name
