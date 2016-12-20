@@ -32,6 +32,13 @@ class BaseController
         return $this->response->withStatus($statusCode);
     }
 
+    protected function jsonResponse(array $data, int $statusCode = 200) : Response
+    {
+        $this->response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT));
+
+        return $this->response->withStatus($statusCode)->withHeader('content-type','application/json');
+    }
+
     protected function argument(array $args, string $name)
     {
         if (empty($args)) {

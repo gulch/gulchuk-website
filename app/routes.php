@@ -47,6 +47,7 @@ $route
     ->group('/' . config('backend_segment'), function ($route) {
         $route->get('/', DashboardController::class . '::index');
         $route->get('/tags', TagsController::class . '::index');
+        $route->post('/tags/{id:number}/remove', TagsController::class . '::remove');
 
     })
     ->middleware(new StartSession())
