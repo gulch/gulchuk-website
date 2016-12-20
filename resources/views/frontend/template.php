@@ -10,6 +10,10 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
 
+        <?php if (isset($noindex)): ?>
+            <meta name="robots" content="noindex">
+        <?php endif; ?>
+
         <?php $this->insert('assets/favicon') ?>
         <?php $this->insert('assets/fonts') ?>
         <?php $this->insert('frontend/includes/css') ?>

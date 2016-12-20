@@ -2,13 +2,24 @@
 
 <div class="container">
 
-
-    <h1 class="ui header">
-        <div class="content">
-            Tags
-            <div class="sub header">List of tags</div>
+    <div class="ui grid">
+        <div class="middle aligned twelve wide column">
+            <h1 class="ui header">
+                <div class="content">
+                    Tags
+                    <div class="sub header">List of tags</div>
+                </div>
+            </h1>
         </div>
-    </h1>
+
+        <div class="middle aligned right aligned four wide column">
+            <a href="/tags/create" class="ui large labeled icon basic button">
+                <i class="add icon"></i>
+                Create new
+            </a>
+        </div>
+
+    </div>
 
     <div class="ui clearing divider"></div>
 

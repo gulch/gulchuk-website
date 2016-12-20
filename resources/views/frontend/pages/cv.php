@@ -1,4 +1,4 @@
-<?php $this->layout('frontend/template') ?>
+<?php $this->layout('frontend/template', ['noindex' => true, 'title' => 'CV :: Gulchuk :: Personal Website']) ?>
 
 <main class="ui container">
     <div class="ui hidden divider"></div>
@@ -51,6 +51,7 @@
             </p>
             <p>
                 I have experience working with:
+            </p>
             <ul>
                 <li>Linux</li>
                 <li>Bash</li>
@@ -67,13 +68,18 @@
                 <li>Node.js (brief experience)</li>
                 <li>Gulp</li>
             </ul>
-            </p>
 
             <!-- Experience -->
             <h2>Experience</h2>
             <b>Full Stack Web Developer</b>
             <p>
-                Jan 2014 — Present
+                Dec 2014 — Now
+                <br>
+                Funtime
+            </p>
+            <b>Full Stack Web Developer</b>
+            <p>
+                Jan 2014 — Dec 2014
                 <br>
                 Freelance
             </p>
@@ -89,56 +95,70 @@
             <h3>Certificates</h3>
             <p>
                 2016
-                <br>
-                <a href="https://stepic.org/certificate/7657358418adc90ff77c36b806b694ff189bd21c.pdf"
-                   target="_blank"
-                   rel="nofollow"
-                >
-                    Analyze of web projects security (Stepic.org)
-                </a>
-                <br>
-
-                <a href="/uploads/files/2016/06/Certificate_OO_PHP_Pluralsight.pdf"
-                   target="_blank"
-                   rel="nofollow"
-                >
-                    Object-oriented PHP: Essential Constructs (Pluralsight)
-                </a>
-                <br>
-                <a href="https://certification.mail.ru/certificates/9df13756-173e-4f80-8510-3496c214a19a/en/"
-                   target="_blank"
-                   rel="nofollow"
-                >
-                    PHP5 (Mail.ru)
-                </a>
             </p>
+            <ul>
+                <li>
+                    <a href="https://stepic.org/certificate/7657358418adc90ff77c36b806b694ff189bd21c.pdf"
+                       target="_blank"
+                       rel="nofollow"
+                    >
+                        Analyze of web projects security (Stepic.org)
+                    </a>
+                </li>
+                <li>
+                    <a href="/uploads/files/2016/06/Certificate_OO_PHP_Pluralsight.pdf"
+                       target="_blank"
+                       rel="nofollow"
+                    >
+                        Object-oriented PHP: Essential Constructs (Pluralsight)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://certification.mail.ru/certificates/9df13756-173e-4f80-8510-3496c214a19a/en/"
+                       target="_blank"
+                       rel="nofollow"
+                    >
+                        PHP5 (Mail.ru)
+                    </a>
+                </li>
+            </ul>
+
             <p>
                 2015
-                <br>
-                <a target="_blank"
-                   rel="nofollow"
-                   href="http://www.intuit.ru/verifydiplomas/100839087"
-                >
-                    PHP: OOP and Classes (Intuit.ru)
-                </a>
             </p>
+            <ul>
+                <li>
+                    <a target="_blank"
+                       rel="nofollow"
+                       href="http://www.intuit.ru/verifydiplomas/100839087"
+                    >
+                        PHP: OOP and Classes (Intuit.ru)
+                    </a>
+                </li>
+            </ul>
+
             <p>
                 2014
-                <br>
-                <a target="_blank"
-                   rel="nofollow"
-                   href="http://www.intuit.ru/verifydiplomas/100824314"
-                >
-                    Introduction to DBMS MySQL (Intuit.ru)
-                </a>
-                <br>
-                <a target="_blank"
-                   rel="nofollow"
-                   href="http://www.intuit.ru/verifydiplomas/100825851"
-                >
-                    Algorithms of Client Side Optimization (Intuit.ru)
-                </a>
             </p>
+
+            <ul>
+                <li>
+                    <a target="_blank"
+                       rel="nofollow"
+                       href="http://www.intuit.ru/verifydiplomas/100824314"
+                    >
+                        Introduction to DBMS MySQL (Intuit.ru)
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank"
+                       rel="nofollow"
+                       href="http://www.intuit.ru/verifydiplomas/100825851"
+                    >
+                        Algorithms of Client Side Optimization (Intuit.ru)
+                    </a>
+                </li>
+            </ul>
 
             <h3>Master's degree</h3>
             <p>
