@@ -7,8 +7,14 @@ use Gulchuk\Middlewares\{
     AuthenticateOnly
 };
 use Gulchuk\Controllers\AuthController;
-use Gulchuk\Controllers\Frontend\{PageController, BlogController};
-use Gulchuk\Controllers\Backend\{DashboardController, TagsController};
+use Gulchuk\Controllers\Frontend\{
+    PageController,
+    BlogController
+};
+use Gulchuk\Controllers\Backend\{
+    DashboardController,
+    TagsController
+};
 
 // Frontend routes
 $route
@@ -40,6 +46,8 @@ $route
 $route
     ->group('/' . config('backend_segment'), function ($route) {
         $route->get('/', DashboardController::class . '::index');
+        $route->get('/tags', TagsController::class . '::index');
+
     })
     ->middleware(new StartSession())
     ->middleware(new AuthenticateOnly());

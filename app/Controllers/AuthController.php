@@ -17,7 +17,7 @@ class AuthController extends BaseController
             return $this->previous();
         }
 
-        return $this->response($this->view('auth/login'));
+        return $this->response($this->view('backend/auth/login'));
     }
 
     public function postLogin()
@@ -36,14 +36,14 @@ class AuthController extends BaseController
             }
         }
 
-        return $this->response($this->view('auth/login', [
+        return $this->response($this->view('backend/auth/login', [
             'message' => 'Email or password is wrong!'
         ]));
     }
 
     public function recover()
     {
-        return $this->response($this->view('auth/recover'));
+        return $this->response($this->view('backend/auth/recover'));
     }
 
     public function logout()

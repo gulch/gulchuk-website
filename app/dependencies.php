@@ -35,4 +35,8 @@ $container
     ->add(\Gulchuk\Controllers\Backend\DashboardController::class)
     ->withArguments(['request', 'response']);
 
+$container
+    ->add(\Gulchuk\Controllers\Backend\TagsController::class)
+    ->withArguments(['request', 'response']);
+
 return $container;

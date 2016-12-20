@@ -7,10 +7,9 @@
         <meta name="robots" content="noindex">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="/assets/vendor/semantic/2.2.6/semantic.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/backend.css">
+        <?php $this->insert('assets/favicon') ?>
 
-        <script src="/assets/vendor/jquery/3.1.0/jquery.min.js"></script>
+        <?php $this->insert('backend/includes/css') ?>
     </head>
     <body>
         <div class="ui main stackable large menu">
@@ -36,9 +35,6 @@
             <?= $this->section('content') ?>
         </div>
 
-        <!-- ----- SCRIPTS ----- -->
-        <script defer src="/assets/vendor/semantic/2.2.6/semantic.js"></script>
-        <script defer src="/assets/js/backend.js"></script>
-
+        <?php $this->insert('backend/includes/js') ?>
     </body>
 </html>

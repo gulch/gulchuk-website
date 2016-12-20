@@ -8,7 +8,7 @@
         <?= $title ?? 'Gulchuk :: Personal Website' ?>
     </title>
     <?php $this->insert('assets/favicon') ?>
-    <?php $this->insert('assets/css') ?>
+    <?php $this->insert('frontend/includes/css') ?>
 </head>
 <body>
 <main class="ui container flex-one">

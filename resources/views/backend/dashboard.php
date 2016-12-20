@@ -1,4 +1,4 @@
-<?php $this->layout('backend/template') ?>
+<?php $this->layout('backend/template', ['title' => 'Dashboard :: Gulchuk.com']) ?>
 
 <div class="container">
     <div class="row">

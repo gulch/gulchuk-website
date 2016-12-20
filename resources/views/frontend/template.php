@@ -11,7 +11,7 @@
         <meta name="keywords" content="">
 
         <?php $this->insert('assets/favicon') ?>
-        <?php $this->insert('assets/css') ?>
+        <?php $this->insert('frontend/includes/css') ?>
     </head>
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" class="display-none">
@@ -21,9 +21,12 @@
             </symbol>
         </svg>
 
-        <?php $this->insert('frontend/header') ?>
+        <?php $this->insert('frontend/includes/header') ?>
+
         <?= $this->section('content') ?>
-        <?php $this->insert('frontend/footer') ?>
-        <?php $this->insert('assets/js') ?>
+
+        <?php $this->insert('frontend/includes/footer') ?>
+
+        <?php $this->insert('frontend/includes/js') ?>
     </body>
 </html>
