@@ -4,10 +4,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="robots" content="noindex">
+
     <title>
         <?= $title ?? 'Gulchuk :: Personal Website' ?>
     </title>
+
     <?php $this->insert('assets/favicon') ?>
+
+    <?php $this->insert('assets/fonts') ?>
+
     <?php $this->insert('frontend/includes/css') ?>
 </head>
 <body>

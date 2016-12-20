@@ -20,7 +20,7 @@ class BaseController
         $this->postInput = $request->getParsedBody();
     }
     
-    protected function abort() : ResponseInterface
+    protected function abort() : Response
     {
         return $this->response($this->view('errors/404'), 404);
     }

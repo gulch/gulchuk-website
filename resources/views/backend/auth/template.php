@@ -9,6 +9,8 @@
 
         <?php $this->insert('assets/favicon') ?>
 
+        <?php $this->insert('assets/fonts') ?>
+
         <?php $this->insert('backend/includes/css') ?>
     </head>
     <body>

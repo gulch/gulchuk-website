@@ -11,6 +11,7 @@
         <meta name="keywords" content="">
 
         <?php $this->insert('assets/favicon') ?>
+        <?php $this->insert('assets/fonts') ?>
         <?php $this->insert('frontend/includes/css') ?>
     </head>
     <body>
