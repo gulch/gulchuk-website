@@ -45,29 +45,22 @@
                 <br>
                 <strong>Javascript</strong> — 3 years of experience.
                 <br>
+                <strong>Linux</strong> — 3 years of experience.
+                <br>
                 <strong>Git</strong> — 3 years of experience.
                 <br>
-                <strong>English language</strong> — Beginer.
+                <strong>English language</strong> — Beginner.
             </p>
             <p>
-                I have experience working with:
+                I have experience working with: writing Linux Bash scripts; fully configure Nginx;
+                configure PHP-FPM; Redis Server; install and configure php-redis, php-iredis extensions;
+                PHP optimization: tunning configuration, Opcache, XCache, profiling (Blackfire);
+                brief experience with Codeception, PHPUnit;
+                install and configure TeamCity;
+                client side optimizations (js/css minification, webfont optimization, lazy loading etc.);
+                Gulp; Search Engine Optimization;
+                works with css/js frameworks: Bootstrap, Semantic UI.
             </p>
-            <ul>
-                <li>Linux</li>
-                <li>Bash</li>
-                <li>Nginx</li>
-                <li>PHP-FPM</li>
-                <li>OPCache</li>
-                <li>XCache</li>
-                <li>PHPUnit</li>
-                <li>Codeception</li>
-                <li>TeamCity</li>
-                <li>Search Engine Optimization</li>
-                <li>Bootstrap</li>
-                <li>Semantic UI</li>
-                <li>Node.js (brief experience)</li>
-                <li>Gulp</li>
-            </ul>
 
             <!-- Experience -->
             <h2>Experience</h2>
@@ -77,18 +70,132 @@
                 <br>
                 Funtime
             </p>
+
+            Projects:
+            <div class="ui mini bulleted list">
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Funtime Kiev - online guide of the best locations and great events.
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="https://funtime.kiev.ua">funtime.kiev.ua</a>
+                        </div>
+                        <div class="description">
+                            Full development cycle: design, frontend, backend, seo, email campaigns configure etc.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui hidden divider"></div>
+
             <b>Full Stack Web Developer</b>
             <p>
                 Jan 2014 — Dec 2014
                 <br>
                 Freelance
             </p>
+            Projects:
+            <div class="ui mini bulleted list">
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Sphered - representative website for VR and panoramic photo project.
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="https://sphered.com.ua">sphered.com.ua</a>
+                        </div>
+                        <div class="description">
+                            Full development cycle. Technologies/frameworks: PHP, Laravel5, Semantic UI, jQuery, threesixty, Pano2VR.
+                        </div>
+                    </div>
+                </div>
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Oha-Oha! - local social network, service for rent things.
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="http://oha-oha.com.ua">oha-oha.com.ua</a>
+                        </div>
+                        <div class="description">
+                            Full development cycle. Technologies/frameworks: PHP, Laravel4, Semantic UI 1.x, jQuery.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui hidden divider"></div>
+
             <b>PHP/Web Developer</b>
             <p>
                 May 2010 — Jan 2014
                 <br>
                 Klookva Web Studio - E-commerce, Product Development
             </p>
+            Some major of all projects:
+            <div class="ui mini bulleted list">
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Tik-Tak - e-commerce website for network of clock stores.
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="http://tik-tak.ua/">tik-tak.ua</a>
+                        </div>
+                        <div class="description">
+                           Configure online shop based on Joomla CMS.
+                           Developed additional modules, components and plugins.
+                           Created module for importing goodies from Excel files.
+                        </div>
+                    </div>
+                </div>
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Flosmall - Best Chinese Phones Shop.
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="https://flosmall.com/">flosmall.com</a>
+                        </div>
+                        <div class="description">
+                            Configure online shop based on Joomla CMS.
+                            Developed additional modules, components and plugins.
+                        </div>
+                    </div>
+                </div>
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Tour 365 - hotels booking service
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="http://tour-365.com.ua/">tour-365.com.ua</a>
+                        </div>
+                        <div class="description">
+                            Developed booking module, which was integrated with Profit system.
+                        </div>
+                    </div>
+                </div>
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Midexpress - Gadgets shop.
+                            <br>
+                            &nearr; <a rel="nofollow" target="_blank" href="http://midexpress.com.ua/">midexpress.com.ua</a>
+                        </div>
+                        <div class="description">
+                            Configure online shop based on Joomla CMS.
+                            Developed additional modules, components and plugins.
+                            Created module for importing goodies from Excel files.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui item">
+                    <div class="content">
+                        <div class="header">
+                            Web system for a political party for separate gathering and analysis of votes in elections.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             <!--Education-->
             <h2>Education</h2>
@@ -176,12 +283,12 @@
             <!--Hobbies-->
             <h2>Hobbies</h2>
             <p>
-                As a hobby I investigate web performance optimization techniques, try to contribute to
+                As a hobby, I investigate web performance optimization techniques, try to contribute to
                 open-source
                 projects, develop composer packages and different tools.
             </p>
             <p>
-                Also I am quite interested in system administration and web analytics.
+                Also, I am quite interested in system administration and web analytics.
             </p>
             <p>
                 Love photography and interested in design.
