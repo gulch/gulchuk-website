@@ -2,6 +2,10 @@
 
 class Auth
 {
+
+    /**
+     * @return Gulchuk\Models\User | bool
+     */
     public static function user()
     {
         if (isset($_SESSION['user'])) {
@@ -11,11 +15,18 @@ class Auth
         return false;
     }
 
+    /**
+     * @return bool
+     */
     public static function guest()
     {
         return !isset($_SESSION['user']);
     }
 
+    /**
+     * @param $user Gulchuk\Models\User
+     * @param bool $remember
+     */
     public static function authenticate($user, $remember = false)
     {
         $_SESSION['user'] = $user;
@@ -31,7 +42,7 @@ class Auth
             setcookie(
                 'remember',
                 $remember_token,
-                time() + 172800,
+                \time() + 172800, // +48 hours
                 '/',
                 config('app_domain'),
                 true, // secure
@@ -43,11 +54,15 @@ class Auth
     public static function logout()
     {
         unset($_SESSION['user']);
-        setcookie('remember', '', time() - 3600, '/', config('app_domain'), true, true);
-        session_destroy();
+        \setcookie('remember', '', \time() - 3600, '/', config('app_domain'), true, true);
+        \session_destroy();
     }
 
-    public static function checkRememberTokenAndLogin($userModel)
+    /**
+     * @param string $userModelName
+     * @return bool
+     */
+    public static function checkRememberTokenAndLogin(string $userModelName) : bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
 
@@ -55,7 +70,7 @@ class Auth
             return false;
         }
 
-        $user = $userModel::where('remember_token', $remember_token)->first();
+        $user = $userModelName::where('remember_token', $remember_token)->first();
 
         if (!sizeof($user)) {
             return false;
@@ -66,10 +81,14 @@ class Auth
         return true;
     }
 
-    public static function generateRememberToken($size)
+    /**
+     * @param int $size Token string symbols count
+     * @return string
+     */
+    public static function generateRememberToken(int $size = 16) : string
     {
-        $random_bytes = random_bytes($size);
-        $string = substr(str_replace(['/', '+', '='], '', base64_encode($random_bytes)), 0, $size);
+        $random_bytes = \random_bytes($size);
+        $string = \substr(\str_replace(['/', '+', '='], '', \base64_encode($random_bytes)), 0, $size);
 
         return $string;
     }

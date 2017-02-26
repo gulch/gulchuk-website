@@ -48,7 +48,7 @@ class BaseController
         return isset($args[$name]) ? $args[$name] : null;
     }
 
-    protected function previous($url = '/')
+    protected function previous($url = '/') : Response
     {
         $redirect_url = $_SERVER['HTTP_REFERER'] ?? $url;
 
@@ -57,6 +57,7 @@ class BaseController
 
     /**
      * Render view by template engine
+     *
      * @param string $name
      * @param array $params
      * @return string

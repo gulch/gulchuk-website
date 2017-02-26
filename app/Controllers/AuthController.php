@@ -29,7 +29,7 @@ class AuthController extends BaseController
         $user = User::where('email', $email)->first();
         if (sizeof($user)) {
             if (password_verify($password, $user->password)) {
-                // Good! Authenticate user.
+                // Good! Let's authenticate user...
                 Auth::authenticate($user, $remember);
 
                 return $this->response->withHeader('Location', '/' . config('backend_segment'));

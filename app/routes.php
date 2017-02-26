@@ -17,6 +17,9 @@ use Gulchuk\Controllers\Backend\{
 };
 
 // Frontend routes
+/**
+ * @var \League\Route\RouteCollection $route
+ */
 $route
     ->group('/', function ($route) {
         $route->get('/', PageController::class . '::index');
