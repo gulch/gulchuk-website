@@ -2,12 +2,13 @@
 
 namespace Gulchuk\Controllers\Backend;
 
+use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
 use Gulchuk\Models\Tag;
 
 class TagsController extends BaseController
 {
-    public function index()
+    public function index() : ResponseInterface
     {
         $tags = Tag::with('articles')->orderBy('title')->get();
 
@@ -15,10 +16,10 @@ class TagsController extends BaseController
             'tags' => $tags
         ];
 
-        return $this->response($this->view('backend/tags/index', $data));
+        return $this->httpResponse($this->view('backend/tags/index', $data));
     }
 
-    public function remove()
+    public function remove() : ResponseInterface
     {
         $id = $this->argument(func_get_arg(2), 'id');
 

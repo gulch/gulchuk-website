@@ -2,25 +2,26 @@
 
 namespace Gulchuk\Controllers\Frontend;
 
+use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
 use Gulchuk\Models\Article;
 use Gulchuk\Models\Tag;
 
 class BlogController extends BaseController
 {
-    public function index()
+    public function index() : ResponseInterface
     {
         $data = [
             'articles' => Article::all(),
             'tags' => $this->getAllTags()
         ];
 
-        return $this->response($this->view('frontend/blog/index', $data));
+        return $this->httpResponse($this->view('frontend/blog/index', $data));
     }
 
-    public function show()
+    public function show() : ResponseInterface
     {
-        $slug = $this->argument(func_get_arg(2), 'slug');
+        $slug = $this->argument('slug', func_get_arg(2));
 
         if (!$slug) {
             return $this->abort();
@@ -37,12 +38,12 @@ class BlogController extends BaseController
             'tags' => $this->getAllTags()
         ];
 
-        return $this->response($this->view('frontend/blog/show', $data));
+        return $this->httpResponse($this->view('frontend/blog/show', $data));
     }
 
-    public function tag()
+    public function tag() : ResponseInterface
     {
-        $slug = $this->argument(func_get_arg(2), 'slug');
+        $slug = $this->argument('slug', func_get_arg(2));
 
         $tag = Tag::where('slug', $slug)->first();
 
@@ -56,10 +57,10 @@ class BlogController extends BaseController
             'tags' => $this->getAllTags()
         ];
 
-        return $this->response($this->view('frontend/blog/tag', $data));
+        return $this->httpResponse($this->view('frontend/blog/tag', $data));
     }
 
-    private function getAllTags()
+    private function getAllTags() : \Traversable
     {
         return Tag::select('slug','title')->orderBy('title', 'asc')->get();
     }

@@ -2,12 +2,13 @@
 
 namespace Gulchuk\Controllers;
 
+use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Models\User;
 use Auth;
 
 class AuthController extends BaseController
 {
-    public function login()
+    public function login() : ResponseInterface
     {
         if (!Auth::guest()) {
             return $this->previous();
@@ -17,14 +18,14 @@ class AuthController extends BaseController
             return $this->previous();
         }
 
-        return $this->response($this->view('backend/auth/login'));
+        return $this->httpResponse($this->view('backend/auth/login'));
     }
 
-    public function postLogin()
+    public function postLogin() : ResponseInterface
     {
-        $email = $this->argument($this->postInput, 'email');
-        $password = $this->argument($this->postInput, 'password');
-        $remember = $this->argument($this->postInput, 'remember');
+        $email = $this->postArgument('email');
+        $password = $this->postArgument('password');
+        $remember = $this->postArgument('remember');
 
         $user = User::where('email', $email)->first();
         if (sizeof($user)) {
@@ -32,24 +33,24 @@ class AuthController extends BaseController
                 // Good! Let's authenticate user...
                 Auth::authenticate($user, $remember);
 
-                return $this->response->withHeader('Location', '/' . config('backend_segment'));
+                return $this->redirectResponse('/' . config('backend_segment'));
             }
         }
 
-        return $this->response($this->view('backend/auth/login', [
+        return $this->httpResponse($this->view('backend/auth/login', [
             'message' => 'Email or password is wrong!'
         ]));
     }
 
-    public function recover()
+    public function recover() : ResponseInterface
     {
-        return $this->response($this->view('backend/auth/recover'));
+        return $this->httpResponse($this->view('backend/auth/recover'));
     }
 
-    public function logout()
+    public function logout() : ResponseInterface
     {
         Auth::logout();
 
-        return $this->response->withHeader('Location', '/');
+        return $this->redirectResponse();
     }
 }

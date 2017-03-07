@@ -19,24 +19,12 @@ $container->share('templater', function() {
 });
 
 /* Controllers */
-$container
-    ->add(\Gulchuk\Controllers\Frontend\PageController::class)
-    ->withArguments(['request', 'response']);
+$container->add(\Gulchuk\Controllers\AuthController::class);
 
-$container
-    ->add(\Gulchuk\Controllers\Frontend\BlogController::class)
-    ->withArguments(['request', 'response']);
+$container->add(\Gulchuk\Controllers\Frontend\PageController::class);
+$container->add(\Gulchuk\Controllers\Frontend\BlogController::class);
 
-$container
-    ->add(\Gulchuk\Controllers\AuthController::class)
-    ->withArguments(['request', 'response']);
-
-$container
-    ->add(\Gulchuk\Controllers\Backend\DashboardController::class)
-    ->withArguments(['request', 'response']);
-
-$container
-    ->add(\Gulchuk\Controllers\Backend\TagsController::class)
-    ->withArguments(['request', 'response']);
+$container->add(\Gulchuk\Controllers\Backend\DashboardController::class);
+$container->add(\Gulchuk\Controllers\Backend\TagsController::class);
 
 return $container;

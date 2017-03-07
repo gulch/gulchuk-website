@@ -2,44 +2,57 @@
 
 namespace Gulchuk\Controllers;
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class BaseController
 {
+    /**
+     * @var $request ServerRequestInterface
+     */
     protected $request;
+    /** @var $response ResponseInterface */
     protected $response;
     protected $postInput;
     protected $getInput;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct()
     {
-        $this->request = $request;
-        $this->response = $response;
-        $this->getInput = $request->getQueryParams();
-        $this->postInput = $request->getParsedBody();
+        $this->request = container('request');
+        $this->response = container('response');
+        $this->getInput = $this->request->getQueryParams();
+        $this->postInput = $this->request->getParsedBody();
     }
     
-    protected function abort() : Response
+    protected function abort() : ResponseInterface
     {
-        return $this->response($this->view('errors/404'), 404);
+        return $this->httpResponse($this->view('errors/404'), 404);
     }
 
-    protected function response(string $data, int $statusCode = 200) : Response
+    protected function httpResponse(string $data, int $statusCode = 200) : ResponseInterface
     {
         $this->response->getBody()->write($data);
 
         return $this->response->withStatus($statusCode);
     }
 
-    protected function jsonResponse(array $data, int $statusCode = 200) : Response
+    protected function jsonResponse(array $data, int $statusCode = 200) : ResponseInterface
     {
-        $this->response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT));
+        $this->response
+            ->getBody()
+            ->write(json_encode($data, JSON_PRETTY_PRINT));
 
-        return $this->response->withStatus($statusCode)->withHeader('content-type','application/json');
+        return $this->response
+            ->withStatus($statusCode)
+            ->withHeader('content-type','application/json');
     }
 
-    protected function argument(array $args, string $name)
+    protected function redirectResponse($url = '/') : ResponseInterface
+    {
+        return $this->response->withHeader('Location', $url);
+    }
+
+    protected function argument(string $name, array $args)
     {
         if (empty($args)) {
             return null;
@@ -48,11 +61,21 @@ class BaseController
         return isset($args[$name]) ? $args[$name] : null;
     }
 
-    protected function previous($url = '/') : Response
+    protected function postArgument(string $name)
     {
-        $redirect_url = $_SERVER['HTTP_REFERER'] ?? $url;
+        return $this->argument($name, $this->postInput);
+    }
 
-        return $this->response->withHeader('Location', $redirect_url);
+    protected function getArgument(string $name)
+    {
+        return $this->argument($name, $this->getInput);
+    }
+
+    protected function previous() : ResponseInterface
+    {
+        $url = $_SERVER['HTTP_REFERER'] ?? '/';
+
+        return $this->redirectResponse($url);
     }
 
     /**

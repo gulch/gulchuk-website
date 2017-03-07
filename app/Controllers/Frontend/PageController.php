@@ -2,17 +2,18 @@
 
 namespace Gulchuk\Controllers\Frontend;
 
+use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
 
 class PageController extends BaseController
 {
-    public function index()
+    public function index() : ResponseInterface
     {
-        return $this->response($this->view('frontend/pages/index'));
+        return $this->httpResponse($this->view('frontend/pages/index'));
     }
 
-    public function showCV()
+    public function showCV() : ResponseInterface
     {
-        return $this->response($this->view('frontend/pages/cv'));
+        return $this->httpResponse($this->view('frontend/pages/cv'));
     }
 }

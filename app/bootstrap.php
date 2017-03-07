@@ -32,9 +32,6 @@ $request = $container->get('request');
 $response = $container->get('response');
 
 /* Router & Routes */
-/**
- * @var $router \League\Route\RouteCollection
- */
 $router = new \League\Route\RouteCollection($container);
 include(__DIR__ . '/routes.php');
 
