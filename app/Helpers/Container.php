@@ -7,7 +7,7 @@ class Container
 
     private function __construct() {}
 
-    public static function getInstance()
+    private static function getInstance()
     {
         if (null === static::$instance) {
             static::$instance = new static();
@@ -16,17 +16,23 @@ class Container
         return static::$instance;
     }
 
-    public function setContainer($container)
+    public static function create($container)
     {
-        $this->container = $container;
+        $instance = static::getInstance();
+
+        if (null !== $instance->container) {
+            throw new Exception('Container exists already');
+        }
+
+        $instance->container = $container;
     }
 
-    public function getContainer()
+    public static function getContainer()
     {
-        if (null === $this->container) {
+        if (null === static::$instance->container) {
             throw new Exception('Set your container first');
         }
 
-        return $this->container;
+        return static::$instance->container;
     }
 }

@@ -75,7 +75,7 @@ function mailto_link($email, $title = null)
 
 function container($name)
 {
-    $container = Container::getInstance()->getContainer();
+    $container = Container::getContainer();
 
     return $container->get($name);
 }

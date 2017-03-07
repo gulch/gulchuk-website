@@ -19,9 +19,11 @@ if ($config['debug']) {
 }
 
 /* Dependency Injection container */
+/**
+ * @var $container \League\Container\Container
+ */
 $container = include(__DIR__ . '/dependencies.php');
-
-Container::getInstance()->setContainer($container);
+Container::create($container);
 
 /* Boot Eloquent ORM */
 include(__DIR__ . '/db.php');
@@ -30,14 +32,20 @@ $request = $container->get('request');
 $response = $container->get('response');
 
 /* Router & Routes */
-$route = new League\Route\RouteCollection($container);
+/**
+ * @var $router \League\Route\RouteCollection
+ */
+$router = new \League\Route\RouteCollection($container);
 include(__DIR__ . '/routes.php');
 
 try {
-    $response = $route->dispatch($request, $response);
+    $response = $router->dispatch($request, $response);
 } catch (\League\Route\Http\Exception\NotFoundException $e) {
     $response->getBody()->write($container->get('templater')->render('errors/404'));
     $response = $response->withStatus(404);
-}
+} /*catch (\Exception $e) {
+    $response->getBody()->write($container->get('templater')->render('errors/500'));
+    $response = $response->withStatus(500);
+}*/
 
 $container->get('emitter')->emit($response);

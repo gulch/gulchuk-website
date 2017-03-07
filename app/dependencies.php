@@ -1,6 +1,6 @@
 <?php
 
-$container = new League\Container\Container;
+$container = new \League\Container\Container;
 
 /* Response */
 $container->share('response', \Zend\Diactoros\Response::class);

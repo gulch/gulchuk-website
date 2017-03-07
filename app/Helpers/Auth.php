@@ -15,10 +15,7 @@ class Auth
         return false;
     }
 
-    /**
-     * @return bool
-     */
-    public static function guest()
+    public static function guest() : bool
     {
         return !isset($_SESSION['user']);
     }
@@ -27,7 +24,7 @@ class Auth
      * @param $user Gulchuk\Models\User
      * @param bool $remember
      */
-    public static function authenticate($user, $remember = false)
+    public static function authenticate($user, $remember = false) : void
     {
         $_SESSION['user'] = $user;
         if ($remember) {
