@@ -2,17 +2,17 @@
 
 namespace Gulchuk\Controllers\Frontend;
 
+use Gulchuk\Repositories\ArticlesRepository;
+use Gulchuk\Repositories\TagsRepository;
 use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
-use Gulchuk\Models\Article;
-use Gulchuk\Models\Tag;
 
 class BlogController extends BaseController
 {
     public function index() : ResponseInterface
     {
         $data = [
-            'articles' => Article::all(),
+            'articles' => (new ArticlesRepository())->all(),
             'tags' => $this->getAllTags()
         ];
 
@@ -27,7 +27,7 @@ class BlogController extends BaseController
             return $this->abort();
         }
 
-        $article = Article::where('slug', $slug)->first();
+        $article = (new ArticlesRepository())->findBySlug($slug);
 
         if (!$article) {
             return $this->abort();
@@ -45,7 +45,7 @@ class BlogController extends BaseController
     {
         $slug = $this->argument('slug', func_get_arg(2));
 
-        $tag = Tag::where('slug', $slug)->first();
+        $tag = (new TagsRepository())->findBySlug($slug);
 
         if (!$tag) {
             return $this->abort();
@@ -62,6 +62,6 @@ class BlogController extends BaseController
 
     private function getAllTags() : \Traversable
     {
-        return Tag::select('slug','title')->orderBy('title', 'asc')->get();
+        return (new TagsRepository())->list(['slug', 'title'], 'title');
     }
 }

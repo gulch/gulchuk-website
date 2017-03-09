@@ -3,7 +3,7 @@
 namespace Gulchuk\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
-use Gulchuk\Models\User;
+use Gulchuk\Repositories\UsersRepository;
 use Auth;
 
 class AuthController extends BaseController
@@ -14,7 +14,7 @@ class AuthController extends BaseController
             return $this->previous();
         }
 
-        if (Auth::checkRememberTokenAndLogin(User::class)) {
+        if (Auth::checkRememberTokenAndLogin(UsersRepository::class)) {
             return $this->previous();
         }
 
@@ -27,7 +27,7 @@ class AuthController extends BaseController
         $password = $this->postArgument('password');
         $remember = $this->postArgument('remember');
 
-        $user = User::where('email', $email)->first();
+        $user = (new UsersRepository())->findByEmail($email);
         if (sizeof($user)) {
             if (password_verify($password, $user->password)) {
                 // Good! Let's authenticate user...

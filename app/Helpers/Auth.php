@@ -56,10 +56,10 @@ class Auth
     }
 
     /**
-     * @param string $userModelName
+     * @param string $usersRepository
      * @return bool
      */
-    public static function checkRememberTokenAndLogin(string $userModelName) : bool
+    public static function checkRememberTokenAndLogin(string $usersRepository) : bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
 
@@ -67,7 +67,7 @@ class Auth
             return false;
         }
 
-        $user = $userModelName::where('remember_token', $remember_token)->first();
+        $user = (new $usersRepository)->findByRememberToken($remember_token);
 
         if (!sizeof($user)) {
             return false;
@@ -85,8 +85,8 @@ class Auth
     public static function generateRememberToken(int $size = 16) : string
     {
         $random_bytes = \random_bytes($size);
-        $string = \substr(\str_replace(['/', '+', '='], '', \base64_encode($random_bytes)), 0, $size);
+        $token = \substr(\str_replace(['/', '+', '='], '', \base64_encode($random_bytes)), 0, $size);
 
-        return $string;
+        return $token;
     }
 }

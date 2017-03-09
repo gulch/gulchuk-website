@@ -4,13 +4,13 @@ namespace Gulchuk\Controllers\Backend;
 
 use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
-use Gulchuk\Models\Tag;
+use Gulchuk\Repositories\TagsRepository;
 
 class TagsController extends BaseController
 {
     public function index() : ResponseInterface
     {
-        $tags = Tag::with('articles')->orderBy('title')->get();
+        $tags = (new TagsRepository())->getWith(['articles']);
 
         $data = [
             'tags' => $tags
@@ -23,14 +23,16 @@ class TagsController extends BaseController
     {
         $id = $this->argument(func_get_arg(2), 'id');
 
-        $tag = Tag::find($id);
+        $tagsRepo = new TagsRepository();
+
+        $tag = $tagsRepo->findById($id);
 
         if (is_null($tag)) {
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
-        $tag->articles()->sync([]);
-        $tag->delete();
+        $tagsRepo->syncArticles($id, []);
+        $tagsRepo->delete($id);
 
         return $this->jsonResponse(['success' => 'OK']);
     }
