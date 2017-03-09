@@ -7,6 +7,36 @@
             <div class="ui stackable grid">
                 <div class="twelve wide column">
 
+                    <div class="ui breadcrumb unimportant-text"
+                         itemscope
+                         itemtype="http://data-vocabulary.org/Breadcrumb"
+                    >
+                        <a href="/"
+                           class="section"
+                           itemprop="url"
+                        >
+                            Home
+                            <span itemprop="title" class="hide">gulchuk.com</span>
+                        </a>
+
+                        <span class="divider"> / </span>
+
+                        <span itemscope
+                              itemtype="http://data-vocabulary.org/Breadcrumb"
+                              itemprop="child"
+                        >
+                            <a href="/blog" itemprop="url" class="section">
+                                <span itemprop="title">Blog
+                                </span>
+                            </a>
+                        </span>
+
+                        <span class="divider"> / </span>
+
+                        <span class="active section"><?= $this->e($article->title) ?></span>
+
+                    </div>
+
                     <h1 class="ui huge header">
                         <?= $this->e($article->title) ?>
                     </h1>
