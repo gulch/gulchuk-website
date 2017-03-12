@@ -27,8 +27,8 @@ class Auth
     public static function authenticate($user, $remember = false) : void
     {
         $_SESSION['user'] = $user;
-        if ($remember) {
 
+        if ($remember) {
             // Generate remember token
             $remember_token = static::generateRememberToken(32);
 

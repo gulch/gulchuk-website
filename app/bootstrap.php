@@ -36,13 +36,22 @@ $router = new \League\Route\RouteCollection($container);
 include(__DIR__ . '/routes.php');
 
 try {
+
     $response = $router->dispatch($request, $response);
+
 } catch (\League\Route\Http\Exception\NotFoundException $e) {
+
     $response->getBody()->write($container->get('templater')->render('errors/404'));
     $response = $response->withStatus(404);
-} /*catch (\Exception $e) {
-    $response->getBody()->write($container->get('templater')->render('errors/500'));
-    $response = $response->withStatus(500);
-}*/
+
+} catch (\Exception $e) {
+
+    if ($config['debug']) {
+        $whoops->handleException($e);
+    } else {
+        $response->getBody()->write($container->get('templater')->render('errors/500'));
+        $response = $response->withStatus(500);
+    }
+}
 
 $container->get('emitter')->emit($response);
