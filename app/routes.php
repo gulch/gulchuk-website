@@ -50,6 +50,8 @@ $router
     ->group('/' . config('backend_segment'), function ($router) {
         $router->get('/', DashboardController::class . '::index');
         $router->get('/tags', TagsController::class . '::index');
+        $router->get('/tags/create', TagsController::class . '::create');
+        $router->post('/tags/save', TagsController::class . '::save');
         $router->post('/tags/{id:number}/remove', TagsController::class . '::remove');
 
     })

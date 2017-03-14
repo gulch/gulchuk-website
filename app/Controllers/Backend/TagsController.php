@@ -19,6 +19,20 @@ class TagsController extends BaseController
         return $this->httpResponse($this->view('backend/tags/index', $data));
     }
 
+    public function create()
+    {
+        $data = [
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER']
+        ];
+
+        return $this->httpResponse($this->view('backend/tags/create', $data));
+    }
+
+    public function save()
+    {
+
+    }
+
     public function remove() : ResponseInterface
     {
         $id = $this->argument(func_get_arg(2), 'id');

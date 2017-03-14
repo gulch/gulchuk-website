@@ -62,11 +62,78 @@ $(document).ready(function () {
         });
     });
 
+    /* Activate Submit Buttons */
+    saveFormActivation();
 
 });
 
 
-/* Модальный диалог ошибки */
+function saveFormActivation() {
+
+    $('#save-button').click(function () {
+        saveFormHandler($(this), false);
+    });
+
+    $('#save-n-close-button').click(function () {
+        saveFormHandler($(this), true);
+    });
+
+}
+
+function saveFormHandler($btn, withRedirect) {
+
+    withRedirect = withRedirect || false;
+
+    var form = $btn.closest('form');
+
+    form.append("<div class=\"ui active inverted dimmer\"><div class=\"ui loader\"></div></div>");
+
+    var form_data = form.serialize();
+
+    if (withRedirect) {
+        form_data += '&redirect_url=' + form.find('input[name="redirect_url"]').val();
+    }
+
+    $.ajax({
+        type: "POST",
+        url: form.attr('action'),
+        data: form_data,
+        dataType: "json",
+        timeout: 10000,
+        success: function (result) {
+            if (result.success == 'OK') {
+                if (result.redirect) {
+                    window.location.href = result.redirect;
+                }
+                if(result.id) {
+                    if(!form.find('input[name="id"]').length) {
+                        $('<input>').attr({
+                            type: 'hidden',
+                            value: result.id,
+                            name: 'id'
+                        }).appendTo('form');
+                    }
+                }
+            }
+            if (result.message) {
+                form.find('.save-message').html(result.message).removeClass('hide');
+            }
+        },
+        error: function (request, status) {
+            if (status == "timeout") {
+                showErrorModalMessage("Request time is out.");
+            } else {
+                showErrorModalMessage("Undefined error.");
+            }
+        },
+        complete: function () {
+            form.find('.dimmer').remove();
+        }
+    });
+}
+
+
+/* Modal Error Message */
 function showErrorModalMessage(message, text, icon) {
     if (message == undefined) {
         message = 'UNKNOWN ERROR';

@@ -13,7 +13,7 @@
         </div>
 
         <div class="middle aligned right aligned four wide column">
-            <a href="/tags/create" class="ui large labeled icon basic button">
+            <a href="/<?= config('backend_segment') ?>/tags/create" class="ui large labeled icon basic button">
                 <i class="add icon"></i>
                 Create new
             </a>
