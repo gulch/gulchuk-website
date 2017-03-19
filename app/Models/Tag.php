@@ -21,4 +21,11 @@ class Tag extends Eloquent
     {
         return $this->belongsToMany('Gulchuk\Models\Article', 'Article_Tag', 'id__Tag', 'id__Article');
     }
+
+    /* ----- Custom Functions ----- */
+
+    public function articlesCount()
+    {
+        return $this->articles->count();
+    }
 }

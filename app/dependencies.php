@@ -25,6 +25,8 @@ $container->add(\Gulchuk\Controllers\Frontend\PageController::class);
 $container->add(\Gulchuk\Controllers\Frontend\BlogController::class);
 
 $container->add(\Gulchuk\Controllers\Backend\DashboardController::class);
-$container->add(\Gulchuk\Controllers\Backend\TagsController::class);
+$container
+    ->add(\Gulchuk\Controllers\Backend\TagsController::class)
+    ->withArgument(new \Gulchuk\Repositories\TagsRepository());
 
 return $container;

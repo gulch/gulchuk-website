@@ -36,7 +36,7 @@
                             <div class="ui statistic tiny right floated">
                                 <div class="value">
                                     <i class="sticky note outline icon"></i>
-                                    <?= $tag->articles->count() ?>
+                                    <?= $tag->articlesCount() ?>
                                 </div>
                             </div>
 

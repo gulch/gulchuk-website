@@ -24,7 +24,7 @@
         </div>
 
         <div class="ui field">
-            <label for="content">Text*</label>
+            <label for="content">Content*</label>
             <textarea name="content" id="content" cols="30" rows="10"></textarea>
         </div>
 
