@@ -12,7 +12,7 @@
             <div class="one wide field">
                 <label>&nbsp;</label>
 
-                <div id="translit_button" class="ui fluid basic icon large button" tabindex="0">
+                <div id="translit-button" class="ui fluid basic icon large button" tabindex="0">
                     <i class="right arrow icon"></i>
                 </div>
             </div>

@@ -12,6 +12,7 @@
         <?php $this->insert('assets/fonts') ?>
 
         <?php $this->insert('backend/includes/css') ?>
+        <script src="/assets/vendor/jquery/3.1.0/jquery.min.js"></script>
     </head>
     <body>
         <div class="ui main stackable large menu">

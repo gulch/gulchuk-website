@@ -1,3 +1,25 @@
+
+/* To Translit Function */
+var toTranslit = function (text) {
+    return text.replace(/([а-яё])|([\s_-])|([^a-z\d])/gi,
+        function (all, ch, space, words, i) {
+            if (space || words) {
+                return space ? '-' : '';
+            }
+            var code = ch.charCodeAt(0),
+                index = code == 1025 || code == 1105 ? 0 :
+                    code > 1071 ? code - 1071 : code - 1039,
+                t = ['yo', 'a', 'b', 'v', 'g', 'd', 'e', 'zh',
+                    'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh',
+                    'shch', '', 'i', '', 'e', 'yu', 'ya'
+                ];
+            return t[index];
+        });
+};
+
+
+/* Document Ready JQuery Handler */
 $(document).ready(function () {
 
     $('.ui.checkbox').checkbox();
@@ -64,6 +86,13 @@ $(document).ready(function () {
 
     /* Activate Submit Buttons */
     saveFormActivation();
+
+    $('#translit-button').click(function () {
+        var title = $('input[name="title"]').val();
+        if (title.length) {
+            $('input[name="slug"]').val(toTranslit(title).toLowerCase());
+        }
+    });
 
 });
 
