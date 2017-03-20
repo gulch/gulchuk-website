@@ -6,7 +6,7 @@
         <div class="fields center aligned">
             <div class="eight wide field">
                 <label for="name">Title*</label>
-                <input name="title" type="text" value="Розовые озёра Херсонщины">
+                <input name="title" type="text" value="">
             </div>
 
             <div class="one wide field">

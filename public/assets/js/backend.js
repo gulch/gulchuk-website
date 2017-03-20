@@ -87,6 +87,7 @@ $(document).ready(function () {
     /* Activate Submit Buttons */
     saveFormActivation();
 
+    /* generate slug button click handler */
     $('#translit-button').click(function () {
         var title = $('input[name="title"]').val();
         if (title.length) {

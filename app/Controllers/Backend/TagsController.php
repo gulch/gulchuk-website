@@ -56,6 +56,8 @@ class TagsController extends BaseController
 
     public function save(): ResponseInterface
     {
+        $redurectUrl = $this->postArgument('redirect_url');
+
         $data = [
             'title' => $this->postArgument('title'),
             'slug' => $this->postArgument('slug'),
@@ -71,11 +73,16 @@ class TagsController extends BaseController
             ]);
         }
 
-        // TODO: Save Tag
-        // ...
+        if (!$this->repository->create($inputFilter->getValues())) {
+            return $this->jsonResponse([
+                'message' => 'Error! Can not create new tag. Try again.'
+            ]);
+        }
 
         return $this->jsonResponse([
-            'success' => 'OK'
+            'success' => 'OK',
+            'message' => 'Saved',
+            'redirect' => $redurectUrl ?? '',
         ]);
     }
 

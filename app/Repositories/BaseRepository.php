@@ -3,6 +3,8 @@
 namespace Gulchuk\Repositories;
 
 
+use Illuminate\Database\Events\TransactionBeginning;
+
 abstract class BaseRepository
 {
     protected $modelName;
@@ -36,5 +38,12 @@ abstract class BaseRepository
         }
 
         return $result->get();
+    }
+
+    public function create(array $data): bool
+    {
+        $entity = ($this->modelName)::create($data);
+
+        return isset($entity->id) ? true : false;
     }
 }

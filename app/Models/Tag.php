@@ -8,6 +8,12 @@ class Tag extends Eloquent
 {
     protected $table = 'Tag';
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'content'
+    ];
+
     /* -------------- Scopes -------------- */
 
     public function scopeSlug($query, $slug)
