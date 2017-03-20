@@ -25,7 +25,7 @@
 
         <div class="ui field">
             <label for="content">Content*</label>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="content" id="content" class="wysiwyg-editor" cols="30" rows="10"></textarea>
         </div>
 
         <?php $this->insert('backend/includes/submit-buttons') ?>
