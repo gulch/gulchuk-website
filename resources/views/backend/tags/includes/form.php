@@ -3,6 +3,10 @@
 
         <input type="hidden" name="redirect_url" value="<?= $redirectUrl ?? '/'.config('backend_segment').'/tags' ?>">
 
+        <?php if (isset($tag)): ?>
+        <input type="hidden" name="id" value="<?= $tag->id ?>">
+        <?php endif; ?>
+
         <div class="fields center aligned">
             <div class="eight wide field">
                 <label for="name">Title*</label>

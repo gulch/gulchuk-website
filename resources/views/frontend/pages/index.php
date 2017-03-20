@@ -1,3 +1,5 @@
+<?php /** @var $this \League\Plates\Template\Template */ ?>
+
 <?php $this->layout('frontend/template') ?>
 
 <main class="ui container flex-one">

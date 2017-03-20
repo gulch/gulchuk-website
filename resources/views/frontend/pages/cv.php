@@ -1,4 +1,11 @@
-<?php $this->layout('frontend/template', ['noindex' => true, 'title' => 'CV :: Gulchuk :: Personal Website']) ?>
+<?php /** @var $this \League\Plates\Template\Template */ ?>
+
+<?php
+    $this->layout('frontend/template', [
+        'noindex' => true,
+        'title' => 'CV :: Gulchuk :: Personal Website'
+    ])
+?>
 
 <main class="ui container">
     <div class="ui hidden divider"></div>
@@ -105,7 +112,8 @@
                             &nearr; <a rel="nofollow" target="_blank" href="https://sphered.com.ua">sphered.com.ua</a>
                         </div>
                         <div class="description">
-                            Full development cycle. Technologies/frameworks: PHP, Laravel5, Semantic UI, jQuery, threesixty, Pano2VR.
+                            Full development cycle. Technologies/frameworks: PHP, Laravel5, Semantic UI, jQuery,
+                            threesixty, Pano2VR.
                         </div>
                     </div>
                 </div>
@@ -141,9 +149,9 @@
                             &nearr; <a rel="nofollow" target="_blank" href="http://tik-tak.ua/">tik-tak.ua</a>
                         </div>
                         <div class="description">
-                           Configure online shop based on Joomla CMS.
-                           Developed additional modules, components and plugins.
-                           Created module for importing goodies from Excel files.
+                            Configure online shop based on Joomla CMS.
+                            Developed additional modules, components and plugins.
+                            Created module for importing goodies from Excel files.
                         </div>
                     </div>
                 </div>
@@ -177,7 +185,8 @@
                         <div class="header">
                             Midexpress - Gadgets shop.
                             <br>
-                            &nearr; <a rel="nofollow" target="_blank" href="http://midexpress.com.ua/">midexpress.com.ua</a>
+                            &nearr; <a rel="nofollow" target="_blank"
+                                       href="http://midexpress.com.ua/">midexpress.com.ua</a>
                         </div>
                         <div class="description">
                             Configure online shop based on Joomla CMS.

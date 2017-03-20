@@ -1,3 +1,4 @@
+<?php /** @var $this \League\Plates\Template\Template */ ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -16,7 +17,7 @@
 
         <?php $this->insert('assets/favicon') ?>
         <?php $this->insert('assets/fonts') ?>
-        <?php $this->insert('frontend/includes/css') ?>
+        <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
     </head>
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" class="display-none">
@@ -32,6 +33,6 @@
 
         <?php $this->insert('frontend/includes/footer') ?>
 
-        <?php $this->insert('frontend/includes/js') ?>
+        <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
     </body>
 </html>
