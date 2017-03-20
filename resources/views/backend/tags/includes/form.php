@@ -32,3 +32,5 @@
 
     </form>
 </div>
+
+<?php $this->insert('backend/includes/wysiwyg-editor') ?>
