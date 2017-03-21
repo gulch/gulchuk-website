@@ -44,7 +44,7 @@
 <script>
     $(document).ready(function () {
         $('.wysiwyg-editor').froalaEditor({
-            imageUploadURL: '/images/upload',
+            imageUploadURL: '/<?= config('admin_segment') ?>/images/upload',
 
             imageUploadParams: {
                 setup: 'editor'
