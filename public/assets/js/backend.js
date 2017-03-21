@@ -134,7 +134,7 @@ function saveFormHandler($btn, withRedirect) {
     var form_data = form.serialize();
 
     if (withRedirect) {
-        form_data += '&redirect_url=' + form.find('input[name="redirect_url"]').val();
+        form_data += '&redirect_url=' + form.find('input[id="redirect_url"]').val();
     }
 
     $.ajax({

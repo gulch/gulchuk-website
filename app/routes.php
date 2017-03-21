@@ -51,9 +51,9 @@ $router
         $router->get('/', DashboardController::class . '::index');
         $router->get('/tags', TagsController::class . '::index');
         $router->get('/tags/create', TagsController::class . '::create');
+        $router->get('/tags/{id:number}/edit', TagsController::class . '::edit');
         $router->post('/tags/save', TagsController::class . '::save');
         $router->post('/tags/{id:number}/remove', TagsController::class . '::remove');
-
     })
     ->middleware(new StartSession())
     ->middleware(new AuthenticateOnly());

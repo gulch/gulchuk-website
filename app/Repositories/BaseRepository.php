@@ -16,7 +16,7 @@ abstract class BaseRepository
 
     public function findById(int $id)
     {
-        return ($this->modelName)::find($id)->first();
+        return ($this->modelName)::find($id);
     }
 
     public function findBySlug(string $slug)
@@ -40,10 +40,21 @@ abstract class BaseRepository
         return $result->get();
     }
 
-    public function create(array $data): bool
+    public function create(array $data): int
     {
         $entity = ($this->modelName)::create($data);
 
-        return isset($entity->id) ? true : false;
+        return $entity->id ?? 0;
+    }
+
+    public function update(int $id, array $data): bool
+    {
+        $entity = $this->findById($id);
+
+        if (!$entity) {
+            return false;
+        }
+
+        return $entity->update($data);
     }
 }

@@ -53,7 +53,7 @@
 
                             <div class="extra">
 
-                                <a href="/tags/<?= $tag->id ?>/edit">
+                                <a href="/<?= config('backend_segment') ?>/tags/<?= $tag->id ?>/edit">
                                     <i class="edit icon"></i>Edit
                                 </a>
                                 <a data-popup="1">

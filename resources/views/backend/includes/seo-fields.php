@@ -19,14 +19,14 @@
                 Description
                 <span class="ui label counter">---</span>
             </label>
-            <textarea name="seo_description" rows="2"><?= $item ? $item->seo_description : '' ?></textarea>
+            <textarea name="seo_description" rows="4"><?= $item ? $item->seo_description : '' ?></textarea>
         </div>
         <div class="field">
             <label for="seo_keywords">
                 Keywords
                 <span class="ui label counter">---</span>
             </label>
-            <textarea name="seo_keywords" rows="2"><?= $item ? $item->seo_keywords : '' ?></textarea>
+            <textarea name="seo_keywords" rows="4"><?= $item ? $item->seo_keywords : '' ?></textarea>
         </div>
     </div>
 </div>

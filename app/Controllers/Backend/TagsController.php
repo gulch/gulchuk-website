@@ -38,9 +38,27 @@ class TagsController extends BaseController
         return $this->httpResponse($this->view('backend/tags/create', $data));
     }
 
+    public function edit(): ResponseInterface
+    {
+        $id = $this->argument('id', func_get_arg(2));
+
+        $tag = $this->repository->findById($id);
+
+        if (!$tag) {
+            return $this->abort();
+        }
+
+        $data = [
+            'tag' => $tag,
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER']
+        ];
+
+        return $this->httpResponse($this->view('backend/tags/edit', $data));
+    }
+
     public function remove(): ResponseInterface
     {
-        $id = $this->argument(func_get_arg(2), 'id');
+        $id = $this->argument('id', func_get_arg(2));
 
         $tag = $this->repository->findById($id);
 
@@ -57,11 +75,15 @@ class TagsController extends BaseController
     public function save(): ResponseInterface
     {
         $redurectUrl = $this->postArgument('redirect_url');
+        $id = $this->postArgument('id');
 
         $data = [
             'title' => $this->postArgument('title'),
             'slug' => $this->postArgument('slug'),
             'content' => $this->postArgument('content'),
+            'seo_title' => $this->postArgument('seo_title'),
+            'seo_description' => $this->postArgument('seo_description'),
+            'seo_keywords' => $this->postArgument('seo_keywords'),
         ];
 
         $inputFilter = $this->saveTagInputFilter();
@@ -73,16 +95,27 @@ class TagsController extends BaseController
             ]);
         }
 
-        if (!$this->repository->create($inputFilter->getValues())) {
-            return $this->jsonResponse([
-                'message' => 'Error! Can not create new tag. Try again.'
-            ]);
+        if ($id) {
+            // update
+            if (!$this->repository->update($id, $inputFilter->getValues())) {
+                return $this->jsonResponse([
+                    'message' => 'Error! Can not update tag. Try again.'
+                ]);
+            }
+        } else {
+            // create
+            if (!$id = $this->repository->create($inputFilter->getValues())) {
+                return $this->jsonResponse([
+                    'message' => 'Error! Can not create new tag. Try again.'
+                ]);
+            }
         }
 
         return $this->jsonResponse([
             'success' => 'OK',
             'message' => 'Saved',
             'redirect' => $redurectUrl ?? '',
+            'id' => $id ?? '',
         ]);
     }
 
@@ -94,7 +127,6 @@ class TagsController extends BaseController
                 'required' => true,
                 'filters' => [
                     ['name' => 'StringTrim'],
-                    ['name' => 'StripTags'],
                 ],
             ],
             'slug' => [
@@ -106,6 +138,27 @@ class TagsController extends BaseController
             ],
             'content' => [
                 'required' => false
+            ],
+            'seo_title' => [
+                'required' => true,
+                'filters' => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                ],
+            ],
+            'seo_description' => [
+                'required' => true,
+                'filters' => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                ],
+            ],
+            'seo_keywords' => [
+                'required' => true,
+                'filters' => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                ],
             ],
         ]);
 
