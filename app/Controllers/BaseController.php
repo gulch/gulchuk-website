@@ -4,15 +4,15 @@ namespace Gulchuk\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Zend\InputFilter\InputFilterInterface;
 
 class BaseController
 {
-    /**
-     * @var $request ServerRequestInterface
-     */
+    /** @var $request ServerRequestInterface */
     protected $request;
     /** @var $response ResponseInterface */
     protected $response;
+
     protected $postInput;
     protected $getInput;
 
@@ -23,7 +23,7 @@ class BaseController
         $this->getInput = $this->request->getQueryParams();
         $this->postInput = $this->request->getParsedBody();
     }
-    
+
     protected function abort() : ResponseInterface
     {
         return $this->httpResponse($this->view('errors/404'), 404);
@@ -71,6 +71,10 @@ class BaseController
         return $this->argument($name, $this->getInput);
     }
 
+    /**
+     * Redirect to previous page or to index page
+     * @return ResponseInterface
+     */
     protected function previous() : ResponseInterface
     {
         $url = $_SERVER['HTTP_REFERER'] ?? '/';
@@ -88,5 +92,18 @@ class BaseController
     protected function view(string $name, array $params = []) : string
     {
         return container('templater')->render($name, $params);
+    }
+
+    protected function formatErrorMessages(InputFilterInterface $inputFilter): string
+    {
+        $result = '';
+
+        foreach ($inputFilter->getInvalidInput() as $key => $error) {
+            $result .= '<li>Field "'. $key .'":<ul><li>' . implode('</li><li>', $error->getMessages()) . '</li></ul></li>';
+        }
+
+        $result = '<ul>' . $result . '</ul>';
+
+        return $result;
     }
 }

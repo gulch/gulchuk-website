@@ -1,4 +1,3 @@
-
 /* To Translit Function */
 var toTranslit = function (text) {
     return text.replace(/([а-яё])|([\s_-])|([^a-z\d])/gi,
@@ -18,9 +17,23 @@ var toTranslit = function (text) {
         });
 };
 
+var putCount = function ($elem) {
+    if ($elem.length > 0) {
+        $elem.closest('.field').find('.counter').html($elem.val().length);
+    }
+}
+
 
 /* Document Ready JQuery Handler */
 $(document).ready(function () {
+
+    putCount($('textarea[name="seo_keywords"]'));
+    putCount($('textarea[name="seo_description"]'));
+    putCount($('input[name="seo_title"]'));
+    $('textarea[name="seo_keywords"], textarea[name="seo_description"], input[name="seo_title"]').on('keyup', function () {
+        var $elem = $(this);
+        putCount($elem);
+    });
 
     $('.ui.checkbox').checkbox();
 
@@ -135,8 +148,8 @@ function saveFormHandler($btn, withRedirect) {
                 if (result.redirect) {
                     window.location.href = result.redirect;
                 }
-                if(result.id) {
-                    if(!form.find('input[name="id"]').length) {
+                if (result.id) {
+                    if (!form.find('input[name="id"]').length) {
                         $('<input>').attr({
                             type: 'hidden',
                             value: result.id,

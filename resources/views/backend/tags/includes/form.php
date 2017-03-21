@@ -32,6 +32,10 @@
             <textarea name="content" id="content" class="wysiwyg-editor" cols="30" rows="10"></textarea>
         </div>
 
+        <?php $this->insert('backend/includes/seo-fields', [
+            'item' => isset($tag) ? $tag : null
+        ]) ?>
+
         <?php $this->insert('backend/includes/submit-buttons') ?>
 
     </form>

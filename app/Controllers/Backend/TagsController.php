@@ -111,17 +111,4 @@ class TagsController extends BaseController
 
         return $inputFilter;
     }
-
-    private function formatErrorMessages(InputFilterInterface $inputFilter): string
-    {
-        $result = '';
-
-        foreach ($inputFilter->getInvalidInput() as $key => $error) {
-            $result .= '<li>Field "'. $key .'":<ul><li>' . implode('</li><li>', $error->getMessages()) . '</li></ul></li>';
-        }
-
-        $result = '<ul>' . $result . '</ul>';
-
-        return $result;
-    }
 }

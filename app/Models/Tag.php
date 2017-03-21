@@ -11,7 +11,11 @@ class Tag extends Eloquent
     protected $fillable = [
         'title',
         'slug',
-        'content'
+        'content',
+
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
     ];
 
     /* -------------- Scopes -------------- */
