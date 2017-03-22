@@ -47,9 +47,9 @@
                         <?= $article->created_at->format('j M Y') ?>
                     </p>
 
-                    <p class="content-text">
+                    <article class="content-text">
                         <?= $article->content ?>
-                    </p>
+                    </article>
 
                 </div>
 
