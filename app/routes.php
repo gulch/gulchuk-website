@@ -13,7 +13,8 @@ use Gulchuk\Controllers\Frontend\{
 };
 use Gulchuk\Controllers\Backend\{
     DashboardController,
-    TagsController
+    TagsController,
+    ImagesController
 };
 
 // Frontend routes
@@ -54,6 +55,8 @@ $router
         $router->get('/tags/{id:number}/edit', TagsController::class . '::edit');
         $router->post('/tags/save', TagsController::class . '::save');
         $router->post('/tags/{id:number}/remove', TagsController::class . '::remove');
+        $router->post('/images/upload', ImagesController::class . '::upload');
+
     })
     ->middleware(new StartSession())
     ->middleware(new AuthenticateOnly());

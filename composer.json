@@ -17,6 +17,7 @@
         "league/route": "dev-master",
         "zendframework/zend-diactoros": "^1.3",
         "illuminate/database": "^5.4",
+        "illuminate/support": "^5.4",
         "gulch/gminify": "dev-master",
         "zendframework/zend-inputfilter": "^2.7",
         "zendframework/zend-servicemanager": "^3.3",

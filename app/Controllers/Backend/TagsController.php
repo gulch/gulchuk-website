@@ -128,6 +128,9 @@ class TagsController extends BaseController
                 'filters' => [
                     ['name' => 'StringTrim'],
                 ],
+                'validators' => [
+                    ['name' => 'NotEmpty'],
+                ],
             ],
             'slug' => [
                 'required' => true,
@@ -135,26 +138,29 @@ class TagsController extends BaseController
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
                 ],
+                'validators' => [
+                    ['name' => 'NotEmpty'],
+                ],
             ],
             'content' => [
                 'required' => false
             ],
             'seo_title' => [
-                'required' => true,
+                'required' => false,
                 'filters' => [
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
                 ],
             ],
             'seo_description' => [
-                'required' => true,
+                'required' => false,
                 'filters' => [
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
                 ],
             ],
             'seo_keywords' => [
-                'required' => true,
+                'required' => false,
                 'filters' => [
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
