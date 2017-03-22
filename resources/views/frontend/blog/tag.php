@@ -27,9 +27,9 @@ $this->layout('frontend/template', [
                 <h1 class="ui huge header blog-header-title blog-tag-link">
                     <?= $this->e($tag->title) ?>
                 </h1>
-                <p>
+                <article>
                     <?= $tag->content ?>
-                </p>
+                </article>
 
                 <div class="ui hidden divider"></div>
 
