@@ -6,6 +6,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Illuminate\Support\Str;
 use Gulchuk\Controllers\BaseController;
+use Gulchuk\Services\ImageService;
 
 class ImagesController extends BaseController
 {
@@ -30,13 +31,40 @@ class ImagesController extends BaseController
         }
 
         $file_name = $this->uniqueFileName($uploaded_file->getClientFilename());
-        $file_path = $this->getFilePath(config('images_path_original')) . $file_name;
+        $file_path = $this->getFilePath(config('images_path_original')) . '/' . $file_name;
         $uploaded_file->moveTo($file_path);
 
-        // TODO: do awesome stuff...
+        switch ($setup) {
+            case 'editor':
+                return $this->makeEditorImage($file_name);
+        }
 
         return $this->jsonResponse([
-            'link' => config('images_path_original') . $this->getPrefix() . $file_name,
+            'link' => config('images_path_original') . $this->getPrefix() . '/' . $file_name,
+            'success' => 'OK'
+        ]);
+    }
+
+    private function makeEditorImage(string $file_name): ResponseInterface
+    {
+        $options = [
+            'width' => 840,
+            'quality' => 75
+        ];
+
+        $original_file = $this->getFilePath(config('images_path_original')) . '/' . $file_name;
+        $editor_file = $this->getFilePath(config('images_path_editor')) . '/' . $file_name;
+
+        $success = (new ImageService)->process($original_file, $editor_file, $options);
+
+        if (!$success) {
+            return $this->jsonResponse([
+                'message' => 'Can not process image'
+            ]);
+        }
+
+        return $this->jsonResponse([
+            'link' => config('images_path_editor') . $this->getPrefix() . '/' . $file_name,
             'success' => 'OK'
         ]);
     }

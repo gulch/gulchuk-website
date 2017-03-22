@@ -2,7 +2,7 @@
     <i class="announcement icon"></i>
     SEO
 </h3>
-<div class="ui bottom attached segment">
+<div class="ui bottom attached large segment">
     <div class="field">
         <label for="seo_title">
             Title
