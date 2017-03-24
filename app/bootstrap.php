@@ -28,7 +28,9 @@ Container::create($container);
 /* Boot Eloquent ORM */
 include(__DIR__ . '/db.php');
 
+/** @var \Psr\Http\Message\RequestInterface $request */
 $request = $container->get('request');
+/** @var \Psr\Http\Message\ResponseInterface $response */
 $response = $container->get('response');
 
 /* Router & Routes */
