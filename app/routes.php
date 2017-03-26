@@ -9,7 +9,8 @@ use Gulchuk\Middlewares\{
 use Gulchuk\Controllers\AuthController;
 use Gulchuk\Controllers\Frontend\{
     PageController,
-    BlogController
+    BlogController,
+    SitemapController
 };
 use Gulchuk\Controllers\Backend\{
     DashboardController,
@@ -26,6 +27,7 @@ $router
     ->group('/', function ($router) {
         $router->get('/', PageController::class . '::index');
         $router->get('/cv', PageController::class . '::showCV');
+        $router->get('/sitemap', SitemapController::class . '::generate');
     })
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 
