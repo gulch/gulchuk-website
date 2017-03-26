@@ -16,6 +16,10 @@
 
     <div class="ui clearing divider"></div>
 
-    <?php $this->insert('backend/articles/includes/form', ['redirectUrl' => $redirectUrl]) ?>
+    <?php $this->insert('backend/articles/includes/form', [
+        'redirectUrl' => $redirectUrl,
+        'tags' => $tags,
+        'article_tags' => [],
+    ]) ?>
 
 </div>

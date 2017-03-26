@@ -11,12 +11,23 @@ class ArticlesRepository extends BaseRepository
         $this->modelName = Article::class;
     }
 
-    public function syncArticles(int $id, array $tags): void
+    public function syncTags(int $id, array $tags): void
     {
         $article = ($this->modelName)::find($id);
 
         if (sizeof($article)) {
             $article->tags()->sync($tags);
         }
+    }
+
+    public function articleTagsIds(int $id): array
+    {
+        $article = ($this->modelName)::find($id);
+
+        if (!sizeof($article)) {
+            return [];
+        }
+
+        return $article->tags->pluck('id')->toArray();
     }
 }

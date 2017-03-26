@@ -35,6 +35,8 @@ $(document).ready(function () {
         putCount($elem);
     });
 
+    $('select[name="article_tags[]"]').dropdown();
+
     $('.ui.checkbox').checkbox();
 
     /* Action elements */

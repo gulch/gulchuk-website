@@ -10,15 +10,15 @@
         }
     ],
     "require": {
+        "gulch/gminify": "dev-master",
         "vlucas/phpdotenv": "^2.2",
         "filp/whoops": "^2.0",
         "league/container": "^2.0",
         "league/plates": "^3.0",
         "league/route": "dev-master",
-        "zendframework/zend-diactoros": "^1.3",
         "illuminate/database": "^5.4",
         "illuminate/support": "^5.4",
-        "gulch/gminify": "dev-master",
+        "zendframework/zend-diactoros": "^1.3",
         "zendframework/zend-inputfilter": "^2.7",
         "zendframework/zend-servicemanager": "^3.3",
         "intervention/image": "^2.3"

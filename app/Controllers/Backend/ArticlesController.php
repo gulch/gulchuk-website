@@ -5,6 +5,7 @@ namespace Gulchuk\Controllers\Backend;
 use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
 use Gulchuk\Repositories\ArticlesRepository;
+use Gulchuk\Repositories\TagsRepository;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterInterface;
 
@@ -20,7 +21,7 @@ class ArticlesController extends BaseController
 
     public function index(): ResponseInterface
     {
-        $articles = $this->repository->getWith(['tags']);
+        $articles = $this->repository->getWith(['tags'], 'created_at', 'desc');
 
         $data = [
             'articles' => $articles
@@ -32,7 +33,8 @@ class ArticlesController extends BaseController
     public function create(): ResponseInterface
     {
         $data = [
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER']
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'],
+            'tags' => (new TagsRepository())->list(['id', 'title'], 'title'),
         ];
 
         return $this->httpResponse($this->view('backend/articles/create', $data));
@@ -50,7 +52,9 @@ class ArticlesController extends BaseController
 
         $data = [
             'article' => $article,
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER']
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'],
+            'tags' => (new TagsRepository())->list(['id', 'title'], 'title'),
+            'article_tags' => $this->repository->articleTagsIds($id),
         ];
 
         return $this->httpResponse($this->view('backend/articles/edit', $data));
@@ -66,7 +70,7 @@ class ArticlesController extends BaseController
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
-        $this->repository->syncArticles($id, []);
+        $this->repository->syncTags($id, []);
         $this->repository->delete($id);
 
         return $this->jsonResponse(['success' => 'OK']);
@@ -111,7 +115,9 @@ class ArticlesController extends BaseController
             }
         }
 
-        // TODO: sync tags
+        // sync article tags
+        $article_tags = $this->postArgument('article_tags') ?: [];
+        $this->repository->syncTags($id, $article_tags);
 
         return $this->jsonResponse([
             'success' => 'OK',

@@ -19,7 +19,9 @@
 
     <?php $this->insert('backend/articles/includes/form', [
         'article' => $article,
-        'redirectUrl' => $redirectUrl
+        'redirectUrl' => $redirectUrl,
+        'tags' => $tags,
+        'article_tags' => $article_tags
     ]) ?>
 
 </div>

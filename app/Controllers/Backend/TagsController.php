@@ -20,7 +20,7 @@ class TagsController extends BaseController
 
     public function index(): ResponseInterface
     {
-        $tags = $this->repository->getWith(['articles']);
+        $tags = $this->repository->getWith(['articles'], 'created_at', 'desc');
 
         $data = [
             'tags' => $tags
