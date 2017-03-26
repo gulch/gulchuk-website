@@ -28,5 +28,8 @@ $container->add(\Gulchuk\Controllers\Backend\DashboardController::class);
 $container
     ->add(\Gulchuk\Controllers\Backend\TagsController::class)
     ->withArgument(new \Gulchuk\Repositories\TagsRepository());
+$container
+    ->add(\Gulchuk\Controllers\Backend\ArticlesController::class)
+    ->withArgument(new \Gulchuk\Repositories\ArticlesRepository());
 
 return $container;

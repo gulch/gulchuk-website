@@ -6,14 +6,14 @@
         <div class="middle aligned twelve wide column">
             <h1 class="ui header">
                 <div class="content">
-                    Tags
-                    <div class="sub header">List of tags</div>
+                    Blog Articles
+                    <div class="sub header">List of articles</div>
                 </div>
             </h1>
         </div>
 
         <div class="middle aligned right aligned four wide column">
-            <a href="/<?= config('backend_segment') ?>/tags/create" class="ui large labeled icon basic button">
+            <a href="/<?= config('backend_segment') ?>/articles/create" class="ui large labeled icon basic button">
                 <i class="add icon"></i>
                 Create new
             </a>
@@ -23,37 +23,30 @@
 
     <div class="ui clearing divider"></div>
 
-    <?php if (sizeof($tags)): ?>
+    <?php if (sizeof($articles)): ?>
         <div class="ui relaxed items">
-            <?php foreach ($tags as $tag): ?>
+            <?php foreach ($articles as $article): ?>
                 <div class="item"
-                     data-id="<?= $tag->id ?>"
+                     data-id="<?= $article->id ?>"
                      data-action-element="1"
                 >
                     <div class="content">
                         <div class="ui segment raised">
 
-                            <div class="ui statistic tiny right floated">
-                                <div class="value">
-                                    <i class="file text outline icon"></i>
-                                    <?= $tag->articlesCount() ?>
-                                </div>
-                            </div>
-
-                            <a href="/blog/tag/<?= $this->e($tag->slug) ?>"
+                            <a href="/blog/<?= $this->e($article->slug) ?>"
                                target="_blank"
                                class="ui large header"
                             >
-                                <?= $this->e($tag->title) ?>
+                                <?= $this->e($article->title) ?>
                             </a>
 
                             <div class="meta">
-                                Created: <?= $tag->created_at->format('d.m.Y H:i:s') ?>
+                                Created: <?= $article->created_at->format('d.m.Y H:i:s') ?>
                             </div>
 
                             <div class="extra">
 
-                                <a href="/<?= config('backend_segment') ?>/tags/<?= $tag->id ?>/edit">
+                                <a href="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/edit">
                                     <i class="edit icon"></i>Edit
                                 </a>
                                 <a data-popup="1">
@@ -64,7 +57,7 @@
                                     <span class="ui negative button"
                                           data-action-name="remove"
                                           data-action-method="POST"
-                                          data-action="/<?= config('backend_segment') ?>/tags/<?= $tag->id ?>/remove"
+                                          data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/remove"
                                     >Yes</span>
                                     <span class="ui button">No</span>
                                 </div>

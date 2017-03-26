@@ -4,15 +4,15 @@ namespace Gulchuk\Controllers\Backend;
 
 use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Controllers\BaseController;
-use Gulchuk\Repositories\TagsRepository;
+use Gulchuk\Repositories\ArticlesRepository;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterInterface;
 
-class TagsController extends BaseController
+class ArticlesController extends BaseController
 {
     private $repository;
 
-    public function __construct(TagsRepository $repository)
+    public function __construct(ArticlesRepository $repository)
     {
         $this->repository = $repository;
         parent::__construct();
@@ -20,13 +20,13 @@ class TagsController extends BaseController
 
     public function index(): ResponseInterface
     {
-        $tags = $this->repository->getWith(['articles']);
+        $articles = $this->repository->getWith(['tags']);
 
         $data = [
-            'tags' => $tags
+            'articles' => $articles
         ];
 
-        return $this->httpResponse($this->view('backend/tags/index', $data));
+        return $this->httpResponse($this->view('backend/articles/index', $data));
     }
 
     public function create(): ResponseInterface
@@ -35,34 +35,34 @@ class TagsController extends BaseController
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER']
         ];
 
-        return $this->httpResponse($this->view('backend/tags/create', $data));
+        return $this->httpResponse($this->view('backend/articles/create', $data));
     }
 
     public function edit(): ResponseInterface
     {
         $id = $this->argument('id', func_get_arg(2));
 
-        $tag = $this->repository->findById($id);
+        $article = $this->repository->findById($id);
 
-        if (!$tag) {
+        if (!$article) {
             return $this->abort();
         }
 
         $data = [
-            'tag' => $tag,
+            'article' => $article,
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER']
         ];
 
-        return $this->httpResponse($this->view('backend/tags/edit', $data));
+        return $this->httpResponse($this->view('backend/articles/edit', $data));
     }
 
     public function remove(): ResponseInterface
     {
         $id = $this->argument('id', func_get_arg(2));
 
-        $tag = $this->repository->findById($id);
+        $article = $this->repository->findById($id);
 
-        if (is_null($tag)) {
+        if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
@@ -86,7 +86,7 @@ class TagsController extends BaseController
             'seo_keywords' => $this->postArgument('seo_keywords'),
         ];
 
-        $inputFilter = $this->saveTagInputFilter();
+        $inputFilter = $this->saveArticleInputFilter();
         $inputFilter->setData($data);
 
         if (!$inputFilter->isValid()) {
@@ -99,17 +99,19 @@ class TagsController extends BaseController
             // update
             if (!$this->repository->update($id, $inputFilter->getValues())) {
                 return $this->jsonResponse([
-                    'message' => 'Error! Can not update tag. Try again.'
+                    'message' => 'Error! Can not update article. Try again.'
                 ]);
             }
         } else {
             // create
             if (!$id = $this->repository->create($inputFilter->getValues())) {
                 return $this->jsonResponse([
-                    'message' => 'Error! Can not create new tag. Try again.'
+                    'message' => 'Error! Can not create new article. Try again.'
                 ]);
             }
         }
+
+        // TODO: sync tags
 
         return $this->jsonResponse([
             'success' => 'OK',
@@ -119,7 +121,7 @@ class TagsController extends BaseController
         ]);
     }
 
-    private function saveTagInputFilter(): InputFilterInterface
+    private function saveArticleInputFilter(): InputFilterInterface
     {
         $factory = new InputFilterFactory();
         $inputFilter = $factory->createInputFilter([

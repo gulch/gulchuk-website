@@ -23,6 +23,10 @@
                 <i class="dashboard icon"></i>
                 Dashboard
             </a>
+            <a href="/<?= config('backend_segment') ?>/articles" class="item">
+                <i class="file text outline icon"></i>
+                Articles
+            </a>
             <a href="/<?= config('backend_segment') ?>/tags" class="item">
                 <i class="tags icon"></i>
                 Tags

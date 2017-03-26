@@ -17,7 +17,6 @@ class ArticlesSeed extends AbstractSeed
                 'seo_title' => $faker->text(50),
                 'seo_description' => $faker->text(255),
                 'seo_keywords' => $faker->text(100),
-                'id__Image' => 1,
                 'created_at' => date('Y-m-d H:i:s')
             ];
         }

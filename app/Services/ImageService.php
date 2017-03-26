@@ -8,6 +8,7 @@ class ImageService
     public function process(string $source, string $result, array $options): bool
     {
         $im = new ImageManager(['driver' => 'imagick']);
+
         /** @var Image $image */
         $image = $im->make($source);
 

@@ -8,15 +8,15 @@ class Tag extends AbstractMigration
     {
         $table = $this->table('Tag', ['engine' => 'Aria']);
         $table->addColumn('slug', 'string', ['limit' => 70])
-              ->addColumn('title', 'string')
-              ->addColumn('content', 'text')
-              ->addColumn('seo_title', 'string', ['null' => true])
-              ->addColumn('seo_description', 'string', ['null' => true])
-              ->addColumn('seo_keywords', 'string', ['null' => true])
-              ->addColumn('created_at', 'datetime', ['null' => false, 'default' => 'CURRENT_TIMESTAMP'])
-              ->addColumn('updated_at', 'datetime', ['null' => true])
-              ->addIndex('slug', ['unique' => true])
-              ->save();
+            ->addColumn('title', 'string')
+            ->addColumn('content', 'text')
+            ->addColumn('seo_title', 'string', ['null' => true])
+            ->addColumn('seo_description', 'string', ['null' => true])
+            ->addColumn('seo_keywords', 'string', ['null' => true])
+            ->addColumn('created_at', 'datetime', ['null' => false, 'default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('updated_at', 'datetime', ['null' => true])
+            ->addIndex('slug', ['unique' => true])
+            ->save();
     }
 
     public function down()

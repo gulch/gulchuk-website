@@ -8,6 +8,16 @@ class Article extends Eloquent
 {
     protected $table = 'Article';
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
+    ];
+
     /* -------------- Scopes -------------- */
 
     public function scopeSlug($query, $slug)

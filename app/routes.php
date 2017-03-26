@@ -14,6 +14,7 @@ use Gulchuk\Controllers\Frontend\{
 use Gulchuk\Controllers\Backend\{
     DashboardController,
     TagsController,
+    ArticlesController,
     ImagesController
 };
 
@@ -49,12 +50,21 @@ $router
 // Backend routes
 $router
     ->group('/' . config('backend_segment'), function ($router) {
+        // dashboard
         $router->get('/', DashboardController::class . '::index');
+        // tags
         $router->get('/tags', TagsController::class . '::index');
         $router->get('/tags/create', TagsController::class . '::create');
         $router->get('/tags/{id:number}/edit', TagsController::class . '::edit');
         $router->post('/tags/save', TagsController::class . '::save');
         $router->post('/tags/{id:number}/remove', TagsController::class . '::remove');
+        // articles
+        $router->get('/articles', ArticlesController::class . '::index');
+        $router->get('/articles/create', ArticlesController::class . '::create');
+        $router->get('/articles/{id:number}/edit', ArticlesController::class . '::edit');
+        $router->post('/articles/save', ArticlesController::class . '::save');
+        $router->post('/articles/{id:number}/remove', ArticlesController::class . '::remove');
+        // images
         $router->post('/images/upload', ImagesController::class . '::upload');
 
     })
