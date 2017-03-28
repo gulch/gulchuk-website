@@ -10,7 +10,8 @@ use Gulchuk\Controllers\AuthController;
 use Gulchuk\Controllers\Frontend\{
     PageController,
     BlogController,
-    SitemapController
+    SitemapController,
+    FeedController
 };
 use Gulchuk\Controllers\Backend\{
     DashboardController,
@@ -23,11 +24,14 @@ use Gulchuk\Controllers\Backend\{
 /**
  * @var \League\Route\RouteCollection $router
  */
+$router->get('/sitemap', SitemapController::class . '::generate');
+$router->get('/feed', FeedController::class . '::generate');
+$router->get('/rss', FeedController::class . '::generate');
+
 $router
     ->group('/', function ($router) {
         $router->get('/', PageController::class . '::index');
         $router->get('/cv', PageController::class . '::showCV');
-        $router->get('/sitemap', SitemapController::class . '::generate');
     })
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 

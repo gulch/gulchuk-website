@@ -22,7 +22,8 @@
         "zendframework/zend-inputfilter": "^2.7",
         "zendframework/zend-servicemanager": "^3.3",
         "intervention/image": "^2.3",
-        "samdark/sitemap": "^2.0"
+        "samdark/sitemap": "^2.0",
+        "suin/php-rss-writer": "^1.5"
     },
     "require-dev": {
         "robmorgan/phinx": "^0.8",

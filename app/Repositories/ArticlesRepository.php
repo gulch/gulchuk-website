@@ -11,6 +11,15 @@ class ArticlesRepository extends BaseRepository
         $this->modelName = Article::class;
     }
 
+    public function getWithOptions(
+        string $orderField,
+        string $orderDir,
+        int $limit,
+        int $offset = 0
+    ){
+        return ($this->modelName)::orderBy($orderField, $orderDir)->limit($limit)->offset($offset)->get();
+    }
+
     public function syncTags(int $id, array $tags): void
     {
         $article = ($this->modelName)::find($id);
