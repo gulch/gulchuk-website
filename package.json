@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "gulp": "^3.9",
+    "gulp-concat": "^2.5.2",
+    "gulp-cssnano": "^2.0",
+    "gulp-postcss": "^6.0",
+    "gulp-ttf2woff2": "^2.0",
+    "gulp-uglify": "^2.0.0",
+    "autoprefixer": "^6.0",
+    "laravel-elixir": "^5.0",
+    "postcss-discard-comments": "^2.0"
+  }
+}

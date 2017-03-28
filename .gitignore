@@ -7,3 +7,6 @@ composer.lock
 /cache
 /tests/_output/*
 /public/uploads/
+/node_modules
+/public/assets/processed/
+/public/build/

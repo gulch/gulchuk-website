@@ -5,7 +5,7 @@
 <main class="ui container flex-one">
     <div class="ui center aligned grid vcenter-align">
         <div class="left aligned twelve wide computer column column sixteen wide tablet">
-            <div class="ui raised segment">
+            <div class="ui basic segment">
                 <h1>Hello!</h1>
                 <p class="welcome-text">
                     My name is Volodymyr Gulchuk. I'm web developer.
