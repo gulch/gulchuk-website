@@ -22,6 +22,17 @@ class TagsRepository extends BaseRepository
         return $list->get();
     }
 
+    public function latestPublishedArticles(int $id): \Traversable
+    {
+        $tag = $this->findById($id);
+
+        if (!sizeof($tag)) {
+            return null;
+        }
+
+        return $tag->articles()->where('is_published', 1)->latest()->get();
+    }
+
     public function syncArticles(int $id, array $articles): void
     {
         $tag = ($this->modelName)::find($id);

@@ -18,7 +18,7 @@
                            itemprop="url"
                         >
                             Home
-                            <span itemprop="title" class="hide">gulchuk.com</span>
+                            <span itemprop="title" class="hidden">gulchuk.com</span>
                         </a>
 
                         <span class="divider"> / </span>

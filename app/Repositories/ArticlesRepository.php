@@ -11,12 +11,17 @@ class ArticlesRepository extends BaseRepository
         $this->modelName = Article::class;
     }
 
+    public function getLatestPublished(): \Traversable
+    {
+        return ($this->modelName)::where('is_published', 1)->latest()->get();
+    }
+
     public function getWithOptions(
         string $orderField,
         string $orderDir,
         int $limit,
         int $offset = 0
-    ){
+    ): \Traversable {
         return ($this->modelName)::orderBy($orderField, $orderDir)->limit($limit)->offset($offset)->get();
     }
 

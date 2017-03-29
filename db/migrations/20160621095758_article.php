@@ -10,6 +10,7 @@ class Article extends AbstractMigration
         $article->addColumn('slug', 'string', ['limit' => 70])
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')
+            ->addColumn('is_published', 'tinyint', ['default' => 0])
             ->addColumn('seo_title', 'string', ['null' => true])
             ->addColumn('seo_description', 'string', ['null' => true])
             ->addColumn('seo_keywords', 'string', ['null' => true])

@@ -127,6 +127,33 @@ class ArticlesController extends BaseController
         ]);
     }
 
+    public function publish(): ResponseInterface
+    {
+        return $this->changePublishStatus($this->argument('id', func_get_arg(2)), 1);
+    }
+
+    public function unpublish(): ResponseInterface
+    {
+        return $this->changePublishStatus($this->argument('id', func_get_arg(2)), 0);
+    }
+
+    private function changePublishStatus(int $id, int $is_published): ResponseInterface
+    {
+        $article = $this->repository->findById($id);
+
+        if (null === $article) {
+            return $this->jsonResponse(['message' => 'Record not found.']);
+        }
+
+        $article->is_published = $is_published;
+        $article->save();
+
+        return $this->jsonResponse([
+            'success' => 'OK',
+            'message' => $is_published ? 'Published' : 'Unpublished',
+        ]);
+    }
+
     private function saveArticleInputFilter(): InputFilterInterface
     {
         $factory = new InputFilterFactory();

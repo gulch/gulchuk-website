@@ -46,6 +46,20 @@
 
                             <div class="extra">
 
+                                <?php if(!$article->is_published): ?>
+                                <a data-action-name="publish"
+                                   data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/publish"
+                                >
+                                    <i class="unhide icon"></i>Publish
+                                </a>
+                                <?php else: ?>
+                                <a data-action-name="unpublish"
+                                   data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/unpublish"
+                                >
+                                    <i class="hide icon"></i>Unpublish
+                                </a>
+                                <?php endif; ?>
+
                                 <a href="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/edit">
                                     <i class="edit icon"></i>Edit
                                 </a>

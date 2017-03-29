@@ -50,8 +50,7 @@ $router
         $router->post('/login', AuthController::class . '::postLogin');
         $router->get('/logout', AuthController::class . '::logout');
         $router->get('/recover', AuthController::class . '::recover');
-    })
-    ->middleware(new StartSession());
+    });
 
 // Backend routes
 $router
@@ -70,9 +69,10 @@ $router
         $router->get('/articles/{id:number}/edit', ArticlesController::class . '::edit');
         $router->post('/articles/save', ArticlesController::class . '::save');
         $router->post('/articles/{id:number}/remove', ArticlesController::class . '::remove');
+        $router->post('/articles/{id:number}/publish', ArticlesController::class . '::publish');
+        $router->post('/articles/{id:number}/unpublish', ArticlesController::class . '::unpublish');
         // images
         $router->post('/images/upload', ImagesController::class . '::upload');
 
     })
-    ->middleware(new StartSession())
     ->middleware(new AuthenticateOnly());

@@ -12,7 +12,7 @@ class BlogController extends BaseController
     public function index() : ResponseInterface
     {
         $data = [
-            'articles' => (new ArticlesRepository())->all(),
+            'articles' => (new ArticlesRepository())->getLatestPublished(),
             'tags' => $this->getAllTags()
         ];
 
@@ -53,7 +53,7 @@ class BlogController extends BaseController
 
         $data = [
             'tag' => $tag,
-            'articles' => $tag->articles,
+            'articles' => (new TagsRepository())->latestPublishedArticles($tag->id),
             'tags' => $this->getAllTags()
         ];
 

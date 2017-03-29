@@ -14,6 +14,7 @@ class ArticlesSeed extends AbstractSeed
                 'slug' => str_slug($faker->text(25)),
                 'title' => $faker->text(50),
                 'content' => $faker->text(random_int(256, 1024)),
+                'is_published' => 1,
                 'seo_title' => $faker->text(50),
                 'seo_description' => $faker->text(255),
                 'seo_keywords' => $faker->text(100),

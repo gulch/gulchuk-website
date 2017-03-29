@@ -2,22 +2,44 @@
 
 class Auth
 {
+    public static function startSession(): void
+    {
+        \session_start();
+    }
+
+    public static function destroySession(): void
+    {
+        if (static::check()) {
+            unset($_SESSION['user']);
+        }
+
+        \session_destroy();
+    }
+
+    public static function check() : bool
+    {
+        static::startSession();
+
+        return isset($_SESSION['user']);
+    }
+
 
     /**
      * @return Gulchuk\Models\User | bool
      */
     public static function user()
     {
-        if (isset($_SESSION['user'])) {
+        if (static::check()) {
             return $_SESSION['user'];
         }
 
         return false;
     }
 
-    public static function guest() : bool
+    private static function setUser($user): void
     {
-        return !isset($_SESSION['user']);
+        static::startSession();
+        $_SESSION['user'] = $user;
     }
 
     /**
@@ -26,7 +48,7 @@ class Auth
      */
     public static function authenticate($user, $remember = false) : void
     {
-        $_SESSION['user'] = $user;
+        self::setUser($user);
 
         if ($remember) {
             // Generate remember token
@@ -50,9 +72,8 @@ class Auth
 
     public static function logout()
     {
-        unset($_SESSION['user']);
         \setcookie('remember', '', \time() - 3600, '/', config('app_domain'), true, true);
-        \session_destroy();
+        static::destroySession();
     }
 
     /**

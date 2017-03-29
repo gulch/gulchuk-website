@@ -10,12 +10,17 @@ class AuthController extends BaseController
 {
     public function login() : ResponseInterface
     {
-        if (!Auth::guest()) {
-            return $this->previous();
+        $path = $this->getArgument('return') ?: config('backend_segment');
+
+        if (Auth::check() === true) {
+            return $this->redirectResponse('/' . $path);
         }
 
         if (Auth::checkRememberTokenAndLogin(UsersRepository::class)) {
-            return $this->previous();
+
+            echo 'BLYA'; exit();
+
+            return $this->redirectResponse('/' . $path);
         }
 
         return $this->httpResponse($this->view('backend/auth/login'));
@@ -26,14 +31,16 @@ class AuthController extends BaseController
         $email = $this->postArgument('email');
         $password = $this->postArgument('password');
         $remember = $this->postArgument('remember');
+        $path = $this->getArgument('return') ?: config('backend_segment');
 
         $user = (new UsersRepository())->findByEmail($email);
         if (sizeof($user)) {
             if (password_verify($password, $user->password)) {
+
                 // Good! Let's authenticate user...
                 Auth::authenticate($user, $remember);
 
-                return $this->redirectResponse('/' . config('backend_segment'));
+                return $this->redirectResponse('/' . $path);
             }
         }
 

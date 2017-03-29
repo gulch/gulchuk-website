@@ -69,7 +69,6 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 if (result) {
-                    segment.find('.dimmer').remove();
 
                     if (result.success !== 'OK') {
                         showErrorModalMessage(result.message);
@@ -80,8 +79,22 @@ $(document).ready(function () {
                         case 'remove':
                             segment.remove();
                             break;
+                        case 'publish':
+                        case 'unpublish':
+                            elem[0].outerHTML = '<span><i class="check icon"></i>' + result.message + '</span>';
+                            break;
                     }
                 }
+            },
+            error: function (request, status) {
+                if (status == "timeout") {
+                    showErrorModalMessage("Request time is out.");
+                } else {
+                    showErrorModalMessage("Undefined error.");
+                }
+            },
+            complete: function () {
+                segment.find('.dimmer').remove();
             }
         });
     });
