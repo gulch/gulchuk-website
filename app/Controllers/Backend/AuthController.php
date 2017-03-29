@@ -1,9 +1,10 @@
 <?php
 
-namespace Gulchuk\Controllers;
+namespace Gulchuk\Controllers\Backend;
 
 use Psr\Http\Message\ResponseInterface;
 use Gulchuk\Repositories\UsersRepository;
+use Gulchuk\Controllers\BaseController;
 use Auth;
 
 class AuthController extends BaseController
@@ -17,9 +18,6 @@ class AuthController extends BaseController
         }
 
         if (Auth::checkRememberTokenAndLogin(UsersRepository::class)) {
-
-            echo 'BLYA'; exit();
-
             return $this->redirectResponse('/' . $path);
         }
 

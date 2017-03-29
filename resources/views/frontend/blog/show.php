@@ -7,7 +7,7 @@
         <div class="main-container">
 
             <div class="ui stackable grid">
-                <div class="twelve wide column">
+                <div class="twelve wide column" itemscope="" itemtype="http://schema.org/Article">
 
                     <div class="ui breadcrumb unimportant-text"
                          itemscope
@@ -18,7 +18,7 @@
                            itemprop="url"
                         >
                             Home
-                            <span itemprop="title" class="hidden">gulchuk.com</span>
+                            <span itemprop="title" class="display-none">gulchuk.com</span>
                         </a>
 
                         <span class="divider"> / </span>
@@ -39,15 +39,38 @@
 
                     </div>
 
-                    <h1 class="ui huge header">
+                    <h1 class="ui huge header" itemprop="headline">
                         <?= $this->e($article->title) ?>
                     </h1>
 
-                    <p class="unimportant-text">
+                    <p class="unimportant-text" itemprop="datePublished">
                         <?= $article->created_at->format('j M Y') ?>
                     </p>
 
-                    <article class="content-text">
+                    <?php if($article->updated_at): ?>
+                        <meta itemprop="dateModified" content="<?= $article->updated_at->format('Y-m-d') ?>"/>
+                    <?php endif; ?>
+
+                    <meta itemscope itemprop="mainEntityOfPage"
+                          itemType="http://schema.org/WebPage"
+                          itemid="<?= config('app_url') ?>/blog/<?= $article->slug ?>"/>
+
+                    <div class="display-none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <span itemprop="name">Volodymyr Gulchuk</span>
+                        <span itemprop="url"><?= config('app_url') ?></span>
+                    </div>
+
+                    <div class="display-none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                        <span itemprop="name">Gulchuk.com</span>
+                        <span itemprop="url"><?= config('app_url') ?></span>
+                        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                            <meta itemprop="url" content="<?= config('app_url') ?>/assets/favicon/android-chrome-512x512.png">
+                            <meta itemprop="width" content="512">
+                            <meta itemprop="height" content="512">
+                        </div>
+                    </div>
+
+                    <article class="content-text" itemprop="articleBody">
                         <?= $article->content ?>
                     </article>
 

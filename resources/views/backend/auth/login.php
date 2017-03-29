@@ -32,7 +32,7 @@
 
                     <div class="field">
                         <div class="ui checkbox">
-                            <input name="remember" type="checkbox" tabindex="0" value="1" class="hidden">
+                            <input name="remember" type="checkbox" tabindex="0" value="1">
                             <label>Remember</label>
                         </div>
                     </div>

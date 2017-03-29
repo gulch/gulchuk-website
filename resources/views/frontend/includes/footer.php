@@ -4,6 +4,6 @@
         &nbsp;
         &#8226;
         &nbsp;
-        <a href="http://thetalab.tk" class="item" target="_blank">THETA LAB</a>
+        <a href="https://funtime.kiev.ua" class="item" target="_blank">FUNTIME KIEV</a>
     </div>
 </footer>

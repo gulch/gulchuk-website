@@ -31,7 +31,7 @@
                      data-action-element="1"
                 >
                     <div class="content">
-                        <div class="ui segment raised">
+                        <div class="ui segment <?= $article->is_published ? 'raised' : 'secondary' ?>">
 
                             <a href="/blog/<?= $this->e($article->slug) ?>"
                                target="_blank"

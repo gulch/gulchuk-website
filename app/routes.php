@@ -1,19 +1,21 @@
 <?php
 
 use Zend\Diactoros\Stream;
+
 use Gulchuk\Middlewares\{
     MinifyOutput,
-    StartSession,
     AuthenticateOnly
 };
-use Gulchuk\Controllers\AuthController;
+
 use Gulchuk\Controllers\Frontend\{
     PageController,
     BlogController,
     SitemapController,
     FeedController
 };
+
 use Gulchuk\Controllers\Backend\{
+    AuthController,
     DashboardController,
     TagsController,
     ArticlesController,

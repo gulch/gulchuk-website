@@ -95,8 +95,7 @@ footer {
     line-height: 1.5;
 }
 
-.display-none,
-.hidden {
+.display-none {
     display: none !important;
 }
 
