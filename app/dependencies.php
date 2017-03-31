@@ -18,6 +18,9 @@ $container->share('templater', function() {
     return new \League\Plates\Engine(__DIR__ . '/../resources/views');
 });
 
+/* Queue */
+$container->share('queue', Queue::class);
+
 /* Controllers */
 $container->add(\Gulchuk\Controllers\AuthController::class);
 $container->add(\Gulchuk\Controllers\Frontend\PageController::class);

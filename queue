@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+$config = include(__DIR__ . '/app/config.php');
+
+$redis = new \Redis;
+$redis->connect('localhost');
+$redis->setOption(\Redis::OPT_PREFIX, \Queue::QUEUE_NAME . ':');
+
+$driver = new \Bernard\Driver\PhpRedisDriver($redis);
+
+$factory = new \Bernard\QueueFactory\PersistentFactory(
+    $driver,
+    new \Bernard\Serializer\SimpleSerializer()
+);
+
+$middleware = new \Bernard\Middleware\MiddlewareBuilder;
+$middleware->push(new \Bernard\Middleware\ErrorLogFactory);
+
+$router = new \Bernard\Router\SimpleRouter($config['queue_map']);
+
+$consumer = new \Bernard\Consumer($router, $middleware);
+
+$consumer->consume($factory->create('default'));
+
+exit();

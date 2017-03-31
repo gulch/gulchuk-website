@@ -63,6 +63,14 @@ class ImagesController extends BaseController
             ]);
         }
 
+        // generate also WebP version of image
+        container('queue')->process(
+            'CreateWebp',
+            [
+                'source' => $editor_file
+            ]
+        );
+
         return $this->jsonResponse([
             'link' => config('images_path_editor') . $this->getPrefix() . '/' . $file_name,
             'success' => 'OK'
