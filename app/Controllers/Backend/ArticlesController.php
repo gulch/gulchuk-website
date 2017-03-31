@@ -148,6 +148,20 @@ class ArticlesController extends BaseController
         $article->is_published = $is_published;
         $article->save();
 
+        if ($is_published) {
+
+            // generate social image
+            container('queue')->process(
+                'CreateArticleSocialImage',
+                [
+                    'id' => $article->id,
+                    'slug' => $article->slug,
+                    'title' => $article->title,
+                ]
+            );
+
+        }
+
         return $this->jsonResponse([
             'success' => 'OK',
             'message' => $is_published ? 'Published' : 'Unpublished',

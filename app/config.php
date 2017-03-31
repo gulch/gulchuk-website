@@ -11,8 +11,11 @@ return [
     'images_path_prefix'   => env('IMAGES_PATH_PREFIX', '/uploads/img'),
     'images_path_original' => env('IMAGES_PATH_ORIGINAL', '/uploads/img/original'),
     'images_path_editor'   => env('IMAGES_PATH_EDITOR', '/uploads/img/editor'),
+    'images_path_social'   => env('IMAGES_PATH_SOCIAL', '/uploads/img/social'),
 
+    'queue_name'           => 'gulchuk.com:queue',
     'queue_map'            => [
         'CreateWebp' => '\Gulchuk\Jobs\CreateWebpJob::handle',
+        'CreateArticleSocialImage' => '\Gulchuk\Jobs\CreateArticleSocialImageJob::handle',
     ]
 ];

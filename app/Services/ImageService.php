@@ -50,6 +50,9 @@ class ImageService
         // save processed image
         $image->save($result, $quality);
 
+        // free resources
+        $image->destroy();
+
         // check if processed file exists
         return file_exists($result);
     }

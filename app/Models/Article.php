@@ -13,6 +13,8 @@ class Article extends Eloquent
         'slug',
         'content',
 
+        'social_image',
+
         'seo_title',
         'seo_description',
         'seo_keywords',

@@ -9,16 +9,14 @@ use Bernard\Message\DefaultMessage;
 
 class Queue
 {
-    const QUEUE_NAME = 'gulchuk.com:queue';
-
     /** @var $producer Producer */
     private $producer;
 
-    public function init(): void
+    private function init(): void
     {
         $redis = new \Redis();
         $redis->connect('127.0.0.1', 6379);
-        $redis->setOption(\Redis::OPT_PREFIX, self::QUEUE_NAME . ':');
+        $redis->setOption(\Redis::OPT_PREFIX, config('queue_name') . ':');
 
         $driver = new PhpRedisDriver($redis);
 

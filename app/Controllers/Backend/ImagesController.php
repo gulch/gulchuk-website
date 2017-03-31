@@ -31,7 +31,7 @@ class ImagesController extends BaseController
         }
 
         $file_name = $this->uniqueFileName($uploaded_file->getClientFilename());
-        $file_path = $this->getFilePath(config('images_path_original')) . '/' . $file_name;
+        $file_path = getFilePath(config('images_path_original')) . '/' . $file_name;
         $uploaded_file->moveTo($file_path);
 
         switch ($setup) {
@@ -52,8 +52,8 @@ class ImagesController extends BaseController
             'quality' => 75
         ];
 
-        $original_file = $this->getFilePath(config('images_path_original')) . '/' . $file_name;
-        $editor_file = $this->getFilePath(config('images_path_editor')) . '/' . $file_name;
+        $original_file = getFilePath(config('images_path_original')) . '/' . $file_name;
+        $editor_file = getFilePath(config('images_path_editor')) . '/' . $file_name;
 
         $success = (new ImageService)->process($original_file, $editor_file, $options);
 
@@ -77,28 +77,6 @@ class ImagesController extends BaseController
         ]);
     }
 
-    private function getPrefix()
-    {
-        if (!$this->prefix) {
-            $this->prefix = date('/Y/m');
-        }
-
-        return $this->prefix;
-    }
-
-    private function getFilePath(string $path, string $prefix = ''): string
-    {
-        $prefix = $prefix ?: $this->getPrefix();
-
-        $file_path = $_SERVER['DOCUMENT_ROOT'] . $path . $prefix;
-
-        if (!file_exists($file_path)) {
-            mkdir($file_path, 750, true);
-        }
-
-        return $file_path;
-    }
-
     private function uniqueFileName(string $file_name): string
     {
         $ext = pathinfo($file_name, PATHINFO_EXTENSION);
@@ -107,5 +85,14 @@ class ImagesController extends BaseController
         $name = Str::limit($name, 100, '');
 
         return Str::lower(Str::slug($name) . '-' . uniqid() . '.' . $ext);
+    }
+
+    function getPrefix()
+    {
+        if (!$this->prefix) {
+            $this->prefix = getPathPrefix();
+        }
+
+        return $this->prefix;
     }
 }

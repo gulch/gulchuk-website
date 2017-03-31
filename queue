@@ -6,11 +6,20 @@ require __DIR__ . '/vendor/autoload.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$config = include(__DIR__ . '/app/config.php');
+/* Register Dotenv */
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
 
-$redis = new \Redis;
+/* Load config */
+$config = include(__DIR__ . '/app/config.php');
+Config::getInstance()->setConfig($config);
+
+/* Boot Eloquent ORM */
+include(__DIR__ . '/app/db.php');
+
+$redis = new Redis;
 $redis->connect('localhost');
-$redis->setOption(\Redis::OPT_PREFIX, \Queue::QUEUE_NAME . ':');
+$redis->setOption(Redis::OPT_PREFIX, $config['queue_name'] . ':');
 
 $driver = new \Bernard\Driver\PhpRedisDriver($redis);
 
