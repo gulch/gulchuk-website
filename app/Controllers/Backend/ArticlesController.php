@@ -137,6 +137,24 @@ class ArticlesController extends BaseController
         return $this->changePublishStatus($this->argument('id', func_get_arg(2)), 0);
     }
 
+    public function generateSocialImage()
+    {
+        $id = $this->argument('id', func_get_arg(2));
+
+        $article = $this->repository->findById($id);
+
+        if (null === $article) {
+            return $this->jsonResponse(['message' => 'Record not found.']);
+        }
+
+        $this->executeSocialImageGeneration($article);
+
+        return $this->jsonResponse([
+            'success' => 'OK',
+            'message' => 'Process executed',
+        ]);
+    }
+
     private function changePublishStatus(int $id, int $is_published): ResponseInterface
     {
         $article = $this->repository->findById($id);
@@ -149,23 +167,26 @@ class ArticlesController extends BaseController
         $article->save();
 
         if ($is_published) {
-
             // generate social image
-            container('queue')->process(
-                'CreateArticleSocialImage',
-                [
-                    'id' => $article->id,
-                    'slug' => $article->slug,
-                    'title' => $article->title,
-                ]
-            );
-
+            $this->executeSocialImageGeneration($article);
         }
 
         return $this->jsonResponse([
             'success' => 'OK',
             'message' => $is_published ? 'Published' : 'Unpublished',
         ]);
+    }
+
+    private function executeSocialImageGeneration($article): void
+    {
+        container('queue')->process(
+            'CreateArticleSocialImage',
+            [
+                'id' => $article->id,
+                'slug' => $article->slug,
+                'title' => $article->title,
+            ]
+        );
     }
 
     private function saveArticleInputFilter(): InputFilterInterface

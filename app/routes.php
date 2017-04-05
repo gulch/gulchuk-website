@@ -73,6 +73,7 @@ $router
         $router->post('/articles/{id:number}/remove', ArticlesController::class . '::remove');
         $router->post('/articles/{id:number}/publish', ArticlesController::class . '::publish');
         $router->post('/articles/{id:number}/unpublish', ArticlesController::class . '::unpublish');
+        $router->post('/articles/{id:number}/social/image', ArticlesController::class . '::generateSocialImage');
         // images
         $router->post('/images/upload', ImagesController::class . '::upload');
 

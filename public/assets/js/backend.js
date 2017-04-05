@@ -81,6 +81,7 @@ $(document).ready(function () {
                             break;
                         case 'publish':
                         case 'unpublish':
+                        case 'generate-social-image':
                             elem[0].outerHTML = '<span><i class="check icon"></i>' + result.message + '</span>';
                             break;
                     }

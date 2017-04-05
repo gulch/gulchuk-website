@@ -59,7 +59,7 @@ class CreateArticleSocialImageJob
 
         // save to DB
         (new ArticlesRepository())->update($id, [
-            'social_image' => config('images_path_social') . '/' . $slug . '.png'
+            'social_image' => str_replace(publicPath(), '', $file)
         ]);
 
         // optimize image by pngquant tool

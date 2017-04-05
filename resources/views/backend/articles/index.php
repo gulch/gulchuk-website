@@ -63,6 +63,16 @@
                                 <a href="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/edit">
                                     <i class="edit icon"></i>Edit
                                 </a>
+
+                                <a data-action-name="generate-social-image"
+                                   data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/social/image"
+                                >
+                                    <?php if (!$article->social_image): ?>
+                                        <i class="warning sign orange icon"></i>
+                                    <?php endif; ?>
+                                    <i class="image icon"></i>Generate image
+                                </a>
+
                                 <a data-popup="1">
                                     <i class="remove circle icon"></i>Remove
                                 </a>

@@ -70,6 +70,12 @@
                         </div>
                     </div>
 
+                    <div class="display-none" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                        <meta itemprop="url" content="<?= config('app_url') . $article->social_image ?>">
+                        <meta itemprop="width" content="1200">
+                        <meta itemprop="height" content="630">
+                    </div>
+
                     <article class="content-text" itemprop="articleBody">
                         <?= $article->content ?>
                     </article>
