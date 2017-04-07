@@ -124,6 +124,19 @@ $(document).ready(function () {
         }
     });
 
+    // Init wysiwyg editor
+    if ($('.wysiwyg-editor').length) {
+        $('.wysiwyg-editor').froalaEditor({
+            imageUploadURL: $(this).attr('data-upload-url'),
+
+            imageUploadParams: {
+                setup: 'editor'
+            }
+        });
+
+        $('.fr-box a:contains("Unlicensed")').parent().remove();
+    }
+
 });
 
 

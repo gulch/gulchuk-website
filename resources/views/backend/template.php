@@ -12,7 +12,6 @@
         <?php $this->insert('assets/fonts') ?>
 
         <?php $this->insert('backend/includes/css') ?>
-        <script src="/assets/vendor/jquery/3.1.0/jquery.min.js"></script>
     </head>
     <body>
         <div class="ui main stackable large menu">
@@ -42,6 +41,11 @@
             <?= $this->section('content') ?>
         </div>
 
+        <?= container('BodyCSS')->render() ?>
+
+        <script defer src="/assets/vendor/jquery/3.1.0/jquery.min.js"></script>
+        <?= container('DeferJS')->render() ?>
         <?php $this->insert('backend/includes/js') ?>
+
     </body>
 </html>

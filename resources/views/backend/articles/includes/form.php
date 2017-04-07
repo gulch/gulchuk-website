@@ -37,6 +37,7 @@
                 <label for="content">Content*</label>
                 <textarea name="content"
                           id="content"
+                          data-upload-url="/<?= config('backend_segment') ?>/images/upload"
                           class="wysiwyg-editor"
                           cols="30"
                           rows="10"><?= isset($article) ? $this->e($article->content) : '' ?></textarea>

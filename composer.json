@@ -42,7 +42,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Gulchuk\\": "app/"
+            "Gulchuk\\": "app/",
+            "gulch\\": "app/Helpers/Assets/"
         },
         "files": [
             "app/Helpers/functions.php"

@@ -21,6 +21,19 @@ $container->share('templater', function() {
 /* Queue */
 $container->share('queue', Queue::class);
 
+/* Assets */
+$container->share('DeferJS', function () {
+    return new \gulch\Assets\Asset(
+        new \gulch\Assets\Renderer\DeferJsRenderer()
+    );
+});
+
+$container->share('BodyCSS', function () {
+    return new \gulch\Assets\Asset(
+        new \gulch\Assets\Renderer\BodyCssRenderer()
+    );
+});
+
 /* Controllers */
 $container->add(\Gulchuk\Controllers\AuthController::class);
 $container->add(\Gulchuk\Controllers\Frontend\PageController::class);
