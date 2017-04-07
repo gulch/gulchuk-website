@@ -26,10 +26,6 @@ gulp.task('loader-css', function () {
         CSS_ASSETS_PATH + 'loader.css'
     ])
         .pipe(concat('lo.css'))
-        .pipe(postcss([
-            comments({removeAll: true}),
-            autoprefixer()
-        ]))
         .pipe(nano())
         .pipe(gulp.dest(BUILD_PATH));
 });

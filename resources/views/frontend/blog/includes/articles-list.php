@@ -1,4 +1,4 @@
-<?php if (sizeof($articles)) : ?>
+<?php if (count($articles)) : ?>
 
     <?php foreach ($articles as $article): ?>
         <div class="ui large header">

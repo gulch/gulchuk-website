@@ -3,7 +3,7 @@ body {
 }
 
 .cssload-container {
-    display: block;
+    /*display: block;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -11,7 +11,11 @@ body {
     bottom: 0;
     z-index: 9999;
     background: white;
-    text-align: center;
+    text-align: center;*/
+
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
 }
 
 .cssload-loading {
@@ -22,8 +26,9 @@ body {
     margin-bottom: -15px;
 }
 
-@keyframes ball-scale-multiple {
+@-webkit-keyframes ball-scale-multiple {
     0% {
+        -webkit-transform: scale(0);
         transform: scale(0);
         opacity: 0;
     }
@@ -33,6 +38,25 @@ body {
     }
 
     100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes ball-scale-multiple {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
         transform: scale(1);
         opacity: 0;
     }
@@ -40,14 +64,18 @@ body {
 
 .ball-scale-multiple {
     position: relative;
+    -webkit-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
     transform: translateY(-30px);
 }
 
 .ball-scale-multiple > div:nth-child(2) {
+    -webkit-animation-delay: -0.4s;
     animation-delay: -0.4s;
 }
 
 .ball-scale-multiple > div:nth-child(3) {
+    -webkit-animation-delay: -0.2s;
     animation-delay: -0.2s;
 }
 
@@ -57,6 +85,7 @@ body {
     height: 15px;
     border-radius: 100%;
     margin: 2px;
+    -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     position: absolute;
     left: -30px;
@@ -65,5 +94,6 @@ body {
     margin: 0;
     width: 60px;
     height: 60px;
+    -webkit-animation: ball-scale-multiple 1s 0s linear infinite;
     animation: ball-scale-multiple 1s 0s linear infinite;
 }

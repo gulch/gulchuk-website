@@ -18,7 +18,6 @@
         <?php $this->insert('frontend/includes/loader-style') ?>
 
         <?php $this->insert('assets/favicon') ?>
-        <?php $this->insert('assets/fonts') ?>
     </head>
     <body>
         <!-- Loader -->
