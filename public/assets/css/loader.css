@@ -3,19 +3,15 @@ body {
 }
 
 .cssload-container {
-    /*display: block;
+    display: block;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    right: 0;
     top: 0;
     bottom: 0;
-    z-index: 9999;
-    background: white;
-    text-align: center;*/
-
-    top: 0;
-    bottom: 0;
-    z-index: 9999;
+    z-index: 999;
+    background: #fff;
+    text-align: center;
 }
 
 .cssload-loading {

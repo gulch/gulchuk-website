@@ -43,8 +43,6 @@
 
         <?= container('BodyCSS')->write() ?>
 
-        <script defer src="/assets/vendor/jquery/3.1.0/jquery.min.js"></script>
-        <?= container('DeferJS')->write() ?>
         <?php $this->insert('backend/includes/js') ?>
 
     </body>
