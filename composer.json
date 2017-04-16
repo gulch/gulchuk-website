@@ -16,7 +16,7 @@
         "filp/whoops": "^2.0",
         "league/container": "^2.0",
         "league/plates": "^3.0",
-        "league/route": "dev-master",
+        "league/route": "^3.0",
         "illuminate/database": "^5.4",
         "illuminate/support": "^5.4",
         "zendframework/zend-diactoros": "^1.3",
@@ -39,10 +39,6 @@
         {
             "type": "git",
             "url": "https://github.com/gulch/assets"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/thephpleague/route"
         }
     ],
     "autoload": {

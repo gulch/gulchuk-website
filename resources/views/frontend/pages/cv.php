@@ -59,14 +59,42 @@
                 <strong>English language</strong> — Beginner.
             </p>
             <p>
-                I have experience working with: writing Linux Bash scripts; fully configure Nginx;
-                configure PHP-FPM; Redis Server; install and configure php-redis, php-iredis extensions;
-                PHP optimization: tunning configuration, Opcache, XCache, profiling (Blackfire);
-                brief experience with Codeception, PHPUnit;
-                install and configure TeamCity;
-                client side optimizations (js/css minification, webfont optimization, lazy loading etc.);
-                Gulp; Search Engine Optimization;
-                works with css/js frameworks: Bootstrap, Semantic UI.
+                I have experience working with:
+                <ul>
+                    <li>
+                        writing Linux Bash scripts;
+                    </li>
+                    <li>
+                        fully configure Nginx;
+                    </li>
+                    <li>
+                        configure PHP-FPM;
+                    </li>
+                    <li>
+                        install and configure Redis Server, php-redis, php-iredis extensions;
+                    </li>
+                    <li>
+                        PHP optimization: tunning configuration, Opcache, XCache, profiling (Blackfire);
+                    </li>
+                    <li>
+                        brief experience with Codeception, PHPUnit;
+                    </li>
+                    <li>
+                        install and configure TeamCity;
+                    </li>
+                    <li>
+                        client side optimizations (js/css minification, webfont optimization, lazy loading etc);
+                    </li>
+                    <li>
+                        Gulp;
+                    </li>
+                    <li>
+                        Search Engine Optimization;
+                    </li>
+                    <li>
+                        works with css/js frameworks: Bootstrap, Semantic UI.
+                    </li>
+                </ul>
             </p>
 
             <!-- Experience -->
@@ -79,7 +107,7 @@
             </p>
 
             Projects:
-            <div class="ui mini bulleted list">
+            <div class="ui tiny bulleted list">
                 <div class="ui item">
                     <div class="content">
                         <div class="header">
@@ -89,6 +117,31 @@
                         </div>
                         <div class="description">
                             Full development cycle: design, frontend, backend, seo, email campaigns configure etc.
+                            <br>
+                            Technologies/frameworks:
+                            PHP, Laravel 5, Semantic UI,
+                            Javascript, jQuery,
+                            <a href="https://developers.google.com/maps/documentation/javascript/">Google Maps JavaScript API</a>,
+                            <a href="https://developers.google.com/maps/documentation/static-maps/">Google Static Maps API</a>,
+                            <a href="https://tech.yandex.ru/maps/">Yandex Maps API</a>,
+                            <a href="https://developers.facebook.com/docs/graph-api">Facebook Graph API</a>,
+                            <a href="https://developers.facebook.com/docs/javascript">Facebook SDK for JavaScript</a>,
+                            <a href="https://vk.com/dev/openapi">VK Open API</a>,
+                            Redis, MariaDB.
+                            <br>
+                            Implemented
+                            <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua">
+                                secure HTTPS connection
+                            </a>.
+                            <br>
+                            HTTP2 Protocol support.
+                            <br>
+                            Implemented <a target="_blank" href="https://github.com/google/brotli">Brotli</a> support.
+                            <br>
+                            Additional WebP images generation for supported browsers.
+                            <br>
+                            Configured for
+                            <a target="_blank" href="https://observatory.mozilla.org/analyze.html?host=funtime.kiev.ua">maximum Web Security</a>.
                         </div>
                     </div>
                 </div>

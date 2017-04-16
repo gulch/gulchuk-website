@@ -126,9 +126,9 @@ $(document).ready(function () {
 
     // Init wysiwyg editor
     if ($('.wysiwyg-editor').length) {
-        $('.wysiwyg-editor').froalaEditor({
-            imageUploadURL: $(this).attr('data-upload-url'),
 
+        $('.wysiwyg-editor').froalaEditor({
+            imageUploadURL: $('.wysiwyg-editor').attr('data-upload-url'),
             imageUploadParams: {
                 setup: 'editor'
             }
