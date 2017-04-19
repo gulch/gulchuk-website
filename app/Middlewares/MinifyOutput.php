@@ -19,8 +19,9 @@ class MinifyOutput
     public function __invoke(Request $request, Response $response, callable $next = null)
     {
         $response = $next($request, $response);
-        $minifiedResponse = GMinify::minifyHTML($response->getBody());
-        $this->stream->write($minifiedResponse);
+
+        $minifiedBody = GMinify::minifyHTML($response->getBody());
+        $this->stream->write($minifiedBody);
 
         return $response->withBody($this->stream);
     }

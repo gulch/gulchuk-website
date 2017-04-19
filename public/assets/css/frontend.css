@@ -19,6 +19,14 @@ a {
     color: #388ad2;
 }
 
+.code-text {
+    font-family: "Operator Mono", "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p {
+    line-height: 1.5 !important;
+}
+
 .error-status {
     font-size: 8em;
     font-weight: bold;
@@ -33,7 +41,7 @@ a {
 .footer-content {
     text-align: center;
     padding: 8px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .footer-content a {
@@ -110,14 +118,24 @@ pre {
     background: rgba(238, 238, 238, .35) !important;
     border-radius: 3px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+    padding: 8px;
 }
 
 article img {
     max-width: 100%;
 }
 
-
 /* Hide Loader */
 .cssload-container {
     display: none !important;
+}
+
+nav.ui.menu .item {
+    font-size: 16px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+.ui.list > .item > .content {
+    line-height: 1.25 !important;
 }

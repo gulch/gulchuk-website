@@ -107,7 +107,7 @@
             </p>
 
             Projects:
-            <div class="ui tiny bulleted list">
+            <div class="ui bulleted list">
                 <div class="ui item">
                     <div class="content">
                         <div class="header">
@@ -156,7 +156,7 @@
                 Freelance
             </p>
             Projects:
-            <div class="ui mini bulleted list">
+            <div class="ui bulleted list">
                 <div class="ui item">
                     <div class="content">
                         <div class="header">
@@ -193,7 +193,7 @@
                 Klookva Web Studio - E-commerce, Product Development
             </p>
             Some major of all projects:
-            <div class="ui mini bulleted list">
+            <div class="ui bulleted list">
                 <div class="ui item">
                     <div class="content">
                         <div class="header">
