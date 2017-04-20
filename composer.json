@@ -29,7 +29,9 @@
     },
     "require-dev": {
         "robmorgan/phinx": "^0.8",
-        "fzaninotto/faker": "^1.6"
+        "fzaninotto/faker": "^1.6",
+        "mayflower/php-codebrowser": "^1.1",
+        "phpmd/phpmd": "^2.6"
     },
     "repositories":[
         {

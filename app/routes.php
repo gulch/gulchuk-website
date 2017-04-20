@@ -4,7 +4,8 @@ use Zend\Diactoros\Stream;
 
 use Gulchuk\Middlewares\{
     MinifyOutput,
-    AuthenticateOnly
+    AuthenticateOnly,
+    ResponseTime
 };
 
 use Gulchuk\Controllers\Frontend\{
@@ -35,6 +36,7 @@ $router
         $router->get('/', PageController::class . '::index');
         $router->get('/cv', PageController::class . '::showCV');
     })
+    ->middleware(new ResponseTime())
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 
 $router
@@ -78,4 +80,5 @@ $router
         $router->post('/images/upload', ImagesController::class . '::upload');
 
     })
+    ->middleware(new ResponseTime())
     ->middleware(new AuthenticateOnly());
