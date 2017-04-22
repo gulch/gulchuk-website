@@ -15,6 +15,8 @@
             <meta name="robots" content="noindex">
         <?php endif; ?>
 
+        <script src="/assets/js/icons-loader.js" async></script>
+
         <?php $this->insert('frontend/includes/loader-style') ?>
 
         <?php $this->insert('assets/favicon') ?>

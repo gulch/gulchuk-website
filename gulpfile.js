@@ -77,6 +77,19 @@ gulp.task('frontend-js', function () {
         .pipe(gulp.dest(BUILD_PATH));
 });
 
+gulp.task('svg-sprite', function () {
+
+    var svgstore = require('gulp-svgstore');
+    var svgmin = require('gulp-svgmin');
+    var rename = require('gulp-rename');
+
+    return gulp.src('public/assets/img/icons/*.svg')
+        .pipe(rename({prefix: 'fi-'}))
+        .pipe(svgmin())
+        .pipe(svgstore())
+        .pipe(gulp.dest('public/assets/img/'));
+});
+
 elixir(function (mix) {
     mix.version([
         BUILD_PATH + 'lo.css',

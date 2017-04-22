@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" property="stylesheet" href="/assets/vendor/semantic/2.2.6/components/divider.css">
     <link rel="stylesheet" type="text/css" property="stylesheet" href="/assets/vendor/semantic/2.2.6/components/list.css">
     <link rel="stylesheet" type="text/css" property="stylesheet" href="/assets/vendor/semantic/2.2.6/components/breadcrumb.css">
+    <link rel="stylesheet" type="text/css" property="stylesheet" href="/assets/vendor/semantic/2.2.6/components/icon.css">
 
     <link rel="stylesheet" type="text/css" property="stylesheet" href="/assets/css/frontend.css">
 

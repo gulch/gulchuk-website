@@ -8,6 +8,11 @@
     "gulp-uglify": "^2.0.0",
     "autoprefixer": "^6.0",
     "laravel-elixir": "^5.0",
-    "postcss-discard-comments": "^2.0"
+    "postcss-discard-comments": "^2.0",
+    "gulp-svgmin": "^1.2.3",
+    "gulp-svgstore": "^6.1.0"
+  },
+  "devDependencies": {
+    "gulp-rename": "^1.2.2"
   }
 }

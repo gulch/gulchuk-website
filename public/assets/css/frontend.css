@@ -139,3 +139,12 @@ nav.ui.menu .item {
 .ui.list > .item > .content {
     line-height: 1.25 !important;
 }
+
+svg.icon {
+    width: 1em;
+    height: 1em;
+}
+
+svg.icon.blue {
+    fill: #2185D0;
+}
