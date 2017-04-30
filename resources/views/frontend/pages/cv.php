@@ -134,6 +134,9 @@
                                 secure HTTPS connection
                             </a>.
                             <br>
+                            Optimized for best
+                            <a target="_blank" href="http://www.webpagetest.org/result/170424_GC_AKE/">web performance results</a>.
+                            <br>
                             HTTP2 Protocol support.
                             <br>
                             Implemented <a target="_blank" href="https://github.com/google/brotli">Brotli</a> support.
