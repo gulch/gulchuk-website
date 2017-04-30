@@ -11,6 +11,7 @@ class User extends AbstractMigration
               ->addColumn('email', 'string')
               ->addColumn('password', 'string')
               ->addColumn('created_at', 'datetime', ['null' => false, 'default' => 'CURRENT_TIMESTAMP'])
+              ->addColumn('remember_token', 'string', ['limit' => 60, 'default' => ''])
               ->addIndex('email', ['unique' => true])
               ->save();
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Phinx\Migration\AbstractMigration;
+use Phinx\Db\Adapter\MysqlAdapter;
 
 class Article extends AbstractMigration
 {
@@ -10,8 +11,8 @@ class Article extends AbstractMigration
         $article->addColumn('slug', 'string', ['limit' => 70])
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')
-            ->addColumn('is_published', 'tinyint', ['default' => 0])
-            ->addColumn('social_image', 'string')
+            ->addColumn('is_published', 'integer', ['default' => 0, 'signed' => false, 'limit' => MysqlAdapter::INT_TINY])
+            ->addColumn('social_image', 'string', ['null' => true])
             ->addColumn('seo_title', 'string', ['null' => true])
             ->addColumn('seo_description', 'string', ['null' => true])
             ->addColumn('seo_keywords', 'string', ['null' => true])

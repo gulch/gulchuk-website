@@ -8,8 +8,8 @@ class UserSeed extends AbstractSeed
     {
         $user = [
             'name' => 'Admin',
-            'email' => 'admin@website.com',
-            'password' => password_hash('my-secret-password', PASSWORD_DEFAULT)
+            'email' => 'admin@gulchuk.com',
+            'password' => password_hash('admin', PASSWORD_DEFAULT)
         ];
 
         $this->insert('User', $user);

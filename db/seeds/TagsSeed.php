@@ -17,7 +17,7 @@ class TagsSeed extends AbstractSeed
                 'content' => $faker->text(random_int(256, 1024)),
                 'seo_title' => $faker->text(50),
                 'seo_description' => $faker->text(255),
-                'seo_keywords' => $faker->text(100),
+                'seo_keywords' => str_replace(' ', ', ', $faker->text(100)),
                 'created_at' => date('Y-m-d H:i:s')
             ];
         }
