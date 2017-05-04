@@ -140,7 +140,11 @@ nav.ui.menu .item {
     line-height: 1.25 !important;
 }
 
-svg.icon {
+body > svg {
+    display: none;
+}
+
+svg.fi-icon {
     width: 1em;
     height: 1em;
 }

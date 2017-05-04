@@ -29,34 +29,46 @@
                 </div>
             </div>
 
+            <div class="ui hidden divider"></div>
+
             <!--Skills-->
-            <h2>Skills</h2>
+            <div class="ui header">
+                <i class="icon">
+                    <svg class="fi-icon">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-skills"></use>
+                    </svg>
+                </i>
+                <div class="content">
+                    Skills
+                    <div class="sub header">List of my technical skills</div>
+                </div>
+            </div>
             <p>
-                <strong>PHP</strong> — 5 years of experience.
+                <strong>PHP</strong> — 5 years of experience
                 <br>
-                <strong>Laravel</strong> — 2 years of experience.
+                <strong>Laravel</strong> — 2 years of experience
                 <br>
-                <strong>Codeigniter</strong> — 1 year of experience.
+                <strong>Codeigniter</strong> — 1 year of experience
                 <br>
-                <strong>Joomla 2.x</strong> — 2 years of experience.
+                <strong>Joomla 2.x</strong> — 2 years of experience
                 <br>
-                <strong>OOP</strong> — 4 years of experience.
+                <strong>OOP</strong> — 4 years of experience
                 <br>
-                <strong>MySQL/MariaDB</strong> — 5 years of experience.
+                <strong>MySQL/MariaDB</strong> — 5 years of experience
                 <br>
-                <strong>Redis</strong> — 2 years of experience.
+                <strong>Redis</strong> — 2 years of experience
                 <br>
-                <strong>HTML</strong> — 5 years of experience.
+                <strong>HTML</strong> — 5 years of experience
                 <br>
-                <strong>CSS</strong> — 5 years of experience.
+                <strong>CSS</strong> — 5 years of experience
                 <br>
-                <strong>Javascript</strong> — 3 years of experience.
+                <strong>Javascript</strong> — 3 years of experience
                 <br>
-                <strong>Linux</strong> — 3 years of experience.
+                <strong>Linux</strong> — 3 years of experience
                 <br>
-                <strong>Git</strong> — 3 years of experience.
+                <strong>Git</strong> — 3 years of experience
                 <br>
-                <strong>English language</strong> — Beginner.
+                <strong>English language</strong> — Beginner
             </p>
             <p>
                 I have experience working with:
@@ -83,7 +95,7 @@
                         install and configure TeamCity;
                     </li>
                     <li>
-                        client side optimizations (js/css minification, webfont optimization, lazy loading etc);
+                        client side optimization (js/css minification, webfont optimization, lazy loading etc);
                     </li>
                     <li>
                         Gulp;
@@ -97,8 +109,21 @@
                 </ul>
             </p>
 
+            <div class="ui hidden divider"></div>
+
             <!-- Experience -->
-            <h2>Experience</h2>
+            <div class="ui header">
+                <i class="icon">
+                    <svg class="fi-icon">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-experience"></use>
+                    </svg>
+                </i>
+                <div class="content">
+                    Experience
+                    <div class="sub header">List of projects in which I participated</div>
+                </div>
+            </div>
+
             <b>Full Stack Web Developer</b>
             <p>
                 Dec 2014 — Now
@@ -262,8 +287,21 @@
 
             </div>
 
+            <div class="ui hidden divider"></div>
+
             <!--Education-->
-            <h2>Education</h2>
+            <div class="ui header">
+                <i class="icon">
+                    <svg class="fi-icon">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-diploma"></use>
+                    </svg>
+                </i>
+                <div class="content">
+                    Education
+                    <div class="sub header">My goals in education field</div>
+                </div>
+            </div>
+
             <h3>Certificates</h3>
             <p>
                 2016
@@ -345,8 +383,21 @@
                 National Technical University of Ukraine "Kyiv Polytechnic Institute"
             </p>
 
+            <div class="ui hidden divider"></div>
+
             <!--Hobbies-->
-            <h2>Hobbies</h2>
+            <div class="ui header">
+                <i class="icon">
+                    <svg class="fi-icon">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-diaphragm"></use>
+                    </svg>
+                </i>
+                <div class="content">
+                    Hobbies
+                    <div class="sub header">My hobbies and what I like</div>
+                </div>
+            </div>
+
             <p>
                 As a hobby, I investigate web performance optimization techniques, try to contribute to
                 open-source

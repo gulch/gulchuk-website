@@ -9,7 +9,7 @@
             <div class="right menu">
                 <a href="/cv" class="item <?= ($_SERVER['REQUEST_URI'] === '/cv') ? 'active' : '' ?>">
                     <i class="icon">
-                        <svg class="icon">
+                        <svg class="fi-icon">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-cv"></use>
                         </svg>
                     </i>
@@ -17,7 +17,7 @@
                 </a>
                 <a href="/blog" class="item <?= ($_SERVER['REQUEST_URI'] === '/blog') ? 'active' : '' ?>">
                     <i class="icon">
-                        <svg class="icon">
+                        <svg class="fi-icon">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-blog"></use>
                         </svg>
                     </i>
