@@ -3,7 +3,7 @@
     /*путь к файлу спрайта на сервере*/
     var file = '/assets/img/icons.svg';
     /*версия спрайта*/
-    var revision = 0.3;
+    var revision = 1.0;
     if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;
     var isLocalStorage = 'localStorage' in window && window['localStorage'] !== null,
         request,

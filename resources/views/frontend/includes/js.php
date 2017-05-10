@@ -7,5 +7,3 @@
         <?php endif; ?>
     <?php endforeach; ?>
 <?php endif; ?>
-
-<script defer src="/assets/js/frontend.js"></script>

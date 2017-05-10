@@ -1,6 +1,20 @@
 <?php /** @var $this \League\Plates\Template\Template */ ?>
 
-<?php $this->layout('frontend/template') ?>
+<?php $this->layout('frontend/template',[
+    'styles' => [
+        '/assets/vendor/prism/1.6.0/prism.css'
+    ],
+    'scripts' => [
+        [
+            'load' => 'defer',
+            'src' => '/assets/vendor/prism/1.6.0/prism.js'
+        ],
+        [
+            'load' => 'defer',
+            'src' => '/assets/js/highlight.js'
+        ]
+    ]
+]) ?>
 
 <main>
     <div class="ui container blog-container">

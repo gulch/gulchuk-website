@@ -1,4 +1,4 @@
-<!--  Loader CSS  -->
+<?php /* Loader CSS */ ?>
 <style>
     <?= config('debug') ?
         file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/css/loader.css') :

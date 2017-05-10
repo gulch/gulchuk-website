@@ -24,12 +24,12 @@ class CreateArticleSocialImageJob
 
         /** @var Image $image */
         // Facebook Recommends 1200x630
-        $image = $manager->canvas(1200, 630, '#68EFAD');
+        $image = $manager->canvas(1200, 630, '#e4ff6e');
 
         // insert logo
         $logo = $manager->make(publicPath() . '/assets/img/logo-100x100.png');
         $logo->rotate(35);
-        $logo->opacity(7);
+        $logo->opacity(5);
 
         // create pattern
         $image->fill($logo);
@@ -45,7 +45,7 @@ class CreateArticleSocialImageJob
             $titleCanvas->text($string, 0, $i, function ($font) {
                 $font->file(publicPath() . '/assets/font/source-sans-pro/bold.otf');
                 $font->size(72);
-                $font->color('#414042');
+                $font->color('#4a4a4a');
                 $font->valign('top');
             });
             $i = $i + 80;

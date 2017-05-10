@@ -155,9 +155,7 @@
                             Redis, MariaDB.
                             <br>
                             Implemented
-                            <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua">
-                                secure HTTPS connection
-                            </a>.
+                            <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua">secure HTTPS connection</a>.
                             <br>
                             Optimized for best
                             <a target="_blank" href="http://www.webpagetest.org/result/170424_GC_AKE/">web performance results</a>.

@@ -1,5 +1,8 @@
 {
-	"name": "Gulchuk",
+	"name": "Gulchuk Personal Website",
+	"short_name": "Gulchuk",
+	"default_locale": "en",
+	"description": "Volodymyr Gulchuk Personal Website",
 	"icons": [
 		{
 			"src": "\/assets\/favicon\/android-chrome-192x192.png",
@@ -12,6 +15,6 @@
 			"type": "image\/png"
 		}
 	],
-	"theme_color": "#ffffff",
+	"theme_color": "#000",
 	"display": "standalone"
 }
