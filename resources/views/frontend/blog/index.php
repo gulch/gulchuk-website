@@ -1,6 +1,10 @@
 <?php /** @var $this \League\Plates\Template\Template */ ?>
 
-<?php $this->layout('frontend/template') ?>
+<?php $this->layout('frontend/template', [
+    'title' => 'Blog :: Articles :: Gulchuk Website',
+    'description' => 'List of articles, publications about web development, technologies etc.',
+    'keywords' => 'blog, articles, gulchuk, publications, web, dev, development',
+]) ?>
 
 <main>
     <div class="ui container blog-container">

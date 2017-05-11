@@ -1,6 +1,9 @@
 <?php /** @var $this \League\Plates\Template\Template */ ?>
 
 <?php $this->layout('frontend/template',[
+    'title' => $this->e($article->seo_title),
+    'description' => $this->e($article->seo_description),
+    'keywords' => $this->e($article->seo_keywords),
     'styles' => [
         '/assets/vendor/prism/1.6.0/prism.css'
     ],

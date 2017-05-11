@@ -3,7 +3,9 @@
 <?php
     $this->layout('frontend/template', [
         'noindex' => true,
-        'title' => 'CV :: Gulchuk :: Personal Website'
+        'title' => 'CV :: Gulchuk Volodymyr',
+        'description' => '',
+        'keywords' => '',
     ])
 ?>
 

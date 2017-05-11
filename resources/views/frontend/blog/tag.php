@@ -2,6 +2,9 @@
 
 <?php
 $this->layout('frontend/template', [
+    'title' => $this->e($tag->seo_title),
+    'description' => $this->e($tag->seo_description),
+    'keywords' => $this->e($tag->seo_keywords),
     'styles' => [
         '/assets/vendor/prism/1.6.0/prism.css',
     ],

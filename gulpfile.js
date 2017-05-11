@@ -19,7 +19,8 @@ gulp.task('production', [
     'loader-css',
     'fonts-css',
     'frontend-css',
-    'frontend-js'
+    /*'frontend-js',*/
+    'svg-icons-loader-js'
 ]);
 
 gulp.task('loader-css', function () {
@@ -113,7 +114,7 @@ elixir(function (mix) {
     mix.version([
         BUILD_PATH + 'lo.css',
         BUILD_PATH + 'fo.css',
-        BUILD_PATH + 'f.js',
+        /*BUILD_PATH + 'f.js',*/
         BUILD_PATH + 'f.css',
         BUILD_PATH + 'ilo.js',
     ]);

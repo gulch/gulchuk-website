@@ -8,8 +8,8 @@
         <title>
             <?= $title ?? 'Gulchuk :: Personal Website' ?>
         </title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
+        <meta name="description" content="<?= $description ?? 'Personal Website. Blog. Articles about web development.' ?>">
+        <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
 
         <?php if (isset($noindex)): ?>
             <meta name="robots" content="noindex">

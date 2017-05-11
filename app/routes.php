@@ -45,6 +45,7 @@ $router
         $router->get('/tag/{slug:slug}', BlogController::class . '::tag');
         $router->get('{slug:slug}', BlogController::class . '::show');
     })
+    ->middleware(new ResponseTime())
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
 
 // Auth routes
