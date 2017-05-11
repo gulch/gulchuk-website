@@ -1,5 +1,5 @@
 
-var initPrism = function () {
+function initPrism () {
     if (typeof Prism !== "undefined") {
         var elements = document.querySelectorAll('pre[class*="language-"]');
         for (var i = 0, element; element = elements[i++];) {

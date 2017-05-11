@@ -6,17 +6,13 @@ $this->layout('frontend/template', [
     'description' => $this->e($tag->seo_description),
     'keywords' => $this->e($tag->seo_keywords),
     'styles' => [
-        '/assets/vendor/prism/1.6.0/prism.css',
+        elixir('assets/processed/h.css')
     ],
     'scripts' => [
         [
-            'load' => 'defer data-default-language="markup"',
-            'src' => '/assets/vendor/prism/1.6.0/prism.js'
-        ],
-        [
             'load' => 'defer',
-            'src' => '/assets/js/highlight.js'
-        ],
+            'src' => elixir('assets/processed/h.js')
+        ]
     ]
 ])
 ?>

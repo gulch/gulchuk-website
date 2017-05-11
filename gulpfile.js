@@ -20,6 +20,8 @@ gulp.task('production', [
     'fonts-css',
     'frontend-css',
     /*'frontend-js',*/
+    'highlight-css',
+    'highlight-js',
     'svg-icons-loader-js'
 ]);
 
@@ -88,6 +90,29 @@ gulp.task('frontend-js', function () {
         .pipe(gulp.dest(BUILD_PATH));
 });
 
+gulp.task('highlight-css', function () {
+    return gulp.src([
+        VENDOR_ASSETS_PATH + 'prism/1.6.0/prism.css'
+    ])
+        .pipe(concat('h.css'))
+        .pipe(postcss([
+            comments({removeAll: true}),
+            autoprefixer()
+        ]))
+        .pipe(nano())
+        .pipe(gulp.dest(BUILD_PATH));
+});
+
+gulp.task('highlight-js', function () {
+    return gulp.src([
+        VENDOR_ASSETS_PATH + 'prism/1.6.0/prism.js',
+        JS_ASSETS_PATH + 'highlight.js'
+    ])
+        .pipe(concat('h.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(BUILD_PATH));
+});
+
 gulp.task('svg-icons-loader-js', function () {
     return gulp.src([
         JS_ASSETS_PATH + 'icons-loader.js'
@@ -116,6 +141,8 @@ elixir(function (mix) {
         BUILD_PATH + 'fo.css',
         /*BUILD_PATH + 'f.js',*/
         BUILD_PATH + 'f.css',
+        BUILD_PATH + 'h.css',
+        BUILD_PATH + 'h.js',
         BUILD_PATH + 'ilo.js',
     ]);
 });

@@ -5,16 +5,12 @@
     'description' => $this->e($article->seo_description),
     'keywords' => $this->e($article->seo_keywords),
     'styles' => [
-        '/assets/vendor/prism/1.6.0/prism.css'
+        elixir('assets/processed/h.css')
     ],
     'scripts' => [
         [
             'load' => 'defer',
-            'src' => '/assets/vendor/prism/1.6.0/prism.js'
-        ],
-        [
-            'load' => 'defer',
-            'src' => '/assets/js/highlight.js'
+            'src' => elixir('assets/processed/h.js')
         ]
     ]
 ]) ?>
