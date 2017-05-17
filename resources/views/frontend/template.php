@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Disable tap highlight on IE -->
+        <meta name="msapplication-tap-highlight" content="no">
 
-        <title>
-            <?= $title ?? 'Gulchuk :: Personal Website' ?>
-        </title>
+        <title><?= $title ?? 'Gulchuk :: Personal Website' ?></title>
         <meta name="description" content="<?= $description ?? 'Personal Website. Blog. Articles about web development.' ?>">
         <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
 
@@ -47,7 +47,9 @@
 
         <?php $this->insert('frontend/includes/footer') ?>
 
+        <?php $this->insert('frontend/includes/counters') ?>
         <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
         <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
+
     </body>
 </html>

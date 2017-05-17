@@ -22,6 +22,7 @@ gulp.task('production', [
     /*'frontend-js',*/
     'highlight-css',
     'highlight-js',
+    'counters-js',
     'svg-icons-loader-js'
 ]);
 
@@ -113,6 +114,15 @@ gulp.task('highlight-js', function () {
         .pipe(gulp.dest(BUILD_PATH));
 });
 
+gulp.task('counters-js', function () {
+    return gulp.src([
+        JS_ASSETS_PATH + 'counters.js'
+    ])
+        .pipe(concat('c.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(BUILD_PATH));
+});
+
 gulp.task('svg-icons-loader-js', function () {
     return gulp.src([
         JS_ASSETS_PATH + 'icons-loader.js'
@@ -143,6 +153,7 @@ elixir(function (mix) {
         BUILD_PATH + 'f.css',
         BUILD_PATH + 'h.css',
         BUILD_PATH + 'h.js',
+        BUILD_PATH + 'c.js',
         BUILD_PATH + 'ilo.js',
     ]);
 });
