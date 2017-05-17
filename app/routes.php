@@ -5,7 +5,8 @@ use Zend\Diactoros\Stream;
 use Gulchuk\Middlewares\{
     MinifyOutput,
     AuthenticateOnly,
-    ResponseTime
+    ResponseTime,
+    ContentSecurityPolicy
 };
 
 use Gulchuk\Controllers\Frontend\{
@@ -35,18 +36,13 @@ $router
     ->group('/', function ($router) {
         $router->get('/', PageController::class . '::index');
         $router->get('/cv', PageController::class . '::showCV');
+        $router->get('/blog', BlogController::class . '::index');
+        $router->get('/blog/tag/{slug:slug}', BlogController::class . '::tag');
+        $router->get('/blog/{slug:slug}', BlogController::class . '::show');
     })
     ->middleware(new ResponseTime())
-    ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
-
-$router
-    ->group('/blog', function ($router) {
-        $router->get('/', BlogController::class . '::index');
-        $router->get('/tag/{slug:slug}', BlogController::class . '::tag');
-        $router->get('{slug:slug}', BlogController::class . '::show');
-    })
-    ->middleware(new ResponseTime())
-    ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')));
+    ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')))
+    ->middleware(new ContentSecurityPolicy());
 
 // Auth routes
 $router
