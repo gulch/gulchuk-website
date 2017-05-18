@@ -16,4 +16,9 @@ class PageController extends BaseController
     {
         return $this->httpResponse($this->view('frontend/pages/cv'));
     }
+
+    public function showBooks() : ResponseInterface
+    {
+        return $this->httpResponse($this->view('frontend/pages/books'));
+    }
 }

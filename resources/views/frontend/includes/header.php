@@ -15,6 +15,14 @@
                     </i>
                     CV
                 </a>
+                <a href="/books" class="item <?= ($_SERVER['REQUEST_URI'] === '/books') ? 'active' : '' ?>">
+                    <i class="icon">
+                        <svg class="fi-icon">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-books"></use>
+                        </svg>
+                    </i>
+                    Books
+                </a>
                 <a href="/blog" class="item <?= ($_SERVER['REQUEST_URI'] === '/blog') ? 'active' : '' ?>">
                     <i class="icon">
                         <svg class="fi-icon">

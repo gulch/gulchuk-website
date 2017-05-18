@@ -36,6 +36,7 @@ $router
     ->group('/', function ($router) {
         $router->get('/', PageController::class . '::index');
         $router->get('/cv', PageController::class . '::showCV');
+        $router->get('/books', PageController::class . '::showBooks');
         $router->get('/blog', BlogController::class . '::index');
         $router->get('/blog/tag/{slug:slug}', BlogController::class . '::tag');
         $router->get('/blog/{slug:slug}', BlogController::class . '::show');
