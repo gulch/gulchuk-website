@@ -15,6 +15,8 @@
             <meta name="robots" content="noindex">
         <?php endif; ?>
 
+        <?php $this->insert('frontend/includes/preload') ?>
+
         <?php $this->insert('frontend/includes/svg-icons-loader') ?>
 
         <?php $this->insert('frontend/includes/loader-style') ?>
@@ -50,6 +52,5 @@
         <?php $this->insert('frontend/includes/counters') ?>
         <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
         <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
-
     </body>
 </html>

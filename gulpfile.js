@@ -141,20 +141,8 @@ gulp.task('svg-sprite', function () {
     return gulp.src('public/assets/img/icons/*.svg')
         .pipe(rename({prefix: 'fi-'}))
         .pipe(svgmin())
-        .pipe(svgstore())
-        .pipe(gulp.dest('public/assets/img/'));
+        .pipe(svgstore({
+            inlineSvg: true
+        }))
+        .pipe(gulp.dest(BUILD_PATH));
 });
-
-/*
-elixir(function (mix) {
-    mix.version([
-        BUILD_PATH + 'lo.css',
-        BUILD_PATH + 'fo.css',
-        BUILD_PATH + 'f.css',
-        BUILD_PATH + 'h.css',
-        BUILD_PATH + 'h.js',
-        BUILD_PATH + 'c.js',
-        BUILD_PATH + 'ilo.js',
-    ]);
-});
-*/

@@ -1,9 +1,12 @@
 ;(function (window, document) {
     'use strict';
-    /*путь к файлу спрайта на сервере*/
-    var file = '/assets/img/icons.svg';
+    
     /*версия спрайта*/
-    var revision = 1.0;
+    var revision = '1.0.0';
+
+    /*путь к файлу спрайта на сервере*/
+    var file = '/build/' + revision + '/icons.svg';
+
     if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;
     var isLocalStorage = 'localStorage' in window && window['localStorage'] !== null,
         request,
@@ -15,8 +18,8 @@
             if (document.body) insertIT();
             else document.addEventListener('DOMContentLoaded', insertIT);
         };
-    if (isLocalStorage && localStorage.getItem('inlineSVGrev') == revision) {
-        data = localStorage.getItem('inlineSVGdata');
+    if (isLocalStorage && localStorage.getItem('SVGIconsRev') == revision) {
+        data = localStorage.getItem('SVGIconsData');
         if (data) {
             insert();
             return true;
@@ -30,8 +33,8 @@
                 data = request.responseText;
                 insert();
                 if (isLocalStorage) {
-                    localStorage.setItem('inlineSVGdata', data);
-                    localStorage.setItem('inlineSVGrev', revision);
+                    localStorage.setItem('SVGIconsData', data);
+                    localStorage.setItem('SVGIconsRev', revision);
                 }
             }
         }
