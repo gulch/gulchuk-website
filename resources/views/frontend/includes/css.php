@@ -19,8 +19,8 @@
 
 <?php else: ?>
 
-    <link rel="stylesheet" type="text/css" property="stylesheet" href="<?= elixir('assets/processed/fo.css') ?>">
-    <link rel="stylesheet" type="text/css" property="stylesheet" href="<?= elixir('assets/processed/f.css') ?>">
+    <link rel="stylesheet" type="text/css" property="stylesheet" href="/build/<?= config('app_version') ?>/fo.css">
+    <link rel="stylesheet" type="text/css" property="stylesheet" href="/build/<?= config('app_version') ?>/f.css">
 
 <?php endif; ?>
 

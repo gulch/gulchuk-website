@@ -1,7 +1,8 @@
 {
-	"name": "Gulchuk Personal Website",
-	"short_name": "Gulchuk",
 	"default_locale": "en",
+	"dir": "ltr",
+	"short_name": "Gulchuk",
+	"name": "Gulchuk Personal Website",
 	"description": "Volodymyr Gulchuk Personal Website",
 	"icons": [
 		{
@@ -15,6 +16,9 @@
 			"type": "image\/png"
 		}
 	],
-	"theme_color": "#000",
-	"display": "standalone"
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "natural",
+	"theme_color": "#38383a",
+	"background_color": "#38383a"
 }

@@ -1,14 +1,14 @@
 var gulp = require('gulp');
-var elixir = require('laravel-elixir');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var nano = require('gulp-cssnano');
 var comments = require('postcss-discard-comments');
-var uncss = require('gulp-uncss');
+/*var uncss = require('gulp-uncss');*/
 
-var BUILD_PATH = 'public/assets/processed/';
+var APP_VERSION = '1.0.0';
+var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
 var CSS_ASSETS_PATH = 'public/assets/css/';
@@ -145,11 +145,11 @@ gulp.task('svg-sprite', function () {
         .pipe(gulp.dest('public/assets/img/'));
 });
 
+/*
 elixir(function (mix) {
     mix.version([
         BUILD_PATH + 'lo.css',
         BUILD_PATH + 'fo.css',
-        /*BUILD_PATH + 'f.js',*/
         BUILD_PATH + 'f.css',
         BUILD_PATH + 'h.css',
         BUILD_PATH + 'h.js',
@@ -157,3 +157,4 @@ elixir(function (mix) {
         BUILD_PATH + 'ilo.js',
     ]);
 });
+*/

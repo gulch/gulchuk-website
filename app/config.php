@@ -7,6 +7,8 @@ return [
     'app_key'              => env('APP_KEY', 'your-app-secret-key'),
     'app_domain'           => env('APP_DOMAIN', 'gulchuk.com'),
     'app_url'              => env('APP_URL', 'https://gulchuk.com'),
+    'app_version'          => env('APP_VERSION', '1.0.0'),
+
 
     'images_path_prefix'   => env('IMAGES_PATH_PREFIX', '/uploads/img'),
     'images_path_original' => env('IMAGES_PATH_ORIGINAL', '/uploads/img/original'),

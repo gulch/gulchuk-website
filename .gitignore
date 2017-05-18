@@ -1,13 +1,8 @@
 phinx.yml
 .env
-codeception.xml
 composer.lock
 /.idea
 /vendor
 /cache
-/tests/_output/*
-/public/uploads/
 /node_modules
-/public/assets/processed/
-/public/build/
 /public/assets/js/counters.js

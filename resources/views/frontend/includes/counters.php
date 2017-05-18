@@ -4,6 +4,6 @@
 
 <?php else: ?>
 
-    <script async src="<?= elixir('assets/processed/c.js') ?>"></script>
+    <script async src="/build/<?= config('app_version') ?>/c.js"></script>
 
 <?php endif; ?>

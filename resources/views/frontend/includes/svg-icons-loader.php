@@ -1,5 +1,9 @@
 <?php if(config('debug')): ?>
-    <script src="/assets/js/icons-loader.js" async></script>
+
+    <script async src="/assets/js/icons-loader.js"></script>
+
 <?php else: ?>
-    <script src="<?= elixir('assets/processed/ilo.js') ?>" async></script>
+
+    <script async src="/build/<?= config('app_version') ?>/ilo.js"></script>
+
 <?php endif; ?>
