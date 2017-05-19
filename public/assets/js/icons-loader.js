@@ -2,7 +2,7 @@
     'use strict';
     
     /*версия спрайта*/
-    var revision = '1.0.0';
+    var revision = '1.0.1';
 
     /*путь к файлу спрайта на сервере*/
     var file = '/build/' + revision + '/icons.svg';

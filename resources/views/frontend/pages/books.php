@@ -142,6 +142,18 @@
         </div>
 
         <div class="ui small header">
+            <a href="https://leanpub.com/build-apis-you-wont-hate"
+               target="_blank"
+               rel="nofollow noopener"
+            >
+                Build APIs You Won't Hate
+            </a>
+            <div class="sub header">
+                Phil Sturgeon
+            </div>
+        </div>
+
+        <div class="ui small header">
             <a href="http://shop.oreilly.com/product/0636920042860.do"
                target="_blank"
                rel="nofollow noopener"
@@ -153,6 +165,53 @@
             </div>
         </div>
 
+        <div class="ui small header">
+            <a href="https://www.packtpub.com/networking-and-servers/nginx-high-performance"
+               target="_blank"
+               rel="nofollow noopener"
+            >
+                NGINX High Performance
+            </a>
+            <div class="sub header">
+                Rahul Sharma
+            </div>
+        </div>
+
+        <div class="ui small header">
+            <a href="https://books.google.com.ua/books/about/Getting_Started_with_Web_Performance.html?id=CuP8oAEACAAJ"
+               target="_blank"
+               rel="nofollow noopener"
+            >
+                Getting Started with Web Performance: Optimizing the User Experience
+            </a>
+            <div class="sub header">
+                Daniel Austin
+            </div>
+        </div>
+
+        <div class="ui small header">
+            <a href="https://leanpub.com/scalingphp"
+               target="_blank"
+               rel="nofollow noopener"
+            >
+                Scaling PHP Applications
+            </a>
+            <div class="sub header">
+                Steve Corona
+            </div>
+        </div>
+
+        <div class="ui small header">
+            <a href="https://leanpub.com/cleanphp"
+               target="_blank"
+               rel="nofollow noopener"
+            >
+                The Clean Architecture in PHP
+            </a>
+            <div class="sub header">
+                Kristopher Wilson
+            </div>
+        </div>
 
     </div>
 </main>

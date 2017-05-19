@@ -7,7 +7,7 @@ var nano = require('gulp-cssnano');
 var comments = require('postcss-discard-comments');
 /*var uncss = require('gulp-uncss');*/
 
-var APP_VERSION = '1.0.0';
+var APP_VERSION = '1.0.1';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
