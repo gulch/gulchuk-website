@@ -1,8 +1,8 @@
 <?php
 
-namespace Gulchuk\Repositories;
+namespace App\Repositories;
 
-use Gulchuk\Models\Article;
+use App\Models\Article;
 
 class ArticlesRepository extends BaseRepository
 {

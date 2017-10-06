@@ -1,8 +1,8 @@
 <?php
 
-namespace Gulchuk\Repositories;
+namespace App\Repositories;
 
-use Gulchuk\Models\Tag;
+use App\Models\Tag;
 
 class TagsRepository extends BaseRepository
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Gulchuk\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use Psr\Http\Message\ResponseInterface;
-use Gulchuk\Controllers\BaseController;
-use Gulchuk\Repositories\TagsRepository;
+use App\Controllers\BaseController;
+use App\Repositories\TagsRepository;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterInterface;
 

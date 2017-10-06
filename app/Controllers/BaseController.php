@@ -1,6 +1,6 @@
 <?php
 
-namespace Gulchuk\Controllers;
+namespace App\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -16,7 +16,7 @@ return [
 
     'queue_name'           => 'gulchuk.com:queue',
     'queue_map'            => [
-        'CreateWebp' => '\Gulchuk\Jobs\CreateWebpJob::handle',
-        'CreateArticleSocialImage' => '\Gulchuk\Jobs\CreateArticleSocialImageJob::handle',
+        'CreateWebp' => '\App\Jobs\CreateWebpJob::handle',
+        'CreateArticleSocialImage' => '\App\Jobs\CreateArticleSocialImageJob::handle',
     ]
 ];

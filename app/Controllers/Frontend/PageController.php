@@ -1,9 +1,9 @@
 <?php
 
-namespace Gulchuk\Controllers\Frontend;
+namespace App\Controllers\Frontend;
 
 use Psr\Http\Message\ResponseInterface;
-use Gulchuk\Controllers\BaseController;
+use App\Controllers\BaseController;
 
 class PageController extends BaseController
 {

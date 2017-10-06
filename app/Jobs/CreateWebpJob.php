@@ -1,6 +1,7 @@
 <?php
 
-namespace Gulchuk\Jobs;
+namespace App\Jobs;
+
 use Bernard\Message;
 
 class CreateWebpJob

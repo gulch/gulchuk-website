@@ -1,6 +1,6 @@
 <?php
 
-namespace Gulchuk\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -29,7 +29,7 @@ class Tag extends Eloquent
 
     public function articles()
     {
-        return $this->belongsToMany('Gulchuk\Models\Article', 'Article_Tag', 'id__Tag', 'id__Article');
+        return $this->belongsToMany('App\Models\Article', 'Article_Tag', 'id__Tag', 'id__Article');
     }
 
     /* ----- Custom Functions ----- */

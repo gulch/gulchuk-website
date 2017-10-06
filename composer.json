@@ -47,7 +47,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Gulchuk\\": "app/"
+            "App\\": "app/"
         },
         "files": [
             "app/Helpers/functions.php"

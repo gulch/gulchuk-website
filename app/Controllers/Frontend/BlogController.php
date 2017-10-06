@@ -1,11 +1,11 @@
 <?php
 
-namespace Gulchuk\Controllers\Frontend;
+namespace App\Controllers\Frontend;
 
-use Gulchuk\Repositories\ArticlesRepository;
-use Gulchuk\Repositories\TagsRepository;
+use App\Repositories\ArticlesRepository;
+use App\Repositories\TagsRepository;
 use Psr\Http\Message\ResponseInterface;
-use Gulchuk\Controllers\BaseController;
+use App\Controllers\BaseController;
 
 class BlogController extends BaseController
 {

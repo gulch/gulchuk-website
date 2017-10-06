@@ -1,8 +1,8 @@
 <?php
 
-namespace Gulchuk\Controllers\Backend;
+namespace App\Controllers\Backend;
 
-use Gulchuk\Controllers\BaseController;
+use App\Controllers\BaseController;
 
 class DashboardController extends BaseController
 {

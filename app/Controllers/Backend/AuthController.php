@@ -1,10 +1,10 @@
 <?php
 
-namespace Gulchuk\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use Psr\Http\Message\ResponseInterface;
-use Gulchuk\Repositories\UsersRepository;
-use Gulchuk\Controllers\BaseController;
+use App\Repositories\UsersRepository;
+use App\Controllers\BaseController;
 use Auth;
 
 class AuthController extends BaseController

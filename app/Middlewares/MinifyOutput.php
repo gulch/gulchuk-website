@@ -1,6 +1,6 @@
 <?php
 
-namespace Gulchuk\Middlewares;
+namespace App\Middlewares;
 
 use gulch\GMinify;
 use Psr\Http\Message\StreamInterface;

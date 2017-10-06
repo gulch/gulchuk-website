@@ -1,9 +1,9 @@
 <?php
 
-namespace Gulchuk\Jobs;
+namespace App\Jobs;
 
 use Bernard\Message;
-use Gulchuk\Repositories\ArticlesRepository;
+use App\Repositories\ArticlesRepository;
 use Intervention\Image\ImageManager;
 use \Intervention\Image\Image;
 

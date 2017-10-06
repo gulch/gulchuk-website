@@ -2,21 +2,21 @@
 
 use Zend\Diactoros\Stream;
 
-use Gulchuk\Middlewares\{
+use App\Middlewares\{
     MinifyOutput,
     AuthenticateOnly,
     ResponseTime,
     ContentSecurityPolicy
 };
 
-use Gulchuk\Controllers\Frontend\{
+use App\Controllers\Frontend\{
     PageController,
     BlogController,
     SitemapController,
     FeedController
 };
 
-use Gulchuk\Controllers\Backend\{
+use App\Controllers\Backend\{
     AuthController,
     DashboardController,
     TagsController,
@@ -41,9 +41,9 @@ $router
         $router->get('/blog/tag/{slug:slug}', BlogController::class . '::tag');
         $router->get('/blog/{slug:slug}', BlogController::class . '::show');
     })
-    ->middleware(new ResponseTime())
+    ->middleware(new ResponseTime)
     ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')))
-    ->middleware(new ContentSecurityPolicy());
+    ->middleware(new ContentSecurityPolicy);
 
 // Auth routes
 $router
@@ -78,5 +78,5 @@ $router
         $router->post('/images/upload', ImagesController::class . '::upload');
 
     })
-    ->middleware(new ResponseTime())
-    ->middleware(new AuthenticateOnly());
+    ->middleware(new ResponseTime)
+    ->middleware(new AuthenticateOnly);

@@ -1,12 +1,12 @@
 <?php
 
-namespace Gulchuk\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Illuminate\Support\Str;
-use Gulchuk\Controllers\BaseController;
-use Gulchuk\Services\ImageService;
+use App\Controllers\BaseController;
+use App\Services\ImageService;
 
 class ImagesController extends BaseController
 {

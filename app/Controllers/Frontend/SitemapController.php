@@ -1,8 +1,10 @@
-<?php namespace Gulchuk\Controllers\Frontend;
+<?php
 
-use Gulchuk\Controllers\BaseController;
-use Gulchuk\Repositories\ArticlesRepository;
-use Gulchuk\Repositories\TagsRepository;
+namespace App\Controllers\Frontend;
+
+use App\Controllers\BaseController;
+use App\Repositories\ArticlesRepository;
+use App\Repositories\TagsRepository;
 use Psr\Http\Message\ResponseInterface;
 use samdark\sitemap\Sitemap;
 

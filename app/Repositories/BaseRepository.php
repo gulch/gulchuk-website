@@ -1,6 +1,6 @@
 <?php
 
-namespace Gulchuk\Repositories;
+namespace App\Repositories;
 
 
 use Illuminate\Database\Events\TransactionBeginning;

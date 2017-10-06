@@ -1,7 +1,9 @@
-<?php namespace Gulchuk\Controllers\Frontend;
+<?php
 
-use Gulchuk\Controllers\BaseController;
-use Gulchuk\Repositories\ArticlesRepository;
+namespace App\Controllers\Frontend;
+
+use App\Controllers\BaseController;
+use App\Repositories\ArticlesRepository;
 use Psr\Http\Message\ResponseInterface;
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Feed;

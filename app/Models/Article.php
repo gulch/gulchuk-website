@@ -1,6 +1,6 @@
 <?php
 
-namespace Gulchuk\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -31,11 +31,11 @@ class Article extends Eloquent
 
     public function image()
     {
-        return $this->belongsTo('Gulchuk\Models\Image','id__Image');
+        return $this->belongsTo('App\Models\Image','id__Image');
     }
 
     public function tags()
     {
-        return $this->belongsToMany('Gulchuk\Models\Tag', 'Article_Tag', 'id__Article', 'id__Tag');
+        return $this->belongsToMany('App\Models\Tag', 'Article_Tag', 'id__Article', 'id__Tag');
     }
 }

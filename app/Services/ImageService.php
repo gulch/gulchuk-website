@@ -1,6 +1,7 @@
-<?php namespace Gulchuk\Services;
+<?php
 
-use Intervention\Image\Image;
+namespace App\Services;
+
 use Intervention\Image\ImageManager;
 
 class ImageService
@@ -9,7 +10,7 @@ class ImageService
     {
         $im = new ImageManager(['driver' => 'imagick']);
 
-        /** @var Image $image */
+        /** @var \Intervention\Image\Image $image */
         $image = $im->make($source);
 
         if (!$image) {

@@ -35,17 +35,17 @@ $container->share('BodyCSS', function () {
 });
 
 /* Controllers */
-$container->add(\Gulchuk\Controllers\AuthController::class);
-$container->add(\Gulchuk\Controllers\Frontend\PageController::class);
-$container->add(\Gulchuk\Controllers\Frontend\BlogController::class);
-$container->add(\Gulchuk\Controllers\Frontend\SitemapController::class);
-$container->add(\Gulchuk\Controllers\Backend\DashboardController::class);
+$container->add(\App\Controllers\AuthController::class);
+$container->add(\App\Controllers\Frontend\PageController::class);
+$container->add(\App\Controllers\Frontend\BlogController::class);
+$container->add(\App\Controllers\Frontend\SitemapController::class);
+$container->add(\App\Controllers\Backend\DashboardController::class);
 $container
-    ->add(\Gulchuk\Controllers\Backend\TagsController::class)
-    ->withArgument(new \Gulchuk\Repositories\TagsRepository());
+    ->add(\App\Controllers\Backend\TagsController::class)
+    ->withArgument(new \App\Repositories\TagsRepository());
 $container
-    ->add(\Gulchuk\Controllers\Backend\ArticlesController::class)
-    ->withArgument(new \Gulchuk\Repositories\ArticlesRepository());
+    ->add(\App\Controllers\Backend\ArticlesController::class)
+    ->withArgument(new \App\Repositories\ArticlesRepository());
 
 
 return $container;
