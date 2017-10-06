@@ -4,15 +4,15 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "gulch",
-            "email": "contact@gulch.in.ua",
+            "name": "Volodymyr Gulchuk",
+            "email": "volodymyr@gulchuk",
             "role": "Developer"
         }
     ],
     "require": {
         "bernard/bernard": "^0.12.3",
         "filp/whoops": "^2.0",
-        "gulch/assets": "dev-master",
+        "gulch/assets": "^0.1",
         "gulch/gminify": "dev-master",
         "illuminate/database": "^5.4",
         "illuminate/support": "^5.4",
@@ -63,7 +63,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Gulchuk\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/"
         }
     },
     "config": {
