@@ -1,10 +1,7 @@
 ;(function (window, document) {
     'use strict';
-    
-    /*версия спрайта*/
-    var revision = '1.0.1';
 
-    /*путь к файлу спрайта на сервере*/
+    var revision = '1.0.1';
     var file = '/build/' + revision + '/icons.svg';
 
     if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;

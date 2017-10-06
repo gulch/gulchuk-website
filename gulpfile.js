@@ -5,7 +5,6 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var nano = require('gulp-cssnano');
 var comments = require('postcss-discard-comments');
-/*var uncss = require('gulp-uncss');*/
 
 var APP_VERSION = '1.0.1';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
@@ -65,15 +64,6 @@ gulp.task('frontend-css', function () {
         CSS_ASSETS_PATH + 'frontend.css'
     ])
         .pipe(concat('f.css'))
-        /*.pipe(uncss({
-            html: [
-                'https://dev.gulchuk.com',
-                'https://dev.gulchuk.com/cv',
-                'https://dev.gulchuk.com/blog',
-                'https://dev.gulchuk.com/blog/tag/redis',
-                'https://dev.gulchuk.com/blog/change-engine-for-all-mysql-database-tables'
-            ]
-        }))*/
         .pipe(postcss([
             comments({removeAll: true}),
             autoprefixer()

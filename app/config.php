@@ -9,7 +9,6 @@ return [
     'app_url'              => env('APP_URL', 'https://gulchuk.com'),
     'app_version'          => env('APP_VERSION', '1.0.0'),
 
-
     'images_path_prefix'   => env('IMAGES_PATH_PREFIX', '/uploads/img'),
     'images_path_original' => env('IMAGES_PATH_ORIGINAL', '/uploads/img/original'),
     'images_path_editor'   => env('IMAGES_PATH_EDITOR', '/uploads/img/editor'),

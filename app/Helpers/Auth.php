@@ -4,7 +4,7 @@ class Auth
 {
     public static function startSession(): void
     {
-        \session_start();
+        session_start();
     }
 
     public static function destroySession(): void
@@ -13,7 +13,7 @@ class Auth
             unset($_SESSION['user']);
         }
 
-        \session_destroy();
+        session_destroy();
     }
 
     public static function check() : bool
@@ -61,7 +61,7 @@ class Auth
             setcookie(
                 'remember',
                 $remember_token,
-                \time() + 172800, // +48 hours
+                time() + 172800, // +48 hours
                 '/',
                 config('app_domain'),
                 true, // secure
@@ -72,7 +72,7 @@ class Auth
 
     public static function logout()
     {
-        \setcookie('remember', '', \time() - 3600, '/', config('app_domain'), true, true);
+        setcookie('remember', '', time() - 3600, '/', config('app_domain'), true, true);
         static::destroySession();
     }
 
@@ -105,8 +105,8 @@ class Auth
      */
     public static function generateRememberToken(int $size = 16) : string
     {
-        $random_bytes = \random_bytes($size);
-        $token = \substr(\str_replace(['/', '+', '='], '', \base64_encode($random_bytes)), 0, $size);
+        $random_bytes = random_bytes($size);
+        $token = substr(str_replace(['/', '+', '='], '', base64_encode($random_bytes)), 0, $size);
 
         return $token;
     }
