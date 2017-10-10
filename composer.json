@@ -5,7 +5,7 @@
     "authors": [
         {
             "name": "Volodymyr Gulchuk",
-            "email": "volodymyr@gulchuk",
+            "email": "volodymyr@gulchuk.com",
             "role": "Developer"
         }
     ],
@@ -28,7 +28,7 @@
         "zendframework/zend-servicemanager": "^3.3"
     },
     "require-dev": {
-        "robmorgan/phinx": "^0.8",
+        "robmorgan/phinx": "^0.9",
         "fzaninotto/faker": "^1.6"
     },
     "repositories":[
