@@ -5,14 +5,14 @@
     "authors": [
         {
             "name": "gulch",
-            "email": "contact@gulch.in.ua",
+            "email": "volodymyr@gulchuk.com",
             "role": "Developer"
         }
     ],
     "require": {
         "bernard/bernard": "^0.12.3",
         "filp/whoops": "^2.0",
-        "gulch/assets": "dev-master",
+        "gulch/assets": "^0.1",
         "gulch/gminify": "dev-master",
         "illuminate/database": "^5.4",
         "illuminate/support": "^5.4",
@@ -29,11 +29,7 @@
     },
     "require-dev": {
         "robmorgan/phinx": "^0.8",
-        "fzaninotto/faker": "^1.6",
-        "mayflower/php-codebrowser": "^1.1",
-        "phpmd/phpmd": "^2.6",
-        "pdepend/pdepend" : "^2.5",
-        "squizlabs/php_codesniffer": "^2.0"
+        "fzaninotto/faker": "^1.6"
     },
     "repositories":[
         {
