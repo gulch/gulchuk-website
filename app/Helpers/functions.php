@@ -113,3 +113,27 @@ function publicPath(): string
 {
     return realpath(__DIR__ . '/../../public/');
 }
+
+function currentURL(bool $full_url = true, bool $with_query = false): string
+{
+    $result = '';
+
+    $requst_uri = $_SERVER['REQUEST_URI'];
+
+    if (!$with_query) {
+        $requst_uri = str_replace('?' . $_SERVER['QUERY_STRING'], '', $requst_uri);
+    }
+
+    $result = $requst_uri;
+
+    if ($full_url) {
+        $result = config('app_url') . $result;
+    }
+
+    /* Remove right slash */
+    if (strlen($result) > 1) {
+        $result = rtrim($result, '/');
+    }
+
+    return $result;
+}

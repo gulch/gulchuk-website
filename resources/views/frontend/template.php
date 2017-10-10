@@ -1,15 +1,37 @@
-<?php /** @var $this \League\Plates\Template\Template */ ?>
+<?php
+    /** @var $this \League\Plates\Template\Template */
+    $title = $title ?? 'Gulchuk :: Personal Website';
+    $description = $description ?? 'Personal Website. Blog. Articles about web development';
+?>
 <html>
     <head>
+        <title><?= $title ?></title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Disable tap highlight on IE -->
         <meta name="msapplication-tap-highlight" content="no">
-
-        <title><?= $title ?? 'Gulchuk :: Personal Website' ?></title>
-        <meta name="description" content="<?= $description ?? 'Personal Website. Blog. Articles about web development.' ?>">
+        <meta name="description" content="<?= $description ?>">
         <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
+
+        <?php /* Social: Google+ / Schema.org */ ?>
+        <link href="https://plus.google.com/110104943340923924368" rel="publisher">
+        <meta itemprop="name" content="<?= $title ?>">
+        <meta itemprop="description" content="<?= $description ?>">
+        <meta itemprop="image" content="<?= $image ?>">
+        <link itemprop="url" href="<?= currentURL() ?>"/>
+
+        <?php /* Social: Facebook / Open Graph */ ?>
+        <meta property="og:url" content="<?= currentURL() ?>">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="<?= $title ?>">
+        <meta property="og:image" content="<?= $image ?>"/>
+        <meta property="og:description" content="<?= $description ?>">
+        <meta property="og:site_name" content="GULCHUK.COM">
+
+        <?php /* Social: Twitter */ ?>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@gulch_47">
+        <meta name="twitter:creator" content="@gulch_47">
 
         <?php if (isset($noindex)): ?>
             <meta name="robots" content="noindex">

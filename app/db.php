@@ -10,7 +10,8 @@ $capsule->addConnection(
         'password' => env('DB_PASS'),
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_general_ci',
-        'prefix' => ''
+        'prefix' => '',
+        'strict' => false,
     ]
 );
 $capsule->setAsGlobal();

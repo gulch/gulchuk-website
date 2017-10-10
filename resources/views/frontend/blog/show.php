@@ -4,6 +4,7 @@
     'title' => $this->e($article->seo_title),
     'description' => $this->e($article->seo_description),
     'keywords' => $this->e($article->seo_keywords),
+    'image' => $article->social_image,
     'styles' => [
         '/build/' . config('app_version') . '/h.css'
     ],
