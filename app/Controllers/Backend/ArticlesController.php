@@ -137,7 +137,7 @@ class ArticlesController extends BaseController
         return $this->changePublishStatus($this->argument('id', func_get_arg(2)), 0);
     }
 
-    public function generateSocialImage()
+    public function generateSocialImage(): ResponseInterface
     {
         $id = $this->argument('id', func_get_arg(2));
 

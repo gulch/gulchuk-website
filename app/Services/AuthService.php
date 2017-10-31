@@ -1,6 +1,8 @@
 <?php
 
-class Auth
+namespace App\Services;
+
+class AuthService
 {
     public static function startSession(): void
     {
@@ -16,7 +18,7 @@ class Auth
         session_destroy();
     }
 
-    public static function check() : bool
+    public static function check(): bool
     {
         static::startSession();
 
@@ -25,7 +27,7 @@ class Auth
 
 
     /**
-     * @return Gulchuk\Models\User | bool
+     * @return App\Models\User | bool
      */
     public static function user()
     {
@@ -43,10 +45,10 @@ class Auth
     }
 
     /**
-     * @param $user Gulchuk\Models\User
+     * @param App\Models\User $user
      * @param bool $remember
      */
-    public static function authenticate($user, $remember = false) : void
+    public static function authenticate($user, bool $remember = false): void
     {
         self::setUser($user);
 
@@ -80,7 +82,7 @@ class Auth
      * @param string $usersRepository
      * @return bool
      */
-    public static function checkRememberTokenAndLogin(string $usersRepository) : bool
+    public static function checkRememberTokenAndLogin(string $usersRepository): bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
 
@@ -103,7 +105,7 @@ class Auth
      * @param int $size Token string symbols count
      * @return string
      */
-    public static function generateRememberToken(int $size = 16) : string
+    public static function generateRememberToken(int $size = 16): string
     {
         $random_bytes = random_bytes($size);
         $token = substr(str_replace(['/', '+', '='], '', base64_encode($random_bytes)), 0, $size);

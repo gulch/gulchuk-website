@@ -5,7 +5,7 @@ namespace App\Jobs;
 use Bernard\Message;
 use App\Repositories\ArticlesRepository;
 use Intervention\Image\ImageManager;
-use \Intervention\Image\Image;
+use Intervention\Image\Image;
 
 class CreateArticleSocialImageJob
 {

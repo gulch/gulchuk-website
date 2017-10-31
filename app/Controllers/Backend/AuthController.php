@@ -5,7 +5,7 @@ namespace App\Controllers\Backend;
 use Psr\Http\Message\ResponseInterface;
 use App\Repositories\UsersRepository;
 use App\Controllers\BaseController;
-use Auth;
+use AuthService;
 
 class AuthController extends BaseController
 {
@@ -13,11 +13,11 @@ class AuthController extends BaseController
     {
         $path = $this->getArgument('return') ?: config('backend_segment');
 
-        if (Auth::check() === true) {
+        if (AuthService::check() === true) {
             return $this->redirectResponse('/' . $path);
         }
 
-        if (Auth::checkRememberTokenAndLogin(UsersRepository::class)) {
+        if (AuthService::checkRememberTokenAndLogin(UsersRepository::class)) {
             return $this->redirectResponse('/' . $path);
         }
 
@@ -36,7 +36,7 @@ class AuthController extends BaseController
             if (password_verify($password, $user->password)) {
 
                 // Good! Let's authenticate user...
-                Auth::authenticate($user, $remember);
+                AuthService::authenticate($user, $remember);
 
                 return $this->redirectResponse('/' . $path);
             }
@@ -54,7 +54,7 @@ class AuthController extends BaseController
 
     public function logout() : ResponseInterface
     {
-        Auth::logout();
+        AuthService::logout();
 
         return $this->redirectResponse();
     }

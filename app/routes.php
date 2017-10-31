@@ -25,9 +25,7 @@ use App\Controllers\Backend\{
 };
 
 // Frontend routes
-/**
- * @var \League\Route\RouteCollection $router
- */
+/** @var \League\Route\RouteCollection $router */
 $router->get('/sitemap', SitemapController::class . '::generate');
 $router->get('/feed', FeedController::class . '::generate');
 $router->get('/rss', FeedController::class . '::generate');
@@ -56,7 +54,7 @@ $router
 
 // Backend routes
 $router
-    ->group('/' . config('backend_segment'), function ($router) {
+    ->group('/' . config('app.backend_segment'), function ($router) {
         // dashboard
         $router->get('/', DashboardController::class . '::index');
         // tags
@@ -76,7 +74,6 @@ $router
         $router->post('/articles/{id:number}/social/image', ArticlesController::class . '::generateSocialImage');
         // images
         $router->post('/images/upload', ImagesController::class . '::upload');
-
     })
     ->middleware(new ResponseTime)
     ->middleware(new AuthenticateOnly);

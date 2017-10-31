@@ -6,14 +6,14 @@ use App\Models\Tag;
 
 class TagsRepository extends BaseRepository
 {
-    public function __construct()
+    public function getModelName()
     {
-        $this->modelName = Tag::class;
+        return Tag::class;
     }
 
     public function list(array $fields, string $orderField = '', string $orderDir = 'asc'): \Traversable
     {
-        $list = ($this->modelName)::select($fields);
+        $list = ($this->getModelName())::select($fields);
 
         if ($orderField) {
             $list = $list->orderBy($orderField, $orderDir);
@@ -35,7 +35,7 @@ class TagsRepository extends BaseRepository
 
     public function syncArticles(int $id, array $articles): void
     {
-        $tag = ($this->modelName)::find($id);
+        $tag = ($this->getModelName())::find($id);
 
         if (sizeof($tag)) {
             $tag->articles()->sync($articles);

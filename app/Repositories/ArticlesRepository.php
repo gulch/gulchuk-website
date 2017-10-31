@@ -6,14 +6,14 @@ use App\Models\Article;
 
 class ArticlesRepository extends BaseRepository
 {
-    public function __construct()
+    public function getModelName()
     {
-        $this->modelName = Article::class;
+        return Article::class;
     }
 
     public function getLatestPublished(): \Traversable
     {
-        return ($this->modelName)::where('is_published', 1)->latest()->get();
+        return ($this->getModelName())::where('is_published', 1)->latest()->get();
     }
 
     public function getWithOptions(
@@ -22,12 +22,12 @@ class ArticlesRepository extends BaseRepository
         int $limit,
         int $offset = 0
     ): \Traversable {
-        return ($this->modelName)::orderBy($orderField, $orderDir)->limit($limit)->offset($offset)->get();
+        return ($this->getModelName())::orderBy($orderField, $orderDir)->limit($limit)->offset($offset)->get();
     }
 
     public function syncTags(int $id, array $tags): void
     {
-        $article = ($this->modelName)::find($id);
+        $article = ($this->getModelName())::find($id);
 
         if (sizeof($article)) {
             $article->tags()->sync($tags);
@@ -36,7 +36,7 @@ class ArticlesRepository extends BaseRepository
 
     public function articleTagsIds(int $id): array
     {
-        $article = ($this->modelName)::find($id);
+        $article = ($this->getModelName())::find($id);
 
         if (!sizeof($article)) {
             return [];

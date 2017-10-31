@@ -5,13 +5,15 @@
 ?>
 <html>
     <head>
-        <title><?= $title ?></title>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="msapplication-tap-highlight" content="no">
+
+        <title><?= $title ?></title>
         <meta name="description" content="<?= $description ?>">
         <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
+
+        <?php /* TODO: link to RSS feed */ ?>
+        <?php /* TODO: link to Sitemap file */ ?>
 
         <?php /* Social: Google+ / Schema.org */ ?>
         <link href="https://plus.google.com/110104943340923924368" rel="publisher">
@@ -58,6 +60,7 @@
         </div>
 
         <!-- SVG Logo -->
+        <?php /* TODO: move logo to svg sprite file */ ?>
         <svg xmlns="http://www.w3.org/2000/svg" class="display-none">
             <symbol id="logo" viewBox="0 0 100 100">
                 <circle fill="none" stroke="#414042" stroke-width="3" stroke-miterlimit="10" cx="50" cy="50" r="48"/>

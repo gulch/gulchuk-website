@@ -1,4 +1,4 @@
-<?php if (config('debug')): ?>
+<?php if (config('app.debug')): ?>
 
     <link rel="stylesheet" type="text/css" property="stylesheet" href="/assets/css/fonts.css">
 
@@ -19,8 +19,8 @@
 
 <?php else: ?>
 
-    <link rel="stylesheet" type="text/css" property="stylesheet" href="/build/<?= config('app_version') ?>/fo.css">
-    <link rel="stylesheet" type="text/css" property="stylesheet" href="/build/<?= config('app_version') ?>/f.css">
+    <link rel="stylesheet" type="text/css" property="stylesheet" href="/build/<?= config('app.version') ?>/fo.css">
+    <link rel="stylesheet" type="text/css" property="stylesheet" href="/build/<?= config('app.version') ?>/f.css">
 
 <?php endif; ?>
 

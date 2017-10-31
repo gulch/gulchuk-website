@@ -12,7 +12,7 @@ class TagsSeed extends AbstractSeed
         for ($i = 0; $i < 10; $i++) {
             $title = $faker->word;
             $data[] = [
-                'slug' => str_slug($title),
+                'slug' => strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title))),
                 'title' => $title,
                 'content' => $faker->text(random_int(256, 1024)),
                 'seo_title' => $faker->text(50),

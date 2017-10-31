@@ -6,7 +6,7 @@ var autoprefixer = require('autoprefixer');
 var nano = require('gulp-cssnano');
 var comments = require('postcss-discard-comments');
 
-var APP_VERSION = '1.0.1';
+var APP_VERSION = '1.1.0';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
@@ -22,6 +22,7 @@ gulp.task('production', [
     'highlight-css',
     'highlight-js',
     'counters-js',
+    'svg-sprite',
     'svg-icons-loader-js'
 ]);
 

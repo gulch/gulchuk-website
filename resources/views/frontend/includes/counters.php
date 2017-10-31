@@ -4,6 +4,6 @@
 
 <?php else: ?>
 
-    <script async src="/build/<?= config('app_version') ?>/c.js"></script>
+    <script async src="/build/<?= config('app.version') ?>/c.js"></script>
 
 <?php endif; ?>

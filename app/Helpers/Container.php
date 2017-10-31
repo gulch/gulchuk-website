@@ -1,13 +1,21 @@
 <?php
 
+namespace App\Helpers;
+
+use Psr\Container\ContainerInterface;
+
 class Container
 {
-    private static $instance;
+    /** @var ContainerInterface */
     private $container;
 
-    private function __construct() {}
+    private static $instance;
 
-    private static function getInstance()
+    private function __construct() {}
+    private function __clone () {}
+    private function __wakeup() {}
+
+    public static function getInstance(): self
     {
         if (null === static::$instance) {
             static::$instance = new static();
@@ -16,7 +24,7 @@ class Container
         return static::$instance;
     }
 
-    public static function create($container)
+    public static function bootstrap(ContainerInterface $container): void
     {
         $instance = static::getInstance();
 
@@ -27,12 +35,12 @@ class Container
         $instance->container = $container;
     }
 
-    public static function getContainer()
+    public function getContainer(): ContainerInterface
     {
-        if (null === static::$instance->container) {
+        if (null === $this->container) {
             throw new Exception('Set your container first');
         }
 
-        return static::$instance->container;
+        return $this->container;
     }
 }

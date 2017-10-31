@@ -2,36 +2,33 @@
 
 namespace App\Repositories;
 
-
-use Illuminate\Database\Events\TransactionBeginning;
-
 abstract class BaseRepository
 {
-    protected $modelName;
+    abstract function getModelName();
 
     public function all()
     {
-        return ($this->modelName)::all();
+        return ($this->getModelName())::all();
     }
 
     public function findById(int $id)
     {
-        return ($this->modelName)::find($id);
+        return ($this->getModelName())::find($id);
     }
 
     public function findBySlug(string $slug)
     {
-        return ($this->modelName)::where('slug', $slug)->first();
+        return ($this->getModelName())::where('slug', $slug)->first();
     }
 
     public function delete(int $id): void
     {
-        ($this->modelName)::destroy($id);
+        ($this->getModelName())::destroy($id);
     }
 
     public function getWith(array $with, string $orderField = '', string $orderDir = 'asc'): \Traversable
     {
-        $result = ($this->modelName)::with($with);
+        $result = ($this->getModelName())::with($with);
 
         if ($orderField) {
             $result = $result->orderBy($orderField, $orderDir);
@@ -42,7 +39,7 @@ abstract class BaseRepository
 
     public function create(array $data): int
     {
-        $entity = ($this->modelName)::create($data);
+        $entity = ($this->getModelName())::create($data);
 
         return $entity->id ?? 0;
     }

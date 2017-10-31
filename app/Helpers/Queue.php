@@ -1,22 +1,25 @@
 <?php
 
+namespace App\Helpers;
+
 use Bernard\Driver\PhpRedisDriver;
 use Bernard\QueueFactory\PersistentFactory;
 use Bernard\Serializer\SimpleSerializer;
 use Bernard\Middleware\MiddlewareBuilder;
 use Bernard\Producer;
 use Bernard\Message\DefaultMessage;
+use Redis;
 
 class Queue
 {
-    /** @var $producer Producer */
+    /** @var Producer */
     private $producer;
 
     private function init(): void
     {
-        $redis = new \Redis();
+        $redis = new Redis();
         $redis->connect('127.0.0.1', 6379);
-        $redis->setOption(\Redis::OPT_PREFIX, config('queue_name') . ':');
+        $redis->setOption(Redis::OPT_PREFIX, config('queue.name') . ':');
 
         $driver = new PhpRedisDriver($redis);
 

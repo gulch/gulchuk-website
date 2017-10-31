@@ -6,31 +6,31 @@ $container = new \League\Container\Container;
 $container->share('response', \Zend\Diactoros\Response::class);
 
 /* Request */
-$container->share('request', function() {
-   return \Zend\Diactoros\ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
+$container->share('request', function () {
+    return \Zend\Diactoros\ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
 });
 
 /* Emitter */
-$container->share('emitter', Zend\Diactoros\Response\SapiEmitter::class);
+$container->share('emitter', \Zend\Diactoros\Response\SapiEmitter::class);
 
 /* Template Engine */
-$container->share('templater', function() {
-    return new \League\Plates\Engine(__DIR__ . '/../resources/views');
+$container->share('templater', function () {
+    return new \League\Plates\Engine(__DIR__ . '/../../resources/views');
 });
 
 /* Queue */
-$container->share('queue', Queue::class);
+$container->share('queue', \App\Helpers\Queue::class);
 
 /* Assets */
 $container->share('DeferJS', function () {
     return new \gulch\Assets\Asset(
-        new \gulch\Assets\Renderer\DeferJsRenderer()
+        new \gulch\Assets\Renderer\DeferJsRenderer
     );
 });
 
 $container->share('BodyCSS', function () {
     return new \gulch\Assets\Asset(
-        new \gulch\Assets\Renderer\BodyCssRenderer()
+        new \gulch\Assets\Renderer\BodyCssRenderer
     );
 });
 
@@ -42,10 +42,10 @@ $container->add(\App\Controllers\Frontend\SitemapController::class);
 $container->add(\App\Controllers\Backend\DashboardController::class);
 $container
     ->add(\App\Controllers\Backend\TagsController::class)
-    ->withArgument(new \App\Repositories\TagsRepository());
+    ->withArgument(new \App\Repositories\TagsRepository);
 $container
     ->add(\App\Controllers\Backend\ArticlesController::class)
-    ->withArgument(new \App\Repositories\ArticlesRepository());
+    ->withArgument(new \App\Repositories\ArticlesRepository);
 
 
 return $container;
