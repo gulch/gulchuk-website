@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class ResponseTime
 {
-    public function __invoke(Request $request, Response $response, callable $next = null)
+    public function __invoke(Request $request, Response $response, callable $next = null): Response
     {
         $response = $next($request, $response);
 

@@ -20,7 +20,7 @@ class FeedController extends BaseController
         $channel = (new Channel())
             ->title('Gulchuk')
             ->description('Gulchuk Personal Website')
-            ->url(config('app_url'))
+            ->url(config('app.url'))
             ->language('en-US')
             ->copyright('2017 GULCHUK.COM')
             ->pubDate($date)
@@ -37,9 +37,9 @@ class FeedController extends BaseController
             (new Item())
                 ->title($article->title)
                 ->description($article->seo_description)
-                ->url(config('app_url') . '/blog/' . $article->slug)
+                ->url(config('app.url') . '/blog/' . $article->slug)
                 ->pubDate($date)
-                ->guid(config('app_url') . '/blog/' . $article->slug, true)
+                ->guid(config('app.url') . '/blog/' . $article->slug, true)
                 ->preferCdata(true)
                 ->appendTo($channel);
         }

@@ -5,7 +5,7 @@ namespace App\Controllers\Backend;
 use Psr\Http\Message\ResponseInterface;
 use App\Repositories\UsersRepository;
 use App\Controllers\BaseController;
-use AuthService;
+use App\Services\AuthService;
 
 class AuthController extends BaseController
 {
@@ -28,10 +28,10 @@ class AuthController extends BaseController
     {
         $email = $this->postArgument('email');
         $password = $this->postArgument('password');
-        $remember = $this->postArgument('remember');
+        $remember = $this->postArgument('remember') ?: false;
         $path = $this->getArgument('return') ?: config('backend_segment');
 
-        $user = (new UsersRepository())->findByEmail($email);
+        $user = (new UsersRepository)->findByEmail($email);
         if (sizeof($user)) {
             if (password_verify($password, $user->password)) {
 

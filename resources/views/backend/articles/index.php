@@ -48,24 +48,24 @@
 
                                 <?php if(!$article->is_published): ?>
                                 <a data-action-name="publish"
-                                   data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/publish"
+                                   data-action="/<?= config('app.backend_segment') ?>/articles/<?= $article->id ?>/publish"
                                 >
                                     <i class="unhide icon"></i>Publish
                                 </a>
                                 <?php else: ?>
                                 <a data-action-name="unpublish"
-                                   data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/unpublish"
+                                   data-action="/<?= config('app.backend_segment') ?>/articles/<?= $article->id ?>/unpublish"
                                 >
                                     <i class="hide icon"></i>Unpublish
                                 </a>
                                 <?php endif; ?>
 
-                                <a href="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/edit">
+                                <a href="/<?= config('app.backend_segment') ?>/articles/<?= $article->id ?>/edit">
                                     <i class="edit icon"></i>Edit
                                 </a>
 
                                 <a data-action-name="generate-social-image"
-                                   data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/social/image"
+                                   data-action="/<?= config('app.backend_segment') ?>/articles/<?= $article->id ?>/social/image"
                                 >
                                     <?php if (!$article->social_image): ?>
                                         <i class="warning sign orange icon"></i>
@@ -81,7 +81,7 @@
                                     <span class="ui negative button"
                                           data-action-name="remove"
                                           data-action-method="POST"
-                                          data-action="/<?= config('backend_segment') ?>/articles/<?= $article->id ?>/remove"
+                                          data-action="/<?= config('app.backend_segment') ?>/articles/<?= $article->id ?>/remove"
                                     >Yes</span>
                                     <span class="ui button">No</span>
                                 </div>

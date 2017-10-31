@@ -7,17 +7,17 @@ use App\Controllers\BaseController;
 
 class PageController extends BaseController
 {
-    public function index() : ResponseInterface
+    public function index(): ResponseInterface
     {
         return $this->httpResponse($this->view('frontend/pages/index'));
     }
 
-    public function showCV() : ResponseInterface
+    public function showCV(): ResponseInterface
     {
         return $this->httpResponse($this->view('frontend/pages/cv'));
     }
 
-    public function showBooks() : ResponseInterface
+    public function showBooks(): ResponseInterface
     {
         return $this->httpResponse($this->view('frontend/pages/books'));
     }

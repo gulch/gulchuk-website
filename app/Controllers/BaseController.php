@@ -18,8 +18,8 @@ class BaseController
 
     public function __construct()
     {
-        $this->request = container('request');
-        $this->response = container('response');
+        $this->request = \container('request');
+        $this->response = \container('response');
         $this->getInput = $this->request->getQueryParams();
         $this->postInput = $this->request->getParsedBody();
     }
@@ -47,7 +47,7 @@ class BaseController
             ->withHeader('content-type','application/json');
     }
 
-    protected function redirectResponse($url = '/') : ResponseInterface
+    protected function redirectResponse(string $url = '/') : ResponseInterface
     {
         return $this->response->withHeader('Location', $url);
     }
@@ -91,7 +91,7 @@ class BaseController
      */
     protected function view(string $name, array $params = []) : string
     {
-        return container('templater')->render($name, $params);
+        return \container('templater')->render($name, $params);
     }
 
     protected function formatErrorMessages(InputFilterInterface $inputFilter): string

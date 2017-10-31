@@ -4,7 +4,7 @@ namespace App\Middlewares;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use AuthService;
+use App\Services\AuthService;
 
 class AuthenticateOnly
 {

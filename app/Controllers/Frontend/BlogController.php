@@ -9,17 +9,17 @@ use App\Controllers\BaseController;
 
 class BlogController extends BaseController
 {
-    public function index() : ResponseInterface
+    public function index(): ResponseInterface
     {
         $data = [
-            'articles' => (new ArticlesRepository())->getLatestPublished(),
+            'articles' => (new ArticlesRepository)->getLatestPublished(),
             'tags' => $this->getAllTags()
         ];
 
         return $this->httpResponse($this->view('frontend/blog/index', $data));
     }
 
-    public function show() : ResponseInterface
+    public function show(): ResponseInterface
     {
         $slug = $this->argument('slug', func_get_arg(2));
 
@@ -27,7 +27,7 @@ class BlogController extends BaseController
             return $this->abort();
         }
 
-        $article = (new ArticlesRepository())->findBySlug($slug);
+        $article = (new ArticlesRepository)->findBySlug($slug);
 
         if (!$article) {
             return $this->abort();
@@ -41,11 +41,11 @@ class BlogController extends BaseController
         return $this->httpResponse($this->view('frontend/blog/show', $data));
     }
 
-    public function tag() : ResponseInterface
+    public function tag(): ResponseInterface
     {
         $slug = $this->argument('slug', func_get_arg(2));
 
-        $tag = (new TagsRepository())->findBySlug($slug);
+        $tag = (new TagsRepository)->findBySlug($slug);
 
         if (!$tag) {
             return $this->abort();
@@ -53,15 +53,15 @@ class BlogController extends BaseController
 
         $data = [
             'tag' => $tag,
-            'articles' => (new TagsRepository())->latestPublishedArticles($tag->id),
+            'articles' => (new TagsRepository)->latestPublishedArticles($tag->id),
             'tags' => $this->getAllTags()
         ];
 
         return $this->httpResponse($this->view('frontend/blog/tag', $data));
     }
 
-    private function getAllTags() : \Traversable
+    private function getAllTags(): \Traversable
     {
-        return (new TagsRepository())->list(['slug', 'title'], 'title');
+        return (new TagsRepository)->list(['slug', 'title'], 'title');
     }
 }

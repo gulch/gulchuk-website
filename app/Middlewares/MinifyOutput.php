@@ -16,7 +16,7 @@ class MinifyOutput
         $this->stream = $stream;
     }
 
-    public function __invoke(Request $request, Response $response, callable $next = null)
+    public function __invoke(Request $request, Response $response, callable $next = null): Response
     {
         $response = $next($request, $response);
 
