@@ -18,15 +18,15 @@
             <a href="/" class="header item">
                 <img class="logo" src="/assets/favicon/favicon-32x32.png">
             </a>
-            <a href="/<?= config('backend_segment') ?>" class="item">
+            <a href="/<?= config('app.backend_segment') ?>" class="item">
                 <i class="dashboard icon"></i>
                 Dashboard
             </a>
-            <a href="/<?= config('backend_segment') ?>/articles" class="item">
+            <a href="/<?= config('app.backend_segment') ?>/articles" class="item">
                 <i class="file text outline icon"></i>
                 Articles
             </a>
-            <a href="/<?= config('backend_segment') ?>/tags" class="item">
+            <a href="/<?= config('app.backend_segment') ?>/tags" class="item">
                 <i class="tags icon"></i>
                 Tags
             </a>

@@ -1,4 +1,4 @@
-<?php /** @var $this \League\Plates\Template\Template */ ?>
+<?php /** @var \League\Plates\Template\Template $this */ ?>
 
 <?php
     $this->layout('frontend/template', [
@@ -20,11 +20,11 @@
 
 
         <div class="ui small header">
-            <a href="https://leanpub.com/phpoopway" target="_blank" rel="nofollow noopener">
-                PHP OOP Way
+            <a href="http://shop.oreilly.com/product/0636920044376.do" target="_blank" rel="nofollow noopener">
+                Identity and Data Security for Web Development
             </a>
             <div class="sub header">
-                Sergey Zhuk
+                Jonathan LeBlanc, Tim Messerschmidt
             </div>
         </div>
 
@@ -34,6 +34,14 @@
 
         <h2>Books I've read and recommend</h2>
 
+        <div class="ui small header">
+            <a href="https://leanpub.com/phpoopway" target="_blank" rel="nofollow noopener">
+                PHP OOP Way
+            </a>
+            <div class="sub header">
+                Sergey Zhuk
+            </div>
+        </div>
 
         <div class="ui small header">
             <a href="https://www.packtpub.com/application-development/php-microservices"

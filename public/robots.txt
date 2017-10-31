@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+Host: gulchuk.com
+Sitemap: https://gulchuk.com/sitemap.xml

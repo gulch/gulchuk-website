@@ -304,6 +304,20 @@
 
             <h3>Certificates</h3>
             <p>
+                2017
+            </p>
+            <ul>
+                <li>
+                    <a href="/uploads/files/2017/10/abdf048d.jpg"
+                       target="_blank"
+                       rel="nofollow"
+                    >
+                        English for IT
+                    </a>
+                </li>
+            </ul>
+
+            <p>
                 2016
             </p>
             <ul>

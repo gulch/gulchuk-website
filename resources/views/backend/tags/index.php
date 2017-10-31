@@ -13,7 +13,7 @@
         </div>
 
         <div class="middle aligned right aligned four wide column">
-            <a href="/<?= config('backend_segment') ?>/tags/create" class="ui large labeled icon basic button">
+            <a href="/<?= config('app.backend_segment') ?>/tags/create" class="ui large labeled icon basic button">
                 <i class="add icon"></i>
                 Create new
             </a>
@@ -53,7 +53,7 @@
 
                             <div class="extra">
 
-                                <a href="/<?= config('backend_segment') ?>/tags/<?= $tag->id ?>/edit">
+                                <a href="/<?= config('app.backend_segment') ?>/tags/<?= $tag->id ?>/edit">
                                     <i class="edit icon"></i>Edit
                                 </a>
                                 <a data-popup="1">
@@ -64,7 +64,7 @@
                                     <span class="ui negative button"
                                           data-action-name="remove"
                                           data-action-method="POST"
-                                          data-action="/<?= config('backend_segment') ?>/tags/<?= $tag->id ?>/remove"
+                                          data-action="/<?= config('app.backend_segment') ?>/tags/<?= $tag->id ?>/remove"
                                     >Yes</span>
                                     <span class="ui button">No</span>
                                 </div>

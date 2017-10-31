@@ -1,4 +1,4 @@
-<?php if (config('debug')): ?>
+<?php if (config('app.debug')): ?>
 
     <script async src="/assets/js/counters.js"></script>
 

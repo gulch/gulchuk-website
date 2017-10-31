@@ -3,7 +3,7 @@
         <div class="ui container">
             <a href="/" class="item">
                 <svg id="main-menu-logo">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-logo"></use>
                 </svg>
             </a>
             <div class="right menu">

@@ -6,12 +6,12 @@ $this->layout('frontend/template', [
     'description' => $this->e($tag->seo_description),
     'keywords' => $this->e($tag->seo_keywords),
     'styles' => [
-        '/build/' . config('app_version') . '/h.css'
+        '/build/' . config('app.version') . '/h.css'
     ],
     'scripts' => [
         [
             'load' => 'defer',
-            'src' => '/build/' . config('app_version') . '/h.js'
+            'src' => '/build/' . config('app.version') . '/h.js'
         ]
     ]
 ])

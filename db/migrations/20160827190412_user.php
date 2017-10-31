@@ -6,7 +6,7 @@ class User extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('User', ['engine' => 'Aria']);
+        $table = $this->table('User');
         $table->addColumn('name', 'string')
               ->addColumn('email', 'string')
               ->addColumn('password', 'string')

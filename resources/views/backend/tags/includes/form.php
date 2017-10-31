@@ -1,8 +1,8 @@
 <?php /** @var $this \League\Plates\Template\Template */ ?>
 <div class="ui warning large form segment">
-    <form method="POST" action="/<?= config('backend_segment') ?>/tags/save" accept-charset="UTF-8">
+    <form method="POST" action="/<?= config('app.backend_segment') ?>/tags/save" accept-charset="UTF-8">
 
-        <input type="hidden" id="redirect_url" value="<?= $redirectUrl ?? '/'.config('backend_segment').'/tags' ?>">
+        <input type="hidden" id="redirect_url" value="<?= $redirectUrl ?? '/'.config('app.backend_segment').'/tags' ?>">
 
         <?php if (isset($tag)): ?>
         <input type="hidden" name="id" value="<?= $tag->id ?>">
@@ -32,7 +32,7 @@
             <label for="content">Content*</label>
             <textarea name="content"
                       id="content"
-                      data-upload-url="/<?= config('backend_segment') ?>/images/upload"
+                      data-upload-url="/<?= config('app.backend_segment') ?>/images/upload"
                       class="wysiwyg-editor"
                       cols="30"
                       rows="10"><?= isset($tag) ? $this->e($tag->content) : '' ?></textarea>

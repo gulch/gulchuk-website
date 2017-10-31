@@ -1,9 +1,9 @@
 <?php /** @var $this \League\Plates\Template\Template */ ?>
     <div class="ui warning large form segment">
-        <form method="POST" action="/<?= config('backend_segment') ?>/articles/save" accept-charset="UTF-8">
+        <form method="POST" action="/<?= config('app.backend_segment') ?>/articles/save" accept-charset="UTF-8">
 
             <input type="hidden" id="redirect_url"
-                   value="<?= $redirectUrl ?? '/' . config('backend_segment') . '/articles' ?>">
+                   value="<?= $redirectUrl ?? '/' . config('app.backend_segment') . '/articles' ?>">
 
             <?php if (isset($article)): ?>
                 <input type="hidden" name="id" value="<?= $article->id ?>">
@@ -37,7 +37,7 @@
                 <label for="content">Content*</label>
                 <textarea name="content"
                           id="content"
-                          data-upload-url="/<?= config('backend_segment') ?>/images/upload"
+                          data-upload-url="/<?= config('app.backend_segment') ?>/images/upload"
                           class="wysiwyg-editor"
                           cols="30"
                           rows="10"><?= isset($article) ? $this->e($article->content) : '' ?></textarea>

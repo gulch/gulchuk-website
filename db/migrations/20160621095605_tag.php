@@ -6,7 +6,7 @@ class Tag extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('Tag', ['engine' => 'Aria']);
+        $table = $this->table('Tag');
         $table->addColumn('slug', 'string', ['limit' => 70])
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')

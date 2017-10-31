@@ -14,7 +14,7 @@ class ImagesController extends BaseController
 
     public function upload(): ResponseInterface
     {
-        /** @var UploadedFileInterface $uploaded_file */
+        /** @var UploadedFileInterface */
         $uploaded_file = $this->request->getUploadedFiles()['file'] ?? null;
         $setup = $this->postArgument('setup');
 
