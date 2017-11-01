@@ -6,7 +6,7 @@ class User extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('User');
+        $table = $this->table('User', ['signed' => false]);
         $table->addColumn('name', 'string')
               ->addColumn('email', 'string')
               ->addColumn('password', 'string')

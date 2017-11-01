@@ -1,17 +1,16 @@
 <?php
 
 use Phinx\Migration\AbstractMigration;
-use Phinx\Db\Adapter\MysqlAdapter;
 
 class Article extends AbstractMigration
 {
     public function up()
     {
-        $article = $this->table('Article');
-        $article->addColumn('slug', 'string', ['limit' => 70])
+        $article = $this->table('Article', ['signed' => false]);
+        $article->addColumn('slug', 'string')
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')
-            ->addColumn('is_published', 'integer', ['default' => 0, 'signed' => false, 'limit' => MysqlAdapter::INT_TINY])
+            ->addColumn('is_published', 'integer', ['default' => 0, 'limit' => 1, 'signed' => false])
             ->addColumn('social_image', 'string', ['null' => true])
             ->addColumn('seo_title', 'string', ['null' => true])
             ->addColumn('seo_description', 'string', ['null' => true])

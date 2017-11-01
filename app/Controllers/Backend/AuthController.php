@@ -11,7 +11,7 @@ class AuthController extends BaseController
 {
     public function login() : ResponseInterface
     {
-        $path = $this->getArgument('return') ?: config('backend_segment');
+        $path = $this->getArgument('return') ?: config('app.backend_segment');
 
         if (AuthService::check() === true) {
             return $this->redirectResponse('/' . $path);
@@ -29,7 +29,7 @@ class AuthController extends BaseController
         $email = $this->postArgument('email');
         $password = $this->postArgument('password');
         $remember = $this->postArgument('remember') ?: false;
-        $path = $this->getArgument('return') ?: config('backend_segment');
+        $path = $this->getArgument('return') ?: config('app.backend_segment');
 
         $user = (new UsersRepository)->findByEmail($email);
         if (sizeof($user)) {

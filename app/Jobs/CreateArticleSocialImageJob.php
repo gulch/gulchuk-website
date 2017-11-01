@@ -54,7 +54,7 @@ class CreateArticleSocialImageJob
         $image->insert($titleCanvas, 'top-left', 30, intval($image->height() / 2 - $titleHeight / 2));
 
 
-        $file = getFilePath(config('app.images_path_social')) . '/' . $slug . '.png';
+        $file = getUploadFilePath(config('app.images_path_social')) . '/' . $slug . '.png';
         $image->save($file);
 
         // save to DB

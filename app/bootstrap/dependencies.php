@@ -19,7 +19,7 @@ $container->share('templater', function () {
 });
 
 /* Queue */
-$container->share('queue', \App\Helpers\Queue::class);
+$container->share('queue', \App\Services\QueueService::class);
 
 /* Assets */
 $container->share('DeferJS', function () {

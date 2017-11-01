@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Symfony\Component\Finder\Finder;
+use Exception;
 
 class Config
 {
@@ -18,7 +19,7 @@ class Config
     public static function getInstance(): self
     {
         if (!self::$instance) {
-            throw new Exception('Instance not instantiated. Bootstrap first!');
+            throw new Exception('Instance not initialized. Bootstrap first!');
         }
 
         return self::$instance;

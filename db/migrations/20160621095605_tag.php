@@ -6,8 +6,8 @@ class Tag extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('Tag');
-        $table->addColumn('slug', 'string', ['limit' => 70])
+        $table = $this->table('Tag', ['signed' => false]);
+        $table->addColumn('slug', 'string')
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')
             ->addColumn('seo_title', 'string', ['null' => true])

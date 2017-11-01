@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Psr\Container\ContainerInterface;
+use Exception;
 
 class Container
 {
@@ -17,28 +18,27 @@ class Container
 
     public static function getInstance(): self
     {
-        if (null === static::$instance) {
-            static::$instance = new static();
+        if (!self::$instance) {
+            throw new Exception('Instance not initialized. Bootstrap first!');
         }
 
-        return static::$instance;
+        return self::$instance;
     }
 
     public static function bootstrap(ContainerInterface $container): void
     {
-        $instance = static::getInstance();
-
-        if (null !== $instance->container) {
-            throw new Exception('Container exists already');
+        if (self::$instance) {
+            throw new Exception('Already bootstraped!');
         }
 
-        $instance->container = $container;
+        self::$instance = new self;
+        self::$instance->container = $container;
     }
 
     public function getContainer(): ContainerInterface
     {
         if (null === $this->container) {
-            throw new Exception('Set your container first');
+            throw new Exception('Container not isset!');
         }
 
         return $this->container;

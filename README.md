@@ -6,7 +6,8 @@ Requirements:
 
 - installed cwebp (https://developers.google.com/speed/webp/docs/compiling or 'apt-get install webp')
 
-- configured systemd service /etc/systemd/system/gulchuk-queue.service
+- configured systemd service /etc/systemd/system/gulchuk-queue.service:
+
     [Unit]
     Description=Gulchuk Queue Consumer
 

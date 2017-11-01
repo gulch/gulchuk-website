@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
 use Bernard\Driver\PhpRedisDriver;
 use Bernard\QueueFactory\PersistentFactory;
@@ -10,7 +10,7 @@ use Bernard\Producer;
 use Bernard\Message\DefaultMessage;
 use Redis;
 
-class Queue
+class QueueService
 {
     /** @var Producer */
     private $producer;

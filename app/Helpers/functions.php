@@ -51,14 +51,14 @@ function config(string $key)
     return \App\Helpers\Config::getInstance()->get($key);
 }
 
-function getPathPrefix(): string
+function getUploadPathPrefix(): string
 {
     return date('/Y/m');
 }
 
-function getFilePath(string $path, string $prefix = ''): string
+function getUploadFilePath(string $path, string $prefix = ''): string
 {
-    $prefix = $prefix ?: getPathPrefix();
+    $prefix = $prefix ?: getUploadPathPrefix();
 
     $file_path = publicPath() . $path . $prefix;
 
