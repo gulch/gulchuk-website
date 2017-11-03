@@ -30,7 +30,7 @@ class ArticlesAndTagsSeed extends AbstractSeed
                 'id' => $i,
                 'slug' => $this->slug($title),
                 'title' => $title,
-                'content' => $this->faker->text(random_int(256, 1024)),
+                'content' => $this->faker->text(random_int(1024, 4096)),
                 'is_published' => 1,
                 'seo_title' => $title,
                 'seo_description' => $this->faker->text(255),
@@ -49,14 +49,13 @@ class ArticlesAndTagsSeed extends AbstractSeed
         for ($i = 1; $i < 11; $i++) {
 
             $title = $this->faker->word;
-            $seo_title = $this->faker->text(70);
 
             $data[] = [
                 'id' => $i,
-                'slug' => $this->slug($seo_title),
+                'slug' => $this->slug($title),
                 'title' => $title,
-                'content' => $this->faker->text(random_int(256, 1024)),
-                'seo_title' => $seo_title,
+                'content' => $this->faker->text(random_int(256, 2048)),
+                'seo_title' => $this->faker->text(70),
                 'seo_description' => $this->faker->text(255),
                 'seo_keywords' => str_replace(' ', ', ', $this->faker->text(100)),
                 'created_at' => date('Y-m-d H:i:s')
@@ -85,8 +84,10 @@ class ArticlesAndTagsSeed extends AbstractSeed
     private function slug(string $text): string
     {
         return strtolower(
-            trim(
-                preg_replace('/[^A-Za-z0-9-]+/', '-', $text)
+            preg_replace(
+                '/[^A-Za-z0-9-]+/',
+                '-',
+                trim($text)
             )
         );
     }
