@@ -44,6 +44,18 @@
         </div>
 
         <div class="ui small header">
+            <a href="https://www.packtpub.com/application-development/php-7-data-structures-and-algorithms"
+               target="_blank"
+               rel="nofollow noopener"
+            >
+                PHP 7 Data Structures and Algorithms
+            </a>
+            <div class="sub header">
+                Mizanur Rahman
+            </div>
+        </div>
+
+        <div class="ui small header">
             <a href="https://www.packtpub.com/application-development/php-microservices"
                target="_blank"
                rel="nofollow noopener"

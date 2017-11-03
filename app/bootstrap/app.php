@@ -2,8 +2,8 @@
 
 define('APP_START', microtime(true));
 
-//error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 require __DIR__ . '/../../vendor/autoload.php';
 
@@ -36,7 +36,7 @@ $errorHandler->register();
 /**
  * @var $container \League\Container\Container
  */
-$container = include_once __DIR__ . '/dependencies.php';
+$container = require __DIR__ . '/dependencies.php';
 \App\Helpers\Container::bootstrap($container);
 
 /* Boot Eloquent ORM */

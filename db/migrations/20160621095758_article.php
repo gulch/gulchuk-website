@@ -6,8 +6,8 @@ class Article extends AbstractMigration
 {
     public function up()
     {
-        $article = $this->table('Article', ['signed' => false]);
-        $article->addColumn('slug', 'string')
+        $table = $this->table('Article', ['signed' => false]);
+        $table->addColumn('slug', 'string')
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')
             ->addColumn('is_published', 'integer', ['default' => 0, 'limit' => 1, 'signed' => false])
