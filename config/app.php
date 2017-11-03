@@ -13,4 +13,5 @@ return [
     'images_path_original' => env('IMAGES_PATH_ORIGINAL', '/uploads/img/original'),
     'images_path_editor'   => env('IMAGES_PATH_EDITOR', '/uploads/img/editor'),
     'images_path_social'   => env('IMAGES_PATH_SOCIAL', '/uploads/img/social'),
+    'default_social_image' => '/assets/img/default-social-image.png',
 ];

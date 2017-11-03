@@ -2,6 +2,7 @@
     /** @var \League\Plates\Template\Template $this */
     $title = $title ?? 'Gulchuk :: Personal Website';
     $description = $description ?? 'Personal Website. Blog. Articles about web development';
+    $image = $image ?? config('app.default_social_image');
 ?>
 <html>
     <head>
