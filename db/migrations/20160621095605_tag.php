@@ -6,7 +6,7 @@ class Tag extends AbstractMigration
 {
     public function up()
     {
-        $table = $this->table('Tag', ['signed' => false]);
+        $table = $this->table('Tag', ['signed' => false, 'collation' => 'utf8mb4_unicode_ci']);
         $table->addColumn('slug', 'string')
             ->addColumn('title', 'string')
             ->addColumn('content', 'text')

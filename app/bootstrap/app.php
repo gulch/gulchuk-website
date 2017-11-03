@@ -26,9 +26,9 @@ if (config('app.debug')) {
         new \Whoops\Handler\PrettyPageHandler
     );
 } else {
-    $errorHandler->pushHandler(
-        (new \Whoops\Handler\PlainTextHandler($logger))->loggerOnly(true)
-    );
+    $plainHandler = new \Whoops\Handler\PlainTextHandler($logger);
+    $plainHandler->loggerOnly(true);
+    $errorHandler->pushHandler($plainHandler);
 }
 $errorHandler->register();
 

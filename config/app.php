@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name'                 => env('APP_NAME', 'GULCHUK>COM'),
+    'name'                 => env('APP_NAME', 'GULCHUK.COM'),
     'key'                  => env('APP_KEY', 'your-app-secret-key'),
     'domain'               => env('APP_DOMAIN', 'gulchuk.com'),
     'url'                  => env('APP_URL', 'https://gulchuk.com'),
