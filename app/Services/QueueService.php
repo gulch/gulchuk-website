@@ -10,6 +10,7 @@ use Bernard\Producer;
 use Bernard\Message\DefaultMessage;
 use Redis;
 
+/** TODO: use php-fpm for produce async jobs */
 class QueueService
 {
     /** @var Producer */
