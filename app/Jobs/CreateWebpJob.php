@@ -19,6 +19,6 @@ class CreateWebpJob
         }
 
         $cmd = "cwebp -quiet -alpha_method 1 -alpha_filter best -m 6 -mt {$source} -o {$source}.webp";
-        \exec($cmd . ' > /dev/null &');
+        exec($cmd . ' > /dev/null &');
     }
 }

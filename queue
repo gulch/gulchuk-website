@@ -3,17 +3,14 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
 /* Register Dotenv */
-(new \Dotenv\Dotenv(__DIR__ . '/../..'))->load();
+(new \Dotenv\Dotenv(__DIR__))->load();
 
 /* Load Configuration */
-\App\Helpers\Config::bootstrap(__DIR__ . '/../../config');
-
-/* Boot Eloquent ORM */
-require __DIR__ . '/db.php';
+\App\Helpers\Config::bootstrap(__DIR__ . '/config');
 
 $redis = new \Redis;
 $redis->connect('localhost');
@@ -29,7 +26,7 @@ $factory = new \Bernard\QueueFactory\PersistentFactory(
 $middleware = new \Bernard\Middleware\MiddlewareBuilder;
 $middleware->push(new \Bernard\Middleware\ErrorLogFactory);
 
-$router = new \Bernard\Router\SimpleRouter($config['queue.map']);
+$router = new \Bernard\Router\SimpleRouter(config('queue.map'));
 
 $consumer = new \Bernard\Consumer($router, $middleware);
 
