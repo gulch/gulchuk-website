@@ -4,7 +4,8 @@
     $description = $description ?? 'Personal Website. Blog. Articles about web development';
     $image = $image ?? config('app.default_social_image');
 ?>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
