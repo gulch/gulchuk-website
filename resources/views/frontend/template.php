@@ -5,7 +5,7 @@
     $image = $image ?? config('app.default_social_image');
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
