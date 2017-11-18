@@ -9,7 +9,7 @@ use App\Services\AuthService;
 
 class AuthController extends BaseController
 {
-    public function login() : ResponseInterface
+    public function login(): ResponseInterface
     {
         $path = $this->getArgument('return') ?: config('app.backend_segment');
 
@@ -24,7 +24,7 @@ class AuthController extends BaseController
         return $this->httpResponse($this->view('backend/auth/login'));
     }
 
-    public function postLogin() : ResponseInterface
+    public function postLogin(): ResponseInterface
     {
         $email = $this->postArgument('email');
         $password = $this->postArgument('password');
@@ -47,12 +47,12 @@ class AuthController extends BaseController
         ]));
     }
 
-    public function recover() : ResponseInterface
+    public function recover(): ResponseInterface
     {
         return $this->httpResponse($this->view('backend/auth/recover'));
     }
 
-    public function logout() : ResponseInterface
+    public function logout(): ResponseInterface
     {
         AuthService::logout();
 

@@ -50,21 +50,14 @@ $request = $container->get('request');
 $response = $container->get('response');
 
 try {
-
     $response = $router->dispatch($request, $response);
-
 } catch (\League\Route\Http\Exception\NotFoundException $e) {
-
     $response->getBody()->write($container->get('templater')->render('errors/404'));
     $response = $response->withStatus(404);
-
 } catch (\Throwable $e) {
-
-        $errorHandler->handleException($e);
-
-        $response->getBody()->write($container->get('templater')->render('errors/500'));
-        $response = $response->withStatus(500);
-
+    $errorHandler->handleException($e);
+    $response->getBody()->write($container->get('templater')->render('errors/500'));
+    $response = $response->withStatus(500);
 }
 
 // send/flush response

@@ -24,6 +24,11 @@ class BaseController
         $this->postInput = $this->request->getParsedBody();
     }
 
+    /**
+     * Send 404 page with status 404 response
+     *
+     * @return ResponseInterface
+     */
     protected function abort() : ResponseInterface
     {
         return $this->httpResponse($this->view('errors/404'), 404);
@@ -36,6 +41,13 @@ class BaseController
         return $this->response->withStatus($statusCode);
     }
 
+    /**
+     * Send JSON response
+     *
+     * @param array $data
+     * @param int $statusCode
+     * @return ResponseInterface
+     */
     protected function jsonResponse(array $data, int $statusCode = 200) : ResponseInterface
     {
         $this->response
@@ -44,9 +56,15 @@ class BaseController
 
         return $this->response
             ->withStatus($statusCode)
-            ->withHeader('content-type','application/json');
+            ->withHeader('content-type', 'application/json');
     }
 
+    /**
+     * Send redirect response
+     *
+     * @param string $url
+     * @return ResponseInterface
+     */
     protected function redirectResponse(string $url = '/') : ResponseInterface
     {
         return $this->response->withHeader('Location', $url);
@@ -73,6 +91,7 @@ class BaseController
 
     /**
      * Redirect to previous page or to index page
+     *
      * @return ResponseInterface
      */
     protected function previous() : ResponseInterface
@@ -94,6 +113,12 @@ class BaseController
         return \container('templater')->render($name, $params);
     }
 
+    /**
+     * Format errors list for message dialog
+     *
+     * @param InputFilterInterface $inputFilter
+     * @return string
+     */
     protected function formatErrorMessages(InputFilterInterface $inputFilter): string
     {
         $result = '';

@@ -87,7 +87,7 @@ class ImagesController extends BaseController
         return $name . '-' . uniqid() . '.' . $ext;
     }
 
-    function getPrefix()
+    public function getPrefix()
     {
         if (!$this->prefix) {
             $this->prefix = getUploadPathPrefix();

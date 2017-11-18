@@ -31,7 +31,7 @@ class Article extends Eloquent
 
     public function image()
     {
-        return $this->belongsTo('App\Models\Image','id__Image');
+        return $this->belongsTo('App\Models\Image', 'id__Image');
     }
 
     public function tags()

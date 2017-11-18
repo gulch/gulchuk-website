@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 abstract class BaseRepository
 {
-    abstract function getModelName();
+    abstract public function getModelName();
 
     public function all()
     {

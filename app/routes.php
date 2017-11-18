@@ -2,27 +2,21 @@
 
 use Zend\Diactoros\Stream;
 
-use App\Middlewares\{
-    MinifyOutput,
-    AuthenticateOnly,
-    ResponseTime,
-    ContentSecurityPolicy
-};
+use App\Middlewares\MinifyOutput;
+use App\Middlewares\AuthenticateOnly;
+use App\Middlewares\ResponseTime;
+use App\Middlewares\ContentSecurityPolicy;
 
-use App\Controllers\Frontend\{
-    PageController,
-    BlogController,
-    SitemapController,
-    FeedController
-};
+use App\Controllers\Frontend\PageController;
+use App\Controllers\Frontend\BlogController;
+use App\Controllers\Frontend\SitemapController;
+use App\Controllers\Frontend\FeedController;
 
-use App\Controllers\Backend\{
-    AuthController,
-    DashboardController,
-    TagsController,
-    ArticlesController,
-    ImagesController
-};
+use App\Controllers\Backend\AuthController;
+use App\Controllers\Backend\DashboardController;
+use App\Controllers\Backend\TagsController;
+use App\Controllers\Backend\ArticlesController;
+use App\Controllers\Backend\ImagesController;
 
 // Frontend routes
 /** @var \League\Route\RouteCollection $router */

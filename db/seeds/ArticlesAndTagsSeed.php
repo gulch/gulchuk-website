@@ -47,7 +47,6 @@ class ArticlesAndTagsSeed extends AbstractSeed
         $data = [];
 
         for ($i = 1; $i < 11; $i++) {
-
             $title = $this->faker->word;
 
             $data[] = [

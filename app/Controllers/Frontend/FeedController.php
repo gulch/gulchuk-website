@@ -31,7 +31,6 @@ class FeedController extends BaseController
         // blog articles
         $articles = (new ArticlesRepository())->getWithOptions('created_at', 'desc', 20);
         foreach ($articles as $article) {
-
             $date = $article->updated_at ? $article->updated_at->getTimestamp() : $article->created_at->getTimestamp();
 
             (new Item())
