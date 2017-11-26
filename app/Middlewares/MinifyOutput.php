@@ -2,7 +2,6 @@
 
 namespace App\Middlewares;
 
-use gulch\GMinify;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -20,7 +19,14 @@ class MinifyOutput
     {
         $response = $next($request, $response);
 
-        $minifiedBody = GMinify::minifyHTML($response->getBody());
+        $minifier = new \gulch\Minify\Minifier(
+            new \gulch\Minify\Processor\WhitespacesRemover,
+            new \gulch\Minify\Processor\HtmlCommentsRemover,
+            new \gulch\Minify\Processor\InlineCssMinifier,
+            new \gulch\Minify\Processor\QuotesRemover,
+            new \gulch\Minify\Processor\AttributesSimplifier
+        );
+        $minifiedBody = $minifier->process($response->getBody());
         $this->stream->write($minifiedBody);
 
         return $response->withBody($this->stream);

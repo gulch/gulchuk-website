@@ -13,7 +13,7 @@
         "bernard/bernard": "^0.12.3",
         "filp/whoops": "^2.0",
         "gulch/assets": "^0.1",
-        "gulch/gminify": "dev-master",
+        "gulch/minify": "^0.1",
         "illuminate/database": "^5.5",
         "intervention/image": "^2.3",
         "league/container": "^2.0",
@@ -35,7 +35,7 @@
     "repositories":[
         {
             "type": "git",
-            "url": "https://github.com/gulch/gminify"
+            "url": "https://github.com/gulch/minify"
         },
         {
             "type": "git",
