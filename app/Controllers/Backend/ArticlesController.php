@@ -179,14 +179,12 @@ class ArticlesController extends BaseController
 
     private function executeSocialImageGeneration($article): void
     {
-        container('queue')->process(
-            'CreateArticleSocialImage',
-            [
-                'id' => $article->id,
-                'slug' => $article->slug,
-                'title' => $article->title,
-            ]
-        );
+        \container('job-service')->process([
+            'job' => 'CreateArticleSocialImage',
+            'id' => $article->id,
+            'slug' => $article->slug,
+            'title' => $article->title,
+        ]);
     }
 
     private function saveArticleInputFilter(): InputFilterInterface

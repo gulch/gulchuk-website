@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "bernard/bernard": "^0.12.3",
         "filp/whoops": "^2.0",
-        "gulch/assets": "^0.1",
+        "gulch/assets": "^0.2",
         "gulch/minify": "^0.1",
+        "hollodotme/fast-cgi-client": "^2.4",
         "illuminate/database": "^5.5",
         "intervention/image": "^2.3",
         "league/container": "^2.0",
@@ -32,16 +32,6 @@
         "robmorgan/phinx": "^0.9",
         "fzaninotto/faker": "^1.6"
     },
-    "repositories":[
-        {
-            "type": "git",
-            "url": "https://github.com/gulch/minify"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/gulch/assets"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/"

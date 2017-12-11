@@ -2,18 +2,17 @@
 
 namespace App\Jobs;
 
-use Bernard\Message;
 use App\Repositories\ArticlesRepository;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Image;
 
 class CreateArticleSocialImageJob
 {
-    public static function handle(Message $message): void
+    public static function handle(array $options): void
     {
-        $title = $message->title ?? null;
-        $slug = $message->slug ?? null;
-        $id = $message->id ?? null;
+        $title = $options['title'] ?? null;
+        $slug = $options['slug'] ?? null;
+        $id = $options['id'] ?? null;
 
         if (!$title || !$slug || !$id) {
             error_log('Title or Slug not isset');

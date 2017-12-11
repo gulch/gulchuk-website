@@ -63,12 +63,10 @@ class ImagesController extends BaseController
         }
 
         // generate also WebP version of image
-        container('queue')->process(
-            'CreateWebp',
-            [
-                'source' => $editor_file
-            ]
-        );
+        \container('job-service')->process([
+            'job' => 'CreateWebp',
+            'source' => $editor_file
+        ]);
 
         return $this->jsonResponse([
             'link' => config('app.images_path_editor') . $this->getPrefix() . '/' . $file_name,

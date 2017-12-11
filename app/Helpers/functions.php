@@ -74,6 +74,11 @@ function publicPath(): string
     return realpath(__DIR__ . '/../../public/');
 }
 
+function projectPath(): string
+{
+    return realpath(__DIR__ . '/../../');
+}
+
 function currentURL(bool $full_url = true, bool $with_query = false): string
 {
     $result = '';

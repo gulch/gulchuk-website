@@ -11,9 +11,9 @@
                     My name is Volodymyr Gulchuk. I'm web developer.
                     As a hobby I investigate web performance optimization.
                     I write to my <a href="/blog">blog</a>,
-                    develop <a href="https://github.com/gulch">composer packages</a>
-                    and contribute to another open-source projects, love photography,
-                    cycling, and doing other awesome things.
+                    develop <a target="_blank" href="https://packagist.org/users/gulch/">php packages</a>
+                    and <a target="_blank" href="https://github.com/gulch">contribute to another open-source projects</a>,
+                    love photography, cycling, and doing other awesome things.
                     I live in Kyiv, Ukraine.
                 </p>
             </div>

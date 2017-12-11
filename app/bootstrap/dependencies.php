@@ -18,8 +18,8 @@ $container->share('templater', function () {
     return new \League\Plates\Engine(__DIR__ . '/../../resources/views');
 });
 
-/* Queue */
-$container->share('queue', \App\Services\QueueService::class);
+/* FastCgiService */
+$container->share('job-service', \App\Services\JobService::class);
 
 /* Assets */
 $container->share('DeferJS', function () {

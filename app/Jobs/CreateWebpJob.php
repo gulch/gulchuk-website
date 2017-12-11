@@ -2,13 +2,11 @@
 
 namespace App\Jobs;
 
-use Bernard\Message;
-
 class CreateWebpJob
 {
-    public static function handle(Message $message): void
+    public static function handle(array $options): void
     {
-        $source = $message->source ?? null;
+        $source = $options['source'] ?? null;
 
         if (!$source) {
             error_log("Source parameter not isset.");
@@ -18,7 +16,8 @@ class CreateWebpJob
             error_log("File {$source} not exists.");
         }
 
-        $cmd = "cwebp -quiet -alpha_method 1 -alpha_filter best -m 6 -mt {$source} -o {$source}.webp";
-        exec($cmd . ' > /dev/null &');
+        $cmd = "cwebp -quiet -alpha_method 1 -alpha_filter best -m 6 -mt {$source} -o {$source}.tmp";
+        \exec($cmd . ' > /dev/null');
+        \rename($source . '.tmp', $source . '.webp');
     }
 }
