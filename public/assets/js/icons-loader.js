@@ -1,7 +1,7 @@
 ;(function (window, document) {
     'use strict';
 
-    var revision = '1.1.0';
+    var revision = '1.2.0';
     var file = '/build/' + revision + '/icons.svg';
 
     if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;

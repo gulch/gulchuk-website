@@ -7,7 +7,7 @@ DIRECTORY="."
 
 function doGzip {
 
-	FILE_MINSIZE=1024
+	FILE_MINSIZE=256
 	GZIP="gzip -9 -c -n"
 	AWK=awk
 	TOUCH=touch
