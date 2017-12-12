@@ -308,6 +308,14 @@
             </p>
             <ul>
                 <li>
+                    <a href="/uploads/files/2017/12/2425330_382101.en.pdf"
+                       target="_blank"
+                       rel="nofollow"
+                    >
+                        PHP. Advanced (Geekbrains)
+                    </a>
+                </li>
+                <li>
                     <a href="/uploads/files/2017/10/abdf048d.jpg"
                        target="_blank"
                        rel="nofollow"
