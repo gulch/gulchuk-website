@@ -65,7 +65,7 @@ class AuthService
                 $remember_token,
                 time() + 172800, // +48 hours
                 '/',
-                config('app_domain'),
+                config('app.domain'),
                 true, // secure
                 true // httpOnly
             );
@@ -74,7 +74,7 @@ class AuthService
 
     public static function logout()
     {
-        setcookie('remember', '', time() - 3600, '/', config('app_domain'), true, true);
+        setcookie('remember', '', time() - 3600, '/', config('app.domain'), true, true);
         static::destroySession();
     }
 
