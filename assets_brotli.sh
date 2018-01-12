@@ -7,7 +7,7 @@ DIRECTORY="."
 
 function doBrotli {
 
-	FILE_MINSIZE=256
+	FILE_MINSIZE=512
 	BROTLI="brotli --quality 11"
 	AWK=awk
 	TOUCH=touch

@@ -3,7 +3,7 @@
 # optimize autoload
 composer dump-autoload --optimize --classmap-authoritative --no-dev
 
-# optimize assets
+# compress assets
 ASSETS_DIR="public/build"
 
 # gzip assets
