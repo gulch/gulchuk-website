@@ -26,7 +26,7 @@ class TagsRepository extends BaseRepository
     {
         $tag = $this->findById($id);
 
-        if (!sizeof($tag)) {
+        if (!$tag) {
             return null;
         }
 
@@ -37,7 +37,7 @@ class TagsRepository extends BaseRepository
     {
         $tag = ($this->getModelName())::find($id);
 
-        if (sizeof($tag)) {
+        if ($tag) {
             $tag->articles()->sync($articles);
         }
     }

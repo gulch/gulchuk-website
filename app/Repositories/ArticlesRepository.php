@@ -29,7 +29,7 @@ class ArticlesRepository extends BaseRepository
     {
         $article = ($this->getModelName())::find($id);
 
-        if (sizeof($article)) {
+        if ($article) {
             $article->tags()->sync($tags);
         }
     }
@@ -38,7 +38,7 @@ class ArticlesRepository extends BaseRepository
     {
         $article = ($this->getModelName())::find($id);
 
-        if (!sizeof($article)) {
+        if (!$article) {
             return [];
         }
 

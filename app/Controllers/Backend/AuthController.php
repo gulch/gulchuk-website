@@ -32,7 +32,7 @@ class AuthController extends BaseController
         $path = $this->getArgument('return') ?: \config('app.backend_segment');
 
         $user = (new UsersRepository)->findByEmail($email);
-        if (\sizeof($user)) {
+        if ($user) {
             if (\password_verify($password, $user->password)) {
                 $hash = \password_hash($password, PASSWORD_ARGON2I);
 

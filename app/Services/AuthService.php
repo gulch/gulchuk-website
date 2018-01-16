@@ -92,7 +92,7 @@ class AuthService
 
         $user = (new $usersRepository)->findByRememberToken($remember_token);
 
-        if (!sizeof($user)) {
+        if (!$user) {
             return false;
         }
 

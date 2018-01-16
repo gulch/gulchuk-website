@@ -15,8 +15,8 @@
   "require": {
     "php": "~7.2.0",
     "filp/whoops": "~2.1.9",
-    "gulch/assets": "^0.2",
-    "gulch/minify": "^0.1",
+    "gulch/assets": "~1.0.0",
+    "gulch/minify": "~1.0.0",
     "hollodotme/fast-cgi-client": "~2.4.1",
     "illuminate/database": "~5.5.0",
     "intervention/image": "~2.4.1",

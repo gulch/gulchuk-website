@@ -29,7 +29,7 @@ class Tag extends Eloquent
 
     public function articles()
     {
-        return $this->belongsToMany('App\Models\Article', 'Article_Tag', 'id__Tag', 'id__Article');
+        return $this->belongsToMany(Article::class, 'Article_Tag', 'id__Tag', 'id__Article');
     }
 
     /* ----- Custom Functions ----- */

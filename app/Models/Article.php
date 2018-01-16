@@ -31,11 +31,11 @@ class Article extends Eloquent
 
     public function image()
     {
-        return $this->belongsTo('App\Models\Image', 'id__Image');
+        return $this->belongsTo(Image::class, 'id__Image');
     }
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag', 'Article_Tag', 'id__Article', 'id__Tag');
+        return $this->belongsToMany(Tag::class, 'Article_Tag', 'id__Article', 'id__Tag');
     }
 }
