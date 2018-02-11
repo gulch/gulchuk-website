@@ -2,39 +2,16 @@
 
 namespace App\Helpers;
 
-use Symfony\Component\Finder\Finder;
 use Exception;
+use Symfony\Component\Finder\Finder;
+use App\Helpers\SingletonTrait;
 
 class Config
 {
+    use SingletonTrait;
+
     /** @var array */
     private $config;
-
-    private static $instance;
-
-    private function __construct()
-    {
-        //
-    }
-
-    private function __clone()
-    {
-        //
-    }
-
-    private function __wakeup()
-    {
-        //
-    }
-
-    public static function getInstance(): self
-    {
-        if (!self::$instance) {
-            throw new Exception('Instance not initialized. Bootstrap first!');
-        }
-
-        return self::$instance;
-    }
 
     public static function bootstrap(string $path): void
     {
@@ -58,8 +35,11 @@ class Config
 
         $result = $this->config;
 
-        foreach (explode('.', $key) as $segment) {
-            if (is_array($result) && array_key_exists($segment, $result)) {
+        foreach (\explode('.', $key) as $segment) {
+            if (
+                \is_array($result)
+                && \array_key_exists($segment, $result)
+            ) {
                 $result = $result[$segment];
             } else {
                 return null;
@@ -81,10 +61,10 @@ class Config
     private function getConfigurationFiles(string $path): array
     {
         $files = [];
-        $configPath = realpath($path);
+        $configPath = \realpath($path);
 
         foreach (Finder::create()->files()->name('*.php')->in($configPath) as $file) {
-            $files[basename($file->getRealPath(), '.php')] = $file->getRealPath();
+            $files[\basename($file->getRealPath(), '.php')] = $file->getRealPath();
         }
 
         return $files;

@@ -2,39 +2,16 @@
 
 namespace App\Helpers;
 
-use Psr\Container\ContainerInterface;
 use Exception;
+use Psr\Container\ContainerInterface;
+use App\Helpers\SingletonTrait;
 
 class Container
 {
+    use SingletonTrait;
+
     /** @var ContainerInterface */
     private $container;
-
-    private static $instance;
-
-    private function __construct()
-    {
-        //
-    }
-
-    private function __clone()
-    {
-        //
-    }
-
-    private function __wakeup()
-    {
-        //
-    }
-
-    public static function getInstance(): self
-    {
-        if (!self::$instance) {
-            throw new Exception('Instance not initialized. Bootstrap first!');
-        }
-
-        return self::$instance;
-    }
 
     public static function bootstrap(ContainerInterface $container): void
     {
