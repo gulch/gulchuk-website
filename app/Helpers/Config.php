@@ -36,10 +36,7 @@ class Config
         $result = $this->config;
 
         foreach (\explode('.', $key) as $segment) {
-            if (
-                \is_array($result)
-                && \array_key_exists($segment, $result)
-            ) {
+            if (\is_array($result) && \array_key_exists($segment, $result)) {
                 $result = $result[$segment];
             } else {
                 return null;
