@@ -62,7 +62,7 @@ class TagsController extends BaseController
 
         $tag = $this->repository->findById($id);
 
-        if (is_null($tag)) {
+        if (\is_null($tag)) {
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 

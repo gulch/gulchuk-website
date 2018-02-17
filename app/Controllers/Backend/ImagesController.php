@@ -30,7 +30,7 @@ class ImagesController extends BaseController
         }
 
         $file_name = $this->uniqueFileName($uploaded_file->getClientFilename());
-        $file_path = getUploadFilePath(config('app.images_path_original')) . '/' . $file_name;
+        $file_path = \getUploadFilePath(\config('app.images_path_original')) . '/' . $file_name;
         $uploaded_file->moveTo($file_path);
 
         switch ($setup) {
@@ -39,7 +39,7 @@ class ImagesController extends BaseController
         }
 
         return $this->jsonResponse([
-            'link' => config('app.images_path_original') . $this->getPrefix() . '/' . $file_name,
+            'link' => \config('app.images_path_original') . $this->getPrefix() . '/' . $file_name,
             'success' => 'OK'
         ]);
     }
@@ -51,8 +51,8 @@ class ImagesController extends BaseController
             'quality' => 75
         ];
 
-        $original_file = getUploadFilePath(config('app.images_path_original')) . '/' . $file_name;
-        $editor_file = getUploadFilePath(config('app.images_path_editor')) . '/' . $file_name;
+        $original_file = \getUploadFilePath(\config('app.images_path_original')) . '/' . $file_name;
+        $editor_file = \getUploadFilePath(\config('app.images_path_editor')) . '/' . $file_name;
 
         $success = (new ImageService)->process($original_file, $editor_file, $options);
 
@@ -69,26 +69,26 @@ class ImagesController extends BaseController
         ]);
 
         return $this->jsonResponse([
-            'link' => config('app.images_path_editor') . $this->getPrefix() . '/' . $file_name,
+            'link' => \config('app.images_path_editor') . $this->getPrefix() . '/' . $file_name,
             'success' => 'OK'
         ]);
     }
 
     private function uniqueFileName(string $file_name): string
     {
-        $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-        $name = pathinfo($file_name, PATHINFO_FILENAME);
+        $ext = \pathinfo($file_name, \PATHINFO_EXTENSION);
+        $name = \pathinfo($file_name, \PATHINFO_FILENAME);
 
-        $name = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name)));
-        $name = mb_strimwidth($name, 0, 100, '', 'UTF-8');
+        $name = \strtolower(\trim(\preg_replace('/[^A-Za-z0-9-]+/', '-', $name)));
+        $name = \mb_strimwidth($name, 0, 100, '', 'UTF-8');
 
-        return $name . '-' . uniqid() . '.' . $ext;
+        return $name . '-' . \uniqid() . '.' . $ext;
     }
 
     public function getPrefix()
     {
         if (!$this->prefix) {
-            $this->prefix = getUploadPathPrefix();
+            $this->prefix = \getUploadPathPrefix();
         }
 
         return $this->prefix;

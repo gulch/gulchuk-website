@@ -21,7 +21,7 @@ class BlogController extends BaseController
 
     public function show(): ResponseInterface
     {
-        $slug = $this->argument('slug', func_get_arg(2));
+        $slug = $this->argument('slug', \func_get_arg(2));
 
         if (!$slug) {
             return $this->abort();

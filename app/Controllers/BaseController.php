@@ -29,12 +29,12 @@ class BaseController
      *
      * @return ResponseInterface
      */
-    protected function abort() : ResponseInterface
+    protected function abort(): ResponseInterface
     {
         return $this->httpResponse($this->view('errors/404'), 404);
     }
 
-    protected function httpResponse(string $data, int $statusCode = 200) : ResponseInterface
+    protected function httpResponse(string $data, int $statusCode = 200): ResponseInterface
     {
         $this->response->getBody()->write($data);
 
@@ -48,11 +48,11 @@ class BaseController
      * @param int $statusCode
      * @return ResponseInterface
      */
-    protected function jsonResponse(array $data, int $statusCode = 200) : ResponseInterface
+    protected function jsonResponse(array $data, int $statusCode = 200): ResponseInterface
     {
         $this->response
             ->getBody()
-            ->write(json_encode($data, JSON_PRETTY_PRINT));
+            ->write(\json_encode($data, \JSON_PRETTY_PRINT));
 
         return $this->response
             ->withStatus($statusCode)
@@ -65,7 +65,7 @@ class BaseController
      * @param string $url
      * @return ResponseInterface
      */
-    protected function redirectResponse(string $url = '/') : ResponseInterface
+    protected function redirectResponse(string $url = '/'): ResponseInterface
     {
         return $this->response->withHeader('Location', $url);
     }
@@ -94,7 +94,7 @@ class BaseController
      *
      * @return ResponseInterface
      */
-    protected function previous() : ResponseInterface
+    protected function previous(): ResponseInterface
     {
         $url = $_SERVER['HTTP_REFERER'] ?? '/';
 
@@ -108,7 +108,7 @@ class BaseController
      * @param array $params
      * @return string
      */
-    protected function view(string $name, array $params = []) : string
+    protected function view(string $name, array $params = []): string
     {
         return \container('templater')->render($name, $params);
     }
@@ -121,14 +121,8 @@ class BaseController
      */
     protected function formatErrorMessages(InputFilterInterface $inputFilter): string
     {
-        $result = '';
-
-        foreach ($inputFilter->getInvalidInput() as $key => $error) {
-            $result .= '<li>Field "'. $key .'":<ul><li>' . implode('</li><li>', $error->getMessages()) . '</li></ul></li>';
-        }
-
-        $result = '<ul>' . $result . '</ul>';
-
-        return $result;
+        return $this->view('messages/validation', [
+            'errors' => $inputFilter->getInvalidInput()
+        ]);
     }
 }

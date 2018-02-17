@@ -42,7 +42,7 @@ class ArticlesController extends BaseController
 
     public function edit(): ResponseInterface
     {
-        $id = $this->argument('id', func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(2));
 
         $article = $this->repository->findById($id);
 
@@ -53,7 +53,7 @@ class ArticlesController extends BaseController
         $data = [
             'article' => $article,
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'],
-            'tags' => (new TagsRepository())->list(['id', 'title'], 'title'),
+            'tags' => (new TagsRepository)->list(['id', 'title'], 'title'),
             'article_tags' => $this->repository->articleTagsIds($id),
         ];
 
@@ -62,7 +62,7 @@ class ArticlesController extends BaseController
 
     public function remove(): ResponseInterface
     {
-        $id = $this->argument('id', func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(2));
 
         $article = $this->repository->findById($id);
 

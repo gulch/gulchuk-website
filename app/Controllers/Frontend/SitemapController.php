@@ -16,13 +16,13 @@ class SitemapController extends BaseController
             \publicPath() . '/sitemap.xml'
         );
 
-        $date = time();
+        $date = \time();
 
         $sitemap->addItem(\config('app.url'), $date, Sitemap::WEEKLY, 1.0);
         $sitemap->addItem(\config('app.url') . '/blog', $date, Sitemap::WEEKLY, 0.7);
 
         // blog tags
-        $tags = (new TagsRepository())->all();
+        $tags = (new TagsRepository)->all();
         foreach ($tags as $tag) {
             $date = $tag->updated_at ? $tag->updated_at->getTimestamp() : $tag->created_at->getTimestamp();
             $sitemap->addItem(

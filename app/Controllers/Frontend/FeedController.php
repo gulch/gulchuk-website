@@ -13,11 +13,11 @@ class FeedController extends BaseController
 {
     public function generate(): ResponseInterface
     {
-        $date = time();
+        $date = \time();
 
-        $feed = new Feed();
+        $feed = new Feed;
 
-        $channel = (new Channel())
+        $channel = (new Channel)
             ->title('Gulchuk')
             ->description('Gulchuk Personal Website')
             ->url(config('app.url'))
@@ -29,16 +29,16 @@ class FeedController extends BaseController
             ->appendTo($feed);
 
         // blog articles
-        $articles = (new ArticlesRepository())->getWithOptions('created_at', 'desc', 20);
+        $articles = (new ArticlesRepository)->getWithOptions('created_at', 'desc', 20);
         foreach ($articles as $article) {
             $date = $article->updated_at ? $article->updated_at->getTimestamp() : $article->created_at->getTimestamp();
 
-            (new Item())
+            (new Item)
                 ->title($article->title)
                 ->description($article->seo_description)
-                ->url(config('app.url') . '/blog/' . $article->slug)
+                ->url(\config('app.url') . '/blog/' . $article->slug)
                 ->pubDate($date)
-                ->guid(config('app.url') . '/blog/' . $article->slug, true)
+                ->guid(\config('app.url') . '/blog/' . $article->slug, true)
                 ->preferCdata(true)
                 ->appendTo($channel);
         }

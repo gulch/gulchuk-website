@@ -6,7 +6,7 @@ class AuthService
 {
     public static function startSession(): void
     {
-        session_start();
+        \session_start();
     }
 
     public static function destroySession(): void
@@ -63,9 +63,9 @@ class AuthService
             setcookie(
                 'remember',
                 $remember_token,
-                time() + 172800, // +48 hours
+                \time() + 172800, // +48 hours
                 '/',
-                config('app.domain'),
+                \config('app.domain'),
                 true, // secure
                 true // httpOnly
             );
@@ -74,7 +74,15 @@ class AuthService
 
     public static function logout()
     {
-        setcookie('remember', '', time() - 3600, '/', config('app.domain'), true, true);
+        \setcookie(
+            'remember',
+            '',
+            \time() - 3600,
+            '/',
+            \config('app.domain'),
+            true,
+            true
+        );
         static::destroySession();
     }
 
@@ -107,8 +115,16 @@ class AuthService
      */
     public static function generateRememberToken(int $size = 16): string
     {
-        $random_bytes = random_bytes($size);
-        $token = substr(str_replace(['/', '+', '='], '', base64_encode($random_bytes)), 0, $size);
+        $random_bytes = \random_bytes($size);
+        $token = \substr(
+            \str_replace(
+                ['/', '+', '='],
+                '',
+                \base64_encode($random_bytes)
+            ),
+            0,
+            $size
+        );
 
         return $token;
     }

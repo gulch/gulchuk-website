@@ -55,6 +55,6 @@ class ImageService
         $image->destroy();
 
         // check if processed file exists
-        return file_exists($result);
+        return \file_exists($result);
     }
 }

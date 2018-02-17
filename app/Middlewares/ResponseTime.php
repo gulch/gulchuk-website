@@ -14,13 +14,14 @@ class ResponseTime
         $server = $request->getServerParams();
 
         if (!isset($server['REQUEST_TIME_FLOAT'])) {
-            $server['REQUEST_TIME_FLOAT'] = microtime(true);
+            $server['REQUEST_TIME_FLOAT'] = \APP_START_TIME_FLOAT;
         }
 
         $response = $next($request, $response);
 
-        $duration = (microtime(true) - $server['REQUEST_TIME_FLOAT']) * 1000;
+        $now = \microtime(true);
+        $duration = ($now - $server['REQUEST_TIME_FLOAT']) * 1000;
 
-        return $response->withHeader(self::HEADER, sprintf('%2.3f ms', $duration));
+        return $response->withHeader(self::HEADER, \sprintf('%2.3f ms', $duration));
     }
 }

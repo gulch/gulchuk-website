@@ -188,7 +188,7 @@ function saveFormHandler($btn, withRedirect) {
                 }
             }
             if (result.message) {
-                form.find('.save-message').html(result.message).removeClass('hide');
+                form.find('.save-message').html(result.message).removeClass('display-none').removeClass('hide');
             }
         },
         error: function (request, status) {

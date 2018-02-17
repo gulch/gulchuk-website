@@ -19,6 +19,8 @@ class MinifyOutput
     {
         $response = $next($request, $response);
 
+        $start_time = \microtime(true);
+
         $minifier = new \gulch\Minify\Minifier(
             new \gulch\Minify\Processor\WhitespacesRemover,
             new \gulch\Minify\Processor\HtmlCommentsRemover,
@@ -29,6 +31,9 @@ class MinifyOutput
         $minifiedBody = $minifier->process($response->getBody());
         $this->stream->write($minifiedBody);
 
-        return $response->withBody($this->stream);
+        $end_time = \microtime(true);
+
+        return $response->withBody($this->stream)
+            ->withHeader('X-Minify-Time', \sprintf('%2.3f ms', ($end_time - $start_time) * 1000));
     }
 }

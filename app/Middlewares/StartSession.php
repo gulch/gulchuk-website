@@ -9,7 +9,7 @@ class StartSession
 {
     public function __invoke(Request $request, Response $response, callable $next = null): Response
     {
-        session_start();
+        \session_start();
         return $next($request, $response);
     }
 }
