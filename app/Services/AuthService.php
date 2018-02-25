@@ -15,7 +15,7 @@ class AuthService
             unset($_SESSION['user']);
         }
 
-        session_destroy();
+        \session_destroy();
     }
 
     public static function check(): bool
@@ -47,10 +47,11 @@ class AuthService
     /**
      * @param App\Models\User $user
      * @param bool $remember
+     * @throws \Exception
      */
     public static function authenticate($user, bool $remember = false): void
     {
-        self::setUser($user);
+        static::setUser($user);
 
         if ($remember) {
             // Generate remember token
@@ -77,11 +78,11 @@ class AuthService
         \setcookie(
             'remember',
             '',
-            \time() - 3600,
+            \time() - 3600, // remove cookie, set valid to -1 hour ago
             '/',
             \config('app.domain'),
-            true,
-            true
+            true, // secure
+            true // httpOnly
         );
         static::destroySession();
     }
@@ -89,6 +90,7 @@ class AuthService
     /**
      * @param string $usersRepository
      * @return bool
+     * @throws \Exception
      */
     public static function checkRememberTokenAndLogin(string $usersRepository): bool
     {
@@ -112,6 +114,7 @@ class AuthService
     /**
      * @param int $size Token string symbols count
      * @return string
+     * @throws \Exception
      */
     public static function generateRememberToken(int $size = 16): string
     {

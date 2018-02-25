@@ -128,13 +128,22 @@ $(document).ready(function () {
     if ($('.wysiwyg-editor').length) {
 
         $('.wysiwyg-editor').froalaEditor({
+            htmlAllowComments: false,
+            htmlExecuteScripts: false,
+            htmlAllowedEmptyTags: ['i'],
+
+            linkAlwaysBlank: true,
+            linkAlwaysNoFollow: false,
+            linkNoReferrer: false,
+            linkNoOpener: true,
+
             imageUploadURL: $('.wysiwyg-editor').attr('data-upload-url'),
             imageUploadParams: {
                 setup: 'editor'
             }
         });
 
-        $('.fr-box a:contains("Unlicensed")').parent().remove();
+        /*$('.fr-box a:contains("Unlicensed")').parent().remove();*/
     }
 
 });

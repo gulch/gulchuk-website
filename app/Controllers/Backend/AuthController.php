@@ -34,10 +34,9 @@ class AuthController extends BaseController
         $user = (new UsersRepository)->findByEmail($email);
         if ($user) {
             if (\password_verify($password, $user->password)) {
-                $hash = \password_hash($password, PASSWORD_ARGON2I);
 
-                if (\password_needs_rehash($hash, PASSWORD_ARGON2I)) {
-                    $user->password = $hash;
+                if (\password_needs_rehash($user->password, \PASSWORD_ARGON2I)) {
+                    $user->password = \password_hash($password, \PASSWORD_ARGON2I);
                     $user->save();
                 }
 
