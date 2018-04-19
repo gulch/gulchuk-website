@@ -1,4 +1,6 @@
 {
+  "name": "gulchuk.com",
+  "version": "1.2.0",
   "dependencies": {
     "gulp": "^3.9",
     "gulp-concat": "^2.5.2",

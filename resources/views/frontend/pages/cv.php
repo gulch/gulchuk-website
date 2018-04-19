@@ -316,9 +316,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/uploads/files/2017/10/abdf048d.jpg"
+                    <a href="https://www.englishdom.com/cn/abdf048d/"
                        target="_blank"
-                       rel="nofollow"
+                       rel="nofollow noopener"
                     >
                         English for IT
                     </a>

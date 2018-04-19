@@ -10,6 +10,7 @@ class BaseController
 {
     /** @var $request ServerRequestInterface */
     protected $request;
+
     /** @var $response ResponseInterface */
     protected $response;
 

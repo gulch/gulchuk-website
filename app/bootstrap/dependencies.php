@@ -35,10 +35,11 @@ $container->share('BodyCSS', function () {
 });
 
 /* Controllers */
-$container->add(\App\Controllers\AuthController::class);
+
 $container->add(\App\Controllers\Frontend\PageController::class);
 $container->add(\App\Controllers\Frontend\BlogController::class);
 $container->add(\App\Controllers\Frontend\SitemapController::class);
+$container->add(\App\Controllers\Backend\AuthController::class);
 $container->add(\App\Controllers\Backend\DashboardController::class);
 $container
     ->add(\App\Controllers\Backend\TagsController::class)

@@ -27,7 +27,7 @@ class AuthService
 
 
     /**
-     * @return App\Models\User | bool
+     * @return \App\Models\User | bool
      */
     public static function user()
     {
@@ -45,7 +45,7 @@ class AuthService
     }
 
     /**
-     * @param App\Models\User $user
+     * @param \App\Models\User $user
      * @param bool $remember
      * @throws \Exception
      */

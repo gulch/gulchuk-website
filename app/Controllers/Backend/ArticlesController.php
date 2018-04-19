@@ -34,7 +34,7 @@ class ArticlesController extends BaseController
     {
         $data = [
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'],
-            'tags' => (new TagsRepository())->list(['id', 'title'], 'title'),
+            'tags' => (new TagsRepository)->list(['id', 'title'], 'title'),
         ];
 
         return $this->httpResponse($this->view('backend/articles/create', $data));

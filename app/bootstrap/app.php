@@ -2,6 +2,7 @@
 
 // error_reporting(E_ALL);
 // ini_set('display_errors', 1);
+
 define('APP_START_TIME_FLOAT', microtime(true));
 
 require __DIR__ . '/../../vendor/autoload.php';
@@ -42,8 +43,8 @@ $container = require __DIR__ . '/dependencies.php';
 require __DIR__ . '/db.php';
 
 /* Router & Routes */
-$router = new \League\Route\RouteCollection($container);
-require __DIR__ . '/../routes.php';
+/** @var \League\Route\RouteCollection $router */
+$router = require __DIR__ . '/router.php';
 
 /** @var \Psr\Http\Message\RequestInterface */
 $request = $container->get('request');
