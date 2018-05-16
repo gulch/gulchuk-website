@@ -24,9 +24,7 @@ class MinifyOutput
         $minifier = new \gulch\Minify\Minifier(
             new \gulch\Minify\Processor\WhitespacesRemover,
             new \gulch\Minify\Processor\HtmlCommentsRemover,
-            new \gulch\Minify\Processor\InlineCssMinifier,
-            new \gulch\Minify\Processor\QuotesRemover,
-            new \gulch\Minify\Processor\AttributesSimplifier
+            new \gulch\Minify\Processor\QuotesRemover
         );
         $minifiedBody = $minifier->process($response->getBody());
         $this->stream->write($minifiedBody);
