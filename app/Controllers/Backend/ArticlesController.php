@@ -129,17 +129,17 @@ class ArticlesController extends BaseController
 
     public function publish(): ResponseInterface
     {
-        return $this->changePublishStatus($this->argument('id', func_get_arg(2)), 1);
+        return $this->changePublishStatus($this->argument('id', \func_get_arg(2)), 1);
     }
 
     public function unpublish(): ResponseInterface
     {
-        return $this->changePublishStatus($this->argument('id', func_get_arg(2)), 0);
+        return $this->changePublishStatus($this->argument('id', \func_get_arg(2)), 0);
     }
 
     public function generateSocialImage(): ResponseInterface
     {
-        $id = $this->argument('id', func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(2));
 
         $article = $this->repository->findById($id);
 

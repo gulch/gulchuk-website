@@ -4,31 +4,31 @@ namespace App\Repositories;
 
 abstract class BaseRepository
 {
-    abstract public function getModelName();
+    abstract public function getModelInstance();
 
     public function all()
     {
-        return ($this->getModelName())::all();
+        return $this->getModelInstance()->all();
     }
 
     public function findById(int $id)
     {
-        return ($this->getModelName())::find($id);
+        return $this->getModelInstance()->find($id);
     }
 
     public function findBySlug(string $slug)
     {
-        return ($this->getModelName())::where('slug', $slug)->first();
+        return $this->getModelInstance()->where('slug', $slug)->first();
     }
 
     public function delete(int $id): void
     {
-        ($this->getModelName())::destroy($id);
+        $this->getModelInstance()->destroy($id);
     }
 
     public function getWith(array $with, string $orderField = '', string $orderDir = 'asc'): \Traversable
     {
-        $result = ($this->getModelName())::with($with);
+        $result = $this->getModelInstance()->with($with);
 
         if ($orderField) {
             $result = $result->orderBy($orderField, $orderDir);
@@ -39,7 +39,7 @@ abstract class BaseRepository
 
     public function create(array $data): int
     {
-        $entity = ($this->getModelName())::create($data);
+        $entity = $this->getModelInstance()->create($data);
 
         return $entity->id ?? 0;
     }

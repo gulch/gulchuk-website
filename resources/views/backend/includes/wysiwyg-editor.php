@@ -1,5 +1,5 @@
 <?php
-container('BodyCSS')
+container('body-css')
     ->add('/assets/vendor/font-awesome/4.7.0/css/font-awesome.css')
     ->add('/assets/vendor/froala/2.7.5/css/froala_editor.css')
     ->add('/assets/vendor/froala/2.7.5/css/froala_style.css')
@@ -32,7 +32,7 @@ container('BodyCSS')
 <!--<link href="/assets/vendor/codemirror/5.3.0/codemirror.css" rel="stylesheet" type="text/css">-->
 
 <?php
-container('DeferJS')
+container('defer-css')
     ->add('/assets/vendor/froala/2.7.5/js/froala_editor.min.js')
     ->add('/assets/vendor/codemirror/5.3.0/codemirror.js')
     ->add('/assets/vendor/codemirror/5.3.0/mode/xml/xml.js')

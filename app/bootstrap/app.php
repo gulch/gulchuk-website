@@ -33,9 +33,7 @@ if (config('app.debug')) {
 $errorHandler->register();
 
 /* Dependency Injection container */
-/**
- * @var $container \League\Container\Container
- */
+/** @var $container \League\Container\Container */
 $container = require __DIR__ . '/dependencies.php';
 \App\Helpers\Container::bootstrap($container);
 

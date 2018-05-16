@@ -13,7 +13,7 @@ class ImagesController extends BaseController
 
     public function upload(): ResponseInterface
     {
-        /** @var UploadedFileInterface */
+        /** @var $uploaded_file UploadedFileInterface  */
         $uploaded_file = $this->request->getUploadedFiles()['file'] ?? null;
         $setup = $this->postArgument('setup');
 
@@ -82,7 +82,7 @@ class ImagesController extends BaseController
         $name = \strtolower(\trim(\preg_replace('/[^A-Za-z0-9-]+/', '-', $name)));
         $name = \mb_strimwidth($name, 0, 100, '', 'UTF-8');
 
-        return $name . '-' . \uniqid() . '.' . $ext;
+        return $name . '-' . \bin2hex(\random_bytes(10)) . '.' . $ext;
     }
 
     public function getPrefix()

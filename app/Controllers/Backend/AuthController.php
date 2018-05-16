@@ -17,7 +17,7 @@ class AuthController extends BaseController
             return $this->redirectResponse('/' . $path);
         }
 
-        if (AuthService::checkRememberTokenAndLogin(UsersRepository::class)) {
+        if (AuthService::checkRememberTokenAndLogin(new UsersRepository)) {
             return $this->redirectResponse('/' . $path);
         }
 

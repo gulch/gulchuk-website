@@ -41,7 +41,7 @@
             <?= $this->section('content') ?>
         </div>
 
-        <?= container('BodyCSS')->write() ?>
+        <?= container('body-css')->write() ?>
 
         <?php $this->insert('backend/includes/js') ?>
 

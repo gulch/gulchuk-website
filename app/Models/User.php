@@ -8,4 +8,8 @@ class User extends Eloquent
 {
     protected $table = 'User';
     public $timestamps = false;
+
+    protected $fillable = [
+        'remember_token',
+    ];
 }

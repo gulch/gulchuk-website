@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Repositories\UsersRepository;
+
 class AuthService
 {
     public static function startSession(): void
@@ -58,10 +60,11 @@ class AuthService
             $remember_token = static::generateRememberToken(32);
 
             // save remember token to user table
-            $user->remember_token = $remember_token;
-            $user->save();
+            (new UsersRepository)->update($user->id, [
+                'remember_token' => $remember_token,
+            ]);
 
-            setcookie(
+            \setcookie(
                 'remember',
                 $remember_token,
                 \time() + 172800, // +48 hours
@@ -87,12 +90,7 @@ class AuthService
         static::destroySession();
     }
 
-    /**
-     * @param string $usersRepository
-     * @return bool
-     * @throws \Exception
-     */
-    public static function checkRememberTokenAndLogin(string $usersRepository): bool
+    public static function checkRememberTokenAndLogin(UsersRepository $usersRepository): bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
 
@@ -100,7 +98,7 @@ class AuthService
             return false;
         }
 
-        $user = (new $usersRepository)->findByRememberToken($remember_token);
+        $user = $usersRepository->findByRememberToken($remember_token);
 
         if (!$user) {
             return false;

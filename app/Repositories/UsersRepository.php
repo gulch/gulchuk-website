@@ -6,18 +6,22 @@ use App\Models\User;
 
 class UsersRepository extends BaseRepository
 {
-    public function getModelName()
+    public function getModelInstance(): User
     {
-        return User::class;
+        return new User();
     }
 
     public function findByEmail(string $email)
     {
-        return ($this->getModelName())::where('email', $email)->first();
+        return $this->getModelInstance()
+            ->where('email', $email)
+            ->first();
     }
 
     public function findByRememberToken(string $token)
     {
-        return ($this->getModelName())::where('remember_token', $token)->first();
+        return $this->getModelInstance()
+            ->where('remember_token', $token)
+            ->first();
     }
 }

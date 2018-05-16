@@ -22,13 +22,13 @@ $container->share('templater', function () {
 $container->share('job-service', \App\Services\JobService::class);
 
 /* Assets */
-$container->share('DeferJS', function () {
+$container->share('defer-css', function () {
     return new \gulch\Assets\Asset(
         new \gulch\Assets\Renderer\DeferJsRenderer
     );
 });
 
-$container->share('BodyCSS', function () {
+$container->share('body-css', function () {
     return new \gulch\Assets\Asset(
         new \gulch\Assets\Renderer\BodyCssRenderer
     );

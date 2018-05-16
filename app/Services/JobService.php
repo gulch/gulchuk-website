@@ -15,8 +15,8 @@ class JobService
     {
         $connection = new UnixDomainSocket(
             \config('jobs.php-fpm_socket_path'),  # Socket path to php-fpm
-            5000,                                # Connect timeout in milliseconds (default: 5000)
-            20000                                # Read/write timeout in milliseconds (default: 5000)
+            5000,                                 # Connect timeout in milliseconds (default: 5000)
+            20000                                 # Read/write timeout in milliseconds (default: 5000)
         );
 
         $this->client = new Client($connection);
