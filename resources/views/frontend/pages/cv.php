@@ -143,33 +143,73 @@
                             &nearr; <a rel="nofollow" target="_blank" href="https://funtime.kiev.ua">funtime.kiev.ua</a>
                         </div>
                         <div class="description">
-                            Full development cycle: design, frontend, backend, seo, email campaigns configure etc.
-                            <br>
-                            Technologies/frameworks:
-                            PHP, Laravel 5, Semantic UI,
-                            Javascript, jQuery,
-                            <a href="https://developers.google.com/maps/documentation/javascript/">Google Maps JavaScript API</a>,
-                            <a href="https://developers.google.com/maps/documentation/static-maps/">Google Static Maps API</a>,
-                            <a href="https://tech.yandex.ru/maps/">Yandex Maps API</a>,
-                            <a href="https://developers.facebook.com/docs/graph-api">Facebook Graph API</a>,
-                            <a href="https://developers.facebook.com/docs/javascript">Facebook SDK for JavaScript</a>,
-                            <a href="https://vk.com/dev/openapi">VK Open API</a>,
-                            Redis, MariaDB.
-                            <br>
-                            Implemented
-                            <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua">secure HTTPS connection</a>.
-                            <br>
-                            Optimized for best
-                            <a target="_blank" href="http://www.webpagetest.org/result/170424_GC_AKE/">web performance results</a>.
-                            <br>
-                            HTTP2 Protocol support.
-                            <br>
-                            Implemented <a target="_blank" href="https://github.com/google/brotli">Brotli</a> support.
-                            <br>
-                            Additional WebP images generation for supported browsers.
-                            <br>
-                            Configured for
-                            <a target="_blank" href="https://observatory.mozilla.org/analyze.html?host=funtime.kiev.ua">maximum Web Security</a>.
+                            <p>
+                                Full development cycle: design, frontend, backend, api, seo, email campaigns configure etc.
+                                <br>
+                                Technologies/frameworks: PHP, Laravel 5, Semantic UI, Javascript, jQuery, Redis, MySQL/MariaDB.
+                            </p>
+
+                            Features:
+                            <ul>
+                                <li>
+                                    Booking module fully integrated with
+                                    <a target="_blank" rel="nofollow noopener"
+                                       href="https://turbosms.ua/soap.html"
+                                    >
+                                        TurboSMS SOAP API</a>.
+                                </li>
+                                <li>
+                                    Advanced advertising management module.
+                                </li>
+                                <li>
+                                    Shortlink service.
+                                </li>
+                                <li>
+                                    Statistics data collecting and analysis module.
+                                </li>
+                                <li>
+                                    Integration with
+                                    <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/">
+                                        Google Maps JavaScript API</a>,
+                                    <a target="_blank" href="https://developers.google.com/maps/documentation/static-maps/">
+                                        Google Static Maps API</a>,
+                                    <a target="_blank" href="https://tech.yandex.ru/maps/">
+                                        Yandex Maps API</a>,
+                                    <a target="_blank" href="https://developers.facebook.com/docs/graph-api">
+                                        Facebook Graph API</a>,
+                                    <a target="_blank" href="https://developers.facebook.com/docs/javascript">
+                                        Facebook SDK for JavaScript</a>,
+                                    <a target="_blank" href="https://vk.com/dev/openapi">VK Open API</a>.
+                                </li>
+                                <li>
+                                    Implemented
+                                    <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua">
+                                        secure HTTPS connection</a>.
+                                </li>
+                                <li>
+                                    Optimized for best
+                                    <a target="_blank" href="http://www.webpagetest.org/result/170424_GC_AKE/">
+                                        web performance results</a>.
+                                </li>
+                                <li>
+                                    HTTP2 Protocol support.
+                                </li>
+                                <li>
+                                    Implemented
+                                    <a target="_blank" href="https://github.com/google/brotli">
+                                        Brotli
+                                    </a>
+                                    support.
+                                </li>
+                                <li>
+                                    Additional WebP images generation for supported browsers.
+                                </li>
+                                <li>
+                                    Configured for
+                                    <a target="_blank" href="https://observatory.mozilla.org/analyze.html?host=funtime.kiev.ua">
+                                        maximum Web Security</a>.
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
