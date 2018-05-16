@@ -6,12 +6,12 @@ var autoprefixer = require('autoprefixer');
 var nano = require('gulp-cssnano');
 var comments = require('postcss-discard-comments');
 
-var APP_VERSION = '1.2.0';
+var APP_VERSION = '1.3.0';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
 var CSS_ASSETS_PATH = 'public/assets/css/';
-var SEMANTIC_VERSION = '2.2.6';
+var SEMANTIC_VERSION = '2.3.1';
 var SEMANTIC_PATH = VENDOR_ASSETS_PATH + 'semantic/' + SEMANTIC_VERSION + '/components/';
 
 gulp.task('production', [

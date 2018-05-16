@@ -9,8 +9,11 @@
     font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
 body, html {
-    font-family: 'Proba Pro' !important;
+    /*font-family: 'Proba Pro' !important;*/
+    font-family: 'Proba Pro', sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: subpixel-antialiased;
 }

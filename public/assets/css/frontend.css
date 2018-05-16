@@ -152,3 +152,7 @@ svg.fi-icon {
 svg.icon.blue {
     fill: #2185D0;
 }
+
+.ui.list > .item > .content {
+    line-height: 1.5 !important;
+}

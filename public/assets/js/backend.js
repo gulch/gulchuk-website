@@ -142,8 +142,6 @@ $(document).ready(function () {
                 setup: 'editor'
             }
         });
-
-        /*$('.fr-box a:contains("Unlicensed")').parent().remove();*/
     }
 
 });
