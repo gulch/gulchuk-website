@@ -17,7 +17,13 @@ require __DIR__ . '/app/bootstrap/db.php';
 
 $options = $_POST;
 
-$handler = config('jobs.map')[$options['job']];
+$job_name = $options['job'] ?? null;
+
+if (!$job_name) {
+    die('Job not found');
+}
+
+$handler = config('jobs.map')[$job_name] ?? null;
 
 if (!$handler) {
     die('Handler not exists');

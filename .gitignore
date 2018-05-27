@@ -2,6 +2,7 @@ phinx.yml
 .env
 composer.lock
 /.idea
+/.vscode
 /vendor
 /cache
 /node_modules
