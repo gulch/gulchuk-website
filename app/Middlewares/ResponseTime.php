@@ -2,25 +2,24 @@
 
 namespace App\Middlewares;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class ResponseTime
 {
-    const HEADER = 'X-Response-Time';
+    private const HEADER = 'X-Response-Time';
 
-    public function __invoke(Request $request, Response $response, callable $next = null): Response
-    {
+    public function __invoke(
+        ServerRequestInterface $request,
+        ResponseInterface $response,
+        callable $next = null
+    ): ResponseInterface {
         $server = $request->getServerParams();
-
-        if (!isset($server['REQUEST_TIME_FLOAT'])) {
-            $server['REQUEST_TIME_FLOAT'] = \APP_START_TIME_FLOAT;
-        }
-
+        $start_time = $server['REQUEST_TIME_FLOAT'] ?? \APP_START_TIME_FLOAT;
+        /** @var ResponseInterface $response */
         $response = $next($request, $response);
-
-        $now = \microtime(true);
-        $duration = ($now - $server['REQUEST_TIME_FLOAT']) * 1000;
+        $end_time = \microtime(true);
+        $duration = ($end_time - $start_time) * 1000;
 
         return $response->withHeader(self::HEADER, \sprintf('%2.3f ms', $duration));
     }

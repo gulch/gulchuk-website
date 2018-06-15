@@ -3,15 +3,27 @@
 $container = new \League\Container\Container;
 
 /* Response */
-$container->share('response', \Zend\Diactoros\Response::class);
+$container->share(
+    'response',
+    \Nyholm\Psr7\Response::class
+);
 
 /* Request */
 $container->share('request', function () {
-    return \Zend\Diactoros\ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
+    return (new \Nyholm\Psr7\Factory\ServerRequestFactory)->createServerRequestFromGlobals();
 });
 
+/* Empty Stream */
+$container->add(
+    \Psr\Http\Message\StreamInterface::class,
+    (new \Nyholm\Psr7\Factory\StreamFactory)->createStream()
+);
+
 /* Emitter */
-$container->share('emitter', \Zend\Diactoros\Response\SapiEmitter::class);
+$container->share(
+    'emitter',
+    \Narrowspark\HttpEmitter\SapiEmitter::class
+);
 
 /* Template Engine */
 $container->share('templater', function () {

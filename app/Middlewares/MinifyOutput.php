@@ -3,22 +3,25 @@
 namespace App\Middlewares;
 
 use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class MinifyOutput
 {
     private $stream;
 
-    public function __construct(StreamInterface $stream)
+    public function __construct()
     {
-        $this->stream = $stream;
+        $this->stream = \container(StreamInterface::class);
     }
 
-    public function __invoke(Request $request, Response $response, callable $next = null): Response
-    {
+    public function __invoke(
+        ServerRequestInterface $request,
+        ResponseInterface $response,
+        callable $next = null
+    ): ResponseInterface {
+        /** @var ResponseInterface $response */
         $response = $next($request, $response);
-
         $start_time = \microtime(true);
 
         $minifier = new \gulch\Minify\Minifier(
@@ -30,8 +33,9 @@ class MinifyOutput
         $this->stream->write($minifiedBody);
 
         $end_time = \microtime(true);
+        $duration = ($end_time - $start_time) * 1000;
 
         return $response->withBody($this->stream)
-            ->withHeader('X-Minify-Time', \sprintf('%2.3f ms', ($end_time - $start_time) * 1000));
+            ->withHeader('X-Minify-Time', \sprintf('%2.3f ms', $duration));
     }
 }

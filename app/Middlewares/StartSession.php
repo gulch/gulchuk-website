@@ -2,14 +2,18 @@
 
 namespace App\Middlewares;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class StartSession
 {
-    public function __invoke(Request $request, Response $response, callable $next = null): Response
-    {
+    public function __invoke(
+        ServerRequestInterface $request,
+        ResponseInterface $response,
+        callable $next = null
+    ): ResponseInterface {
         \session_start();
+
         return $next($request, $response);
     }
 }

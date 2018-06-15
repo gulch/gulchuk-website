@@ -33,7 +33,7 @@ $router
         $router->get('/blog/{slug:slug}', [BlogController::class, 'show']);
     })
     ->middleware(new ResponseTime)
-    ->middleware(new MinifyOutput(new Stream('php://memory', 'wb+')))
+    ->middleware(new MinifyOutput)
     ->middleware(new ContentSecurityPolicy);
 
 // Auth routes
