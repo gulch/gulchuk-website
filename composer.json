@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": "~7.2",
-        "filp/whoops": "~2.1.9",
+        "filp/whoops": "~2.2.0",
         "gulch/assets": "~1.1.1",
         "gulch/minify": "~1.0.0",
         "hollodotme/fast-cgi-client": "~2.4.1",
@@ -24,11 +24,11 @@
         "league/plates": "~3.3.0",
         "league/route": "~3.0.4",
         "monolog/monolog": "~1.23.0",
-        "narrowspark/http-emitter": "^0.6.0",
-        "nyholm/psr7": "^0.3.0",
+        "narrowspark/http-emitter": "~0.6.0",
+        "nyholm/psr7": "~0.3.0",
         "samdark/sitemap": "~2.2.0",
         "suin/php-rss-writer": "~1.6.0",
-        "symfony/finder": "~4.0.0",
+        "symfony/finder": "~4.1.0",
         "vlucas/phpdotenv": "~2.4.0",
         "zendframework/zend-inputfilter": "~2.8.0"
     },
@@ -36,7 +36,7 @@
         "fzaninotto/faker": "~1.7.1",
         "phpmd/phpmd": "^2.6",
         "phpstan/phpstan": "^0.9.2",
-        "robmorgan/phinx": "~0.9.2",
+        "robmorgan/phinx": "^0.10",
         "sebastian/phpcpd": "^4.0",
         "squizlabs/php_codesniffer": "^3.2"
     },
