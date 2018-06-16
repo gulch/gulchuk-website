@@ -1,7 +1,12 @@
 ;(function (window, document) {
     'use strict';
 
-    var revision = '1.3.0';
+    var meta_element = document.querySelector('meta[name="version"]');
+    if (!meta_element) {
+        console.error('Can not load svg icons: app version is not defined!');
+        return;
+    }
+    var revision = meta_element.content;
     var file = '/build/' + revision + '/icons.svg';
 
     if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) return true;

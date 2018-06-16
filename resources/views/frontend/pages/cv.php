@@ -46,29 +46,27 @@
                 </div>
             </div>
             <p>
-                <strong>PHP</strong> — 5 years of experience
+                <strong>PHP</strong> — 5+ years of experience
                 <br>
-                <strong>Laravel</strong> — 2 years of experience
+                <strong>Laravel</strong> — 3 years of experience
                 <br>
                 <strong>Codeigniter</strong> — 1 year of experience
                 <br>
                 <strong>Joomla 2.x</strong> — 2 years of experience
                 <br>
-                <strong>OOP</strong> — 4 years of experience
-                <br>
-                <strong>MySQL/MariaDB</strong> — 5 years of experience
+                <strong>MySQL/MariaDB</strong> — 5+ years of experience
                 <br>
                 <strong>Redis</strong> — 2 years of experience
                 <br>
-                <strong>HTML</strong> — 5 years of experience
+                <strong>HTML</strong> — 5+ years of experience
                 <br>
-                <strong>CSS</strong> — 5 years of experience
+                <strong>CSS</strong> — 5+ years of experience
                 <br>
                 <strong>Javascript</strong> — 3 years of experience
                 <br>
-                <strong>Linux</strong> — 3 years of experience
+                <strong>Linux</strong> — 5+ years of experience
                 <br>
-                <strong>Git</strong> — 3 years of experience
+                <strong>Git</strong> — 4 years of experience
                 <br>
                 <strong>English language</strong> — Beginner
             </p>
@@ -88,13 +86,13 @@
                         install and configure Redis Server, php-redis, php-iredis extensions;
                     </li>
                     <li>
-                        PHP optimization: tunning configuration, Opcache, XCache, profiling (Blackfire);
+                        PHP optimization: tunning configuration, Opcache, XCache, profiling;
                     </li>
                     <li>
                         brief experience with Codeception, PHPUnit;
                     </li>
                     <li>
-                        install and configure TeamCity;
+                        install and configure TeamCity, Jenkins;
                     </li>
                     <li>
                         client side optimization (js/css minification, webfont optimization, lazy loading etc);
@@ -344,6 +342,21 @@
 
             <h3>Certificates</h3>
             <p>
+                2018
+            </p>
+            <ul>
+                <li>
+                    <a href="https://www.englishdom.com/cn/abdf048d/"
+                       target="_blank"
+                       rel="nofollow noopener"
+                    >
+                        English for IT
+                    </a>
+                </li>
+            </ul>
+
+
+            <p>
                 2017
             </p>
             <ul>
@@ -353,14 +366,6 @@
                        rel="nofollow"
                     >
                         PHP. Advanced (Geekbrains)
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.englishdom.com/cn/abdf048d/"
-                       target="_blank"
-                       rel="nofollow noopener"
-                    >
-                        English for IT
                     </a>
                 </li>
             </ul>

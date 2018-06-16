@@ -1,4 +1,3 @@
-
 <link rel="manifest" href="/assets/favicon/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">

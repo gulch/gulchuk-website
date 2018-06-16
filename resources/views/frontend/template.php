@@ -14,6 +14,8 @@
         <meta name="description" content="<?= $description ?>">
         <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
 
+        <meta name="version" content="<?= config('app.version') ?>">
+
         <link rel="alternate" type="application/rss+xml" title="<?= config('app.name') ?> RSS Feed" href="/feed">
 
         <?php /* Social: Google+ / Schema.org */ ?>

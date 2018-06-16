@@ -6,13 +6,14 @@ var autoprefixer = require('autoprefixer');
 var nano = require('gulp-cssnano');
 var comments = require('postcss-discard-comments');
 
-var APP_VERSION = '1.3.0';
+var APP_VERSION = '1.3.1';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
 var CSS_ASSETS_PATH = 'public/assets/css/';
 var SEMANTIC_VERSION = '2.3.1';
 var SEMANTIC_PATH = VENDOR_ASSETS_PATH + 'semantic/' + SEMANTIC_VERSION + '/components/';
+var PRISM_VERSION = '1.6.0';
 
 gulp.task('production', [
     'loader-css',
@@ -84,7 +85,7 @@ gulp.task('frontend-js', function () {
 
 gulp.task('highlight-css', function () {
     return gulp.src([
-        VENDOR_ASSETS_PATH + 'prism/1.6.0/prism.css'
+        VENDOR_ASSETS_PATH + 'prism/' + PRISM_VERSION + '/prism.css'
     ])
         .pipe(concat('h.css'))
         .pipe(postcss([
@@ -97,7 +98,7 @@ gulp.task('highlight-css', function () {
 
 gulp.task('highlight-js', function () {
     return gulp.src([
-        VENDOR_ASSETS_PATH + 'prism/1.6.0/prism.js',
+        VENDOR_ASSETS_PATH + 'prism/' + PRISM_VERSION + '/prism.js',
         JS_ASSETS_PATH + 'highlight.js'
     ])
         .pipe(concat('h.js'))
