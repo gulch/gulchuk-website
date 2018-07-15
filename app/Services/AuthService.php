@@ -76,7 +76,7 @@ class AuthService
         }
     }
 
-    public static function logout()
+    public static function logout(): void
     {
         \setcookie(
             'remember',
@@ -87,6 +87,7 @@ class AuthService
             true, // secure
             true // httpOnly
         );
+
         static::destroySession();
     }
 
@@ -110,13 +111,14 @@ class AuthService
     }
 
     /**
-     * @param int $size Token string symbols count
+     * @param int $length Token string symbols count
      * @return string
      * @throws \Exception
      */
-    public static function generateRememberToken(int $size = 16): string
+    public static function generateRememberToken(int $length = 16): string
     {
-        $random_bytes = \random_bytes($size);
+        $random_bytes = \random_bytes($length);
+
         $token = \substr(
             \str_replace(
                 ['/', '+', '='],
@@ -124,7 +126,7 @@ class AuthService
                 \base64_encode($random_bytes)
             ),
             0,
-            $size
+            $length
         );
 
         return $token;
