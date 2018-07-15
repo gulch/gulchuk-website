@@ -22,17 +22,22 @@ class JobService
         $this->client = new Client($connection);
     }
 
-    public function process(array $options = []): void
+    private function getClient(): Client
     {
         if (!$this->client) {
             $this->init();
         }
 
+        return $this->client;
+    }
+
+    public function process(array $options = []): void
+    {
         $request = new PostRequest(
             \projectPath() . '/worker.php',
             \http_build_query($options)
         );
 
-        $this->client->sendAsyncRequest($request);
+        $this->getClient()->sendAsyncRequest($request);
     }
 }
