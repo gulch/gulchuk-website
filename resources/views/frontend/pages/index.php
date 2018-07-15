@@ -10,9 +10,14 @@
                 <p class="welcome-text">
                     My name is Volodymyr Gulchuk. I'm web developer.
                     As a hobby I investigate web performance optimization.
-                    I write to my <a href="/blog">blog</a>,
-                    develop <a target="_blank" href="https://packagist.org/users/gulch/">php packages</a>
-                    and <a target="_blank" href="https://github.com/gulch">contribute to another open-source projects</a>,
+                    I write to my <a href="/blog">blog</a>, develop
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://packagist.org/users/gulch/">php packages</a>
+                    and
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://github.com/gulch">contribute to another open-source projects</a>,
                     love photography, cycling, and doing other awesome things.
                     I live in Kyiv, Ukraine.
                 </p>
