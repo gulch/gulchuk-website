@@ -29,14 +29,13 @@
         "samdark/sitemap": "~2.2.0",
         "suin/php-rss-writer": "~1.6.0",
         "symfony/finder": "~4.1.0",
-        "vlucas/phpdotenv": "~2.4.0",
+        "vlucas/phpdotenv": "~2.5.0",
         "zendframework/zend-inputfilter": "~2.8.0"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.7.1",
+        "fzaninotto/faker": "^1.7",
         "phpmd/phpmd": "^2.6",
         "phpmetrics/phpmetrics": "^2.4",
-        "phpstan/phpstan": "^0.9.2",
         "robmorgan/phinx": "^0.10",
         "sebastian/phpcpd": "^4.0",
         "squizlabs/php_codesniffer": "^3.2"
@@ -68,7 +67,6 @@
         "md": "phpmd app text codesize,unusedcode,naming",
         "cs": "phpcs -n --standard=PSR2 app",
         "cpd": "phpcpd app",
-        "stan": "phpstan analyse app",
         "metrics": "phpmetrics --report-html=storage/reports/phpmetrics ."
     }
 }
