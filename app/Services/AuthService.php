@@ -8,7 +8,9 @@ class AuthService
 {
     public static function startSession(): void
     {
-        \session_start();
+        if (\session_status() === \PHP_SESSION_NONE) {
+            \session_start();
+        }
     }
 
     public static function destroySession(): void
@@ -26,7 +28,6 @@ class AuthService
 
         return isset($_SESSION['user']);
     }
-
 
     /**
      * @return \App\Models\User | bool

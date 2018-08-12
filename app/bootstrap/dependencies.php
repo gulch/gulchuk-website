@@ -3,48 +3,75 @@
 $container = new \League\Container\Container;
 
 /* Response */
-$container->share(
+$container->add(
     'response',
-    \Nyholm\Psr7\Response::class
+    \Nyholm\Psr7\Response::class,
+    true
 );
 
 /* Request */
-$container->share('request', function () {
-    return (new \Nyholm\Psr7\Factory\ServerRequestFactory)->createServerRequestFromGlobals();
-});
+$container->add(
+    'request',
+    function () {
+        $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+        $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
+            $psr17Factory,
+            $psr17Factory,
+            $psr17Factory,
+            $psr17Factory
+        );
+
+        return $creator->fromGlobals();
+    },
+    true
+);
 
 /* Empty Stream */
 $container->add(
     \Psr\Http\Message\StreamInterface::class,
-    (new \Nyholm\Psr7\Factory\StreamFactory)->createStream()
+    function () {
+        return \Nyholm\Psr7\Stream::create();
+    }
 );
 
 /* Emitter */
-$container->share(
+$container->add(
     'emitter',
     \Narrowspark\HttpEmitter\SapiEmitter::class
 );
 
 /* Template Engine */
-$container->share('templater', function () {
-    return new \League\Plates\Engine(__DIR__ . '/../../resources/views');
-});
+$container->add(
+    'templater',
+    function () {
+        return new \League\Plates\Engine(__DIR__ . '/../../resources/views');
+    },
+    true
+);
 
 /* FastCgiService */
-$container->share('job-service', \App\Services\JobService::class);
+$container->add('job-service', \App\Services\JobService::class, true);
 
 /* Assets */
-$container->share('defer-css', function () {
-    return new \gulch\Assets\Asset(
-        new \gulch\Assets\Renderer\DeferJsRenderer
-    );
-});
+$container->add(
+    'defer-css',
+    function () {
+        return new \gulch\Assets\Asset(
+            new \gulch\Assets\Renderer\DeferJsRenderer
+        );
+    },
+    true
+);
 
-$container->share('body-css', function () {
-    return new \gulch\Assets\Asset(
-        new \gulch\Assets\Renderer\BodyCssRenderer
-    );
-});
+$container->add(
+    'body-css',
+    function () {
+        return new \gulch\Assets\Asset(
+            new \gulch\Assets\Renderer\BodyCssRenderer
+        );
+    },
+    true
+);
 
 /* Controllers */
 
@@ -55,10 +82,10 @@ $container->add(\App\Controllers\Backend\AuthController::class);
 $container->add(\App\Controllers\Backend\DashboardController::class);
 $container
     ->add(\App\Controllers\Backend\TagsController::class)
-    ->withArgument(new \App\Repositories\TagsRepository);
+    ->addArgument(new \App\Repositories\TagsRepository);
 $container
     ->add(\App\Controllers\Backend\ArticlesController::class)
-    ->withArgument(new \App\Repositories\ArticlesRepository);
+    ->addArgument(new \App\Repositories\ArticlesRepository);
 
 
 return $container;

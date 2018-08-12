@@ -4,6 +4,7 @@ namespace App\Controllers\Frontend;
 
 use App\Repositories\ArticlesRepository;
 use App\Repositories\TagsRepository;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use App\Controllers\BaseController;
 
@@ -21,7 +22,7 @@ class BlogController extends BaseController
 
     public function show(): ResponseInterface
     {
-        $slug = $this->argument('slug', \func_get_arg(2));
+        $slug = $this->argument('slug', \func_get_arg(1));
 
         if (!$slug) {
             return $this->abort();
@@ -43,7 +44,7 @@ class BlogController extends BaseController
 
     public function tag(): ResponseInterface
     {
-        $slug = $this->argument('slug', func_get_arg(2));
+        $slug = $this->argument('slug', func_get_arg(1));
 
         $tag = (new TagsRepository)->findBySlug($slug);
 

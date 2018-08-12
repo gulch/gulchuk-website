@@ -33,7 +33,7 @@ class ArticlesController extends BaseController
     public function create(): ResponseInterface
     {
         $data = [
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'],
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/articles',
             'tags' => (new TagsRepository)->list(['id', 'title'], 'title'),
         ];
 
@@ -42,7 +42,7 @@ class ArticlesController extends BaseController
 
     public function edit(): ResponseInterface
     {
-        $id = $this->argument('id', \func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(1));
 
         $article = $this->repository->findById($id);
 
@@ -52,7 +52,7 @@ class ArticlesController extends BaseController
 
         $data = [
             'article' => $article,
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'],
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/articles',
             'tags' => (new TagsRepository)->list(['id', 'title'], 'title'),
             'article_tags' => $this->repository->articleTagsIds($id),
         ];
@@ -62,7 +62,7 @@ class ArticlesController extends BaseController
 
     public function remove(): ResponseInterface
     {
-        $id = $this->argument('id', \func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(1));
 
         $article = $this->repository->findById($id);
 
@@ -129,17 +129,17 @@ class ArticlesController extends BaseController
 
     public function publish(): ResponseInterface
     {
-        return $this->changePublishStatus($this->argument('id', \func_get_arg(2)), 1);
+        return $this->changePublishStatus($this->argument('id', \func_get_arg(1)), 1);
     }
 
     public function unpublish(): ResponseInterface
     {
-        return $this->changePublishStatus($this->argument('id', \func_get_arg(2)), 0);
+        return $this->changePublishStatus($this->argument('id', \func_get_arg(1)), 0);
     }
 
     public function generateSocialImage(): ResponseInterface
     {
-        $id = $this->argument('id', \func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(1));
 
         $article = $this->repository->findById($id);
 

@@ -32,7 +32,7 @@ class TagsController extends BaseController
     public function create(): ResponseInterface
     {
         $data = [
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/',
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/tags',
         ];
 
         return $this->httpResponse($this->view('backend/tags/create', $data));
@@ -40,7 +40,7 @@ class TagsController extends BaseController
 
     public function edit(): ResponseInterface
     {
-        $id = $this->argument('id', func_get_arg(2));
+        $id = $this->argument('id', func_get_arg(1));
 
         $tag = $this->repository->findById($id);
 
@@ -50,7 +50,7 @@ class TagsController extends BaseController
 
         $data = [
             'tag' => $tag,
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/',
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/tags',
         ];
 
         return $this->httpResponse($this->view('backend/tags/edit', $data));
@@ -58,7 +58,7 @@ class TagsController extends BaseController
 
     public function remove(): ResponseInterface
     {
-        $id = $this->argument('id', \func_get_arg(2));
+        $id = $this->argument('id', \func_get_arg(1));
 
         $tag = $this->repository->findById($id);
 

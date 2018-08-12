@@ -4,20 +4,21 @@ namespace App\Middlewares;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class ContentSecurityPolicy
+class ContentSecurityPolicy implements MiddlewareInterface
 {
-    public function __invoke(
+    public function process(
         ServerRequestInterface $request,
-        ResponseInterface $response,
-        callable $next = null
+        RequestHandlerInterface $handler
     ): ResponseInterface {
         /** @var ResponseInterface $response */
-        $response = $next($request, $response);
+        $response = $handler->handle($request);
 
         $value = "default-src 'self' www.google-analytics.com";
         $value .= "; font-src 'self'";
-        $value .= "; img-src data: https:";
+        $value .= '; img-src data: https:';
         $value .= "; style-src 'self' 'unsafe-inline'";
         $value .= "; object-src 'none'";
 

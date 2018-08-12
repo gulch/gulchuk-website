@@ -5,20 +5,21 @@ namespace App\Middlewares;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use App\Services\AuthService;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class AuthenticateOnly
+class AuthenticateOnly implements MiddlewareInterface
 {
-    public function __invoke(
+    public function process(
         ServerRequestInterface $request,
-        ResponseInterface $response,
-        callable $next = null
+        RequestHandlerInterface $handler
     ): ResponseInterface {
         if (AuthService::check() === false) {
             $path = \ltrim($_SERVER['REQUEST_URI'], '/');
 
-            return $response->withHeader('Location', '/auth/login?return=' . $path);
+            return \container('response')->withHeader('Location', '/auth/login?return=' . $path);
         }
 
-        return $next($request, $response);
+        return $handler->handle($request);
     }
 }

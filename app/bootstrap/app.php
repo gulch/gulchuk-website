@@ -41,8 +41,9 @@ $container = require __DIR__ . '/dependencies.php';
 require __DIR__ . '/db.php';
 
 /* Router & Routes */
-/** @var \League\Route\RouteCollection $router */
-$router = require __DIR__ . '/router.php';
+$strategy = (new League\Route\Strategy\ApplicationStrategy)->setContainer($container);
+$router   = (new League\Route\Router)->setStrategy($strategy);
+require __DIR__ . '/routes.php';
 
 /** @var \Psr\Http\Message\RequestInterface */
 $request = $container->get('request');
@@ -50,7 +51,7 @@ $request = $container->get('request');
 $response = $container->get('response');
 
 try {
-    $response = $router->dispatch($request, $response);
+    $response = $router->dispatch($request);
 } catch (\League\Route\Http\Exception\NotFoundException $e) {
     $response->getBody()->write($container->get('templater')->render('errors/404'));
     $response = $response->withStatus(404);
