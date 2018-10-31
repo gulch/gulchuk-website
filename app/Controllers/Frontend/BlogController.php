@@ -2,11 +2,11 @@
 
 namespace App\Controllers\Frontend;
 
+use App\Controllers\BaseController;
 use App\Repositories\ArticlesRepository;
 use App\Repositories\TagsRepository;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use App\Controllers\BaseController;
 
 class BlogController extends BaseController
 {

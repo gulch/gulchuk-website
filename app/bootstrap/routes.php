@@ -23,6 +23,7 @@ $router->get('/rss', [FeedController::class, 'generate']);
 
 $router
     ->group('/', function ($router) {
+        /** @var \League\Route\Router $router */
         $router->get('/', [PageController::class, 'index']);
         $router->get('/cv', [PageController::class, 'showCV']);
         $router->get('/books', [PageController::class, 'showBooks']);
@@ -39,6 +40,7 @@ $router
 // Auth routes
 $router
     ->group('/auth', function ($router) {
+        /** @var \League\Route\Router $router */
         $router->get('/login', [AuthController::class, 'login']);
         $router->post('/login', [AuthController::class, 'postLogin']);
         $router->get('/logout', [AuthController::class, 'logout']);
@@ -48,6 +50,7 @@ $router
 // Backend routes
 $router
     ->group('/' . config('app.backend_segment'), function ($router) {
+        /** @var \League\Route\Router $router */
         // dashboard
         $router->get('/', [DashboardController::class, 'index']);
         // tags
