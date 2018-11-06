@@ -14,7 +14,7 @@ class PageController extends BaseController
 
     public function showCV(): ResponseInterface
     {
-        return $this->httpResponse($this->view('frontend/pages/cv'));
+        return $this->httpResponse($this->view('frontend/pages/cv/index'));
     }
 
     public function showBooks(): ResponseInterface
