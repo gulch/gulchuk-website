@@ -10,7 +10,9 @@ $this->layout('frontend/template', [
 ?>
 
 <main class="ui container">
+
     <div class="ui hidden divider"></div>
+
     <div class="ui centered grid">
         <div class="left aligned fourteen wide computer column sixteen wide tablet">
 

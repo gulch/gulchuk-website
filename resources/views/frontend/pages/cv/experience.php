@@ -56,35 +56,46 @@ Projects:
                     <li>
                         Integration with
                         <a target="_blank"
-                           href="https://developers.google.com/maps/documentation/javascript/">
-                            Google Maps JavaScript API</a>,
+                           href="https://developers.google.com/maps/documentation/javascript/"
+                        >
+                            Google Maps JavaScript API
+                        </a>,
                         <a target="_blank"
-                           href="https://developers.google.com/maps/documentation/static-maps/">
-                            Google Static Maps API</a>,
+                           href="https://developers.google.com/maps/documentation/static-maps/"
+                        >
+                            Google Static Maps API
+                        </a>,
                         <a target="_blank" href="https://tech.yandex.ru/maps/">
-                            Yandex Maps API</a>,
+                            Yandex Maps API
+                        </a>,
                         <a target="_blank" href="https://developers.facebook.com/docs/graph-api">
-                            Facebook Graph API</a>,
+                            Facebook Graph API
+                        </a>,
                         <a target="_blank" href="https://developers.facebook.com/docs/javascript">
-                            Facebook SDK for JavaScript</a>,
-                        <a target="_blank" href="https://vk.com/dev/openapi">VK Open API</a>.
+                            Facebook SDK for JavaScript
+                        </a>,
+                        <a target="_blank" href="https://vk.com/dev/openapi">
+                            VK Open API
+                        </a>.
                     </li>
                     <li>
-                        Implemented
+                        Implemented an configure
                         <a target="_blank"
-                           href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua">
-                            secure HTTPS connection</a>.
+                           href="https://www.ssllabs.com/ssltest/analyze.html?d=funtime.kiev.ua"
+                        >
+                            secure HTTPS connection
+                        </a>.
                     </li>
                     <li>
-                        Optimized for best
-                        <a target="_blank" href="http://www.webpagetest.org/result/170424_GC_AKE/">
-                            web performance results</a>.
+                        HTTP/2 Protocol support.
                     </li>
                     <li>
-                        HTTP2 Protocol support.
+                        Optimized for the best
+                        <a target="_blank" href="https://www.webpagetest.org/result/181112_9E_d7e930abb2cb02d946e46b6815749208/">
+                            web performance results
+                        </a>.
                     </li>
                     <li>
-                        Implemented
                         <a target="_blank" href="https://github.com/google/brotli">
                             Brotli
                         </a>
@@ -96,8 +107,19 @@ Projects:
                     <li>
                         Configured for
                         <a target="_blank"
-                           href="https://observatory.mozilla.org/analyze.html?host=funtime.kiev.ua">
-                            maximum Web Security</a>.
+                           href="https://observatory.mozilla.org/analyze.html?host=funtime.kiev.ua"
+                        >
+                            maximum web security
+                        </a>.
+                    </li>
+                    <li>
+                        Implemented most of
+                        <a target="_blank"
+                           href="https://developers.google.com/web/progressive-web-apps/"
+                        >
+                            Progressive Web Apps
+                        </a>
+                        benefits.
                     </li>
                 </ul>
             </div>
