@@ -37,12 +37,9 @@ $errorHandler->register();
 $container = require __DIR__ . '/dependencies.php';
 \App\Helpers\Container::bootstrap($container);
 
-/* Boot Eloquent ORM */
-require __DIR__ . '/db.php';
-
 /* Router & Routes */
 $strategy = (new League\Route\Strategy\ApplicationStrategy)->setContainer($container);
-$router   = (new League\Route\Router)->setStrategy($strategy);
+$router = (new League\Route\Router)->setStrategy($strategy);
 require __DIR__ . '/routes.php';
 
 /** @var \Psr\Http\Message\RequestInterface */

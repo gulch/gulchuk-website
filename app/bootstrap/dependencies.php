@@ -49,6 +49,19 @@ $container->add(
     true
 );
 
+/* ORM */
+$container->add(
+    'orm',
+    function () {
+        return \Atlas\Orm\Atlas::new(
+            config('database.driver') . ':host=' . config('database.host') . ';dbname=' . config('database.database'),
+            config('database.username'),
+            config('database.password')
+        );
+    },
+    true
+);
+
 /* FastCgiService */
 $container->add('job-service', \App\Services\JobService::class, true);
 
@@ -80,12 +93,8 @@ $container->add(\App\Controllers\Frontend\BlogController::class);
 $container->add(\App\Controllers\Frontend\SitemapController::class);
 $container->add(\App\Controllers\Backend\AuthController::class);
 $container->add(\App\Controllers\Backend\DashboardController::class);
-$container
-    ->add(\App\Controllers\Backend\TagsController::class)
-    ->addArgument(new \App\Repositories\TagsRepository);
-$container
-    ->add(\App\Controllers\Backend\ArticlesController::class)
-    ->addArgument(new \App\Repositories\ArticlesRepository);
+$container->add(\App\Controllers\Backend\TagsController::class);
+$container->add(\App\Controllers\Backend\ArticlesController::class);
 
 
 return $container;
