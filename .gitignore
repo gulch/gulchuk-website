@@ -1,4 +1,3 @@
-phinx.yml
 .env
 composer.lock
 /.idea
@@ -8,3 +7,6 @@ composer.lock
 /node_modules
 /public/assets/js/counters.js
 /package-lock.json
+/phinx.yml
+/phpstorm.meta.php
+/atlas-config.php
