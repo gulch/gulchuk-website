@@ -30,20 +30,23 @@ if (config('app.debug')) {
     $plainHandler->loggerOnly(true);
     $errorHandler->pushHandler($plainHandler);
 }
+
 $errorHandler->register();
 
 /* Dependency Injection container */
-/** @var $container \League\Container\Container */
-$container = require __DIR__ . '/dependencies.php';
+$container = new \League\Container\Container;
+require __DIR__ . '/dependencies.php';
 \App\Helpers\Container::bootstrap($container);
 
 /* Router & Routes */
-$strategy = (new League\Route\Strategy\ApplicationStrategy)->setContainer($container);
+$strategy = new League\Route\Strategy\ApplicationStrategy;
+$strategy->setContainer($container);
 $router = (new League\Route\Router)->setStrategy($strategy);
 require __DIR__ . '/routes.php';
 
 /** @var \Psr\Http\Message\RequestInterface */
 $request = $container->get('request');
+
 /** @var \Psr\Http\Message\ResponseInterface */
 $response = $container->get('response');
 

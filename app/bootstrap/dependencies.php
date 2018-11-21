@@ -1,6 +1,6 @@
 <?php
 
-$container = new \League\Container\Container;
+/** @var $container \League\Container\Container */
 
 /* Response */
 $container->add(
@@ -95,6 +95,3 @@ $container->add(\App\Controllers\Backend\AuthController::class);
 $container->add(\App\Controllers\Backend\DashboardController::class);
 $container->add(\App\Controllers\Backend\TagsController::class);
 $container->add(\App\Controllers\Backend\ArticlesController::class);
-
-
-return $container;
