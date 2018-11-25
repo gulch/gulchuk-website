@@ -2,24 +2,26 @@
 
 namespace App\Repositories;
 
-use App\Models\Tag;
+use App\DataSource\Tag\Tag;
 
 class TagsRepository extends BaseRepository
 {
-    public function getModelInstance(): Tag
+    public function getMapperClassName(): string
     {
-        return new Tag();
+        return Tag::class;
     }
 
-    public function list(array $fields, string $orderField = '', string $orderDir = 'asc'): \Traversable
-    {
-        $list = $this->getModelInstance()->select($fields);
+    public function list(
+        array $fields,
+        string $orderField = 'id',
+        string $orderDir = 'ASC'
+    ): iterable {
+        $list = $this->orm
+            ->select($this->getMapperClassName())
+            ->columns('id', ...$fields)
+            ->orderBy($orderField . ' ' . $orderDir);
 
-        if ($orderField) {
-            $list = $list->orderBy($orderField, $orderDir);
-        }
-
-        return $list->get();
+        return $list->fetchRecords();
     }
 
     public function latestPublishedArticles(int $id): \Traversable

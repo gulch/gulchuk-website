@@ -5,30 +5,42 @@ namespace App\Controllers\Frontend;
 use App\Controllers\BaseController;
 use App\Repositories\ArticlesRepository;
 use App\Repositories\TagsRepository;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class BlogController extends BaseController
 {
+    private $articlesRepository;
+    private $tagsRepository;
+
+    public function __construct(
+        ArticlesRepository $articlesRepository,
+        TagsRepository $tagsRepository
+    ) {
+        parent::__construct();
+        $this->articlesRepository = $articlesRepository;
+        $this->tagsRepository = $tagsRepository;
+    }
+
     public function index(): ResponseInterface
     {
         $data = [
-            'articles' => (new ArticlesRepository)->getLatestPublished(),
-            'tags' => $this->getAllTags()
+            'articles' => $this->articlesRepository->getLatestPublished(),
+            'tags' => $this->getAllTags(),
         ];
 
         return $this->httpResponse($this->view('frontend/blog/index', $data));
     }
 
-    public function show(): ResponseInterface
+    public function show(ServerRequestInterface $request, array $args): ResponseInterface
     {
-        $slug = $this->argument('slug', \func_get_arg(1));
+        $slug = $args['slug'] ?? null;
 
         if (!$slug) {
             return $this->abort();
         }
 
-        $article = (new ArticlesRepository)->findBySlug($slug);
+        $article = $this->articlesRepository->findBySlug($slug);
 
         if (!$article) {
             return $this->abort();
@@ -36,7 +48,7 @@ class BlogController extends BaseController
 
         $data = [
             'article' => $article,
-            'tags' => $this->getAllTags()
+            'tags' => [] /*$this->getAllTags()*/
         ];
 
         return $this->httpResponse($this->view('frontend/blog/show', $data));
@@ -46,7 +58,7 @@ class BlogController extends BaseController
     {
         $slug = $this->argument('slug', func_get_arg(1));
 
-        $tag = (new TagsRepository)->findBySlug($slug);
+        $tag = $this->tagsRepository->findBySlug($slug);
 
         if (!$tag) {
             return $this->abort();
@@ -54,15 +66,15 @@ class BlogController extends BaseController
 
         $data = [
             'tag' => $tag,
-            'articles' => (new TagsRepository)->latestPublishedArticles($tag->id),
+            'articles' => $this->tagsRepository->latestPublishedArticles($tag->id),
             'tags' => $this->getAllTags()
         ];
 
         return $this->httpResponse($this->view('frontend/blog/tag', $data));
     }
 
-    private function getAllTags(): \Traversable
+    private function getAllTags(): iterable
     {
-        return (new TagsRepository)->list(['slug', 'title'], 'title');
+        return $this->tagsRepository->list(['slug', 'title'], 'title');
     }
 }

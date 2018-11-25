@@ -50,17 +50,41 @@ $container->add(
 );
 
 /* ORM */
+$orm = \Atlas\Orm\Atlas::new(
+    config('database.driver') . ':host=' . config('database.host') . ';dbname=' . config('database.database'),
+    config('database.username'),
+    config('database.password')
+);
 $container->add(
     'orm',
-    function () {
-        return \Atlas\Orm\Atlas::new(
-            config('database.driver') . ':host=' . config('database.host') . ';dbname=' . config('database.database'),
-            config('database.username'),
-            config('database.password')
-        );
+    function () use ($orm) {
+        return $orm;
     },
     true
 );
+
+/* Repositories */
+$container->add(\App\Repositories\TagsRepository::class)->addArgument($orm);
+$container->add(\App\Repositories\ArticlesRepository::class)->addArgument($orm);
+
+/* Controllers */
+$container->add(\App\Controllers\Frontend\PageController::class);
+$container->add(\App\Controllers\Frontend\SitemapController::class);
+$container->add(\App\Controllers\Backend\AuthController::class);
+$container->add(\App\Controllers\Backend\DashboardController::class);
+
+$container
+    ->add(\App\Controllers\Frontend\BlogController::class)
+    ->addArgument(\App\Repositories\ArticlesRepository::class)
+    ->addArgument(\App\Repositories\TagsRepository::class);
+
+$container
+    ->add(\App\Controllers\Backend\TagsController::class)
+    ->addArgument(\App\Repositories\TagsRepository::class);
+
+$container
+    ->add(\App\Controllers\Backend\ArticlesController::class)
+    ->addArgument(\App\Repositories\ArticlesRepository::class);
 
 /* FastCgiService */
 $container->add('job-service', \App\Services\JobService::class, true);
@@ -85,13 +109,3 @@ $container->add(
     },
     true
 );
-
-/* Controllers */
-
-$container->add(\App\Controllers\Frontend\PageController::class);
-$container->add(\App\Controllers\Frontend\BlogController::class);
-$container->add(\App\Controllers\Frontend\SitemapController::class);
-$container->add(\App\Controllers\Backend\AuthController::class);
-$container->add(\App\Controllers\Backend\DashboardController::class);
-$container->add(\App\Controllers\Backend\TagsController::class);
-$container->add(\App\Controllers\Backend\ArticlesController::class);

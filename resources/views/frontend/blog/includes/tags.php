@@ -1,4 +1,4 @@
-<?php if (sizeof($tags)): ?>
+<?php if (count($tags)): ?>
     <div class="ui header unimportant-text">
         Tags
     </div>

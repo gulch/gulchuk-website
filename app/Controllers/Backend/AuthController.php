@@ -2,10 +2,10 @@
 
 namespace App\Controllers\Backend;
 
-use Psr\Http\Message\ResponseInterface;
-use App\Repositories\UsersRepository;
 use App\Controllers\BaseController;
+use App\Repositories\UsersRepository;
 use App\Services\AuthService;
+use Psr\Http\Message\ResponseInterface;
 
 class AuthController extends BaseController
 {

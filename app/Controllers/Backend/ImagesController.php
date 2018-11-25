@@ -2,10 +2,10 @@
 
 namespace App\Controllers\Backend;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use App\Controllers\BaseController;
 use App\Services\ImageService;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 class ImagesController extends BaseController
 {

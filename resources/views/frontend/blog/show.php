@@ -58,11 +58,11 @@
                     </h1>
 
                     <p class="unimportant-text" itemprop="datePublished">
-                        <?= $article->created_at->format('j M Y') ?>
+                        <?= $article->createdDateInFormat() ?>
                     </p>
 
                     <?php if($article->updated_at): ?>
-                        <meta itemprop="dateModified" content="<?= $article->updated_at->format('Y-m-d') ?>"/>
+                        <meta itemprop="dateModified" content="<?= $article->updatedDateInFormat('Y-m-d') ?>"/>
                     <?php endif; ?>
 
                     <meta itemscope itemprop="mainEntityOfPage"

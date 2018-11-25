@@ -2,26 +2,32 @@
 
 namespace App\Controllers\Backend;
 
-use Psr\Http\Message\ResponseInterface;
 use App\Controllers\BaseController;
 use App\Repositories\ArticlesRepository;
 use App\Repositories\TagsRepository;
+use Psr\Http\Message\ResponseInterface;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterInterface;
 
 class ArticlesController extends BaseController
 {
-    private $repository;
+    private $articlesRepository;
+    private $tagsRepository;
 
-    public function __construct(ArticlesRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        ArticlesRepository $articlesRepository,
+        TagsRepository $tagsRepository
+    ) {
         parent::__construct();
+
+        $this->articlesRepository = $articlesRepository;
+        $this->tagsRepository = $tagsRepository;
     }
 
     public function index(): ResponseInterface
     {
-        $articles = $this->repository->getWith(['tags'], 'created_at', 'desc');
+        $articles = $this->articlesRepository
+            ->getWith(['tags'], 'created_at', 'desc');
 
         $data = [
             'articles' => $articles
@@ -33,8 +39,8 @@ class ArticlesController extends BaseController
     public function create(): ResponseInterface
     {
         $data = [
-            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/articles',
-            'tags' => (new TagsRepository)->list(['id', 'title'], 'title'),
+            'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . \config('app.backend_segment') . '/articles',
+            'tags' => $this->tagsRepository->list(['id', 'title'], 'title'),
         ];
 
         return $this->httpResponse($this->view('backend/articles/create', $data));
@@ -44,7 +50,7 @@ class ArticlesController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $article = $this->repository->findById($id);
+        $article = $this->articlesRepository->findById($id);
 
         if (!$article) {
             return $this->abort();
@@ -53,8 +59,8 @@ class ArticlesController extends BaseController
         $data = [
             'article' => $article,
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/articles',
-            'tags' => (new TagsRepository)->list(['id', 'title'], 'title'),
-            'article_tags' => $this->repository->articleTagsIds($id),
+            'tags' => $this->tagsRepository->list(['id', 'title'], 'title'),
+            'article_tags' => $this->articlesRepository->articleTagsIds($id),
         ];
 
         return $this->httpResponse($this->view('backend/articles/edit', $data));
@@ -64,14 +70,14 @@ class ArticlesController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $article = $this->repository->findById($id);
+        $article = $this->articlesRepository->findById($id);
 
         if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
-        $this->repository->syncTags($id, []);
-        $this->repository->delete($id);
+        $this->articlesRepository->syncTags($id, []);
+        $this->articlesRepository->delete($id);
 
         return $this->jsonResponse(['success' => 'OK']);
     }
@@ -101,14 +107,14 @@ class ArticlesController extends BaseController
 
         if ($id) {
             // update
-            if (!$this->repository->update($id, $inputFilter->getValues())) {
+            if (!$this->articlesRepository->update($id, $inputFilter->getValues())) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not update article. Try again.'
                 ]);
             }
         } else {
             // create
-            if (!$id = $this->repository->create($inputFilter->getValues())) {
+            if (!$id = $this->articlesRepository->create($inputFilter->getValues())) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not create new article. Try again.'
                 ]);
@@ -117,7 +123,7 @@ class ArticlesController extends BaseController
 
         // sync article tags
         $article_tags = $this->postArgument('article_tags') ?: [];
-        $this->repository->syncTags($id, $article_tags);
+        $this->articlesRepository->syncTags($id, $article_tags);
 
         return $this->jsonResponse([
             'success' => 'OK',
@@ -141,7 +147,7 @@ class ArticlesController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $article = $this->repository->findById($id);
+        $article = $this->articlesRepository->findById($id);
 
         if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found.']);
@@ -157,7 +163,7 @@ class ArticlesController extends BaseController
 
     private function changePublishStatus(int $id, int $is_published): ResponseInterface
     {
-        $article = $this->repository->findById($id);
+        $article = $this->articlesRepository->findById($id);
 
         if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found.']);

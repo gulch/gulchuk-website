@@ -2,21 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Models\Article;
+use App\DataSource\Article\Article;
 
 class ArticlesRepository extends BaseRepository
 {
-    public function getModelInstance(): Article
+    public function getMapperClassName(): string
     {
-        return new Article();
+        return Article::class;
     }
 
     public function getLatestPublished(): \Traversable
     {
-        return $this->getModelInstance()
-            ->where('is_published', 1)
-            ->latest()
-            ->get();
+        return $this->orm
+            ->select($this->getMapperClassName())
+            ->where('is_published = ', 1)
+            ->orderBy('created_at DESC')
+            ->fetchRecordSet();
     }
 
     public function getWithOptions(

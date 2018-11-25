@@ -18,4 +18,11 @@ class ArticleRecord extends Record
 
         return $dateTime->format($format);
     }
+
+    public function updatedDateInFormat($format = 'j M Y'): string
+    {
+        $dateTime = new \DateTime($this->updated_at);
+
+        return $dateTime->format($format);
+    }
 }

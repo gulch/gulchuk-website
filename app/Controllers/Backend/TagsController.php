@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Backend;
 
-use Psr\Http\Message\ResponseInterface;
 use App\Controllers\BaseController;
 use App\Repositories\TagsRepository;
+use Psr\Http\Message\ResponseInterface;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterInterface;
 
@@ -14,8 +14,8 @@ class TagsController extends BaseController
 
     public function __construct(TagsRepository $repository)
     {
-        $this->repository = $repository;
         parent::__construct();
+        $this->repository = $repository;
     }
 
     public function index(): ResponseInterface
