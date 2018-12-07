@@ -9,6 +9,17 @@ use Psr\Http\Message\ResponseInterface;
 
 class AuthController extends BaseController
 {
+    /**
+     * @var UsersRepository
+     */
+    private $usersRepository;
+
+    public function __construct(UsersRepository $usersRepository)
+    {
+        parent::__construct();
+        $this->usersRepository = $usersRepository;
+    }
+
     public function login(): ResponseInterface
     {
         $path = $this->getArgument('return') ?: \config('app.backend_segment');
@@ -17,7 +28,7 @@ class AuthController extends BaseController
             return $this->redirectResponse('/' . $path);
         }
 
-        if (AuthService::checkRememberTokenAndLogin(new UsersRepository)) {
+        if (AuthService::checkRememberTokenAndLogin($this->usersRepository)) {
             return $this->redirectResponse('/' . $path);
         }
 
@@ -31,16 +42,17 @@ class AuthController extends BaseController
         $remember = $this->postArgument('remember') ?: false;
         $path = $this->getArgument('return') ?: \config('app.backend_segment');
 
-        $user = (new UsersRepository)->findByEmail($email);
+        $user = $this->usersRepository->findByEmail($email);
         if ($user) {
             if (\password_verify($password, $user->password)) {
                 if (\password_needs_rehash($user->password, \PASSWORD_ARGON2I)) {
-                    $user->password = \password_hash($password, \PASSWORD_ARGON2I);
-                    $user->save();
+                    $this->usersRepository->update($user->id, [
+                        'password' => \password_hash($password, \PASSWORD_ARGON2I)
+                    ]);
                 }
 
                 // Good! Let's authenticate user...
-                AuthService::authenticate($user, $remember);
+                AuthService::authenticate($user, $this->usersRepository, $remember);
 
                 return $this->redirectResponse('/' . $path);
             }

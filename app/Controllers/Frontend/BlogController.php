@@ -48,7 +48,7 @@ class BlogController extends BaseController
 
         $data = [
             'article' => $article,
-            'tags' => [] /*$this->getAllTags()*/
+            'tags' => $this->getAllTags(),
         ];
 
         return $this->httpResponse($this->view('frontend/blog/show', $data));

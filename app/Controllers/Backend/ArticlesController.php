@@ -60,7 +60,7 @@ class ArticlesController extends BaseController
             'article' => $article,
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/articles',
             'tags' => $this->tagsRepository->list(['id', 'title'], 'title'),
-            'article_tags' => $this->articlesRepository->articleTagsIds($id),
+            'article_tags' => $this->articlesRepository->articleTagsIdsArray($id),
         ];
 
         return $this->httpResponse($this->view('backend/articles/edit', $data));

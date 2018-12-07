@@ -6,6 +6,26 @@ use App\DataSource\Article\Article;
 
 class ArticlesRepository extends BaseRepository
 {
+    public function articleTagsIdsArray(int $id): array
+    {
+        $article = $this->orm->fetchRecord($this->getMapperClassName(), $id, [
+            'tags' => function($articleTags) {
+                $articleTags->columns('id');
+            }
+        ]);
+
+        if (!$article) {
+            return [];
+        }
+
+        $ids = [];
+        foreach ($article->tags as $tag) {
+            $ids[] = $tag->id;
+        }
+
+        return $ids;
+    }
+
     public function getMapperClassName(): string
     {
         return Article::class;
@@ -35,8 +55,6 @@ class ArticlesRepository extends BaseRepository
     }
 
 
-
-
     /* TODO */
     public function syncTags(int $id, array $tags): void
     {
@@ -45,16 +63,5 @@ class ArticlesRepository extends BaseRepository
         if ($article) {
             $article->tags()->sync($tags);
         }
-    }
-
-    public function articleTagsIds(int $id): array
-    {
-        $article = $this->findById($id);
-
-        if (!$article) {
-            return [];
-        }
-
-        return $article->tags->pluck('id')->toArray();
     }
 }

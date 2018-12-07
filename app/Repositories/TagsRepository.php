@@ -26,13 +26,16 @@ class TagsRepository extends BaseRepository
 
     public function latestPublishedArticles(int $id): \Traversable
     {
-        $tag = $this->orm
-            ->select($this->getMapperClassName())
-            ->where('id = ', $id)
-            ->with(['articles'])
-            ->fetchRecord();
-
-       /* \var_dump($tag->articles); exit();*/
+        $tag = $this->orm->fetchRecord(
+            $this->getMapperClassName(),
+            $id,
+            [
+                'articles' => function ($tagArticles) {
+                    $tagArticles->where('is_published = 1')
+                        ->orderBy('created_at DESC');
+                }
+            ]
+        );
 
         return $tag->articles;
     }

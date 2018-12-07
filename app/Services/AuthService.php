@@ -52,8 +52,11 @@ class AuthService
      * @param bool $remember
      * @throws \Exception
      */
-    public static function authenticate($user, bool $remember = false): void
-    {
+    public static function authenticate(
+        $user,
+        UsersRepository $userRepository,
+        bool $remember = false
+    ): void {
         static::setUser($user);
 
         if ($remember) {
@@ -61,7 +64,7 @@ class AuthService
             $remember_token = static::generateRememberToken(32);
 
             // save remember token to user table
-            (new UsersRepository)->update($user->id, [
+            $userRepository->update($user->id, [
                 'remember_token' => $remember_token,
             ]);
 
@@ -106,7 +109,7 @@ class AuthService
             return false;
         }
 
-        static::authenticate($user, true);
+        static::authenticate($user, $usersRepository, true);
 
         return true;
     }

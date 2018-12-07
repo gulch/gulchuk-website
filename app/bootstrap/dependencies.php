@@ -66,11 +66,16 @@ $container->add(
 /* Repositories */
 $container->add(\App\Repositories\TagsRepository::class)->addArgument($orm);
 $container->add(\App\Repositories\ArticlesRepository::class)->addArgument($orm);
+$container->add(\App\Repositories\UsersRepository::class)->addArgument($orm);
 
 /* Controllers */
 $container->add(\App\Controllers\Frontend\PageController::class);
 $container->add(\App\Controllers\Frontend\SitemapController::class);
-$container->add(\App\Controllers\Backend\AuthController::class);
+
+$container
+    ->add(\App\Controllers\Backend\AuthController::class)
+    ->addArgument(\App\Repositories\UsersRepository::class);
+
 $container->add(\App\Controllers\Backend\DashboardController::class);
 
 $container
