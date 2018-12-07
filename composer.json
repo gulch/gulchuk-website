@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "php": "~7.2",
+        "php": "^7.2",
+        "ext-mbstring": "*",
         "atlas/orm": "~3.1.0",
         "filp/whoops": "~2.3.0",
         "gulch/assets": "~1.1.1",
@@ -30,7 +31,7 @@
         "nyholm/psr7-server": "~0.3.0",
         "samdark/sitemap": "~2.2.0",
         "suin/php-rss-writer": "~1.6.0",
-        "symfony/finder": "~4.1.0",
+        "symfony/finder": "~4.2.0",
         "vlucas/phpdotenv": "~2.5.0",
         "zendframework/zend-inputfilter": "~2.8.0"
     },
