@@ -15,7 +15,7 @@ class ArticlesRepository extends BaseRepository
     {
         return $this->orm
             ->select($this->getMapperClassName())
-            ->where('is_published = ', 1)
+            ->where('is_published = 1')
             ->orderBy('created_at DESC')
             ->fetchRecordSet();
     }
@@ -26,13 +26,18 @@ class ArticlesRepository extends BaseRepository
         int $limit,
         int $offset = 0
     ): \Traversable {
-        return $this->getModelInstance()
-            ->orderBy($orderField, $orderDir)
+        return $this->orm
+            ->select($this->getMapperClassName())
             ->limit($limit)
             ->offset($offset)
-            ->get();
+            ->orderBy($orderField . ' ' . $orderDir)
+            ->fetchRecordSet();
     }
 
+
+
+
+    /* TODO */
     public function syncTags(int $id, array $tags): void
     {
         $article = $this->findById($id);

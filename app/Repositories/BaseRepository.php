@@ -21,6 +21,21 @@ abstract class BaseRepository
             ->fetchRecordSet();
     }
 
+    public function create(array $data): int
+    {
+        $entity = $this->orm->newRecord($this->getMapperClassName(), $data);
+
+        $this->orm->insert($entity);
+
+        return $entity->id ?? 0;
+    }
+
+    public function delete(int $id): void
+    {
+        $entity = $this->orm->fetchRecord($this->getMapperClassName(), $id);
+        $this->orm->delete($entity);
+    }
+
     public function findById(int $id)
     {
         return $this->orm->fetchRecord(
@@ -54,18 +69,6 @@ abstract class BaseRepository
         return $result->fetchRecordSet();
     }
 
-
-
-
-
-    /* TODO */
-    public function create(array $data): int
-    {
-        $entity = $this->getModelInstance()->create($data);
-
-        return $entity->id ?? 0;
-    }
-
     public function update(int $id, array $data): bool
     {
         $entity = $this->findById($id);
@@ -74,11 +77,10 @@ abstract class BaseRepository
             return false;
         }
 
-        return $entity->update($data);
-    }
+        $entity->set($data);
 
-    public function delete(int $id): void
-    {
-        $this->getModelInstance()->destroy($id);
+        $this->orm->update($entity);
+
+        return true;
     }
 }
