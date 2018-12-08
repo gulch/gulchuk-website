@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\DataSource\Article\Article;
 use App\DataSource\Tag\Tag;
 
 class TagsRepository extends BaseRepository
@@ -40,13 +41,23 @@ class TagsRepository extends BaseRepository
         return $tag->articles;
     }
 
-    /* TODO */
     public function syncArticles(int $id, array $articles): void
     {
-        $tag = $this->findById($id);
+        $tag = $this->findById($id, ['articles']);
 
-        if ($tag) {
-            $tag->articles()->sync($articles);
+        if (!$tag) {
+            return;
         }
+
+        if (0 === \count($articles)) {
+            if ($tag->articles) {
+                $tag->articles->detachAll();
+            }
+        } else {
+            $articlesRecordSet = $this->orm->fetchRecordSet(Article::class, $articles);
+            $tag->articles = $articlesRecordSet;
+        }
+
+        $this->orm->persist($tag);
     }
 }

@@ -10,17 +10,17 @@ use Zend\InputFilter\InputFilterInterface;
 
 class TagsController extends BaseController
 {
-    private $repository;
+    private $tagsRepository;
 
     public function __construct(TagsRepository $repository)
     {
         parent::__construct();
-        $this->repository = $repository;
+        $this->tagsRepository = $repository;
     }
 
     public function index(): ResponseInterface
     {
-        $tags = $this->repository->getWith(['articles'], 'created_at', 'desc');
+        $tags = $this->tagsRepository->getWith(['articles'], 'created_at', 'desc');
 
         $data = [
             'tags' => $tags
@@ -42,7 +42,7 @@ class TagsController extends BaseController
     {
         $id = $this->argument('id', func_get_arg(1));
 
-        $tag = $this->repository->findById($id);
+        $tag = $this->tagsRepository->findById($id);
 
         if (!$tag) {
             return $this->abort();
@@ -60,14 +60,14 @@ class TagsController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $tag = $this->repository->findById($id);
+        $tag = $this->tagsRepository->findById($id);
 
         if (!$tag) {
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
-        $this->repository->syncArticles($id, []);
-        $this->repository->delete($id);
+        $this->tagsRepository->syncArticles($id, []);
+        $this->tagsRepository->delete($id);
 
         return $this->jsonResponse(['success' => 'OK']);
     }
@@ -97,14 +97,14 @@ class TagsController extends BaseController
 
         if ($id) {
             // update
-            if (!$this->repository->update($id, $inputFilter->getValues())) {
+            if (!$this->tagsRepository->update($id, $inputFilter->getValues())) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not update tag. Try again.'
                 ]);
             }
         } else {
             // create
-            if (!$id = $this->repository->create($inputFilter->getValues())) {
+            if (!$id = $this->tagsRepository->create($inputFilter->getValues())) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not create new tag. Try again.'
                 ]);

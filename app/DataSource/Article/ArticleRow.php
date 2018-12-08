@@ -29,11 +29,11 @@ class ArticleRow extends Row
         'title' => null,
         'content' => null,
         'is_published' => '0',
-        'social_image' => 'NULL',
-        'seo_title' => 'NULL',
-        'seo_description' => 'NULL',
-        'seo_keywords' => 'NULL',
-        'created_at' => 'current_timestamp()',
-        'updated_at' => 'NULL',
+        'social_image' => null,
+        'seo_title' => null,
+        'seo_description' => null,
+        'seo_keywords' => null,
+        'created_at' => 'CURRENT_TIMESTAMP',
+        'updated_at' => null,
     ];
 }

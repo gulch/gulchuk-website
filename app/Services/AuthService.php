@@ -29,16 +29,13 @@ class AuthService
         return isset($_SESSION['user']);
     }
 
-    /**
-     * @return \App\Models\User | bool
-     */
-    public static function user()
+    public static function user(): ?object
     {
         if (static::check()) {
             return $_SESSION['user'];
         }
 
-        return false;
+        return null;
     }
 
     private static function setUser($user): void
@@ -47,8 +44,37 @@ class AuthService
         $_SESSION['user'] = $user;
     }
 
+    public static function login(
+        UsersRepository $usersRepository,
+        string $email,
+        string $password,
+        bool $remember = false
+    ): bool {
+        $user = $usersRepository->findByEmail($email);
+
+        if (!$user) {
+            return false;
+        }
+
+        if (\password_verify($password, $user->password)) {
+            if (\password_needs_rehash($user->password, \PASSWORD_ARGON2I)) {
+                $usersRepository->update($user->id, [
+                    'password' => \password_hash($password, \PASSWORD_ARGON2I)
+                ]);
+            }
+
+            // Good! Let's authenticate user...
+            static::authenticate($user, $usersRepository, $remember);
+
+            return true;
+        }
+
+        return false;
+    }
+
     /**
-     * @param \App\Models\User $user
+     * @param object $user
+     * @param UsersRepository $userRepository
      * @param bool $remember
      * @throws \Exception
      */
@@ -64,9 +90,7 @@ class AuthService
             $remember_token = static::generateRememberToken(32);
 
             // save remember token to user table
-            $userRepository->update($user->id, [
-                'remember_token' => $remember_token,
-            ]);
+            $userRepository->update($user->id, ['remember_token' => $remember_token]);
 
             \setcookie(
                 'remember',

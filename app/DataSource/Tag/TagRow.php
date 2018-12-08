@@ -30,6 +30,6 @@ class TagRow extends Row
         'seo_description' => 'NULL',
         'seo_keywords' => 'NULL',
         'created_at' => 'current_timestamp()',
-        'updated_at' => 'NULL',
+        'updated_at' => null,
     ];
 }

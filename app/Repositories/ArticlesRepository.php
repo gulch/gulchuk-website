@@ -3,13 +3,14 @@
 namespace App\Repositories;
 
 use App\DataSource\Article\Article;
+use App\DataSource\Tag\Tag;
 
 class ArticlesRepository extends BaseRepository
 {
     public function articleTagsIdsArray(int $id): array
     {
         $article = $this->orm->fetchRecord($this->getMapperClassName(), $id, [
-            'tags' => function($articleTags) {
+            'tags' => function ($articleTags) {
                 $articleTags->columns('id');
             }
         ]);
@@ -54,14 +55,23 @@ class ArticlesRepository extends BaseRepository
             ->fetchRecordSet();
     }
 
-
-    /* TODO */
     public function syncTags(int $id, array $tags): void
     {
-        $article = $this->findById($id);
+        $article = $this->findById($id, ['tags']);
 
-        if ($article) {
-            $article->tags()->sync($tags);
+        if (!$article) {
+            return;
         }
+
+        if (0 === \count($tags)) {
+            if ($article->tags) {
+                $article->tags->detachAll();
+            }
+        } else {
+            $tagsRecordSet = $this->orm->fetchRecordSet(Tag::class, $tags);
+            $article->tags = $tagsRecordSet;
+        }
+
+        $this->orm->persist($article);
     }
 }

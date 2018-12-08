@@ -4,12 +4,12 @@
 
     <div class="ui grid">
         <div class="middle aligned twelve wide column">
-            <h1 class="ui header">
+            <div class="ui huge header">
                 <div class="content">
                     Tags
                     <div class="sub header">List of tags</div>
                 </div>
-            </h1>
+            </div>
         </div>
 
         <div class="middle aligned right aligned four wide column">
@@ -48,7 +48,7 @@
                             </a>
 
                             <div class="meta">
-                                Created: <?= $tag->created_at->format('d.m.Y H:i:s') ?>
+                                Created: <?= $tag->createdDateInFormat('d.m.Y H:i:s') ?>
                             </div>
 
                             <div class="extra">

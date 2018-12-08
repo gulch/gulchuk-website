@@ -26,8 +26,7 @@ class ArticlesController extends BaseController
 
     public function index(): ResponseInterface
     {
-        $articles = $this->articlesRepository
-            ->getWith(['tags'], 'created_at', 'desc');
+        $articles = $this->articlesRepository->getWith(['tags'], 'created_at', 'desc');
 
         $data = [
             'articles' => $articles
@@ -169,8 +168,7 @@ class ArticlesController extends BaseController
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
-        $article->is_published = $is_published;
-        $article->save();
+        $this->articlesRepository->update($id, ['is_published' => $is_published]);
 
         if ($is_published) {
             // generate social image

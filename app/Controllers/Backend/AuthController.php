@@ -42,20 +42,8 @@ class AuthController extends BaseController
         $remember = $this->postArgument('remember') ?: false;
         $path = $this->getArgument('return') ?: \config('app.backend_segment');
 
-        $user = $this->usersRepository->findByEmail($email);
-        if ($user) {
-            if (\password_verify($password, $user->password)) {
-                if (\password_needs_rehash($user->password, \PASSWORD_ARGON2I)) {
-                    $this->usersRepository->update($user->id, [
-                        'password' => \password_hash($password, \PASSWORD_ARGON2I)
-                    ]);
-                }
-
-                // Good! Let's authenticate user...
-                AuthService::authenticate($user, $this->usersRepository, $remember);
-
-                return $this->redirectResponse('/' . $path);
-            }
+        if (AuthService::login($this->usersRepository, $email, $password, $remember)) {
+            return $this->redirectResponse('/' . $path);
         }
 
         return $this->httpResponse($this->view('backend/auth/login', [

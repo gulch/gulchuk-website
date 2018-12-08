@@ -36,12 +36,17 @@ abstract class BaseRepository
         $this->orm->delete($entity);
     }
 
-    public function findById(int $id)
+    public function findById(int $id, array $with = [])
     {
-        return $this->orm->fetchRecord(
-            $this->getMapperClassName(),
-            $id
-        );
+        $select = $this->orm
+            ->select($this->getMapperClassName())
+            ->where('id = ', $id);
+
+        if (\count($with)) {
+            $select = $select->with($with);
+        }
+
+        return $select->fetchRecord();
     }
 
     public function findBySlug(string $slug)

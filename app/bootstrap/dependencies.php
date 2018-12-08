@@ -89,7 +89,8 @@ $container
 
 $container
     ->add(\App\Controllers\Backend\ArticlesController::class)
-    ->addArgument(\App\Repositories\ArticlesRepository::class);
+    ->addArgument(\App\Repositories\ArticlesRepository::class)
+    ->addArgument(\App\Repositories\TagsRepository::class);
 
 /* FastCgiService */
 $container->add('job-service', \App\Services\JobService::class, true);
