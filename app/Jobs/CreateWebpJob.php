@@ -2,9 +2,11 @@
 
 namespace App\Jobs;
 
-class CreateWebpJob
+use App\Contracts\Job;
+
+class CreateWebpJob implements Job
 {
-    public static function handle(array $options): void
+    public function handle(array $options): void
     {
         $source = $options['source'] ?? null;
 

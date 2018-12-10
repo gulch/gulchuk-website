@@ -12,7 +12,7 @@ require __DIR__ . '/core.php';
 
 /* Register Logger */
 $logger = new \Monolog\Logger(config('app.name'), [
-    new \Monolog\Handler\StreamHandler(__DIR__ . '/../../storage/logs/' . date('Ymd') . '.log'),
+    new \Monolog\Handler\StreamHandler(projectPath() . '/storage/logs/' . date('Ymd') . '.log'),
 ]);
 
 /* Register Error Handler */

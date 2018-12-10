@@ -93,7 +93,7 @@ $container
     ->addArgument(\App\Repositories\TagsRepository::class);
 
 /* FastCgiService */
-$container->add('job-service', \App\Services\JobService::class, true);
+$container->add(\App\Services\JobService::class);
 
 /* Assets */
 $container->add(

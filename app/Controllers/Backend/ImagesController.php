@@ -3,7 +3,9 @@
 namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
+use App\Jobs\CreateWebpJob;
 use App\Services\ImageService;
+use App\Services\JobService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
@@ -63,8 +65,8 @@ class ImagesController extends BaseController
         }
 
         // generate also WebP version of image
-        \container('job-service')->process([
-            'job' => 'CreateWebp',
+        \container(JobService::class)->process([
+            'job' => CreateWebpJob::class,
             'source' => $editor_file
         ]);
 

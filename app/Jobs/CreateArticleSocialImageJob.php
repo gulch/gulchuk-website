@@ -2,13 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Contracts\Job;
 use App\Repositories\ArticlesRepository;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Image;
 
-class CreateArticleSocialImageJob
+class CreateArticleSocialImageJob implements Job
 {
-    public static function handle(array $options): void
+    public function handle(array $options): void
     {
         $title = $options['title'] ?? null;
         $slug = $options['slug'] ?? null;
@@ -19,7 +20,7 @@ class CreateArticleSocialImageJob
             return;
         }
 
-        $manager = new ImageManager(array('driver' => 'imagick'));
+        $manager = new ImageManager(['driver' => 'imagick']);
 
         /** @var Image $image */
         // Facebook Recommends 1200x630
@@ -57,7 +58,7 @@ class CreateArticleSocialImageJob
 
         // save to DB
         \container(ArticlesRepository::class)->update($id, [
-            'social_image' => \str_replace(publicPath(), '', $file)
+            'social_image' => \str_replace(\publicPath(), '', $file)
         ]);
 
         // optimize image by pngquant tool

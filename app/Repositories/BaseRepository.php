@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Atlas\Mapper\Record;
+
 abstract class BaseRepository
 {
     abstract public function getMapperClassName();
@@ -14,7 +16,7 @@ abstract class BaseRepository
         $this->orm = $orm;
     }
 
-    public function all()
+    public function all(): \Traversable
     {
         return $this->orm
             ->select($this->getMapperClassName())
@@ -36,7 +38,7 @@ abstract class BaseRepository
         $this->orm->delete($entity);
     }
 
-    public function findById(int $id, array $with = [])
+    public function findById(int $id, array $with = []): ?Record
     {
         $select = $this->orm
             ->select($this->getMapperClassName())
@@ -49,7 +51,7 @@ abstract class BaseRepository
         return $select->fetchRecord();
     }
 
-    public function findBySlug(string $slug)
+    public function findBySlug(string $slug): ?Record
     {
         return $this->orm
             ->select($this->getMapperClassName())

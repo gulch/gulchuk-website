@@ -3,8 +3,10 @@
 namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
+use App\Jobs\CreateArticleSocialImageJob;
 use App\Repositories\ArticlesRepository;
 use App\Repositories\TagsRepository;
+use App\Services\JobService;
 use Psr\Http\Message\ResponseInterface;
 use Zend\InputFilter\Factory as InputFilterFactory;
 use Zend\InputFilter\InputFilterInterface;
@@ -72,7 +74,7 @@ class ArticlesController extends BaseController
         $article = $this->articlesRepository->findById($id);
 
         if (null === $article) {
-            return $this->jsonResponse(['message' => 'Record not found.']);
+            return $this->jsonResponse(['message' => 'Record not found']);
         }
 
         $this->articlesRepository->syncTags($id, []);
@@ -113,7 +115,9 @@ class ArticlesController extends BaseController
             }
         } else {
             // create
-            if (!$id = $this->articlesRepository->create($inputFilter->getValues())) {
+            $id = $this->articlesRepository->create($inputFilter->getValues());
+
+            if (0 === $id) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not create new article. Try again.'
                 ]);
@@ -149,7 +153,7 @@ class ArticlesController extends BaseController
         $article = $this->articlesRepository->findById($id);
 
         if (null === $article) {
-            return $this->jsonResponse(['message' => 'Record not found.']);
+            return $this->jsonResponse(['message' => 'Record not found']);
         }
 
         $this->executeSocialImageGeneration($article);
@@ -165,7 +169,7 @@ class ArticlesController extends BaseController
         $article = $this->articlesRepository->findById($id);
 
         if (null === $article) {
-            return $this->jsonResponse(['message' => 'Record not found.']);
+            return $this->jsonResponse(['message' => 'Record not found']);
         }
 
         $this->articlesRepository->update($id, ['is_published' => $is_published]);
@@ -183,8 +187,8 @@ class ArticlesController extends BaseController
 
     private function executeSocialImageGeneration($article): void
     {
-        \container('job-service')->process([
-            'job' => 'CreateArticleSocialImage',
+        \container(JobService::class)->process([
+            'job' => CreateArticleSocialImageJob::class,
             'id' => $article->id,
             'slug' => $article->slug,
             'title' => $article->title,
