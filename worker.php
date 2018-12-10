@@ -1,19 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-
 // ini_set('display_errors', 1);
 // error_reporting(E_ALL);
 
-/* Register Dotenv */
-(new \Dotenv\Dotenv(__DIR__))->load();
+require __DIR__ . '/vendor/autoload.php';
 
-/* Load Configuration */
-\App\Helpers\Config::bootstrap(__DIR__ . '/config');
-
-/* Boot Eloquent ORM */
-require __DIR__ . '/app/bootstrap/db.php';
+require __DIR__ . '/app/bootstrap/core.php';
 
 $options = $_POST;
 

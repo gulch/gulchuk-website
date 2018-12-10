@@ -7,11 +7,8 @@ define('APP_START_TIME_FLOAT', microtime(true));
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-/* Register Dotenv */
-(new \Dotenv\Dotenv(__DIR__ . '/../..'))->load();
-
-/* Load Configuration */
-\App\Helpers\Config::bootstrap(__DIR__ . '/../../config');
+/* Load main components of application */
+require __DIR__ . '/core.php';
 
 /* Register Logger */
 $logger = new \Monolog\Logger(config('app.name'), [
@@ -32,11 +29,6 @@ if (config('app.debug')) {
 }
 
 $errorHandler->register();
-
-/* Dependency Injection container */
-$container = new \League\Container\Container;
-require __DIR__ . '/dependencies.php';
-\App\Helpers\Container::bootstrap($container);
 
 /* Router & Routes */
 $strategy = new League\Route\Strategy\ApplicationStrategy;

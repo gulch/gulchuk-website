@@ -12,9 +12,7 @@ class SitemapController extends BaseController
 {
     public function generate(): ResponseInterface
     {
-        $sitemap = new Sitemap(
-            \publicPath() . '/sitemap.xml'
-        );
+        $sitemap = new Sitemap(\publicPath() . '/sitemap.xml');
 
         $date = \time();
 
@@ -22,9 +20,9 @@ class SitemapController extends BaseController
         $sitemap->addItem(\config('app.url') . '/blog', $date, Sitemap::WEEKLY, 0.7);
 
         // blog tags
-        $tags = (new TagsRepository)->all();
+        $tags = \container(TagsRepository::class)->all();
         foreach ($tags as $tag) {
-            $date = $tag->updated_at ? $tag->updated_at->getTimestamp() : $tag->created_at->getTimestamp();
+            $date = $tag->updated_at ? $tag->updatedDateInFormat('U') : $tag->createdDateInFormat('U');
             $sitemap->addItem(
                 \config('app.url') . '/blog/tag/' . $tag->slug,
                 $date,
@@ -34,9 +32,9 @@ class SitemapController extends BaseController
         }
 
         // blog articles
-        $articles = (new ArticlesRepository())->all();
+        $articles = \container(ArticlesRepository::class)->all();
         foreach ($articles as $article) {
-            $date = $article->updated_at ? $article->updated_at->getTimestamp() : $article->created_at->getTimestamp();
+            $date = $article->updated_at ? $article->updatedDateInFormat('U') : $article->createdDateInFormat('U');
             $sitemap->addItem(
                 \config('app.url') . '/blog/' . $article->slug,
                 $date,

@@ -16,6 +16,7 @@ class MinifyOutput implements MiddlewareInterface
     ): ResponseInterface {
         /** @var ResponseInterface $response */
         $response = $handler->handle($request);
+
         $start_time = \microtime(true);
 
         $minifier = new \gulch\Minify\Minifier(

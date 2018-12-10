@@ -29,9 +29,10 @@ class FeedController extends BaseController
             ->appendTo($feed);
 
         // blog articles
-        $articles = (new ArticlesRepository)->getWithOptions('created_at', 'desc', 20);
+        $articles = \container(ArticlesRepository::class)->getWithOptions('created_at', 'desc', 20);
+
         foreach ($articles as $article) {
-            $date = $article->updated_at ? $article->updated_at->getTimestamp() : $article->created_at->getTimestamp();
+            $date = $article->updated_at ? $article->updatedDateInFormat('U') : $article->createdDateInFormat('U');
 
             (new Item)
                 ->title($article->title)

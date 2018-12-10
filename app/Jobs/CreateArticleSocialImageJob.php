@@ -52,12 +52,11 @@ class CreateArticleSocialImageJob
         $titleHeight = $i + 20 - 8;
         $image->insert($titleCanvas, 'top-left', 30, \intval($image->height() / 2 - $titleHeight / 2));
 
-
         $file = \getUploadFilePath(\config('app.images_path_social')) . '/' . $slug . '.png';
         $image->save($file);
 
         // save to DB
-        (new ArticlesRepository())->update($id, [
+        \container(ArticlesRepository::class)->update($id, [
             'social_image' => \str_replace(publicPath(), '', $file)
         ]);
 

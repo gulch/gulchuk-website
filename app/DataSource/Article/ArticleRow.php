@@ -33,7 +33,7 @@ class ArticleRow extends Row
         'seo_title' => null,
         'seo_description' => null,
         'seo_keywords' => null,
-        'created_at' => 'CURRENT_TIMESTAMP',
+        'created_at' => 'current_timestamp()',
         'updated_at' => null,
     ];
 }

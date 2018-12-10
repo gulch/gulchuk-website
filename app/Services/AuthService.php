@@ -44,6 +44,14 @@ class AuthService
         $_SESSION['user'] = $user;
     }
 
+    /**
+     * @param UsersRepository $usersRepository
+     * @param string $email
+     * @param string $password
+     * @param bool $remember
+     * @return bool
+     * @throws \Exception
+     */
     public static function login(
         UsersRepository $usersRepository,
         string $email,
@@ -78,11 +86,8 @@ class AuthService
      * @param bool $remember
      * @throws \Exception
      */
-    public static function authenticate(
-        $user,
-        UsersRepository $userRepository,
-        bool $remember = false
-    ): void {
+    public static function authenticate($user, UsersRepository $userRepository, bool $remember = false): void
+    {
         static::setUser($user);
 
         if ($remember) {
@@ -119,6 +124,11 @@ class AuthService
         static::destroySession();
     }
 
+    /**
+     * @param UsersRepository $usersRepository
+     * @return bool
+     * @throws \Exception
+     */
     public static function checkRememberTokenAndLogin(UsersRepository $usersRepository): bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
