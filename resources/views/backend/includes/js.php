@@ -2,5 +2,5 @@
 
 <?= container('defer-css')->write() ?>
 
-<script defer src="/assets/vendor/semantic/2.3.1/semantic.js"></script>
+<script defer src="/assets/vendor/semantic/2.4.1/semantic.js"></script>
 <script defer src="/assets/js/backend.js"></script>
