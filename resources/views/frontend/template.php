@@ -66,7 +66,7 @@
 
         <?= $this->section('content') ?>
 
-        <?php $this->insert('frontend/includes/footer') ?>
+        <?php /*$this->insert('frontend/includes/footer')*/ ?>
 
         <?php $this->insert('frontend/includes/counters') ?>
         <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
