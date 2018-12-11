@@ -4,14 +4,14 @@
 
 /* Response */
 $container->add(
-    'response',
+    \Psr\Http\Message\ResponseInterface::class,
     \Nyholm\Psr7\Response::class,
     true
-);
+)->addTag('response');
 
 /* Request */
 $container->add(
-    'request',
+    \Psr\Http\Message\ServerRequestInterface::class,
     function () {
         $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
         $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
@@ -24,7 +24,7 @@ $container->add(
         return $creator->fromGlobals();
     },
     true
-);
+)->addTag('request');
 
 /* Empty Stream */
 $container->add(

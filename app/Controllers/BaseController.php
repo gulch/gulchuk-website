@@ -19,8 +19,8 @@ class BaseController
 
     public function __construct()
     {
-        $this->request = \container('request');
-        $this->response = \container('response');
+        $this->request = \container(ServerRequestInterface::class);
+        $this->response = \container(ResponseInterface::class);
         $this->getInput = $this->request->getQueryParams();
         $this->postInput = $this->request->getParsedBody();
     }
