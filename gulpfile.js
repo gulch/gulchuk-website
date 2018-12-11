@@ -17,7 +17,7 @@ var CSS_ASSETS_PATH = 'public/assets/css/';
 var LESS_ASSETS_PATH = 'public/assets/less/';
 var SEMANTIC_VERSION = '2.3.1';
 var SEMANTIC_PATH = VENDOR_ASSETS_PATH + 'semantic/' + SEMANTIC_VERSION + '/components/';
-var PRISM_VERSION = '1.6.0';
+var PRISM_VERSION = '1.15.0';
 
 var loaderCss = function () {
     return gulp.src([
