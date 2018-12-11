@@ -63,11 +63,12 @@ class ArticlesRepository extends BaseRepository
             return;
         }
 
-        if (0 === \count($tags)) {
-            if ($article->tags) {
-                $article->tags->detachAll();
-            }
-        } else {
+        if ($article->tags) {
+            $article->tags->detachAll();
+            $this->orm->persist($article);
+        }
+
+        if (\count($tags)) {
             $tagsRecordSet = $this->orm->fetchRecordSet(Tag::class, $tags);
             $article->tags = $tagsRecordSet;
         }
