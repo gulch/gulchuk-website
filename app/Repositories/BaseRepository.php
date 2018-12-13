@@ -64,7 +64,6 @@ abstract class BaseRepository
         string $orderField = '',
         string $orderDir = 'ASC'
     ): \Traversable {
-
         $result = $this->orm
             ->select($this->getMapperClassName())
             ->with($with);

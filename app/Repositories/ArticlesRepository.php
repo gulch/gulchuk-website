@@ -71,8 +71,7 @@ class ArticlesRepository extends BaseRepository
         if (\count($tags)) {
             $tagsRecordSet = $this->orm->fetchRecordSet(Tag::class, $tags);
             $article->tags = $tagsRecordSet;
+            $this->orm->persist($article);
         }
-
-        $this->orm->persist($article);
     }
 }

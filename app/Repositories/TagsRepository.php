@@ -49,15 +49,15 @@ class TagsRepository extends BaseRepository
             return;
         }
 
-        if (0 === \count($articles)) {
-            if ($tag->articles) {
-                $tag->articles->detachAll();
-            }
-        } else {
-            $articlesRecordSet = $this->orm->fetchRecordSet(Article::class, $articles);
-            $tag->articles = $articlesRecordSet;
+        if ($tag->articles) {
+            $tag->articles->detachAll();
+            $this->orm->persist($tag);
         }
 
-        $this->orm->persist($tag);
+        if (\count($articles)) {
+            $articlesRecordSet = $this->orm->fetchRecordSet(Article::class, $articles);
+            $tag->articles = $articlesRecordSet;
+            $this->orm->persist($tag);
+        }
     }
 }
