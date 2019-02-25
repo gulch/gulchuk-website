@@ -8,7 +8,7 @@ DIRECTORY="."
 function doBrotli {
 
 	FILE_MINSIZE=512
-	BROTLI="brotli --quality 11"
+	BROTLI="brotli -Z"
 	AWK=awk
 	TOUCH=touch
 
@@ -23,7 +23,7 @@ function doBrotli {
 	        exit 0;
 	    fi
 	    
-	    $BROTLI --input "$1" --output "$BR_NAME"
+	    $BROTLI -o "$BR_NAME" "$1"
 	    $TOUCH -r "$1" "$BR_NAME"
 	    echo "Compressed $1 to $BR_NAME"
 	fi
