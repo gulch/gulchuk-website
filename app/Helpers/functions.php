@@ -1,38 +1,40 @@
 <?php
 
-if (!function_exists('env')) {
-    /**
-     * Gets the value of an environment variable. Supports boolean, empty and null.
-     *
-     * @param  string $key
-     * @param  mixed $default
-     * @return mixed
-     */
-    function env($key, $default = null)
-    {
-        $value = getenv($key);
-        if ($value === false) {
-            return $default;
-        }
-        switch (strtolower($value)) {
-            case 'true':
-            case '(true)':
-                return true;
-            case 'false':
-            case '(false)':
-                return false;
-            case 'empty':
-            case '(empty)':
-                return '';
-            case 'null':
-            case '(null)':
-                return;
-        }
-        if (is_string($value) && substr($value, 0, 1) === '"' && substr($value, -1, 1) === '"') {
-            return substr($value, 1, -1);
-        }
-        return $value;
+/**
+ * Gets the value of an environment variable. Supports boolean, empty and null.
+ *
+ * @param  string $key
+ * @param  mixed $default
+ * @return mixed
+ */
+function env($key, $default = null)
+{
+    $value = getenv($key);
+
+    if ($value === false) {
+        return $default;
     }
+
+    switch (strtolower($value)) {
+        case 'true':
+        case '(true)':
+            return true;
+        case 'false':
+        case '(false)':
+            return false;
+        case 'empty':
+        case '(empty)':
+            return '';
+        case 'null':
+        case '(null)':
+            return;
+    }
+
+    if (is_string($value) && substr($value, 0, 1) === '"' && substr($value, -1, 1) === '"') {
+        return substr($value, 1, -1);
+    }
+
+    return $value;
 }
 
 function container(string $name = null)
@@ -83,13 +85,13 @@ function currentURL(bool $full_url = true, bool $with_query = false): string
 {
     $result = '';
 
-    $requst_uri = $_SERVER['REQUEST_URI'];
+    $request_uri = $_SERVER['REQUEST_URI'];
 
     if (!$with_query) {
-        $requst_uri = str_replace('?' . $_SERVER['QUERY_STRING'], '', $requst_uri);
+        $request_uri = str_replace('?' . $_SERVER['QUERY_STRING'], '', $request_uri);
     }
 
-    $result = $requst_uri;
+    $result = $request_uri;
 
     if ($full_url) {
         $result = config('app.url') . $result;

@@ -9,7 +9,7 @@ use hollodotme\FastCGI\SocketConnections\UnixDomainSocket;
 class JobService
 {
     /** @var Client */
-    private $client;
+    private $client = null;
 
     private function init(): void
     {
@@ -24,7 +24,7 @@ class JobService
 
     private function getClient(): Client
     {
-        if (!$this->client) {
+        if ($this->client === null) {
             $this->init();
         }
 
