@@ -1,7 +1,7 @@
 <?php
 
 /* Register Dotenv */
-(new \Dotenv\Dotenv(__DIR__ . '/../..'))->load();
+\Dotenv\Dotenv::create(__DIR__ . '/../..')->load();
 
 /* Load Configuration */
 \App\Helpers\Config::bootstrap(__DIR__ . '/../../config');
