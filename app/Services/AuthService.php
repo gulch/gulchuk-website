@@ -44,14 +44,6 @@ class AuthService
         $_SESSION['user'] = $user;
     }
 
-    /**
-     * @param UsersRepository $usersRepository
-     * @param string $email
-     * @param string $password
-     * @param bool $remember
-     * @return bool
-     * @throws \Exception
-     */
     public static function login(
         UsersRepository $usersRepository,
         string $email,
@@ -80,12 +72,6 @@ class AuthService
         return false;
     }
 
-    /**
-     * @param object $user
-     * @param UsersRepository $userRepository
-     * @param bool $remember
-     * @throws \Exception
-     */
     public static function authenticate($user, UsersRepository $userRepository, bool $remember = false): void
     {
         static::setUser($user);
@@ -124,11 +110,6 @@ class AuthService
         static::destroySession();
     }
 
-    /**
-     * @param UsersRepository $usersRepository
-     * @return bool
-     * @throws \Exception
-     */
     public static function checkRememberTokenAndLogin(UsersRepository $usersRepository): bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
@@ -148,11 +129,6 @@ class AuthService
         return true;
     }
 
-    /**
-     * @param int $length Token string symbols count
-     * @return string
-     * @throws \Exception
-     */
     public static function generateRememberToken(int $length = 16): string
     {
         $random_bytes = \random_bytes($length);
