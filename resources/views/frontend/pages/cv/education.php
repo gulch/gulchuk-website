@@ -12,6 +12,19 @@
 
 <h3>Certificates</h3>
 <p>
+    2019
+</p>
+<ul>
+    <li>
+        <a href="https://www.udemy.com/certificate/UC-ZI8QWHJW/"
+           target="_blank"
+           rel="nofollow noopener"
+        >
+            PHP - Advanced Features
+        </a>
+    </li>
+</ul>
+<p>
     2018
 </p>
 <ul>
