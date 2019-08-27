@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use hollodotme\FastCGI\Client;
+use hollodotme\FastCGI\Interfaces\ConfiguresSocketConnection;
 use hollodotme\FastCGI\Requests\PostRequest;
 use hollodotme\FastCGI\SocketConnections\UnixDomainSocket;
 
@@ -11,15 +12,18 @@ class JobService
     /** @var Client */
     private $client = null;
 
+    /** @var ConfiguresSocketConnection */
+    private $connection = null;
+
     private function init(): void
     {
-        $connection = new UnixDomainSocket(
+        $this->connection = new UnixDomainSocket(
             \config('jobs.php-fpm_socket_path'),  # Socket path to php-fpm
             5000,                                 # Connect timeout in milliseconds (default: 5000)
             20000                                 # Read/write timeout in milliseconds (default: 5000)
         );
 
-        $this->client = new Client($connection);
+        $this->client = new Client();
     }
 
     private function getClient(): Client
@@ -38,6 +42,6 @@ class JobService
             \http_build_query($options)
         );
 
-        $this->getClient()->sendAsyncRequest($request);
+        $this->getClient()->sendAsyncRequest($this->connection, $request);
     }
 }
