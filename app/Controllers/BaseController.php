@@ -117,13 +117,13 @@ class BaseController
     /**
      * Format errors list for message dialog
      *
-     * @param InputFilterInterface $inputFilter
+     * @param
      * @return string
      */
-    protected function formatErrorMessages(InputFilterInterface $inputFilter): string
+    protected function formatErrorMessages(array $messages): string
     {
         return $this->view('messages/validation', [
-            'errors' => $inputFilter->getInvalidInput()
+            'errors' => $messages,
         ]);
     }
 }

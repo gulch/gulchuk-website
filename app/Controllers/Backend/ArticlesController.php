@@ -8,8 +8,7 @@ use App\Repositories\ArticlesRepository;
 use App\Repositories\TagsRepository;
 use App\Services\JobService;
 use Psr\Http\Message\ResponseInterface;
-use Zend\InputFilter\Factory as InputFilterFactory;
-use Zend\InputFilter\InputFilterInterface;
+use Sirius\Validation\Validator;
 
 class ArticlesController extends BaseController
 {
@@ -97,14 +96,22 @@ class ArticlesController extends BaseController
             'seo_keywords' => $this->postArgument('seo_keywords'),
         ];
 
-        $inputFilter = $this->saveArticleInputFilter();
-        $inputFilter->setData($data);
 
-        if (!$inputFilter->isValid()) {
+        // Validation
+
+        $validator = new Validator();
+        $validator->add([
+            'title:Title' => 'required',
+            'slug:Slug' => 'required',
+        ]);
+
+        if (!$validator->validate($data)) {
             return $this->jsonResponse([
-                'message' => $this->formatErrorMessages($inputFilter),
+                'message' => $this->formatErrorMessages($validator->getMessages()),
             ]);
         }
+
+        // TODO: Filter Input
 
         if ($id) {
             // update
@@ -193,57 +200,5 @@ class ArticlesController extends BaseController
             'slug' => $article->slug,
             'title' => $article->title,
         ]);
-    }
-
-    private function saveArticleInputFilter(): InputFilterInterface
-    {
-        $factory = new InputFilterFactory();
-        $inputFilter = $factory->createInputFilter([
-            'title' => [
-                'required' => true,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    ['name' => 'NotEmpty'],
-                ],
-            ],
-            'slug' => [
-                'required' => true,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                    ['name' => 'StripTags'],
-                ],
-                'validators' => [
-                    ['name' => 'NotEmpty'],
-                ],
-            ],
-            'content' => [
-                'required' => false
-            ],
-            'seo_title' => [
-                'required' => false,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                    ['name' => 'StripTags'],
-                ],
-            ],
-            'seo_description' => [
-                'required' => false,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                    ['name' => 'StripTags'],
-                ],
-            ],
-            'seo_keywords' => [
-                'required' => false,
-                'filters' => [
-                    ['name' => 'StringTrim'],
-                    ['name' => 'StripTags'],
-                ],
-            ],
-        ]);
-
-        return $inputFilter;
     }
 }
