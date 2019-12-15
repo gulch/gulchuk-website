@@ -24,23 +24,21 @@
         "league/container": "~3.3.0",
         "league/plates": "~3.3.0",
         "league/route": "~4.3.1",
-        "monolog/monolog": "~1.24.0",
-        "narrowspark/http-emitter": "~0.8.0",
+        "monolog/monolog": "~2.0.1",
+        "narrowspark/http-emitter": "~1.0.0",
         "nyholm/psr7": "~1.2.0",
-        "nyholm/psr7-server": "~0.3.0",
+        "nyholm/psr7-server": "~0.4.1",
         "samdark/sitemap": "~2.2.0",
         "suin/php-rss-writer": "~1.6.0",
-        "symfony/finder": "~4.3.1",
-        "vlucas/phpdotenv": "~3.5.0",
+        "symfony/finder": "~5.0.1",
+        "vlucas/phpdotenv": "~4.1.0",
         "zendframework/zend-inputfilter": "~2.10.0"
     },
     "require-dev": {
         "atlas/cli": "^2.0",
         "fzaninotto/faker": "^1.7",
-        "phpmd/phpmd": "^2.6",
         "phpmetrics/phpmetrics": "^2.4",
-        "robmorgan/phinx": "^0.10",
-        "sebastian/phpcpd": "^4.0",
+        "robmorgan/phinx": "^0.11",
         "squizlabs/php_codesniffer": "^3.2"
     },
     "autoload": {
@@ -67,9 +65,7 @@
         "optimize-autoloader": true
     },
     "scripts": {
-        "md": "phpmd app text codesize,unusedcode,naming",
         "cs": "phpcs -n --standard=PSR2 app",
-        "cpd": "phpcpd app",
         "metrics": "phpmetrics --report-html=storage/reports/phpmetrics ."
     }
 }
