@@ -115,14 +115,14 @@ class ArticlesController extends BaseController
 
         if ($id) {
             // update
-            if (!$this->articlesRepository->update($id, $inputFilter->getValues())) {
+            if (!$this->articlesRepository->update($id, $data)) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not update article. Try again.'
                 ]);
             }
         } else {
             // create
-            $id = $this->articlesRepository->create($inputFilter->getValues());
+            $id = $this->articlesRepository->create($data);
 
             if (0 === $id) {
                 return $this->jsonResponse([

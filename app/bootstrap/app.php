@@ -16,11 +16,11 @@ $logger = new \Monolog\Logger(config('app.name'), [
 ]);
 
 /* Register Error Handler */
-$errorHandler = new \Whoops\Run;
+$errorHandler = new \Whoops\Run();
 
 if (config('app.debug')) {
     $errorHandler->pushHandler(
-        new \Whoops\Handler\PrettyPageHandler
+        new \Whoops\Handler\PrettyPageHandler()
     );
 } else {
     $plainHandler = new \Whoops\Handler\PlainTextHandler($logger);
@@ -31,9 +31,9 @@ if (config('app.debug')) {
 $errorHandler->register();
 
 /* Router & Routes */
-$strategy = new League\Route\Strategy\ApplicationStrategy;
+$strategy = new League\Route\Strategy\ApplicationStrategy();
 $strategy->setContainer($container);
-$router = (new League\Route\Router)->setStrategy($strategy);
+$router = (new League\Route\Router())->setStrategy($strategy);
 require __DIR__ . '/routes.php';
 
 /** @var \Psr\Http\Message\ServerRequestInterface::class */

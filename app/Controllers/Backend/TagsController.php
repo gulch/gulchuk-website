@@ -106,14 +106,14 @@ class TagsController extends BaseController
 
         if ($id) {
             // update
-            if (!$this->tagsRepository->update($id, $inputFilter->getValues())) {
+            if (!$this->tagsRepository->update($id, $data)) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not update tag. Try again.'
                 ]);
             }
         } else {
             // create
-            if (!$id = $this->tagsRepository->create($inputFilter->getValues())) {
+            if (!$id = $this->tagsRepository->create($data)) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not create new tag. Try again.'
                 ]);
