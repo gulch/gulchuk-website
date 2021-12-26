@@ -37,7 +37,7 @@ $container->add(
 /* Emitter */
 $container->add(
     'emitter',
-    \Narrowspark\HttpEmitter\SapiEmitter::class
+    \Embryo\Http\Emitter\Emitter::class
 );
 
 /* Template Engine */
