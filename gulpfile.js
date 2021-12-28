@@ -9,7 +9,7 @@ var combine_duplicated_selectors = require('postcss-combine-duplicated-selectors
 var sorting = require('postcss-sorting');
 var less = require('gulp-less');
 
-var APP_VERSION = '1.4.0';
+var APP_VERSION = '1.4.1';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
