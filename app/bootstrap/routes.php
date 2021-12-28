@@ -72,6 +72,6 @@ $router
         $router->post('/images/upload', [ImagesController::class, 'upload']);
     })
     ->middlewares([
+        new ResponseTime,
         new AuthenticateOnly,
-        new ResponseTime
     ]);
