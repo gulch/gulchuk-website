@@ -1,1 +1,0 @@
-<script async src="/build/<?= config('app.version') ?>/c.js"></script>
