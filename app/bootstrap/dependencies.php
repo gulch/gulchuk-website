@@ -3,14 +3,13 @@
 /** @var $container \League\Container\Container */
 
 /* Response */
-$container->add(
+$container->addShared(
     \Psr\Http\Message\ResponseInterface::class,
     \Nyholm\Psr7\Response::class,
-    true
 )->addTag('response');
 
 /* Request */
-$container->add(
+$container->addShared(
     \Psr\Http\Message\ServerRequestInterface::class,
     function () {
         $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
@@ -23,7 +22,6 @@ $container->add(
 
         return $creator->fromGlobals();
     },
-    true
 )->addTag('request');
 
 /* Empty Stream */
@@ -41,12 +39,11 @@ $container->add(
 );
 
 /* Template Engine */
-$container->add(
+$container->addShared(
     'templater',
     function () {
         return new \League\Plates\Engine(__DIR__ . '/../../resources/views');
     },
-    true
 );
 
 /* ORM */
@@ -55,12 +52,11 @@ $orm = \Atlas\Orm\Atlas::new(
     config('database.username'),
     config('database.password')
 );
-$container->add(
+$container->addShared(
     'orm',
     function () use ($orm) {
         return $orm;
     },
-    true
 );
 
 /* Repositories */
@@ -96,22 +92,20 @@ $container
 $container->add(\App\Services\JobService::class);
 
 /* Assets */
-$container->add(
+$container->addShared(
     'defer-css',
     function () {
         return new \gulch\Assets\Asset(
             new \gulch\Assets\Renderer\DeferJsRenderer
         );
     },
-    true
 );
 
-$container->add(
+$container->addShared(
     'body-css',
     function () {
         return new \gulch\Assets\Asset(
             new \gulch\Assets\Renderer\BodyCssRenderer
         );
     },
-    true
 );
