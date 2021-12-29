@@ -7,6 +7,8 @@ define('APP_START_TIME_FLOAT', microtime(true));
 
 require __DIR__ . '/../../vendor/autoload.php';
 
+define('APP_AUTOLOADED_TIME_FLOAT', microtime(true));
+
 /* Load main components of application */
 require __DIR__ . '/core.php';
 
@@ -33,13 +35,14 @@ $errorHandler->register();
 /* Router & Routes */
 $strategy = new League\Route\Strategy\ApplicationStrategy();
 $strategy->setContainer($container);
+/** @var \League\Route\Route $router */
 $router = (new League\Route\Router())->setStrategy($strategy);
 require __DIR__ . '/routes.php';
 
-/** @var \Psr\Http\Message\ServerRequestInterface::class */
+/** @var \Psr\Http\Message\ServerRequestInterface::class $request */
 $request = $container->get(\Psr\Http\Message\ServerRequestInterface::class);
 
-/** @var \Psr\Http\Message\ResponseInterface */
+/** @var \Psr\Http\Message\ResponseInterface $response */
 $response = $container->get(\Psr\Http\Message\ResponseInterface::class);
 
 try {

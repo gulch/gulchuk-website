@@ -16,7 +16,7 @@ class ContentSecurityPolicy implements MiddlewareInterface
         /** @var ResponseInterface $response */
         $response = $handler->handle($request);
 
-        $value = "default-src 'self' www.google-analytics.com";
+        $value = "default-src 'self' www.google-analytics.com www.googletagmanager.com";
         $value .= "; font-src 'self'";
         $value .= '; img-src data: https:';
         $value .= "; style-src 'self' 'unsafe-inline'";

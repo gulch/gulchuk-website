@@ -9,7 +9,7 @@ var combine_duplicated_selectors = require('postcss-combine-duplicated-selectors
 var sorting = require('postcss-sorting');
 var less = require('gulp-less');
 
-var APP_VERSION = '1.4.1';
+var APP_VERSION = '1.5.0';
 var BUILD_PATH = 'public/build/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
@@ -120,15 +120,6 @@ var highlightJs = function () {
         .pipe(gulp.dest(BUILD_PATH));
 };
 
-var countersJs = function () {
-    return gulp.src([
-        JS_ASSETS_PATH + 'counters.js'
-    ])
-        .pipe(concat('c.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(BUILD_PATH));
-};
-
 var svgIconsLoaderJs = function () {
     return gulp.src([
         JS_ASSETS_PATH + 'icons-loader.js'
@@ -152,14 +143,23 @@ var svgSprite = function () {
         .pipe(gulp.dest(BUILD_PATH));
 };
 
+var countersJs = function () {
+    return gulp.src([
+        JS_ASSETS_PATH + 'counters.js'
+    ])
+        .pipe(concat('c.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(BUILD_PATH));
+};
+
 gulp.task('loader css', gulp.parallel(loaderCss));
 gulp.task('fonts css', gulp.parallel(fontsCss));
 gulp.task('frontend css', gulp.parallel(frontendCss));
 gulp.task('highlight css', gulp.parallel(highlightCss));
 gulp.task('highlight js', gulp.parallel(highlightJs));
-gulp.task('counters js', gulp.parallel(countersJs));
 gulp.task('svg icons loader js', gulp.parallel(svgIconsLoaderJs));
 gulp.task('svg sprite', gulp.parallel(svgSprite));
+gulp.task('counters js', gulp.parallel(countersJs));
 
 gulp.task('PRODUCTION', gulp.parallel(
     loaderCss,
@@ -167,7 +167,7 @@ gulp.task('PRODUCTION', gulp.parallel(
     frontendCss,
     highlightCss,
     highlightJs,
-    countersJs,
     svgIconsLoaderJs,
-    svgSprite
+    svgSprite,
+    countersJs
 ));

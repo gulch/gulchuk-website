@@ -1,6 +1,6 @@
 <?php
 
-/** @var $container \League\Container\Container */
+/** @var \League\Container\Container $container */
 
 /* Response */
 $container->addShared(

@@ -18,8 +18,7 @@
 
         <link rel="alternate" type="application/rss+xml" title="<?= config('app.name') ?> RSS Feed" href="/feed">
 
-        <?php /* Social: Google+ / Schema.org */ ?>
-        <link href="https://plus.google.com/110104943340923924368" rel="publisher">
+        <?php /* Schema.org */ ?>
         <meta itemprop="name" content="<?= $title ?>">
         <meta itemprop="description" content="<?= $description ?>">
         <meta itemprop="image" content="<?= $image ?>">
@@ -68,8 +67,9 @@
 
         <?php /*$this->insert('frontend/includes/footer')*/ ?>
 
-        <?php $this->insert('frontend/includes/counters') ?>
         <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
         <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
+
+        <script async src="/build/<?= config('app.version') ?>/c.js"></script>
     </body>
 </html>

@@ -32,7 +32,7 @@
         "siriusphp/validation": "~3.0.0",
         "suin/php-rss-writer": "~1.6.0",
         "symfony/finder": "~6.0.0",
-        "vlucas/phpdotenv": "~4.2.2"
+        "vlucas/phpdotenv": "~5.4.0"
     },
     "require-dev": {
         "atlas/cli": "^2.0",
