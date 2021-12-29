@@ -48,8 +48,6 @@
         <?php $this->insert('frontend/includes/loader-style') ?>
 
         <?php $this->insert('assets/favicon') ?>
-
-        <?php $this->insert('frontend/includes/google-analytics') ?>
     </head>
     <body>
         <!-- Loader -->
@@ -71,5 +69,7 @@
 
         <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
         <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
+
+        <script async src="/build/<?= config('app.version') ?>/c.js"></script>
     </body>
 </html>
