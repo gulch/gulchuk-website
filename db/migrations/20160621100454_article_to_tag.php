@@ -16,6 +16,6 @@ class ArticleToTag extends AbstractMigration
 
     public function down()
     {
-        $this->dropTable('Article_Tag');
+        $this->table('Article_Tag')->drop()->save();
     }
 }

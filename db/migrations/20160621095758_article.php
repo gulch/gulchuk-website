@@ -23,6 +23,6 @@ class Article extends AbstractMigration
 
     public function down()
     {
-        $this->dropTable('Article');
+        $this->table('Article')->drop()->save();
     }
 }

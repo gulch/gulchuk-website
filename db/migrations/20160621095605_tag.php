@@ -21,6 +21,6 @@ class Tag extends AbstractMigration
 
     public function down()
     {
-        $this->dropTable('Tag');
+        $this->table('Tag')->drop()->save();
     }
 }

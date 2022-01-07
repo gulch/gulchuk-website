@@ -18,6 +18,6 @@ class User extends AbstractMigration
 
     public function down()
     {
-        $this->dropTable('User');
+        $this->table('User')->drop()->save();
     }
 }
