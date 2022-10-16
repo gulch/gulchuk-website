@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\InputFilter\InputFilterInterface;
+use function container;
 
 class BaseController
 {
@@ -19,8 +19,8 @@ class BaseController
 
     public function __construct()
     {
-        $this->request = \container(ServerRequestInterface::class);
-        $this->response = \container(ResponseInterface::class);
+        $this->request = container(ServerRequestInterface::class);
+        $this->response = container(ResponseInterface::class);
         $this->getInput = $this->request->getQueryParams();
         $this->postInput = $this->request->getParsedBody();
     }
@@ -111,7 +111,7 @@ class BaseController
      */
     protected function view(string $name, array $params = []): string
     {
-        return \container('templater')->render($name, $params);
+        return container('templater')->render($name, $params);
     }
 
     /**
@@ -122,8 +122,11 @@ class BaseController
      */
     protected function formatErrorMessages(array $messages): string
     {
-        return $this->view('messages/validation', [
-            'errors' => $messages,
-        ]);
+        return $this->view(
+            'messages/validation',
+            [
+                'errors' => $messages,
+            ]
+        );
     }
 }

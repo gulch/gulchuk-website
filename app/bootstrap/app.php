@@ -35,6 +35,7 @@ $errorHandler->register();
 /* Router & Routes */
 $strategy = new League\Route\Strategy\ApplicationStrategy();
 $strategy->setContainer($container);
+
 /** @var \League\Route\Route $router */
 $router = (new League\Route\Router())->setStrategy($strategy);
 require __DIR__ . '/routes.php';
