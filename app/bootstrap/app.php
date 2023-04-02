@@ -36,11 +36,11 @@ $errorHandler->register();
 $strategy = new League\Route\Strategy\ApplicationStrategy();
 $strategy->setContainer($container);
 
-/** @var \League\Route\Route $router */
+/** @var \League\Route\Router $router */
 $router = (new League\Route\Router())->setStrategy($strategy);
 require __DIR__ . '/routes.php';
 
-/** @var \Psr\Http\Message\ServerRequestInterface::class $request */
+/** @var \Psr\Http\Message\ServerRequestInterface $request */
 $request = $container->get(\Psr\Http\Message\ServerRequestInterface::class);
 
 /** @var \Psr\Http\Message\ResponseInterface $response */

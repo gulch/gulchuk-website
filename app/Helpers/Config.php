@@ -20,7 +20,7 @@ class Config
         }
 
         if (self::$instance) {
-            throw new Exception('Already bootstraped!');
+            throw new Exception('Config already bootstraped!');
         }
 
         self::$instance = new self;
