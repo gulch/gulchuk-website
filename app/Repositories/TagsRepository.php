@@ -2,8 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DataSource\Article\Article;
-use App\DataSource\Tag\Tag;
+use App\Models\Tag;
 
 class TagsRepository extends BaseRepository
 {
@@ -18,14 +17,15 @@ class TagsRepository extends BaseRepository
         string $orderDir = 'ASC'
     ): iterable {
         $list = $this->orm
-            ->select($this->getMapperClassName())
+            ->getRepository($this->getMapperClassName())
+            ->select()
             ->columns('id', ...$fields)
-            ->orderBy($orderField . ' ' . $orderDir);
+            ->orderBy($orderField, $orderDir);
 
         return $list->fetchRecords();
     }
 
-    public function latestPublishedArticles(int $id): \Traversable
+    /* public function latestPublishedArticles(int $id): \Traversable
     {
         $tag = $this->orm->fetchRecord(
             $this->getMapperClassName(),
@@ -39,9 +39,9 @@ class TagsRepository extends BaseRepository
         );
 
         return $tag->articles;
-    }
+    } */
 
-    public function syncArticles(int $id, array $articles): void
+    /* public function syncArticles(int $id, array $articles): void
     {
         $tag = $this->findById($id, ['articles']);
 
@@ -59,5 +59,5 @@ class TagsRepository extends BaseRepository
             $tag->articles = $articlesRecordSet;
             $this->orm->persist($tag);
         }
-    }
+    } */
 }

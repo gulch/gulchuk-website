@@ -47,11 +47,47 @@ $container->addShared(
 );
 
 /* ORM */
-$orm = \Atlas\Orm\Atlas::new(
+/* $orm = \Atlas\Orm\Atlas::new(
     config('database.driver') . ':host=' . config('database.host') . ';dbname=' . config('database.database'),
     config('database.username'),
     config('database.password')
+); */
+
+/* ORM */
+
+use Cycle\Database;
+use Cycle\Database\Config;
+
+$dbal = new Database\DatabaseManager(
+    new Config\DatabaseConfig([
+        'default' => 'default',
+        'databases' => [
+            'default' => ['connection' => 'mysql_socket']
+        ],
+        'connections' => [
+            'mysql_socket' => new Config\MySQLDriverConfig(
+                connection: new Config\MySQL\SocketConnectionConfig(
+                    database: config('database.database'),
+                    socket: config('database.socket'),
+                    user: config('database.username'),
+                    password: config('database.password'),
+                ),
+                queryCache: true
+            ),
+        ]
+    ])
 );
+
+use Cycle\ORM;
+use Cycle\ORM\Schema;
+
+$schemes = require __DIR__ . '/../../config/schemes.php';
+
+$orm = new ORM\ORM(
+    new ORM\Factory($dbal), 
+    new Schema($schemes)
+);
+
 $container->addShared(
     'orm',
     function () use ($orm) {
@@ -68,25 +104,25 @@ $container->add(\App\Repositories\UsersRepository::class)->addArgument($orm);
 $container->add(\App\Controllers\Frontend\PageController::class);
 $container->add(\App\Controllers\Frontend\SitemapController::class);
 
-$container
+/* $container
     ->add(\App\Controllers\Backend\AuthController::class)
     ->addArgument(\App\Repositories\UsersRepository::class);
 
-$container->add(\App\Controllers\Backend\DashboardController::class);
+$container->add(\App\Controllers\Backend\DashboardController::class); */
 
 $container
     ->add(\App\Controllers\Frontend\BlogController::class)
     ->addArgument(\App\Repositories\ArticlesRepository::class)
     ->addArgument(\App\Repositories\TagsRepository::class);
 
-$container
+/* $container
     ->add(\App\Controllers\Backend\TagsController::class)
     ->addArgument(\App\Repositories\TagsRepository::class);
 
 $container
     ->add(\App\Controllers\Backend\ArticlesController::class)
     ->addArgument(\App\Repositories\ArticlesRepository::class)
-    ->addArgument(\App\Repositories\TagsRepository::class);
+    ->addArgument(\App\Repositories\TagsRepository::class); */
 
 /* FastCgiService */
 $container->add(\App\Services\JobService::class);

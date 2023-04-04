@@ -2,13 +2,11 @@
 
 namespace App\Repositories;
 
-use Atlas\Mapper\Record;
-
 abstract class BaseRepository
 {
     abstract public function getMapperClassName();
 
-    /** @var \Atlas\Orm\Atlas */
+    /** @var \Cycle\ORM\ORM */
     protected $orm;
 
     public function __construct($orm)
@@ -16,47 +14,45 @@ abstract class BaseRepository
         $this->orm = $orm;
     }
 
-    public function all(): \Traversable
+    public function all(): iterable
     {
         return $this->orm
-            ->select($this->getMapperClassName())
-            ->fetchRecordSet();
+            ->getRepository($this->getMapperClassName())
+            ->findAll();
     }
 
-    public function create(array $data): int
+   /*  public function create(array $data): int
     {
         $entity = $this->orm->newRecord($this->getMapperClassName(), $data);
 
         $this->orm->insert($entity);
 
         return $entity->id ?? 0;
-    }
+    } */
 
-    public function delete(int $id): void
+    /* public function delete(int $id): void
     {
         $entity = $this->orm->fetchRecord($this->getMapperClassName(), $id);
         $this->orm->delete($entity);
-    }
+    } */
 
-    public function findById(int $id, array $with = []): ?Record
+    public function findById(int $id, array $with = [])
     {
         $select = $this->orm
-            ->select($this->getMapperClassName())
-            ->where('id = ', $id);
+            ->getRepository($this->getMapperClassName());
 
         if (\count($with)) {
-            $select = $select->with($with);
+            $select = $select->select()->with($with);
         }
 
-        return $select->fetchRecord();
+        return $select->findByPK($id);
     }
 
-    public function findBySlug(string $slug): ?Record
+    public function findBySlug(string $slug)
     {
         return $this->orm
-            ->select($this->getMapperClassName())
-            ->where('slug = ', $slug)
-            ->fetchRecord();
+            ->getRepository($this->getMapperClassName())
+            ->findOne(['slug', $slug]);
     }
 
     public function getWith(
@@ -65,17 +61,18 @@ abstract class BaseRepository
         string $orderDir = 'ASC'
     ): \Traversable {
         $result = $this->orm
-            ->select($this->getMapperClassName())
+            ->getRepository($this->getMapperClassName())
+            ->select()
             ->with($with);
 
         if ($orderField) {
             $result = $result->orderBy($orderField . ' ' . $orderDir);
         }
 
-        return $result->fetchRecordSet();
+        return $result->findAll();
     }
 
-    public function update(int $id, array $data): bool
+    /* public function update(int $id, array $data): bool
     {
         $entity = $this->findById($id);
 
@@ -88,5 +85,5 @@ abstract class BaseRepository
         $this->orm->update($entity);
 
         return true;
-    }
+    } */
 }

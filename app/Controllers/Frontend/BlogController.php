@@ -24,6 +24,15 @@ class BlogController extends BaseController
 
     public function index(): ResponseInterface
     {
+
+        $orm = container('orm');
+
+        $tags = $orm->getRepository('tag')->findOne();
+
+        var_dump($tags->articles);
+
+        exit();
+
         $data = [
             'articles' => $this->articlesRepository->getLatestPublished(),
             'tags' => $this->getAllTags(),
