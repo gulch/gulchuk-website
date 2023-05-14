@@ -7,7 +7,7 @@ use App\DataSource\Tag\Tag;
 
 class TagsRepository extends BaseRepository
 {
-    public function getMapperClassName(): string
+    public function getModelClassName(): string
     {
         return Tag::class;
     }
@@ -18,7 +18,7 @@ class TagsRepository extends BaseRepository
         string $orderDir = 'ASC'
     ): iterable {
         $list = $this->orm
-            ->select($this->getMapperClassName())
+            ->select($this->getModelClassName())
             ->columns('id', ...$fields)
             ->orderBy($orderField . ' ' . $orderDir);
 
@@ -28,7 +28,7 @@ class TagsRepository extends BaseRepository
     public function latestPublishedArticles(int $id): \Traversable
     {
         $tag = $this->orm->fetchRecord(
-            $this->getMapperClassName(),
+            $this->getModelClassName(),
             $id,
             [
                 'articles' => function ($tagArticles) {

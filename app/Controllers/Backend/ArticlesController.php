@@ -4,30 +4,24 @@ namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
 use App\Jobs\CreateArticleSocialImageJob;
-use App\Repositories\ArticlesRepository;
-use App\Repositories\TagsRepository;
+use App\Models\Article;
+use App\Models\Tag;
 use App\Services\JobService;
 use Psr\Http\Message\ResponseInterface;
 use Sirius\Validation\Validator;
 
-class ArticlesController extends BaseController
+final class ArticlesController extends BaseController
 {
-    private $articlesRepository;
-    private $tagsRepository;
-
-    public function __construct(
-        ArticlesRepository $articlesRepository,
-        TagsRepository $tagsRepository
-    ) {
+    public function __construct() {
         parent::__construct();
-
-        $this->articlesRepository = $articlesRepository;
-        $this->tagsRepository = $tagsRepository;
     }
 
     public function index(): ResponseInterface
     {
-        $articles = $this->articlesRepository->getWith(['tags'], 'created_at', 'desc');
+        $articles = Article::query()
+            ->with('tags')
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         $data = [
             'articles' => $articles
@@ -40,7 +34,7 @@ class ArticlesController extends BaseController
     {
         $data = [
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . \config('app.backend_segment') . '/articles',
-            'tags' => $this->tagsRepository->list(['id', 'title'], 'title'),
+            'tags' => Tag::query()->select('id', 'title')->orderBy('title')->get(),
         ];
 
         return $this->httpResponse($this->view('backend/articles/create', $data));
@@ -50,7 +44,7 @@ class ArticlesController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $article = $this->articlesRepository->findById($id);
+        $article = Article::query()->find($id);
 
         if (!$article) {
             return $this->abort();
@@ -58,9 +52,9 @@ class ArticlesController extends BaseController
 
         $data = [
             'article' => $article,
+            'article_tags' => $article->tags->pluck('id')->all(),
+            'tags' => Tag::query()->select('id', 'title')->orderBy('title')->get(),
             'redirectUrl' => $this->request->getServerParams()['HTTP_REFERER'] ?? '/' . config('app.backend_segment') . '/articles',
-            'tags' => $this->tagsRepository->list(['id', 'title'], 'title'),
-            'article_tags' => $this->articlesRepository->articleTagsIdsArray($id),
         ];
 
         return $this->httpResponse($this->view('backend/articles/edit', $data));
@@ -70,14 +64,15 @@ class ArticlesController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $article = $this->articlesRepository->findById($id);
+        $article = Article::query()->find($id);
 
         if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found']);
         }
 
-        $this->articlesRepository->syncTags($id, []);
-        $this->articlesRepository->delete($id);
+        $article->tags()->sync([]);
+        
+        $article->delete();
 
         return $this->jsonResponse(['success' => 'OK']);
     }
@@ -96,16 +91,14 @@ class ArticlesController extends BaseController
             'seo_keywords' => $this->postArgument('seo_keywords'),
         ];
 
-
         // Validation
-
         $validator = new Validator();
         $validator->add([
             'title:Title' => 'required',
             'slug:Slug' => 'required',
         ]);
 
-        if (!$validator->validate($data)) {
+        if (false === $validator->validate($data)) {
             return $this->jsonResponse([
                 'message' => $this->formatErrorMessages($validator->getMessages()),
             ]);
@@ -114,17 +107,25 @@ class ArticlesController extends BaseController
         // TODO: Filter Input
 
         if ($id) {
+            $article = Article::query()->find($id);
+
+            if (!$article) {
+                return $this->jsonResponse([
+                    'message' => 'Error! Article not found.'
+                ]);
+            }
+
             // update
-            if (!$this->articlesRepository->update($id, $data)) {
+            if (!$article->update($data)) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not update article. Try again.'
                 ]);
             }
         } else {
             // create
-            $id = $this->articlesRepository->create($data);
+            $article = Article::query()->create($data);
 
-            if (0 === $id) {
+            if (!$article->id) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not create new article. Try again.'
                 ]);
@@ -133,13 +134,13 @@ class ArticlesController extends BaseController
 
         // sync article tags
         $article_tags = $this->postArgument('article_tags') ?: [];
-        $this->articlesRepository->syncTags($id, $article_tags);
+        $article->tags()->sync($article_tags);
 
         return $this->jsonResponse([
             'success' => 'OK',
             'message' => 'Saved',
             'redirect' => $redirectUrl ?? '',
-            'id' => $id ?? '',
+            'id' => $article->id,
         ]);
     }
 
@@ -157,7 +158,7 @@ class ArticlesController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $article = $this->articlesRepository->findById($id);
+        $article = Article::query()->find($id);
 
         if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found']);
@@ -173,15 +174,18 @@ class ArticlesController extends BaseController
 
     private function changePublishStatus(int $id, int $is_published): ResponseInterface
     {
-        $article = $this->articlesRepository->findById($id);
+        $article = Article::query()->find($id);
 
         if (null === $article) {
             return $this->jsonResponse(['message' => 'Record not found']);
         }
 
-        $this->articlesRepository->update($id, ['is_published' => $is_published]);
+        $is_published = $is_published === 1 ? 1 : 0;
 
-        if ($is_published) {
+        $article->is_published = $is_published;
+        $article->save();
+
+        if ($is_published === 1) {
             // generate social image
             $this->executeSocialImageGeneration($article);
         }

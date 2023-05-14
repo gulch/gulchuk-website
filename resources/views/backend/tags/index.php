@@ -36,7 +36,7 @@
                             <div class="ui statistic tiny right floated">
                                 <div class="value">
                                     <i class="file text outline icon"></i>
-                                    <?= $tag->articlesCount() ?>
+                                    <?= count($tag->articles) ?>
                                 </div>
                             </div>
 
@@ -48,7 +48,7 @@
                             </a>
 
                             <div class="meta">
-                                Created: <?= $tag->createdDateInFormat('d.m.Y H:i:s') ?>
+                                Created: <?= $tag->created_at->format('d.m.Y H:i:s') ?>
                             </div>
 
                             <div class="extra">

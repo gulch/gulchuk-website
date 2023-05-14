@@ -32,12 +32,6 @@ $container->add(
     }
 );
 
-/* Emitter */
-$container->add(
-    'emitter',
-    \Embryo\Http\Emitter\Emitter::class
-);
-
 /* Template Engine */
 $container->addShared(
     'templater',
@@ -47,25 +41,28 @@ $container->addShared(
 );
 
 /* ORM */
-$orm = \Atlas\Orm\Atlas::new(
-    config('database.driver') . ':host=' . config('database.host') . ';dbname=' . config('database.database'),
-    config('database.username'),
-    config('database.password')
-);
-$container->addShared(
-    'orm',
-    function () use ($orm) {
-        return $orm;
-    },
-);
+use Illuminate\Database\Capsule\Manager as Capsule;
+$capsule = new Capsule;
+$capsule->addConnection([
+    'driver' => config('database.driver'),
+    'host' => config('database.host'),
+    'unix_socket' => config('database.unix_socket'),
+    'database' => config('database.database'),
+    'username' => config('database.username'),
+    'password' => config('database.password'),
+    'charset' => config('database.charset'),
+    'collation' => config('database.collation'),
+]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
 /* Repositories */
-$container->add(\App\Repositories\TagsRepository::class)->addArgument($orm);
+/* $container->add(\App\Repositories\TagsRepository::class)->addArgument($orm);
 $container->add(\App\Repositories\ArticlesRepository::class)->addArgument($orm);
-$container->add(\App\Repositories\UsersRepository::class)->addArgument($orm);
+$container->add(\App\Repositories\UsersRepository::class)->addArgument($orm); */
 
 /* Controllers */
-$container->add(\App\Controllers\Frontend\PageController::class);
+/* $container->add(\App\Controllers\Frontend\PageController::class);
 $container->add(\App\Controllers\Frontend\SitemapController::class);
 
 $container
@@ -86,7 +83,7 @@ $container
 $container
     ->add(\App\Controllers\Backend\ArticlesController::class)
     ->addArgument(\App\Repositories\ArticlesRepository::class)
-    ->addArgument(\App\Repositories\TagsRepository::class);
+    ->addArgument(\App\Repositories\TagsRepository::class); */
 
 /* FastCgiService */
 $container->add(\App\Services\JobService::class);

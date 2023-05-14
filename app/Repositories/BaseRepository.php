@@ -2,30 +2,23 @@
 
 namespace App\Repositories;
 
-use Atlas\Mapper\Record;
-
 abstract class BaseRepository
 {
-    abstract public function getMapperClassName();
+    abstract public function getModelClassName();
 
-    /** @var \Atlas\Orm\Atlas */
-    protected $orm;
-
-    public function __construct($orm)
+    public function __construct()
     {
-        $this->orm = $orm;
+        //
     }
 
-    public function all(): \Traversable
+    public function all(): iterable
     {
-        return $this->orm
-            ->select($this->getMapperClassName())
-            ->fetchRecordSet();
+        return ($this->getModelClassName())::query()->all();
     }
 
     public function create(array $data): int
     {
-        $entity = $this->orm->newRecord($this->getMapperClassName(), $data);
+        $entity = $this->orm->newRecord($this->getModelClassName(), $data);
 
         $this->orm->insert($entity);
 
@@ -34,27 +27,26 @@ abstract class BaseRepository
 
     public function delete(int $id): void
     {
-        $entity = $this->orm->fetchRecord($this->getMapperClassName(), $id);
+        $entity = $this->orm->fetchRecord($this->getModelClassName(), $id);
         $this->orm->delete($entity);
     }
 
-    public function findById(int $id, array $with = []): ?Record
+    public function findById(int $id, array $with = []): object
     {
-        $select = $this->orm
-            ->select($this->getMapperClassName())
-            ->where('id = ', $id);
+        $select = ($this->getModelClassName())::query()
+            ->where('id', $id);
 
         if (\count($with)) {
             $select = $select->with($with);
         }
 
-        return $select->fetchRecord();
+        return $select->first();
     }
 
-    public function findBySlug(string $slug): ?Record
+    public function findBySlug(string $slug): object
     {
         return $this->orm
-            ->select($this->getMapperClassName())
+            ->select($this->getModelClassName())
             ->where('slug = ', $slug)
             ->fetchRecord();
     }
@@ -65,7 +57,7 @@ abstract class BaseRepository
         string $orderDir = 'ASC'
     ): \Traversable {
         $result = $this->orm
-            ->select($this->getMapperClassName())
+            ->select($this->getModelClassName())
             ->with($with);
 
         if ($orderField) {

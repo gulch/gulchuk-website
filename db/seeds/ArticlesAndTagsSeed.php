@@ -13,7 +13,7 @@ class ArticlesAndTagsSeed extends AbstractSeed
         $this->faker = Factory::create();
     }
 
-    public function run()
+    public function run(): void
     {
         $this->articlesSeed();
         $this->tagsSeed();

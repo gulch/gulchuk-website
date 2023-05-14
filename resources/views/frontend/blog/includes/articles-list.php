@@ -8,7 +8,7 @@
             </a>
 
             <div class="sub header">
-                <?= $article->createdDateInFormat() ?>
+                <?= $article->created_at->format('j M Y') ?>
             </div>
 
         </div>

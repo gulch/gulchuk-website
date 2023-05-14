@@ -4,14 +4,13 @@ namespace App\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Zend\InputFilter\InputFilterInterface;
 
 class BaseController
 {
-    /** @var $request ServerRequestInterface */
+    /** @var ServerRequestInterface $request */
     protected $request;
 
-    /** @var $response ResponseInterface */
+    /** @var ResponseInterface $response */
     protected $response;
 
     protected $postInput;
@@ -44,10 +43,6 @@ class BaseController
 
     /**
      * Send JSON response
-     *
-     * @param array $data
-     * @param int $statusCode
-     * @return ResponseInterface
      */
     protected function jsonResponse(array $data, int $statusCode = 200): ResponseInterface
     {
@@ -62,9 +57,6 @@ class BaseController
 
     /**
      * Send redirect response
-     *
-     * @param string $url
-     * @return ResponseInterface
      */
     protected function redirectResponse(string $url = '/'): ResponseInterface
     {
@@ -77,7 +69,7 @@ class BaseController
             return null;
         }
 
-        return isset($args[$name]) ? $args[$name] : null;
+        return $args[$name] ?? null;
     }
 
     protected function postArgument(string $name)

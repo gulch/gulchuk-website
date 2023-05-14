@@ -4,7 +4,7 @@ use Phinx\Seed\AbstractSeed;
 
 class UserSeed extends AbstractSeed
 {
-    public function run()
+    public function run(): void
     {
         $user = [
             'name' => 'Admin',

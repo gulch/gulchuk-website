@@ -57,7 +57,7 @@ try {
 }
 
 // send/flush response
-$container->get('emitter')->emit($response);
+(new \App\Emitters\HttpEmitter)->emit($response);
 
 /*if (function_exists('fastcgi_finish_request')) {
     fastcgi_finish_request();

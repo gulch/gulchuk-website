@@ -2,28 +2,26 @@
 
 namespace App\Repositories;
 
-use App\DataSource\User\User;
+use App\Models\User;
 
 class UsersRepository extends BaseRepository
 {
-    public function getMapperClassName(): string
+    public function getModelClassName(): string
     {
         return User::class;
     }
 
     public function findByEmail(string $email)
     {
-        return $this->orm
-            ->select($this->getMapperClassName())
-            ->where('email = ', $email)
-            ->fetchRecord();
+        return ($this->getModelClassName())::query()
+            ->where('email', $email)
+            ->first();
     }
 
     public function findByRememberToken(string $token)
     {
-        return $this->orm
-            ->select($this->getMapperClassName())
-            ->where('remember_token = ', $token)
-            ->fetchRecord();
+        return ($this->getModelClassName())::query()
+            ->where('remember_token', $token)
+            ->first();
     }
 }

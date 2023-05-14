@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use App\Repositories\UsersRepository;
 
 class AuthService
@@ -45,12 +46,11 @@ class AuthService
     }
 
     public static function login(
-        UsersRepository $usersRepository,
         string $email,
         string $password,
         bool $remember = false
     ): bool {
-        $user = $usersRepository->findByEmail($email);
+        $user = User::query()->where('email', $email)->first();
 
         if (!$user) {
             return false;
@@ -58,13 +58,12 @@ class AuthService
 
         if (\password_verify($password, $user->password)) {
             if (\password_needs_rehash($user->password, \PASSWORD_ARGON2ID)) {
-                $usersRepository->update($user->id, [
-                    'password' => \password_hash($password, \PASSWORD_ARGON2ID)
-                ]);
+                $user->password = \password_hash($password, \PASSWORD_ARGON2ID);
+                $user->save();
             }
 
             // Good! Let's authenticate user...
-            static::authenticate($user, $usersRepository, $remember);
+            static::authenticate($user, $remember);
 
             return true;
         }
@@ -72,7 +71,7 @@ class AuthService
         return false;
     }
 
-    public static function authenticate($user, UsersRepository $userRepository, bool $remember = false): void
+    public static function authenticate(User $user, bool $remember = false): void
     {
         static::setUser($user);
 
@@ -81,7 +80,8 @@ class AuthService
             $remember_token = static::generateRememberToken(32);
 
             // save remember token to user table
-            $userRepository->update($user->id, ['remember_token' => $remember_token]);
+            $user->remember_token = $remember_token;
+            $user->save();
 
             \setcookie(
                 'remember',
@@ -110,7 +110,7 @@ class AuthService
         static::destroySession();
     }
 
-    public static function checkRememberTokenAndLogin(UsersRepository $usersRepository): bool
+    public static function checkRememberTokenAndLogin(): bool
     {
         $remember_token = $_COOKIE['remember'] ?? null;
 
@@ -118,13 +118,15 @@ class AuthService
             return false;
         }
 
-        $user = $usersRepository->findByRememberToken($remember_token);
+        $user = User::query()
+            ->where('remember_token', $remember_token)
+            ->first();
 
         if (!$user) {
             return false;
         }
 
-        static::authenticate($user, $usersRepository, true);
+        static::authenticate($user, true);
 
         return true;
     }

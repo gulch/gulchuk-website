@@ -9,7 +9,7 @@ class ArticlesRepository extends BaseRepository
 {
     public function articleTagsIdsArray(int $id): array
     {
-        $article = $this->orm->fetchRecord($this->getMapperClassName(), $id, [
+        $article = $this->orm->fetchRecord($this->getModelClassName(), $id, [
             'tags' => function ($articleTags) {
                 $articleTags->columns('id');
             }
@@ -27,7 +27,7 @@ class ArticlesRepository extends BaseRepository
         return $ids;
     }
 
-    public function getMapperClassName(): string
+    public function getModelClassName(): string
     {
         return Article::class;
     }
@@ -35,7 +35,7 @@ class ArticlesRepository extends BaseRepository
     public function getLatestPublished(): \Traversable
     {
         return $this->orm
-            ->select($this->getMapperClassName())
+            ->select($this->getModelClassName())
             ->where('is_published = 1')
             ->orderBy('created_at DESC')
             ->fetchRecordSet();
@@ -48,7 +48,7 @@ class ArticlesRepository extends BaseRepository
         int $offset = 0
     ): \Traversable {
         return $this->orm
-            ->select($this->getMapperClassName())
+            ->select($this->getModelClassName())
             ->limit($limit)
             ->offset($offset)
             ->orderBy($orderField . ' ' . $orderDir)

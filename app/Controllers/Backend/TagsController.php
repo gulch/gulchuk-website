@@ -3,23 +3,23 @@
 namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
-use App\Repositories\TagsRepository;
+use App\Models\Tag;
 use Psr\Http\Message\ResponseInterface;
 use Sirius\Validation\Validator;
 
-class TagsController extends BaseController
+final class TagsController extends BaseController
 {
-    private $tagsRepository;
-
-    public function __construct(TagsRepository $repository)
+    public function __construct()
     {
         parent::__construct();
-        $this->tagsRepository = $repository;
     }
 
     public function index(): ResponseInterface
     {
-        $tags = $this->tagsRepository->getWith(['articles'], 'created_at', 'desc');
+        $tags = Tag::query()
+            ->with('articles')
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         $data = [
             'tags' => $tags
@@ -41,7 +41,7 @@ class TagsController extends BaseController
     {
         $id = $this->argument('id', func_get_arg(1));
 
-        $tag = $this->tagsRepository->findById($id);
+        $tag = Tag::query()->find($id);
 
         if (!$tag) {
             return $this->abort();
@@ -59,14 +59,15 @@ class TagsController extends BaseController
     {
         $id = $this->argument('id', \func_get_arg(1));
 
-        $tag = $this->tagsRepository->findById($id);
+        $tag = Tag::query()->find($id);
 
         if (!$tag) {
             return $this->jsonResponse(['message' => 'Record not found.']);
         }
 
-        $this->tagsRepository->syncArticles($id, []);
-        $this->tagsRepository->delete($id);
+        $tag->articles()->sync([]);
+        
+        $tag->delete($id);
 
         return $this->jsonResponse(['success' => 'OK']);
     }
@@ -85,9 +86,7 @@ class TagsController extends BaseController
             'seo_keywords' => $this->postArgument('seo_keywords'),
         ];
 
-
         // Validation
-
         $validator = new Validator();
         $validator->add([
             'title:Title' => 'required',
@@ -105,15 +104,18 @@ class TagsController extends BaseController
 
 
         if ($id) {
+            $tag = Tag::query()->find($id);
             // update
-            if (!$this->tagsRepository->update($id, $data)) {
+            if (!$tag->update($id, $data)) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not update tag. Try again.'
                 ]);
             }
         } else {
             // create
-            if (!$id = $this->tagsRepository->create($data)) {
+            $tag = Tag::query()->create($data);
+            
+            if (!$tag->id) {
                 return $this->jsonResponse([
                     'message' => 'Error! Can not create new tag. Try again.'
                 ]);
@@ -124,7 +126,7 @@ class TagsController extends BaseController
             'success' => 'OK',
             'message' => 'Saved',
             'redirect' => $redirectUrl ?? '',
-            'id' => $id ?? '',
+            'id' => $tag->id,
         ]);
     }
 }

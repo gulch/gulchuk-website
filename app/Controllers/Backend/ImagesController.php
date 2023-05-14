@@ -9,13 +9,13 @@ use App\Services\JobService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-class ImagesController extends BaseController
+final class ImagesController extends BaseController
 {
     private $prefix = null;
 
     public function upload(): ResponseInterface
     {
-        /** @var $uploaded_file UploadedFileInterface  */
+        /** @var UploadedFileInterface $uploaded_file  */
         $uploaded_file = $this->request->getUploadedFiles()['file'] ?? null;
         $setup = $this->postArgument('setup');
 
@@ -25,7 +25,7 @@ class ImagesController extends BaseController
             ]);
         }
 
-        if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
+        if ($uploaded_file->getError() !== \UPLOAD_ERR_OK) {
             return $this->jsonResponse([
                 'message' => 'File Upload Error'
             ]);
@@ -58,7 +58,7 @@ class ImagesController extends BaseController
 
         $success = (new ImageService)->process($original_file, $editor_file, $options);
 
-        if (!$success) {
+        if (false === $success) {
             return $this->jsonResponse([
                 'message' => 'Can not process image'
             ]);

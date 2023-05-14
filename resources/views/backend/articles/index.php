@@ -41,7 +41,7 @@
                             </a>
 
                             <div class="meta">
-                                Created: <?= $article->createdDateInFormat('d.m.Y H:i:s') ?>
+                                Created: <?= $article->created_at->format('d.m.Y H:i:s') ?>
                             </div>
 
                             <div class="extra">

@@ -3,13 +3,13 @@
 namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
-use App\Repositories\ArticlesRepository;
+use App\Models\Article;
 use Psr\Http\Message\ResponseInterface;
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Feed;
 use Suin\RSSWriter\Item;
 
-class FeedController extends BaseController
+final class FeedController extends BaseController
 {
     public function generate(): ResponseInterface
     {
@@ -29,10 +29,14 @@ class FeedController extends BaseController
             ->appendTo($feed);
 
         // blog articles
-        $articles = \container(ArticlesRepository::class)->getWithOptions('created_at', 'desc', 20);
+        $articles = Article::query()
+            ->where('is_published', '1')
+            ->orderBy('created_at', 'DESC')
+            ->take(20)
+            ->get();
 
         foreach ($articles as $article) {
-            $date = $article->updated_at ? $article->updatedDateInFormat('U') : $article->createdDateInFormat('U');
+            $date = $article->updated_at ? $article->updated_at->format('U') : $article->created_at->format('U');
 
             (new Item)
                 ->title($article->title)

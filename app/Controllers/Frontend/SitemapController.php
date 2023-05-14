@@ -3,12 +3,12 @@
 namespace App\Controllers\Frontend;
 
 use App\Controllers\BaseController;
-use App\Repositories\ArticlesRepository;
-use App\Repositories\TagsRepository;
+use App\Models\Article;
+use App\Models\Tag;
 use Psr\Http\Message\ResponseInterface;
 use samdark\sitemap\Sitemap;
 
-class SitemapController extends BaseController
+final class SitemapController extends BaseController
 {
     public function generate(): ResponseInterface
     {
@@ -20,9 +20,10 @@ class SitemapController extends BaseController
         $sitemap->addItem(\config('app.url') . '/blog', $date, Sitemap::WEEKLY, 0.7);
 
         // blog tags
-        $tags = \container(TagsRepository::class)->all();
+        $tags = Tag::query()->get();
+        
         foreach ($tags as $tag) {
-            $date = $tag->updated_at ? $tag->updatedDateInFormat('U') : $tag->createdDateInFormat('U');
+            $date = $tag->updated_at ? $tag->updated_at->format('U') : $tag->created_at->format('U');
             $sitemap->addItem(
                 \config('app.url') . '/blog/tag/' . $tag->slug,
                 $date,
@@ -32,14 +33,15 @@ class SitemapController extends BaseController
         }
 
         // blog articles
-        $articles = \container(ArticlesRepository::class)->all();
+        $articles = Article::query()->where('is_published', 1)->get();
+
         foreach ($articles as $article) {
-            $date = $article->updated_at ? $article->updatedDateInFormat('U') : $article->createdDateInFormat('U');
+            $date = $article->updated_at ? $article->updated_at->format('U') : $article->created_at->format('U');
             $sitemap->addItem(
                 \config('app.url') . '/blog/' . $article->slug,
                 $date,
                 Sitemap::ALWAYS,
-                '0.9'
+                '1.0'
             );
         }
 

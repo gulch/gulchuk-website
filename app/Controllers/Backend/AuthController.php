@@ -3,21 +3,14 @@
 namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
-use App\Repositories\UsersRepository;
 use App\Services\AuthService;
 use Psr\Http\Message\ResponseInterface;
 
-class AuthController extends BaseController
+final class AuthController extends BaseController
 {
-    /**
-     * @var UsersRepository
-     */
-    private $usersRepository;
-
-    public function __construct(UsersRepository $usersRepository)
+    public function __construct()
     {
         parent::__construct();
-        $this->usersRepository = $usersRepository;
     }
 
     public function login(): ResponseInterface
@@ -28,7 +21,7 @@ class AuthController extends BaseController
             return $this->redirectResponse('/' . $path);
         }
 
-        if (AuthService::checkRememberTokenAndLogin($this->usersRepository)) {
+        if (AuthService::checkRememberTokenAndLogin()) {
             return $this->redirectResponse('/' . $path);
         }
 
@@ -42,7 +35,7 @@ class AuthController extends BaseController
         $remember = $this->postArgument('remember') ?: false;
         $path = $this->getArgument('return') ?: \config('app.backend_segment');
 
-        if (AuthService::login($this->usersRepository, $email, $password, $remember)) {
+        if (AuthService::login($email, $password, $remember)) {
             return $this->redirectResponse('/' . $path);
         }
 
