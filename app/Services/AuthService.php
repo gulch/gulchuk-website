@@ -57,9 +57,9 @@ class AuthService
         }
 
         if (\password_verify($password, $user->password)) {
-            if (\password_needs_rehash($user->password, \PASSWORD_ARGON2I)) {
+            if (\password_needs_rehash($user->password, \PASSWORD_ARGON2ID)) {
                 $usersRepository->update($user->id, [
-                    'password' => \password_hash($password, \PASSWORD_ARGON2I)
+                    'password' => \password_hash($password, \PASSWORD_ARGON2ID)
                 ]);
             }
 
