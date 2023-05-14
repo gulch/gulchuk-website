@@ -23,11 +23,11 @@ class ResponseTime implements MiddlewareInterface
 
         // preload
         $duration = (\APP_START_TIME_FLOAT - $server['REQUEST_TIME_FLOAT']) * 1000;
-        $this->addMetric('01_preload', sprintf('%2.1f', $duration));
+        $this->addMetric('01_preload', sprintf('%2.2f', $duration));
 
         // composer autoload
         $duration = (\APP_AUTOLOADED_TIME_FLOAT - \APP_START_TIME_FLOAT) * 1000;
-        $this->addMetric('02_autoload', sprintf('%2.1f', $duration));
+        $this->addMetric('02_autoload', sprintf('%2.2f', $duration));
 
         // bootstrap
         $duration = ($bootstrap_mark - \APP_AUTOLOADED_TIME_FLOAT) * 1000;
