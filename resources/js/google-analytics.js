@@ -1,16 +1,23 @@
-/* get Google Analytics 4 ID*/
-var GoogleAnalyticsID = document.querySelector('script[data-gaid]')?.dataset?.gaid;
+(function (window, document) {
+    'use strict';
 
-if (!GoogleAnalyticsID) return;
+    /* get Google Analytics 4 ID */
+    var GoogleAnalyticsID = document.querySelector('script[data-gaid]')?.dataset?.gaid;
 
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', GoogleAnalyticsID);
+    if (!GoogleAnalyticsID) {
+        return true;
+    }
 
-(function (d, t, s, e) {
-    e = d.createElement(t);
-    e.defer = true;
-    e.src = s;
-    d.body.appendChild(e);
-})(document, 'script', 'https://www.googletagmanager.com/gtag/js?id=' + GoogleAnalyticsID);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GoogleAnalyticsID);
+
+    (function (d, t, s, e) {
+        e = d.createElement(t);
+        e.defer = true;
+        e.src = s;
+        d.body.appendChild(e);
+    })(document, 'script', 'https://www.googletagmanager.com/gtag/js?id=' + GoogleAnalyticsID);
+
+}(window, document));
