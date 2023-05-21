@@ -17,8 +17,6 @@ class MinifyOutput implements MiddlewareInterface
         /** @var ResponseInterface $response */
         $response = $handler->handle($request);
 
-        $start_time = \microtime(true);
-
         $minifier = new \gulch\Minify\Minifier(
             new \gulch\Minify\Processor\WhitespacesRemover,
             new \gulch\Minify\Processor\HtmlCommentsRemover,
@@ -30,11 +28,6 @@ class MinifyOutput implements MiddlewareInterface
         $stream = \container(StreamInterface::class);
         $stream->write($minifiedBody);
 
-        $end_time = \microtime(true);
-        $duration = ($end_time - $start_time) * 1000;
-
-        return $response
-            ->withBody($stream)
-            ->withHeader('X-Minify-Time', \sprintf('%2.3f ms', $duration));
+        return $response->withBody($stream);
     }
 }
