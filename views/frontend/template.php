@@ -1,9 +1,8 @@
 <?php
-
-/** @var \League\Plates\Template\Template $this */
-$title = $title ?? 'Gulchuk :: Personal Website';
-$description = $description ?? 'Personal Website. Blog. Articles about web development';
-$image = $image ?? config('app.default_social_image');
+    /** @var \League\Plates\Template\Template $this */
+    $title = $title ?? 'Gulchuk :: Personal Website';
+    $description = $description ?? 'Personal Website. Blog. Articles about web development';
+    $image = $image ?? config('app.default_social_image');
 ?>
 <!doctype html>
 <html lang="en" prefix="og: http://ogp.me/ns#" itemscope="itemscope" itemtype="http://schema.org/WebSite">
@@ -46,6 +45,8 @@ $image = $image ?? config('app.default_social_image');
     <?php /* Application Version */ ?>
     <meta name="version" content="<?= config('app.version') ?>">
 
+    <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
+
     <?php /* SVG Iconn Sprite Loader */ ?>
     <script async src="<?= config('app.build_folder_path') . config('app.version') ?>/s.js"></script>
 
@@ -59,7 +60,6 @@ $image = $image ?? config('app.default_social_image');
 
     <?php /*$this->insert('frontend/includes/footer')*/ ?>
 
-    <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
     <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
 
     <?php if (config('app.google_analytics_id')) : ?>

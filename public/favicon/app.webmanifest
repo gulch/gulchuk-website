@@ -1,0 +1,30 @@
+{
+	"background_color": "#fff",
+	"dir": "ltr",
+	"display": "standalone",
+    "icons": [
+        {
+            "src": "/favicon/192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "id": "/",
+	"name": "Gulchuk Personal Website",
+	"orientation": "natural",
+	"start_url": "/",
+	"theme_color": "#38383a",
+    "description": "Volodymyr Gulchuk Personal Website",
+    "short_name": "Gulchuk"
+}

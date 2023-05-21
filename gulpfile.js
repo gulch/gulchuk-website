@@ -37,7 +37,7 @@ var fontsCss = function () {
     ])
         .pipe(concat('fo.css'))
         .pipe(postcss([
-            discard_comments({removeAll: true}),
+            discard_comments({ removeAll: true }),
             combine_duplicated_selectors(),
             autoprefixer(),
             sorting()
@@ -63,7 +63,7 @@ var old__frontendCss = function () {
     ])
         .pipe(concat('f.css'))
         .pipe(postcss([
-            discard_comments({removeAll: true}),
+            discard_comments({ removeAll: true }),
             combine_duplicated_selectors(),
             autoprefixer(),
             sorting()
@@ -80,7 +80,7 @@ var frontendCss = function () {
         .pipe(concat('f.css'))
         .pipe(less())
         .pipe(postcss([
-            discard_comments({removeAll: true}),
+            discard_comments({ removeAll: true }),
             combine_duplicated_selectors(),
             autoprefixer(),
             sorting()
@@ -104,7 +104,7 @@ var highlightCss = function () {
     ])
         .pipe(concat('h.css'))
         .pipe(postcss([
-            discard_comments({removeAll: true}),
+            discard_comments({ removeAll: true }),
             combine_duplicated_selectors(),
             autoprefixer(),
             sorting()
@@ -138,12 +138,12 @@ var svgSprite = function () {
     var rename = require('gulp-rename');
 
     return gulp.src('resources/images/icons/*.svg')
-        .pipe(rename({prefix: 'fi-'}))
+        .pipe(rename({ prefix: 'fi-' }))
         .pipe(svgmin())
         .pipe(svgstore({
             inlineSvg: true
         }))
-        .pipe(rename({basename: 's'}))
+        .pipe(rename({ basename: 's' }))
         .pipe(gulp.dest(BUILD_PATH));
 };
 
@@ -153,6 +153,13 @@ var analyticsJs = function () {
     ])
         .pipe(concat('a.js'))
         .pipe(uglify())
+        .pipe(gulp.dest(BUILD_PATH));
+};
+
+const webmanifest_file = function () {
+    return gulp.src([
+        'public/favicon/app.webmanifest'
+    ])
         .pipe(gulp.dest(BUILD_PATH));
 };
 
@@ -173,5 +180,6 @@ gulp.task('PRODUCTION', gulp.parallel(
     highlightJs,
     svgSpriteLoaderJs,
     svgSprite,
-    analyticsJs
+    analyticsJs,
+    webmanifest_file
 ));
