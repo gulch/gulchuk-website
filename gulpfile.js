@@ -134,7 +134,7 @@ var svgSprite = function () {
     var svgmin = require('gulp-svgmin');
     var rename = require('gulp-rename');
 
-    return gulp.src('public/assets/img/icons/*.svg')
+    return gulp.src('resouces/images/icons/*.svg')
         .pipe(rename({prefix: 'fi-'}))
         .pipe(svgmin())
         .pipe(svgstore({
