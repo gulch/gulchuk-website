@@ -1,4 +1,4 @@
-<script defer src="/assets/vendor/jquery/3.2.1/jquery.min.js"></script>
+<script defer src="/assets/vendor/jquery/3.7.0/jquery.min.js"></script>
 
 <?= container('defer-css')->write() ?>
 

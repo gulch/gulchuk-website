@@ -4,7 +4,7 @@
 composer dump-autoload --optimize --classmap-authoritative --no-dev
 
 # compress assets
-ASSETS_DIR="public/build"
+ASSETS_DIR="public/b"
 
 # gzip assets
 bash assets_gzip.sh $ASSETS_DIR

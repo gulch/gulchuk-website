@@ -14,4 +14,6 @@ return [
     'images_path_editor'   => env('IMAGES_PATH_EDITOR', '/uploads/img/editor'),
     'images_path_social'   => env('IMAGES_PATH_SOCIAL', '/uploads/img/social'),
     'default_social_image' => '/assets/img/default-social-image.png',
+    'build_folder_path'    => env('BUILD_FOLDER_PATH', '/b/'),
+    'google_analytics_id'  => env('GOOGLE_ANALYTICS_ID'),
 ];

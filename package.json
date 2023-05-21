@@ -3,6 +3,7 @@
     "version": "1.4.1",
     "dependencies": {
         "autoprefixer": "^10.0",
+        "dotenv": "^16.0",
         "gulp": "^4.0",
         "gulp-concat": "^2.5",
         "gulp-cssnano": "^2.1",
@@ -12,12 +13,12 @@
         "gulp-svgmin": "^4.1",
         "gulp-svgstore": "^9.0",
         "gulp-ttf2woff2": "^4.0",
-        "gulp-uglify": "^3.0.2",
-        "npm": "^6.14.8",
+        "gulp-uglify": "^3.0",
+        "npm": "^9.0",
         "postcss": "^8.4",
         "postcss-combine-duplicated-selectors": "^10.0",
-        "postcss-discard-comments": "^5.0",
-        "postcss-sorting": "^7.0"
+        "postcss-discard-comments": "^6.0",
+        "postcss-sorting": "^8.0"
     },
     "author": "Volodymyr Gulchuk",
     "license": "MIT",

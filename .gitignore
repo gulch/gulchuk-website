@@ -8,6 +8,3 @@ composer.lock
 /package-lock.json
 /phinx.yml
 /phpstorm.meta.php
-/atlas-config.php
-/resources/views/frontend/includes/google-analytics.php
-/public/assets/js/counters.js
