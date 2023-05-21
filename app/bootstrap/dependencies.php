@@ -36,7 +36,7 @@ $container->add(
 $container->addShared(
     'templater',
     function () {
-        return new \League\Plates\Engine(__DIR__ . '/../../resources/views');
+        return new \League\Plates\Engine(__DIR__ . '/../../views');
     },
 );
 
