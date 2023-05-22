@@ -19,7 +19,7 @@ a {
     color: #388ad2;
 }
 
-.code-text {
+.code-text, pre {
     font-family: "Operator Mono", "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
 }
 
@@ -113,7 +113,6 @@ footer {
 
 /* Style for code block */
 pre {
-    font-family: "Operator Mono", "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
     font-size: 1rem;
     background: rgba(238, 238, 238, .35) !important;
     border-radius: 3px;
@@ -123,11 +122,6 @@ pre {
 
 article img {
     max-width: 100%;
-}
-
-/* Hide Loader */
-.cssload-container {
-    display: none !important;
 }
 
 nav.ui.menu .item {

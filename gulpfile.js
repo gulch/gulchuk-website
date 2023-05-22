@@ -22,15 +22,6 @@ var SEMANTIC_VERSION = '2.3.1';
 var SEMANTIC_PATH = VENDOR_ASSETS_PATH + 'semantic/' + SEMANTIC_VERSION + '/components/';
 var PRISM_VERSION = '1.15.0';
 
-var loaderCss = function () {
-    return gulp.src([
-        CSS_ASSETS_PATH + 'loader.css'
-    ])
-        .pipe(concat('lo.css'))
-        .pipe(nano())
-        .pipe(gulp.dest(BUILD_PATH));
-};
-
 var fontsCss = function () {
     return gulp.src([
         CSS_ASSETS_PATH + 'fonts.css'
@@ -163,7 +154,6 @@ const webmanifest_file = function () {
         .pipe(gulp.dest(BUILD_PATH));
 };
 
-gulp.task('loader css', gulp.parallel(loaderCss));
 gulp.task('fonts css', gulp.parallel(fontsCss));
 gulp.task('frontend css', gulp.parallel(frontendCss));
 gulp.task('highlight css', gulp.parallel(highlightCss));
@@ -173,7 +163,6 @@ gulp.task('svg sprite', gulp.parallel(svgSprite));
 gulp.task('google analytics js', gulp.parallel(analyticsJs));
 
 gulp.task('PRODUCTION', gulp.parallel(
-    loaderCss,
     fontsCss,
     frontendCss,
     highlightCss,
