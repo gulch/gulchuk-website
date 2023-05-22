@@ -1,0 +1,176 @@
+@font-face {
+    font-family: 'f';
+    font-weight: 400;
+    src: url(/f/f.woff2) format('woff2'), url(/f/f.woff) format('woff');
+    font-display: swap;
+}
+
+body, html {
+    font-family: 'f';
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* MORE INFO -> https://developers.google.com/fonts/docs/material_icons */
+}
+
+/* ------- GENERAL ------- */
+.welcome-text {
+    font-size: 20px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-size: 18px;
+    overflow: auto;
+}
+
+a {
+    color: #0052ae;
+}
+
+a:hover {
+    color: #0052ae;
+    text-decoration: rgba(0, 82, 174, .2) dotted underline;
+    text-decoration-thickness: 3px;
+}
+
+.code-text, pre {
+    font-family: "JetBrains Mono", "Operator Mono", "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p {
+    line-height: 1.5 !important;
+}
+
+.error-status {
+    font-size: 8em;
+    font-weight: bold;
+    text-shadow: 0 20px 60px rgba(17, 17, 17, 0.05), 0 5px 10px rgba(17, 17, 17, 0.1), 0 1px 1px rgba(17, 17, 17, 0.2);
+}
+
+.errors-grid {
+    width: 100%;
+}
+
+/* ------- FOOTER -------- */
+.footer-content {
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.footer-content a {
+    color: #333;
+}
+
+footer {
+    margin-top: 1em;
+}
+
+#main-menu-logo {
+    width: 28px;
+    height: 28px;
+}
+
+.flex-one {
+    flex: 1;
+    display: flex !important;
+}
+
+.vcenter-align {
+    align-self: center;
+}
+
+@media screen and (max-width: 512px) {
+    .vcenter-align {
+        align-self: auto;
+    }
+}
+
+.blog-container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.blog-header-title {
+    font-size: 4em !important;
+    font-weight: bold;
+}
+
+.blog-tag-link {
+    color: #777;
+    font-size: 1.1em;
+}
+
+.blog-tag-link:before {
+    content: '#';
+    font-size: smaller;
+    opacity: .5;
+}
+
+.unimportant-text {
+    color: #777 !important;
+}
+
+.content-text {
+    font-size: 20px;
+    color: #000 !important;
+    line-height: 1.5;
+}
+
+.display-none {
+    display: none !important;
+}
+
+.link-title {
+    color: rgba(0, 0, 0, .7);
+}
+
+/* Style for code block */
+pre {
+    font-size: 1rem;
+    background: rgba(238, 238, 238, .35) !important;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .125);
+    padding: 8px;
+}
+
+article img {
+    max-width: 100%;
+}
+
+nav.ui.menu .item {
+    font-size: 16px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+.ui.list > .item > .content {
+    line-height: 1.25 !important;
+}
+
+body > svg {
+    display: none;
+}
+
+svg.fi-icon {
+    width: 1em;
+    height: 1em;
+}
+
+svg.icon.blue {
+    fill: #2185D0;
+}
+
+.ui.list > .item > .content {
+    line-height: 1.5 !important;
+}

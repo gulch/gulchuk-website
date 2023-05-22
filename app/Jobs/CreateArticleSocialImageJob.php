@@ -43,7 +43,7 @@ class CreateArticleSocialImageJob implements Job
         //for each line added
         foreach ($strings as $string) {
             $titleCanvas->text($string, 0, $i, function ($font) {
-                $font->file(\publicPath() . '/assets/font/source-sans-pro/bold.otf');
+                $font->file(\publicPath() . '/f/source-sans-pro/bold.otf');
                 $font->size(72);
                 $font->color('#4a4a4a');
                 $font->valign('top');

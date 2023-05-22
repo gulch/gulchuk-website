@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="<?= config('app.build_folder_path') . config('app.version') ?>/fo.css">
 <link rel="stylesheet" href="<?= config('app.build_folder_path') . config('app.version') ?>/f.css">
 
 <?php if (isset($styles)): ?>

@@ -15,6 +15,8 @@
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
 
+    <link rel="preload" href="<?= config('app.build_folder_path') . config('app.version') ?>/f.css" type="text/css" as="style">
+
     <link rel="alternate" type="application/rss+xml" title="<?= config('app.name') ?> RSS Feed" href="/feed">
 
     <?php /* Schema.org */ ?>
@@ -39,8 +41,6 @@
     <?php if (isset($noindex)) : ?>
         <meta name="robots" content="noindex">
     <?php endif; ?>
-
-    <?php $this->insert('frontend/includes/preload') ?>
 
     <?php /* Application Version */ ?>
     <meta name="version" content="<?= config('app.version') ?>">
