@@ -3,7 +3,7 @@
 namespace App\Controllers\Backend;
 
 use App\Controllers\BaseController;
-use App\Jobs\CreateWebpJob;
+use App\Jobs\CreateAvifJob;
 use App\Services\ImageService;
 use App\Services\JobService;
 use Psr\Http\Message\ResponseInterface;
@@ -64,9 +64,9 @@ final class ImagesController extends BaseController
             ]);
         }
 
-        // generate also WebP version of image
+        // generate also AVIF version of image
         \container(JobService::class)->process([
-            'job' => CreateWebpJob::class,
+            'job' => CreateAvifJob::class,
             'source' => $editor_file
         ]);
 
