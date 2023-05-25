@@ -18,13 +18,11 @@ var JS_ASSETS_PATH = 'public/assets/js/';
 var JS_RESOURCES_PATH = 'resources/js/';
 var CSS_RESOURCES_PATH = 'resources/css/';
 var LESS_RESOURCES_PATH = 'resources/less/';
-var SEMANTIC_VERSION = '2.3.1';
-var SEMANTIC_PATH = VENDOR_ASSETS_PATH + 'semantic/' + SEMANTIC_VERSION + '/components/';
 var PRISM_VERSION = '1.15.0';
 
 var frontendCss = function () {
     return gulp.src([
-        LESS_RESOURCES_PATH + 'overrides/fomantic/semantic.less',
+        LESS_RESOURCES_PATH + 'fomantic/2.9.2/semantic.less',
         CSS_RESOURCES_PATH + 'frontend.css'
     ])
         .pipe(concat('f.css'))
