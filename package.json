@@ -4,9 +4,10 @@
     "dependencies": {
         "autoprefixer": "^10.0",
         "dotenv": "^16.0",
-        "gulp": "^4.0",
+        "gulp": "^4.0.2",
         "gulp-concat": "^2.5",
         "gulp-cssnano": "^2.1",
+        "gulp-cssmin": "^0.2",
         "gulp-less": "^5.0",
         "gulp-postcss": "^9.0",
         "gulp-rename": "^2.0",
@@ -17,8 +18,9 @@
         "npm": "^9.0",
         "postcss": "^8.4",
         "postcss-combine-duplicated-selectors": "^10.0",
+        "postcss-combine-media-query": "^1.0",
         "postcss-discard-comments": "^6.0",
-        "postcss-sorting": "^8.0"
+        "postcss-remove-prefixes": "^1.2"
     },
     "author": "Volodymyr Gulchuk",
     "license": "MIT",

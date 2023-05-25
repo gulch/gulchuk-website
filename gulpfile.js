@@ -1,13 +1,15 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var nano = require('gulp-cssnano');
-var discard_comments = require('postcss-discard-comments');
-var combine_duplicated_selectors = require('postcss-combine-duplicated-selectors');
-var sorting = require('postcss-sorting');
-var less = require('gulp-less');
+const gulp = require('gulp');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const combineDuplicatedSelectors = require('postcss-combine-duplicated-selectors');
+const combineMediaQuery = require('postcss-combine-media-query');
+const concat = require('gulp-concat');
+const cssnano = require('cssnano');
+const discardComments = require('postcss-discard-comments');
+const removePrefixes = require('postcss-remove-prefixes');
+const less = require('gulp-less');
+const uglify = require('gulp-uglify');
+const cssmin = require('gulp-cssmin');
 
 require('dotenv').config();
 
@@ -28,12 +30,16 @@ var frontendCss = function () {
         .pipe(concat('f.css'))
         .pipe(less())
         .pipe(postcss([
-            discard_comments({ removeAll: true }),
-            combine_duplicated_selectors(),
+            discardComments({removeAll: true}),
+            removePrefixes(),
+            combineMediaQuery(),
+            combineDuplicatedSelectors(),
             autoprefixer(),
-            sorting()
+            /* cssnano({
+                preset: 'default'
+            }) */
         ]))
-        .pipe(nano())
+        .pipe(cssmin())
         .pipe(gulp.dest(BUILD_PATH));
 };
 
@@ -52,12 +58,15 @@ var highlightCss = function () {
     ])
         .pipe(concat('h.css'))
         .pipe(postcss([
-            discard_comments({ removeAll: true }),
-            combine_duplicated_selectors(),
+            discardComments({removeAll: true}),
+            removePrefixes(),
+            combineMediaQuery(),
+            combineDuplicatedSelectors(),
             autoprefixer(),
-            sorting()
+            cssnano({
+                preset: 'default'
+            })
         ]))
-        .pipe(nano())
         .pipe(gulp.dest(BUILD_PATH));
 };
 
@@ -86,7 +95,6 @@ var svgSprite = function () {
     var rename = require('gulp-rename');
 
     return gulp.src('resources/images/icons/*.svg')
-        .pipe(rename({ prefix: 'fi-' }))
         .pipe(svgmin())
         .pipe(svgstore({
             inlineSvg: true

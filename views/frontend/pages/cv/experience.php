@@ -1,7 +1,7 @@
 <div class="ui header">
     <i class="icon">
-        <svg class="fi-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fi-experience"></use>
+        <svg class="gi-icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#experience"></use>
         </svg>
     </i>
     <div class="content">
