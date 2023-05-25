@@ -6,12 +6,12 @@ $this->layout('frontend/template', [
     'description' => $this->e($tag->seo_description),
     'keywords' => $this->e($tag->seo_keywords),
     'styles' => [
-        config('app.build_folder_path') . config('app.version') . '/h.css'
+        g_asset('h.css'),
     ],
     'scripts' => [
         [
             'load' => 'defer',
-            'src' => config('app.build_folder_path') . config('app.version') . '/h.js'
+            'src' => g_asset('h.js'),
         ]
     ]
 ])

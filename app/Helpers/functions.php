@@ -44,6 +44,11 @@ function projectPath(): string
     return realpath(__DIR__ . '/../../');
 }
 
+function g_asset(string $file): string
+{
+    return config('app.built_assets_path') . config('app.version') . '/' . $file;
+}
+
 function currentURL(bool $full_url = true, bool $with_query = false): string
 {
     $result = '';

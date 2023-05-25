@@ -14,7 +14,7 @@ const cssmin = require('gulp-cssmin');
 require('dotenv').config();
 
 const APP_VERSION = process.env.APP_VERSION;
-var BUILD_PATH = 'public/b/' + APP_VERSION;
+var BUILD_PATH = 'public/a/' + APP_VERSION;
 var VENDOR_ASSETS_PATH = 'public/assets/vendor/';
 var JS_ASSETS_PATH = 'public/assets/js/';
 var JS_RESOURCES_PATH = 'resources/js/';

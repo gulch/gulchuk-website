@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= config('app.build_folder_path') . config('app.version') ?>/f.css">
+<link rel="stylesheet" href="<?= g_asset('f.css') ?>">
 
 <?php if (isset($styles)): ?>
     <?php foreach ($styles as $style): ?>

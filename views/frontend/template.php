@@ -9,15 +9,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title><?= $title ?></title>
     <meta name="description" content="<?= $description ?>">
-    <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog, personal, page, site, web' ?>">
+    <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog' ?>">
 
-    <link rel="preload" href="<?= config('app.build_folder_path') . config('app.version') ?>/f.css" type="text/css" as="style">
+    <?php if (isset($noindex)) : ?>
+        <meta name="robots" content="noindex">
+    <?php endif; ?>
 
-    <link rel="alternate" type="application/rss+xml" title="<?= config('app.name') ?> RSS Feed" href="/feed">
+    <?php /* Preload */ ?>
+    <link rel="preload" href="<?= g_asset('f.css') ?>" as="style">
+    <link rel=preload href="<?= g_asset('s.js') ?>" as=script>
+    <link rel=preload href="/f/f.woff2" as=font type="font/woff2" crossorigin=anonymous>
 
     <?php /* Schema.org */ ?>
     <meta itemprop="name" content="<?= $title ?>">
@@ -38,17 +43,16 @@
     <meta name="twitter:site" content="@gulch_47">
     <meta name="twitter:creator" content="@gulch_47">
 
-    <?php if (isset($noindex)) : ?>
-        <meta name="robots" content="noindex">
-    <?php endif; ?>
-
     <?php /* Application Version */ ?>
     <meta name="version" content="<?= config('app.version') ?>">
 
     <?php $this->insert('frontend/includes/css', ['styles' => $styles ?? null]) ?>
 
     <?php /* SVG Iconn Sprite Loader */ ?>
-    <script async src="<?= config('app.build_folder_path') . config('app.version') ?>/s.js"></script>
+    <script async src="<?= g_asset('s.js') ?>" fetchpriority="high"></script>
+
+    <?php /* RSS Feed */ ?>
+    <link rel="alternate" type="application/rss+xml" title="<?= config('app.name') ?> RSS Feed" href="/feed">
 
     <?php $this->insert('assets/favicon') ?>
 </head>
@@ -62,12 +66,12 @@
 
     <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
 
+    <?php /* Google Analytics */ ?>
     <?php if (config('app.google_analytics_id')) : ?>
         <script async 
-                src="<?= config('app.build_folder_path') . config('app.version') ?>/a.js"
+                src="<?= g_asset('a.js') ?>"
                 data-gaid="<?= config('app.google_analytics_id') ?>"
         ></script>
     <?php endif; ?>
 </body>
-
 </html>

@@ -6,12 +6,12 @@
     'keywords' => $this->e($article->seo_keywords),
     'image' => $article->social_image,
     'styles' => [
-        config('app.build_folder_path') . config('app.version') . '/h.css'
+        g_asset('h.css'),
     ],
     'scripts' => [
         [
             'load' => 'defer',
-            'src' => config('app.build_folder_path') . config('app.version') . '/h.js'
+            'src' => g_asset('h.js'),
         ]
     ]
 ]) ?>
