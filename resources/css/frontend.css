@@ -147,6 +147,10 @@ article img {
     max-width: 100%;
 }
 
+nav.ui.menu {
+    margin-top: 1em !important;
+}
+
 nav.ui.menu .item {
     font-size: 16px !important;
     padding-top: 12px !important;

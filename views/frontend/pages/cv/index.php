@@ -1,8 +1,5 @@
 <?php
-
-/** @var $this \League\Plates\Template\Template */ ?>
-
-<?php
+/** @var $this \League\Plates\Template\Template */
 $this->layout('frontend/template', [
     'noindex' => true,
     'title' => 'CV :: Gulchuk Volodymyr',
