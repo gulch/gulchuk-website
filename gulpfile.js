@@ -24,7 +24,7 @@ var PRISM_VERSION = '1.15.0';
 
 var frontendCss = function () {
     return gulp.src([
-        LESS_RESOURCES_PATH + 'overrides/semantic/semantic.less',
+        LESS_RESOURCES_PATH + 'overrides/fomantic/semantic.less',
         CSS_RESOURCES_PATH + 'frontend.css'
     ])
         .pipe(concat('f.css'))

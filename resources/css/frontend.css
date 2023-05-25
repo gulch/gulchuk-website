@@ -2,7 +2,6 @@
     font-family: 'f';
     font-weight: 400;
     src: url(/f/f.woff2) format('woff2'), url(/f/f.woff) format('woff');
-    font-display: swap;
 }
 
 body, html {
@@ -98,7 +97,7 @@ footer {
 
 .blog-container {
     margin-top: 2em;
-    margin-bottom: 2em;
+    padding-bottom: 2em;
 }
 
 .blog-header-title {
