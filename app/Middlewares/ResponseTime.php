@@ -9,7 +9,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function microtime, sprintf;
 
-class ResponseTime implements MiddlewareInterface
+final class ResponseTime implements MiddlewareInterface
 {
     private array $metrics = [];
 
@@ -48,10 +48,7 @@ class ResponseTime implements MiddlewareInterface
         $duration = (microtime(true) - $server['REQUEST_TIME_FLOAT']) * 1000;
         $this->addMetric('total', sprintf(self::FORMAT, $duration));
 
-        return $response->withHeader(
-            'Server-Timing',
-            $this->generateHeaderValue(),
-        );
+        return $response->withHeader('Server-Timing', $this->generateHeaderValue());
     }
 
 

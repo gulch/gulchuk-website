@@ -2,16 +2,15 @@
 
 namespace App\Helpers;
 
+use App\Helpers\SingletonTrait;
 use Exception;
 use Symfony\Component\Finder\Finder;
-use App\Helpers\SingletonTrait;
 
 class Config
 {
     use SingletonTrait;
 
-    /** @var array */
-    private $config;
+    private array $config;
 
     public static function bootstrap(string $path): void
     {

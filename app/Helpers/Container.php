@@ -2,16 +2,15 @@
 
 namespace App\Helpers;
 
+use App\Helpers\SingletonTrait;
 use Exception;
 use Psr\Container\ContainerInterface;
-use App\Helpers\SingletonTrait;
 
 class Container
 {
     use SingletonTrait;
 
-    /** @var ContainerInterface */
-    private $container;
+    private ContainerInterface $container;
 
     public static function bootstrap(ContainerInterface $container): void
     {

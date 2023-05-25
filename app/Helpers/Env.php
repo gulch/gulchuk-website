@@ -75,7 +75,7 @@ class Env
     {
         return Option::fromValue(static::getRepository()->get($key))
             ->map(function ($value) {
-                switch (strtolower($value)) {
+                switch (\strtolower($value)) {
                     case 'true':
                     case '(true)':
                         return true;
@@ -90,7 +90,7 @@ class Env
                         return;
                 }
 
-                if (preg_match('/\A([\'"])(.*)\1\z/', $value, $matches)) {
+                if (\preg_match('/\A([\'"])(.*)\1\z/', $value, $matches)) {
                     return $matches[2];
                 }
 

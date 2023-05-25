@@ -2,18 +2,19 @@
 
 namespace App\Middlewares;
 
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class MinifyOutput implements MiddlewareInterface
+final class MinifyOutput implements MiddlewareInterface
 {
     public function process(
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
+        
         /** @var ResponseInterface $response */
         $response = $handler->handle($request);
 
@@ -22,11 +23,12 @@ class MinifyOutput implements MiddlewareInterface
             new \gulch\Minify\Processor\HtmlCommentsRemover,
             new \gulch\Minify\Processor\QuotesRemover
         );
-        $minifiedBody = $minifier->process($response->getBody());
 
         /** @var StreamInterface $stream */
         $stream = \container(StreamInterface::class);
-        $stream->write($minifiedBody);
+        $stream->write(
+            $minifier->process($response->getBody())
+        );
 
         return $response->withBody($stream);
     }

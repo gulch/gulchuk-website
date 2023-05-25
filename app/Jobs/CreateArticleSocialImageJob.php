@@ -4,10 +4,10 @@ namespace App\Jobs;
 
 use App\Contracts\Job;
 use App\Repositories\ArticlesRepository;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 
-class CreateArticleSocialImageJob implements Job
+final class CreateArticleSocialImageJob implements Job
 {
     public function handle(array $options): void
     {
