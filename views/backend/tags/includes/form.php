@@ -1,4 +1,4 @@
-<?php /** @var $this \League\Plates\Template\Template */ ?>
+<?php /** @var \League\Plates\Template\Template $this */ ?>
 <div class="ui warning large form segment">
     <form method="POST" action="/<?= config('app.backend_segment') ?>/tags/save" accept-charset="UTF-8">
 

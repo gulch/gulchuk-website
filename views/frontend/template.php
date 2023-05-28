@@ -1,11 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
     /** @var \League\Plates\Template\Template $this */
     $title = $title ?? 'Gulchuk :: Personal Website';
     $description = $description ?? 'Personal Website. Blog. Articles about web development';
     $image = $image ?? config('app.default_social_image');
 ?>
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#" itemscope="itemscope" itemtype="http://schema.org/WebSite">
 
 <head>
     <meta charset="utf-8">
@@ -14,6 +15,7 @@
     <title><?= $title ?></title>
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog' ?>">
+    <link rel="image_src" href="{{ $image }}">
 
     <?php if (isset($noindex)) : ?>
         <meta name="robots" content="noindex">
@@ -24,15 +26,9 @@
     <link rel=preload href="<?= g_asset('s.js') ?>" as=script>
     <link rel=preload href="/f/f.woff2" as=font type="font/woff2" crossorigin=anonymous>
 
-    <?php /* Schema.org */ ?>
-    <meta itemprop="name" content="<?= $title ?>">
-    <meta itemprop="description" content="<?= $description ?>">
-    <meta itemprop="image" content="<?= $image ?>">
-    <link itemprop="url" href="<?= currentURL() ?>">
-
     <?php /* Social: Facebook / Open Graph */ ?>
     <meta property="og:url" content="<?= currentURL() ?>">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:image" content="<?= $image ?>" />
     <meta property="og:description" content="<?= $description ?>">

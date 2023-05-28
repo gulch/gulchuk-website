@@ -1,8 +1,6 @@
 <div class="ui header">
     <i class="icon">
-        <svg class="gi-icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#diaphragm"></use>
-        </svg>
+        <svg class="gi-icon"><use href="#diaphragm"></use></svg>
     </i>
     <div class="content">
         Hobbies
