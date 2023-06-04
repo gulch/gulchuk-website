@@ -19,9 +19,9 @@ final class MinifyOutput implements MiddlewareInterface
         $response = $handler->handle($request);
 
         $minifier = new \gulch\Minify\Minifier(
-            new \gulch\Minify\Processor\WhitespacesRemover,
             new \gulch\Minify\Processor\HtmlCommentsRemover,
-            new \gulch\Minify\Processor\QuotesRemover
+            new \gulch\Minify\Processor\WhitespacesRemover,
+            new \App\Processors\QuotesRemover,
         );
 
         /** @var StreamInterface $stream */
