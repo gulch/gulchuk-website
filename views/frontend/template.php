@@ -15,7 +15,7 @@
     <title><?= $title ?></title>
     <meta name="description" content="<?= $description ?>">
     <meta name="keywords" content="<?= $keywords ?? 'gulchuk, website, blog' ?>">
-    <link rel="image_src" href="{{ $image }}">
+    <link rel="image_src" href="<?= $image ?>">
 
     <?php if (isset($noindex)) : ?>
         <meta name="robots" content="noindex">
@@ -30,7 +30,7 @@
     <meta property="og:url" content="<?= currentURL() ?>">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?= $title ?>">
-    <meta property="og:image" content="<?= $image ?>" />
+    <meta property="og:image" content="<?= $image ?>">
     <meta property="og:description" content="<?= $description ?>">
     <meta property="og:site_name" content="<?= config('app.name') ?>">
 
