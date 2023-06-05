@@ -14,14 +14,15 @@ final class MinifyOutput implements MiddlewareInterface
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        
+
         /** @var ResponseInterface $response */
         $response = $handler->handle($request);
 
         $minifier = new \gulch\Minify\Minifier(
             new \gulch\Minify\Processor\HtmlCommentsRemover,
             new \gulch\Minify\Processor\WhitespacesRemover,
-            new \App\Processors\QuotesRemover,
+            new \gulch\Minify\Processor\AttributesSimplifier,
+            new \gulch\Minify\Processor\AttributeQuotesRemover,
         );
 
         /** @var StreamInterface $stream */

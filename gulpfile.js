@@ -125,7 +125,7 @@ gulp.task('svg sprite loader js', gulp.parallel(svgSpriteLoaderJs));
 gulp.task('svg sprite', gulp.parallel(svgSprite));
 gulp.task('google analytics js', gulp.parallel(analyticsJs));
 
-gulp.task('PRODUCTION', gulp.parallel(
+gulp.task('prod', gulp.parallel(
     frontendCss,
     highlightCss,
     highlightJs,
