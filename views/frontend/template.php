@@ -58,7 +58,7 @@
 
     <?= $this->section('content') ?>
 
-    <?php /*$this->insert('frontend/includes/footer')*/ ?>
+    <?php $this->insert('frontend/includes/footer') ?>
 
     <?php $this->insert('frontend/includes/js', ['scripts' => $scripts ?? null]) ?>
 

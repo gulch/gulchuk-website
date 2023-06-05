@@ -120,6 +120,10 @@ footer {
     color: #777 !important;
 }
 
+.dots {
+    color: #bbb;
+}
+
 .content-text {
     font-size: 20px;
     color: #000 !important;
