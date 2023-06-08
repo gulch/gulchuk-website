@@ -16,8 +16,6 @@ $this->layout('frontend/template', [
                 <h1 class="ui large header">Volodymyr Gulchuk</h1>
                 <h2>PHP/Web Developer</h2>
                 <p>
-                    Birthday: 20 Jan 1989
-                    <br>
                     Location: Kyiv, Ukraine
                     <br>
                     Email: volodymyr@gulchuk.com
