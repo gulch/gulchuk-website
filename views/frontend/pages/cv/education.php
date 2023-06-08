@@ -10,6 +10,19 @@
 
 <h3>Certificates</h3>
 <p>
+    2022
+</p>
+<ul>
+    <li>
+    <a href="/uploads/files/2022/09/WebPageTest-Course-2022-09-20.jpg"
+           target="_blank"
+           rel="nofollow"
+        >
+            Lightning-Fast Web Performance
+        </a>
+    </li>
+</ul>
+<p>
     2019
 </p>
 <ul>
