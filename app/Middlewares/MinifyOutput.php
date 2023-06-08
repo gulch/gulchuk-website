@@ -21,8 +21,6 @@ final class MinifyOutput implements MiddlewareInterface
         $minifier = new \gulch\Minify\Minifier(
             new \gulch\Minify\Processor\HtmlCommentsRemover,
             new \gulch\Minify\Processor\WhitespacesRemover,
-            new \gulch\Minify\Processor\AttributesSimplifier,
-            new \gulch\Minify\Processor\AttributeQuotesRemover,
         );
 
         /** @var StreamInterface $stream */
